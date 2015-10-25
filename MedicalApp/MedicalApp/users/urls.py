@@ -44,8 +44,8 @@ urlpatterns = [
     # URL pattern for the UserDetailView
     url(
         regex=r'^(?P<username>[\w.@+-]+)/$',
-        view=views.UserDetailView.as_view(),
-        name='detail'
+        view=views.PatientProfileView.as_view(),
+        name='patient_profile'
     ),
 
     # URL pattern for the UserUpdateView
