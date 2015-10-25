@@ -225,6 +225,7 @@ LOGIN_URL = 'account_login'
 
 ACCOUNT_FORMS = {
     'login': 'MedicalApp.users.forms.UserLoginForm',
+    'signup': 'MedicalApp.users.forms.UserSignupForm'
 }
 
 # SLUGLIFIER
