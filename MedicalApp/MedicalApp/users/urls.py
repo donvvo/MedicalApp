@@ -13,6 +13,13 @@ urlpatterns = [
         name='list'
     ),
 
+    # URL pattern for the UserLoginView
+    url(
+        regex=r'^login/$',
+        view=views.UserLoginView.as_view(),
+        name='login'
+    ),
+
     # URL pattern for the UserRedirectView
     url(
         regex=r'^~redirect/$',
