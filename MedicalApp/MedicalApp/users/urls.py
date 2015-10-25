@@ -20,6 +20,13 @@ urlpatterns = [
         name='login'
     ),
 
+    # URL pattern for the UserSignupView
+    url(
+        regex=r'^signup/$',
+        view=views.UserSignupView.as_view(),
+        name='signup'
+    ),
+
     # URL pattern for the UserRedirectView
     url(
         regex=r'^~redirect/$',
