@@ -25,6 +25,20 @@ class UserSignupView(SignupView):
                                self.get_success_url())
 
 
+class DoctorSignupView(SignupView):
+    def form_valid(self, form):
+        user = form.save(self.request)
+        user.add_to_doctors_group()
+        return complete_signup(self.request, user,
+                               app_settings.EMAIL_VERIFICATION,
+                               self.get_success_url())
+
+    def get_context_data(self, **kwargs):
+        context = super(DoctorSignupView, self).get_context_data(**kwargs)
+        context['doctors'] = True
+        return context
+
+
 class UserDetailView(LoginRequiredMixin, DetailView):
     model = User
     # These next two lines tell the view to index lookups by username

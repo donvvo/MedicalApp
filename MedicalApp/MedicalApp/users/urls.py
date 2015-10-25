@@ -20,6 +20,13 @@ urlpatterns = [
         name='login'
     ),
 
+    # URL pattern for the DoctorSignupView
+    url(
+        regex=r'^signup/doctors/$',
+        view=views.DoctorSignupView.as_view(),
+        name='signup_doctors'
+    ),
+
     # URL pattern for the UserSignupView
     url(
         regex=r'^signup/$',
