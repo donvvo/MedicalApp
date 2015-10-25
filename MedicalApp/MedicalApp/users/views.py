@@ -5,8 +5,13 @@ from django.core.urlresolvers import reverse
 from django.views.generic import DetailView, ListView, RedirectView, UpdateView
 
 from braces.views import LoginRequiredMixin
+from allauth.account.views import LoginView
 
 from .models import User
+
+
+class UserLoginView(LoginView):
+    pass
 
 
 class UserDetailView(LoginRequiredMixin, DetailView):
