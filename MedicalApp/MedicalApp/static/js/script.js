@@ -415,7 +415,7 @@
 	}
 	});
 	/**************************  $Send Forms  ******************************/
-	$("#newsletter, #contact, #request").submit(function() {
+	/*$("#newsletter, #contact, #request").submit(function() {
 		var elem = $(this);
 		var urlTarget = $(this).attr("action");
 		$.ajax({
@@ -435,6 +435,6 @@
 			}
 		});
 		return false;
-	});
+	});*/
 
 })(jQuery);

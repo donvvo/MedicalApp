@@ -20,6 +20,20 @@ urlpatterns = [
         name='login'
     ),
 
+    # URL pattern for the DoctorSignupView
+    url(
+        regex=r'^signup/doctors/$',
+        view=views.DoctorSignupView.as_view(),
+        name='signup_doctors'
+    ),
+
+    # URL pattern for the UserSignupView
+    url(
+        regex=r'^signup/$',
+        view=views.UserSignupView.as_view(),
+        name='signup'
+    ),
+
     # URL pattern for the UserRedirectView
     url(
         regex=r'^~redirect/$',
@@ -30,8 +44,8 @@ urlpatterns = [
     # URL pattern for the UserDetailView
     url(
         regex=r'^(?P<username>[\w.@+-]+)/$',
-        view=views.UserDetailView.as_view(),
-        name='detail'
+        view=views.PatientProfileView.as_view(),
+        name='patient_profile'
     ),
 
     # URL pattern for the UserUpdateView

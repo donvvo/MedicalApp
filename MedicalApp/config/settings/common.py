@@ -82,7 +82,7 @@ FIXTURE_DIRS = (
 
 # EMAIL CONFIGURATION
 # ------------------------------------------------------------------------------
-EMAIL_BACKEND = env('DJANGO_EMAIL_BACKEND', default='django.core.mail.backends.smtp.EmailBackend')
+EMAIL_BACKEND = env('DJANGO_EMAIL_BACKEND', default='django.core.mail.backends.console.EmailBackend')
 
 # MANAGER CONFIGURATION
 # ------------------------------------------------------------------------------
@@ -225,6 +225,7 @@ LOGIN_URL = 'account_login'
 
 ACCOUNT_FORMS = {
     'login': 'MedicalApp.users.forms.UserLoginForm',
+    'signup': 'MedicalApp.users.forms.UserSignupForm'
 }
 
 # SLUGLIFIER

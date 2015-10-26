@@ -16720,3 +16720,8 @@ a.tweet_avatar img {
   float: left;
   margin-right: 14px;
 }
+
+/* For styling form error */
+.errorlist {
+  color: #f83434;
+}
