@@ -1,0 +1,611 @@
+[
+    {
+        "model": "MedicalForms.general",
+        "pk": 1,
+        "fields": {
+            "choice": "Allergies"
+        }
+    },
+    {
+        "model": "MedicalForms.general",
+        "pk": 2,
+        "fields": {
+            "choice": "Depression"
+        }
+    },
+    {
+        "model": "MedicalForms.general",
+        "pk": 3,
+        "fields": {
+            "choice": "Dizziness"
+        }
+    },
+    {
+        "model": "MedicalForms.general",
+        "pk": 4,
+        "fields": {
+            "choice": "Fainting"
+        }
+    },
+    {
+        "model": "MedicalForms.general",
+        "pk": 5,
+        "fields": {
+            "choice": "Fatigue"
+        }
+    },
+    {
+        "model": "MedicalForms.general",
+        "pk": 6,
+        "fields": {
+            "choice": "Fever"
+        }
+    },
+    {
+        "model": "MedicalForms.general",
+        "pk": 7,
+        "fields": {
+            "choice": "Headaches"
+        }
+    },
+    {
+        "model": "MedicalForms.general",
+        "pk": 8,
+        "fields": {
+            "choice": "Loss of Sleep"
+        }
+    },
+    {
+        "model": "MedicalForms.general",
+        "pk": 9,
+        "fields": {
+            "choice": "Mental Illness"
+        }
+    },
+    {
+        "model": "MedicalForms.general",
+        "pk": 10,
+        "fields": {
+            "choice": "Nervousness"
+        }
+    },
+    {
+        "model": "MedicalForms.general",
+        "pk": 11,
+        "fields": {
+            "choice": "Tremors"
+        }
+    },
+    {
+        "model": "MedicalForms.general",
+        "pk": 12,
+        "fields": {
+            "choice": "Weight loss / gain"
+        }
+    },
+    {
+        "model": "MedicalForms.general",
+        "pk": 13,
+        "fields": {
+            "choice": "Loss of balance"
+        }
+    },
+    {
+        "model": "MedicalForms.musclejoint",
+        "pk": 13,
+        "fields": {
+            "choice": "Loss of balance"
+        }
+    },
+    {
+        "model": "MedicalForms.musclejoint",
+        "pk": 1,
+        "fields": {
+            "choice": "Arthritis / rheumatism"
+        }
+    },
+    {
+        "model": "MedicalForms.musclejoint",
+        "pk": 2,
+        "fields": {
+            "choice": "Bursitis"
+        }
+    },
+    {
+        "model": "MedicalForms.musclejoint",
+        "pk": 3,
+        "fields": {
+            "choice": "Foot trouble"
+        }
+    },
+    {
+        "model": "MedicalForms.musclejoint",
+        "pk": 4,
+        "fields": {
+            "choice": "Muscle Weakness"
+        }
+    },
+    {
+        "model": "MedicalForms.musclejoint",
+        "pk": 5,
+        "fields": {
+            "choice": "Low back pain"
+        }
+    },
+    {
+        "model": "MedicalForms.musclejoint",
+        "pk": 6,
+        "fields": {
+            "choice": "Neck pain"
+        }
+    },
+    {
+        "model": "MedicalForms.musclejoint",
+        "pk": 7,
+        "fields": {
+            "choice": "Mid back pain"
+        }
+    },
+    {
+        "model": "MedicalForms.musclejoint",
+        "pk": 8,
+        "fields": {
+            "choice": "Joint pain"
+        }
+    },
+    {
+        "model": "MedicalForms.skin",
+        "pk": 1,
+        "fields": {
+            "choice": "Boils"
+        }
+    },
+    {
+        "model": "MedicalForms.skin",
+        "pk": 2,
+        "fields": {
+            "choice": "Bruise easily"
+        }
+    },
+    {
+        "model": "MedicalForms.skin",
+        "pk": 3,
+        "fields": {
+            "choice": "Dryness"
+        }
+    },
+    {
+        "model": "MedicalForms.skin",
+        "pk": 4,
+        "fields": {
+            "choice": "Hives or allergies"
+        }
+    },
+    {
+        "model": "MedicalForms.skin",
+        "pk": 5,
+        "fields": {
+            "choice": "Itching"
+        }
+    },
+    {
+        "model": "MedicalForms.skin",
+        "pk": 6,
+        "fields": {
+            "choice": "Rash"
+        }
+    },
+    {
+        "model": "MedicalForms.skin",
+        "pk": 7,
+        "fields": {
+            "choice": "Varicose Veins"
+        }
+    },
+    {
+        "model": "MedicalForms.skin",
+        "pk": 8,
+        "fields": {
+            "choice": "Eczema"
+        }
+    },
+    {
+        "model": "MedicalForms.respiratory",
+        "pk": 1,
+        "fields": {
+            "choice": "Shortness of breath"
+        }
+    },
+    {
+        "model": "MedicalForms.respiratory",
+        "pk": 2,
+        "fields": {
+            "choice": "Chronic cough"
+        }
+    },
+    {
+        "model": "MedicalForms.respiratory",
+        "pk": 3,
+        "fields": {
+            "choice": "Difficulty breathing"
+        }
+    },
+    {
+        "model": "MedicalForms.respiratory",
+        "pk": 4,
+        "fields": {
+            "choice": "Hay fever"
+        }
+    },
+    {
+        "model": "MedicalForms.respiratory",
+        "pk": 5,
+        "fields": {
+            "choice": "Wheezing"
+        }
+    },
+    {
+        "model": "MedicalForms.respiratory",
+        "pk": 6,
+        "fields": {
+            "choice": "Asthma"
+        }
+    },
+    {
+        "model": "MedicalForms.respiratory",
+        "pk": 7,
+        "fields": {
+            "choice": "Bronchitis"
+        }
+    },
+    {
+        "model": "MedicalForms.gastrointestinal",
+        "pk": 1,
+        "fields": {
+            "choice": "Abdominal pain"
+        }
+    },
+    {
+        "model": "MedicalForms.gastrointestinal",
+        "pk": 2,
+        "fields": {
+            "choice": "Liver trouble"
+        }
+    },
+    {
+        "model": "MedicalForms.gastrointestinal",
+        "pk": 3,
+        "fields": {
+            "choice": "Colitis / Crohn's"
+        }
+    },
+    {
+        "model": "MedicalForms.gastrointestinal",
+        "pk": 4,
+        "fields": {
+            "choice": "Colon trouble"
+        }
+    },
+    {
+        "model": "MedicalForms.gastrointestinal",
+        "pk": 5,
+        "fields": {
+            "choice": "Constipation"
+        }
+    },
+    {
+        "model": "MedicalForms.gastrointestinal",
+        "pk": 6,
+        "fields": {
+            "choice": "Diarrhea"
+        }
+    },
+    {
+        "model": "MedicalForms.gastrointestinal",
+        "pk": 7,
+        "fields": {
+            "choice": "Difficult Digestion"
+        }
+    },
+    {
+        "model": "MedicalForms.gastrointestinal",
+        "pk": 8,
+        "fields": {
+            "choice": "Diverticulosis"
+        }
+    },
+    {
+        "model": "MedicalForms.gastrointestinal",
+        "pk": 9,
+        "fields": {
+            "choice": "Nausea"
+        }
+    },
+    {
+        "model": "MedicalForms.gastrointestinal",
+        "pk": 10,
+        "fields": {
+            "choice": "Excessive hunger"
+        }
+    },
+    {
+        "model": "MedicalForms.gastrointestinal",
+        "pk": 11,
+        "fields": {
+            "choice": "Gallbladder trouble"
+        }
+    },
+    {
+        "model": "MedicalForms.gastrointestinal",
+        "pk": 12,
+        "fields": {
+            "choice": "Hernia"
+        }
+    },
+    {
+        "model": "MedicalForms.gastrointestinal",
+        "pk": 13,
+        "fields": {
+            "choice": "Hemorrhoids"
+        }
+    },
+    {
+        "model": "MedicalForms.gastrointestinal",
+        "pk": 14,
+        "fields": {
+            "choice": "Vomiting"
+        }
+    },
+    {
+        "model": "MedicalForms.genitourinary",
+        "pk": 1,
+        "fields": {
+            "choice": "Bladder infection"
+        }
+    },
+    {
+        "model": "MedicalForms.genitourinary",
+        "pk": 2,
+        "fields": {
+            "choice": "Kidney problem"
+        }
+    },
+    {
+        "model": "MedicalForms.genitourinary",
+        "pk": 3,
+        "fields": {
+            "choice": "Prostate problem"
+        }
+    },
+    {
+        "model": "MedicalForms.genitourinary",
+        "pk": 4,
+        "fields": {
+            "choice": "Incontinence"
+        }
+    },
+    {
+        "model": "MedicalForms.genitourinary",
+        "pk": 5,
+        "fields": {
+            "choice": "Painful urination"
+        }
+    },
+    {
+        "model": "MedicalForms.cardiovascular",
+        "pk": 1,
+        "fields": {
+            "choice": "High blood pressure"
+        }
+    },
+    {
+        "model": "MedicalForms.cardiovascular",
+        "pk": 2,
+        "fields": {
+            "choice": "Low blood pressure"
+        }
+    },
+    {
+        "model": "MedicalForms.cardiovascular",
+        "pk": 3,
+        "fields": {
+            "choice": "Hardening of arteries"
+        }
+    },
+    {
+        "model": "MedicalForms.cardiovascular",
+        "pk": 4,
+        "fields": {
+            "choice": "Irregular pulse"
+        }
+    },
+    {
+        "model": "MedicalForms.cardiovascular",
+        "pk": 5,
+        "fields": {
+            "choice": "Chest pain"
+        }
+    },
+    {
+        "model": "MedicalForms.cardiovascular",
+        "pk": 6,
+        "fields": {
+            "choice": "Palpitation / Rapid Heartbeat"
+        }
+    },
+    {
+        "model": "MedicalForms.cardiovascular",
+        "pk": 7,
+        "fields": {
+            "choice": "Poor circulation"
+        }
+    },
+    {
+        "model": "MedicalForms.cardiovascular",
+        "pk": 8,
+        "fields": {
+            "choice": "Swelling of ankles"
+        }
+    },
+    {
+        "model": "MedicalForms.cardiovascular",
+        "pk": 9,
+        "fields": {
+            "choice": "Heart Disease"
+        }
+    },
+    {
+        "model": "MedicalForms.womenonlychoices",
+        "pk": 1,
+        "fields": {
+            "choice": "Hot flashes"
+        }
+    },
+    {
+        "model": "MedicalForms.womenonlychoices",
+        "pk": 2,
+        "fields": {
+            "choice": "Lumps in breast"
+        }
+    },
+    {
+        "model": "MedicalForms.womenonlychoices",
+        "pk": 3,
+        "fields": {
+            "choice": "Menopause"
+        }
+    },
+    {
+        "model": "MedicalForms.womenonlychoices",
+        "pk": 4,
+        "fields": {
+            "choice": "Vaginal discharge"
+        }
+    },
+    {
+        "model": "MedicalForms.previousconditions",
+        "pk": 1,
+        "fields": {
+            "choice": "Alcoholism"
+        }
+    },
+    {
+        "model": "MedicalForms.previousconditions",
+        "pk": 2,
+        "fields": {
+            "choice": "Anemia"
+        }
+    },
+    {
+        "model": "MedicalForms.previousconditions",
+        "pk": 3,
+        "fields": {
+            "choice": "Appendicitis"
+        }
+    },
+    {
+        "model": "MedicalForms.previousconditions",
+        "pk": 4,
+        "fields": {
+            "choice": "Arteriosclerosis"
+        }
+    },
+    {
+        "model": "MedicalForms.previousconditions",
+        "pk": 5,
+        "fields": {
+            "choice": "Cancer"
+        }
+    },
+    {
+        "model": "MedicalForms.previousconditions",
+        "pk": 6,
+        "fields": {
+            "choice": "Diabetes"
+        }
+    },
+    {
+        "model": "MedicalForms.previousconditions",
+        "pk": 7,
+        "fields": {
+            "choice": "Cholesterol"
+        }
+    },
+    {
+        "model": "MedicalForms.previousconditions",
+        "pk": 8,
+        "fields": {
+            "choice": "Herpes"
+        }
+    },
+    {
+        "model": "MedicalForms.previousconditions",
+        "pk": 9,
+        "fields": {
+            "choice": "Cold sores"
+        }
+    },
+    {
+        "model": "MedicalForms.previousconditions",
+        "pk": 10,
+        "fields": {
+            "choice": "Gout"
+        }
+    },
+    {
+        "model": "MedicalForms.previousconditions",
+        "pk": 11,
+        "fields": {
+            "choice": "Hepatitis"
+        }
+    },
+    {
+        "model": "MedicalForms.previousconditions",
+        "pk": 12,
+        "fields": {
+            "choice": "Influenza"
+        }
+    },
+    {
+        "model": "MedicalForms.previousconditions",
+        "pk": 13,
+        "fields": {
+            "choice": "Pace maker"
+        }
+    },
+    {
+        "model": "MedicalForms.previousconditions",
+        "pk": 14,
+        "fields": {
+            "choice": "Osteoporosis"
+        }
+    },
+    {
+        "model": "MedicalForms.previousconditions",
+        "pk": 15,
+        "fields": {
+            "choice": "Stroke"
+        }
+    },
+    {
+        "model": "MedicalForms.previousconditions",
+        "pk": 16,
+        "fields": {
+            "choice": "Tuberculosis"
+        }
+    },
+    {
+        "model": "MedicalForms.previousconditions",
+        "pk": 17,
+        "fields": {
+            "choice": "Thyroid disorders"
+        }
+    },
+    {
+        "model": "MedicalForms.previousconditions",
+        "pk": 18,
+        "fields": {
+            "choice": "Epilepsy"
+        }
+    }
+]

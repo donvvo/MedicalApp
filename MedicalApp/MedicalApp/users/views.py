@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import absolute_import, unicode_literals
 
+from django.contrib.auth.models import Group
 from django.core.urlresolvers import reverse
 from django.views.generic import DetailView, ListView, RedirectView, UpdateView
 
@@ -16,8 +17,17 @@ class UserLoginView(LoginView):
     pass
 
 
-class UserSignupView(SignupView):
+class MyBaseSignupView(SignupView):
     def form_valid(self, form):
+        # TODO:// move this to somewhere else
+        # Create two user groups: patients and doctors
+        Group.objects.get_or_create(name='Patients')
+        Group.objects.get_or_create(name='Doctors')
+
+
+class UserSignupView(MyBaseSignupView):
+    def form_valid(self, form):
+        super(UserSignupView, self).form_valid(form)
         user = form.save(self.request)
         user.add_to_patients_group()
         return complete_signup(self.request, user,
@@ -25,8 +35,9 @@ class UserSignupView(SignupView):
                                self.get_success_url())
 
 
-class DoctorSignupView(SignupView):
+class DoctorSignupView(MyBaseSignupView):
     def form_valid(self, form):
+        super(UserSignupView, self).form_valid(form)
         user = form.save(self.request)
         user.add_to_doctors_group()
         return complete_signup(self.request, user,
