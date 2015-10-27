@@ -6,10 +6,15 @@ from django.views.generic import FormView
 
 from braces.views import LoginRequiredMixin
 
-from .models import PatientInformation
-from .forms import PatientInformationForm
+from .models import PatientInformation, HealthHistory
+from .forms import PatientInformationForm, HealthHistoryForm
 
 
 class PatientInformationView(FormView):
     template_name = 'medicalforms/patient_information.html'
     form_class = PatientInformationForm
+
+
+class HealthHistoryView(FormView):
+    template_name = 'medicalforms/health_history.html'
+    form_class = HealthHistoryForm

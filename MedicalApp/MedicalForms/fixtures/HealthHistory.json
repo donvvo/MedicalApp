@@ -455,6 +455,34 @@
         }
     },
     {
+        "model": "MedicalForms.womenonlychoices",
+        "pk": 1,
+        "fields": {
+            "choice": "Hot flashes"
+        }
+    },
+    {
+        "model": "MedicalForms.womenonlychoices",
+        "pk": 2,
+        "fields": {
+            "choice": "Lumps in breast"
+        }
+    },
+    {
+        "model": "MedicalForms.womenonlychoices",
+        "pk": 3,
+        "fields": {
+            "choice": "Menopause"
+        }
+    },
+    {
+        "model": "MedicalForms.womenonlychoices",
+        "pk": 4,
+        "fields": {
+            "choice": "Vaginal discharge"
+        }
+    },
+    {
         "model": "MedicalForms.previousconditions",
         "pk": 1,
         "fields": {
