@@ -38,7 +38,9 @@ class PatientInformation(models.Model):
     accident_date = models.DateTimeField(blank=True)
     date_of_birth = models.DateTimeField(blank=True)
     name = models.CharField(max_length=100, blank=True)
-    gender = models.CharField(max_length=10, blank=True)
+    gender = models.CharField(max_length=10,
+                              choices=GENDER_CHOICES,
+                              blank=True)
     address = models.CharField(max_length=200, blank=True)
     city = models.CharField(max_length=100, blank=True)
     postal_code = models.CharField(max_length=10, blank=True)
@@ -59,7 +61,7 @@ class PatientInformation(models.Model):
                                       choices=MARITAL_STATUS_CHOICES,
                                       blank=True)
     number_of_children = models.IntegerField(blank=True)
-    ages = models.CharField(max_length=100, blank=True)
+    ages = models.IntegerField(blank=True)
     emergency_contact_name = models.CharField(max_length=100, blank=True)
     emergency_contact_phone = models.CharField(max_length=20, blank=True)
     emergency_contact_relationship = models.CharField(max_length=20, blank=True)
