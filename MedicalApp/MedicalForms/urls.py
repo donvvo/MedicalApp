@@ -7,11 +7,13 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.views import defaults as default_views
 
-from .views import PatientInformationView, HealthHistoryView
+from .views import PatientInformationView, HealthHistoryView,\
+    SubjectiveEvaluationView
 
 urlpatterns = [
     url(r'^patient-information/$', PatientInformationView.as_view(), name="patient_info"),
     url(r'^health-history/$', HealthHistoryView.as_view(), name="health_history"),
+    url(r'^subjective-evaluation/$', SubjectiveEvaluationView.as_view(), name="subjective_eval"),
 
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

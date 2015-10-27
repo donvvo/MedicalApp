@@ -33,7 +33,7 @@ MARITAL_STATUS_CHOICES = (
 # Patient information form
 @python_2_unicode_compatible
 class PatientInformation(models.Model):
-    user = models.OneToOneField(User)
+    user = models.ForeignKey(User, unique=True)
     today_date = models.DateTimeField(auto_now_add=True, blank=True)
     accident_date = models.DateTimeField(blank=True)
     date_of_birth = models.DateTimeField(blank=True)

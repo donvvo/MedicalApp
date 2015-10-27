@@ -1,0 +1,289 @@
+[
+    {
+        "model": "MedicalForms.presentpain",
+        "pk": 1,
+        "fields": {
+            "choice": "intermittent"
+        }
+    },
+    {
+        "model": "MedicalForms.presentpain",
+        "pk": 2,
+        "fields": {
+            "choice": "constant"
+        }
+    },
+    {
+        "model": "MedicalForms.presentpain",
+        "pk": 3,
+        "fields": {
+            "choice": "improving"
+        }
+    },
+    {
+        "model": "MedicalForms.presentpain",
+        "pk": 4,
+        "fields": {
+            "choice": "worsening"
+        }
+    },
+    {
+        "model": "MedicalForms.typeofpainothers",
+        "pk": 1,
+        "fields": {
+            "choice": "achy"
+        }
+    },
+    {
+        "model": "MedicalForms.typeofpainothers",
+        "pk": 2,
+        "fields": {
+            "choice": "sharp"
+        }
+    },
+    {
+        "model": "MedicalForms.typeofpainothers",
+        "pk": 3,
+        "fields": {
+            "choice": "dull"
+        }
+    },
+    {
+        "model": "MedicalForms.typeofpainothers",
+        "pk": 4,
+        "fields": {
+            "choice": "stiff"
+        }
+    },
+    {
+        "model": "MedicalForms.typeofpainothers",
+        "pk": 5,
+        "fields": {
+            "choice": "burning"
+        }
+    },
+    {
+        "model": "MedicalForms.typeofpainheadache",
+        "pk": 1,
+        "fields": {
+            "choice": "steady/dull/achy"
+        }
+    },
+    {
+        "model": "MedicalForms.typeofpainheadache",
+        "pk": 2,
+        "fields": {
+            "choice": "steady/sharp"
+        }
+    },
+    {
+        "model": "MedicalForms.typeofpainheadache",
+        "pk": 3,
+        "fields": {
+            "choice": "pounding"
+        }
+    },
+    {
+        "model": "MedicalForms.aggravatedbyothers",
+        "pk": 1,
+        "fields": {
+            "choice": "movements"
+        }
+    },
+    {
+        "model": "MedicalForms.aggravatedbyothers",
+        "pk": 2,
+        "fields": {
+            "choice": "prolonged positions"
+        }
+    },
+    {
+        "model": "MedicalForms.aggravatedbyothers",
+        "pk": 3,
+        "fields": {
+            "choice": "End ROM"
+        }
+    },
+    {
+        "model": "MedicalForms.aggravatedbyothers",
+        "pk": 4,
+        "fields": {
+            "choice": "cough/sneeze"
+        }
+    },
+    {
+        "model": "MedicalForms.aggravatedbyothers",
+        "pk": 5,
+        "fields": {
+            "choice": "deep breath"
+        }
+    },
+    {
+        "model": "MedicalForms.aggravatedbyothers",
+        "pk": 6,
+        "fields": {
+            "choice": "WNL"
+        }
+    },
+    {
+        "model": "MedicalForms.aggravatedbyheadache",
+        "pk": 1,
+        "fields": {
+            "choice": "movements"
+        }
+    },
+    {
+        "model": "MedicalForms.aggravatedbyheadache",
+        "pk": 2,
+        "fields": {
+            "choice": "lie down"
+        }
+    },
+    {
+        "model": "MedicalForms.aggravatedbyheadache",
+        "pk": 3,
+        "fields": {
+            "choice": "cough/sneeze"
+        }
+    },
+    {
+        "model": "MedicalForms.aggravatedbyheadache",
+        "pk": 4,
+        "fields": {
+            "choice": "light/noise"
+        }
+    },
+    {
+        "model": "MedicalForms.aggravatedbyperipheraljoint",
+        "pk": 1,
+        "fields": {
+            "choice": "movements"
+        }
+    },
+    {
+        "model": "MedicalForms.aggravatedbyperipheraljoint",
+        "pk": 2,
+        "fields": {
+            "choice": "prolonged positions"
+        }
+    },
+    {
+        "model": "MedicalForms.otherconditions",
+        "pk": 1,
+        "fields": {
+            "choice": "Post traumatic HA"
+        }
+    },
+    {
+        "model": "MedicalForms.otherconditions",
+        "pk": 2,
+        "fields": {
+            "choice": "Dizziness"
+        }
+    },
+    {
+        "model": "MedicalForms.otherconditions",
+        "pk": 3,
+        "fields": {
+            "choice": "Nausea"
+        }
+    },
+    {
+        "model": "MedicalForms.otherconditions",
+        "pk": 4,
+        "fields": {
+            "choice": "Vomiting"
+        }
+    },
+    {
+        "model": "MedicalForms.otherconditions",
+        "pk": 5,
+        "fields": {
+            "choice": "Ringing ears"
+        }
+    },
+    {
+        "model": "MedicalForms.otherconditions",
+        "pk": 6,
+        "fields": {
+            "choice": "Balance problem"
+        }
+    },
+    {
+        "model": "MedicalForms.otherconditions",
+        "pk": 7,
+        "fields": {
+            "choice": "Jaw pain"
+        }
+    },
+    {
+        "model": "MedicalForms.otherconditions",
+        "pk": 8,
+        "fields": {
+            "choice": "Breathing problem"
+        }
+    },
+    {
+        "model": "MedicalForms.otherconditions",
+        "pk": 9,
+        "fields": {
+            "choice": "Sleep problems"
+        }
+    },
+    {
+        "model": "MedicalForms.otherconditions",
+        "pk": 10,
+        "fields": {
+            "choice": "Fear of driving"
+        }
+    },
+    {
+        "model": "MedicalForms.otherconditions",
+        "pk": 11,
+        "fields": {
+            "choice": "Mood swing"
+        }
+    },
+    {
+        "model": "MedicalForms.otherconditions",
+        "pk": 12,
+        "fields": {
+            "choice": "Concentration problem"
+        }
+    },
+    {
+        "model": "MedicalForms.otherconditions",
+        "pk": 13,
+        "fields": {
+            "choice": "Frustration/Anger"
+        }
+    },
+    {
+        "model": "MedicalForms.otherconditions",
+        "pk": 14,
+        "fields": {
+            "choice": "Sadness"
+        }
+    },
+    {
+        "model": "MedicalForms.otherconditions",
+        "pk": 15,
+        "fields": {
+            "choice": "Fever"
+        }
+    },
+    {
+        "model": "MedicalForms.otherconditions",
+        "pk": 16,
+        "fields": {
+            "choice": "Shock"
+        }
+    },
+    {
+        "model": "MedicalForms.otherconditions",
+        "pk": 17,
+        "fields": {
+            "choice": "Crying"
+        }
+    }
+]

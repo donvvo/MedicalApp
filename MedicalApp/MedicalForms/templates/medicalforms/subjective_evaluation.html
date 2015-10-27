@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+
+<form action="#" method="post">
+    {% csrf_token %}
+    {{forms.headache}}
+    {{forms.cervical}}
+    {{forms.thoracic}}
+    {{forms.lumbar}}
+    {{forms.joint1}}
+    {{forms.joint2}}
+    {{forms.joint3}}
+    {{forms.joint4}}
+    {{forms.others}}
+</form>
+
+{% endblock %}
