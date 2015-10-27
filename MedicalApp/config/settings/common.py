@@ -45,6 +45,7 @@ THIRD_PARTY_APPS = (
 LOCAL_APPS = (
     'MedicalApp.users',  # custom users app
     # Your stuff: custom apps go here
+    'MedicalForms',
 )
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
