@@ -6,7 +6,7 @@ from .models import PatientInformation, HealthHistory, HeadacheQuestions,\
     CervicalSpineQuestions, ThoracicSpineQuestions, LumbarSpineQuestions,\
     PeripheralJointQuestions1, PeripheralJointQuestions2,\
     PeripheralJointQuestions3, PeripheralJointQuestions4,\
-    OtherSubjectiveEvaluationQuestions, Assessment
+    OtherSubjectiveEvaluationQuestions, Assessment, AccidentHistory
 
 logger = logging.getLogger(__name__)
 
@@ -100,6 +100,14 @@ class AssessmentForm(forms.ModelForm):
         exclude = ('user', 'today_date')
 
 
+class AccidentHistoryForm(forms.ModelForm):
+    class Meta:
+        model = AccidentHistory
+        exclude = ('user', 'today_date')
+        widgets = {
+            'passengers': forms.CheckboxSelectMultiple(),
+            'body_part_collision': forms.CheckboxSelectMultiple()
+        }
 
 
 
