@@ -8,12 +8,14 @@ from django.contrib import admin
 from django.views import defaults as default_views
 
 from .views import PatientInformationView, HealthHistoryView,\
-    SubjectiveEvaluationView
+    SubjectiveEvaluationView, AssessmentView, AccidentHistoryView
 
 urlpatterns = [
     url(r'^patient-information/$', PatientInformationView.as_view(), name="patient_info"),
     url(r'^health-history/$', HealthHistoryView.as_view(), name="health_history"),
     url(r'^subjective-evaluation/$', SubjectiveEvaluationView.as_view(), name="subjective_eval"),
+    url(r'^assessment/$', AssessmentView.as_view(), name="assessment"),
+    url(r'^accident-history/$', AccidentHistoryView.as_view(), name="accident_history"),
 
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
