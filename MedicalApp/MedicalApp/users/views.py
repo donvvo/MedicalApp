@@ -58,11 +58,19 @@ class PatientProfileView(LoginRequiredMixin, DetailView):
     template_name = "users/patient_profile.html"
 
 
+class DoctorProfileView(LoginRequiredMixin, DetailView):
+    model = User
+    # These next two lines tell the view to index lookups by username
+    slug_field = "username"
+    slug_url_kwarg = "username"
+    template_name = "users/doctor_profile.html"
+
+
 class UserRedirectView(LoginRequiredMixin, RedirectView):
     permanent = False
 
     def get_redirect_url(self):
-        return reverse("users:patient_profile",
+        return reverse("patient_profile",
                        kwargs={"username": self.request.user.username})
 
 
