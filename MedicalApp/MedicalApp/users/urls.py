@@ -3,6 +3,8 @@ from __future__ import absolute_import, unicode_literals
 
 from django.conf.urls import url
 
+from allauth.account.views import logout
+
 from . import views
 
 urlpatterns = [
@@ -17,22 +19,24 @@ urlpatterns = [
     url(
         regex=r'^login/$',
         view=views.UserLoginView.as_view(),
-        name='login'
+        name='account_login'
     ),
 
     # URL pattern for the DoctorSignupView
     url(
         regex=r'^signup/doctors/$',
         view=views.DoctorSignupView.as_view(),
-        name='signup_doctors'
+        name='account_signup_doctors'
     ),
 
     # URL pattern for the UserSignupView
     url(
         regex=r'^signup/$',
         view=views.UserSignupView.as_view(),
-        name='signup'
+        name='account_signup'
     ),
+
+    url(r"^logout/$", logout, name="account_logout"),
 
     # URL pattern for the UserRedirectView
     url(

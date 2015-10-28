@@ -16,7 +16,8 @@ urlpatterns = [
     url(settings.ADMIN_URL, include(admin.site.urls)),
 
     # User management
-    url(r'^users/', include("MedicalApp.users.urls", namespace="users")),
+    url(r'^users/', include("MedicalApp.users.urls")),
+
     url(r'^accounts/', include('allauth.urls')),
 
     # Your stuff: custom urls includes go here
