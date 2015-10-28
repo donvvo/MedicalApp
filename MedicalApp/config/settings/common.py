@@ -46,6 +46,7 @@ LOCAL_APPS = (
     'MedicalApp.users',  # custom users app
     # Your stuff: custom apps go here
     'MedicalForms',
+    'MedicalAppointments'
 )
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
