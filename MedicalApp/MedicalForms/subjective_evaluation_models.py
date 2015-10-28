@@ -64,7 +64,7 @@ class OtherConditions(models.Model):
 
 # Subjective evaluation questions
 class BaseQuestions(models.Model):
-    user = models.ForeignKey(User, unique=True)
+    user = models.ForeignKey(User)
     today_date = models.DateTimeField(auto_now_add=True, blank=True)
     present_pain = models.ManyToManyField(PresentPain, blank=True)
     intensity = models.IntegerField(blank=True,
@@ -158,7 +158,7 @@ class PeripheralJointQuestions4(PeripheralJointBaseQuestions):
 
 @python_2_unicode_compatible
 class OtherSubjectiveEvaluationQuestions(models.Model):
-    users = models.ForeignKey(User, unique=True)
+    users = models.ForeignKey(User)
     today_date = models.DateTimeField(auto_now_add=True, blank=True)
     conditions = models.ManyToManyField(OtherConditions, blank=True)
 

@@ -6,7 +6,7 @@ from .models import PatientInformation, HealthHistory, HeadacheQuestions,\
     CervicalSpineQuestions, ThoracicSpineQuestions, LumbarSpineQuestions,\
     PeripheralJointQuestions1, PeripheralJointQuestions2,\
     PeripheralJointQuestions3, PeripheralJointQuestions4,\
-    OtherSubjectiveEvaluationQuestions
+    OtherSubjectiveEvaluationQuestions, Assessment
 
 logger = logging.getLogger(__name__)
 
@@ -94,7 +94,10 @@ class OtherSubjectiveEvaluationQuestionForm(forms.ModelForm):
         }
 
 
-
+class AssessmentForm(forms.ModelForm):
+    class Meta:
+        model = Assessment
+        exclude = ('user', 'today_date')
 
 
 

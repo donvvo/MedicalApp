@@ -13,7 +13,8 @@ from .forms import PatientInformationForm, HealthHistoryForm,\
     HeadacheQuestionForm, CervicalSpineQuestionForm, ThoracicSpineQuestionForm,\
     LumbarSpineQuestionForm, PeripheralJointQuestion1Form,\
     PeripheralJointQuestion2Form, PeripheralJointQuestion3Form,\
-    PeripheralJointQuestion4Form, OtherSubjectiveEvaluationQuestionForm
+    PeripheralJointQuestion4Form, OtherSubjectiveEvaluationQuestionForm,\
+    AssessmentForm
 
 
 class PatientInformationView(FormView):
@@ -24,6 +25,11 @@ class PatientInformationView(FormView):
 class HealthHistoryView(FormView):
     template_name = 'medicalforms/health_history.html'
     form_class = HealthHistoryForm
+
+
+class AssessmentView(FormView):
+    template_name = 'medicalforms/assessment.html'
+    form_class = AssessmentForm
 
 
 # From https://gist.github.com/michelts/1029336#file-gistfile1-py-L6

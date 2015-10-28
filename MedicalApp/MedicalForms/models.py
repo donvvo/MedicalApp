@@ -6,6 +6,7 @@ from MedicalApp.users.models import User
 from .patient_info_models import *
 from .health_history_models import *
 from .subjective_evaluation_models import *
+from .assessment_models import *
 
 
 # Accident history choices
