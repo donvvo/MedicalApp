@@ -15,9 +15,9 @@ Vagrant will setup a virtual machine and download all the necessary packages. Th
 <li>After setup is all done, <tt>vagrant ssh</tt> to login to the virtual machine. </li>
 <li><tt>/vagrant</tt> in your virtual machine will be synced with the root directory of this repo in your host computer. 
 <tt>cd /vagrant</tt> to access this repo in your virtual machine.</li>
-<li><tt>python manage.py migrate</tt> inside <tt>/vagrant/backend</tt> to initialize the database.</li>
-<li><tt>python manage.py runserver 0.0.0.0:8000</tt> to run the website. This port in your virtual machine will be 
-forwarded to <tt>localhost:8000</tt> in your host machine. Open a browser and access <tt>localhost:8000</tt>.</li>
+<li><tt>python manage.py migrate</tt> inside <tt>/vagrant/MedicalApp</tt> to initialize the database.</li>
+<li><tt>python manage.py runserver 0.0.0.0:9000</tt> to run the website. This port in your virtual machine will be 
+forwarded to <tt>localhost:9000</tt> in your host machine. Open a browser and access <tt>localhost:9000</tt>.</li>
 <li>Type <tt>exit</tt> or <tt>logout</tt> to exit the virtual machine.</li>
 <li>When you are done working, <tt>vagrant halt</tt> in the root directory of this repo on your host machine 
 to turn off the virutal machine.</li>
