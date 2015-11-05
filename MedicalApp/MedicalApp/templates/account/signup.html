@@ -19,8 +19,8 @@
         <div class="ct-form clearfix">
           <h6>Welcome back</h6>
           <p>Pellentesque consequat consequat eros non tincidunt pellentesque vitae tempor massa morbi volutpat lorem non mattis morbi felis mauris, eu congue arcu molestie malesua </p>
-          <form id="request" action={% if doctors %}"{% url 'users:signup_doctors' %}"
-          {% else %}"{% url 'users:signup' %}"{% endif %}
+          <form id="request" action={% if doctors %}"{% url 'users:account_signup_doctors' %}"
+          {% else %}"{% url 'users:account_signup' %}"{% endif %}
           method="post" accept-charset="utf-8">
             {% csrf_token %}
             <div class="row">

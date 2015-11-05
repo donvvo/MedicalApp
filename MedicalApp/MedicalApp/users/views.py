@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 from __future__ import absolute_import, unicode_literals
 
-from django.contrib.auth.models import Group
 from django.core.urlresolvers import reverse
 from django.views.generic import DetailView, ListView, RedirectView, UpdateView
 
@@ -17,17 +16,9 @@ class UserLoginView(LoginView):
     pass
 
 
-class MyBaseSignupView(SignupView):
+class UserSignupView(SignupView):
     def form_valid(self, form):
-        # TODO:// move this to somewhere else
-        # Create two user groups: patients and doctors
-        Group.objects.get_or_create(name='Patients')
-        Group.objects.get_or_create(name='Doctors')
-
-
-class UserSignupView(MyBaseSignupView):
-    def form_valid(self, form):
-        super(UserSignupView, self).form_valid(form)
+        print 'called'
         user = form.save(self.request)
         user.add_to_patients_group()
         return complete_signup(self.request, user,
@@ -35,9 +26,8 @@ class UserSignupView(MyBaseSignupView):
                                self.get_success_url())
 
 
-class DoctorSignupView(MyBaseSignupView):
+class DoctorSignupView(SignupView):
     def form_valid(self, form):
-        super(UserSignupView, self).form_valid(form)
         user = form.save(self.request)
         user.add_to_doctors_group()
         return complete_signup(self.request, user,
@@ -58,12 +48,29 @@ class PatientProfileView(LoginRequiredMixin, DetailView):
     template_name = "users/patient_profile.html"
 
 
+class DoctorProfileView(LoginRequiredMixin, DetailView):
+    model = User
+    # These next two lines tell the view to index lookups by username
+    slug_field = "username"
+    slug_url_kwarg = "username"
+    template_name = "users/doctor_profile.html"
+
+
 class UserRedirectView(LoginRequiredMixin, RedirectView):
     permanent = False
 
     def get_redirect_url(self):
-        return reverse("users:patient_profile",
+        return reverse("users:patient_doctor_redirect",
                        kwargs={"username": self.request.user.username})
+
+
+class PatientDoctorRedirectView(LoginRequiredMixin, RedirectView):
+    permanent = False
+
+    def get_redirect_url(self, username):
+        print self.request.user.groups
+        return reverse("users:patient_profile",
+                       kwargs={"username": username})
 
 
 class UserUpdateView(LoginRequiredMixin, UpdateView):

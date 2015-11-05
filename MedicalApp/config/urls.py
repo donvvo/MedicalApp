@@ -17,10 +17,12 @@ urlpatterns = [
 
     # User management
     url(r'^users/', include("MedicalApp.users.urls", namespace="users")),
+
     url(r'^accounts/', include('allauth.urls')),
 
     # Your stuff: custom urls includes go here
     url(r'^medicalforms/', include('MedicalForms.urls', namespace="medical_forms")),
+    url(r'^appointments/', include('MedicalAppointments.urls', namespace="medical_appointments")),
 
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
