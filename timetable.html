@@ -137,7 +137,7 @@
 								<td><a class="ct-orange" href="#" title="All of our doctors are busy at this time.  Please find another another time."></a></td>
 								<td><a class="ct-orange" href="#" title="All of our doctors are busy at this time.  Please find another another time."></a></td>
 								<td><a class="ct-orange" href="#" title="All of our doctors are busy at this time.  Please find another another time."></a></td>
-								<td><a href="#">Book Now</a></td>
+								<td><a type="button" data-toggle="modal" data-target="#myModal">Modal example is here</a></td>
 								<td><a href="#">Book Now</a></td>
 								<td><a href="#">Book Now</a></td>
 								<td><a href="#">Book Now</a></td>
@@ -202,21 +202,25 @@
 	</section>
 	<!-- End Timetable -->
 
-    <!-- Newsletter -->
-	<section class="generic newsletter bg-5">
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-12 text-center">
-					<h6>Newsletter Subscription</h6>
-					<form id="newsletter" class="input-group" action="newsletter.php" method="post" accept-charset="utf-8" role="form">
-    					<input type="email" class="form-control" placeholder="Enter a valid E-mail">
-                        <button type="submit" class="btn btn-send" data-loading-text="Sending...">Subscribe</button>
-					</form>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- End Newsletter -->
+	
+	<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 	<!-- Footer -->
 	<footer>
@@ -320,6 +324,7 @@
 		</div>
 	</footer>
 	<!-- End Footer -->
+
 
 	<!-- ======================= JQuery libs =========================== -->
 	<!-- jQuery -->
