@@ -6,7 +6,8 @@ from .models import PatientInformation, HealthHistory, HeadacheQuestions,\
     CervicalSpineQuestions, ThoracicSpineQuestions, LumbarSpineQuestions,\
     PeripheralJointQuestions1, PeripheralJointQuestions2,\
     PeripheralJointQuestions3, PeripheralJointQuestions4,\
-    OtherSubjectiveEvaluationQuestions, Assessment, AccidentHistory
+    OtherSubjectiveEvaluationQuestions, Assessment, AccidentHistory,\
+    MVAIntake
 
 logger = logging.getLogger(__name__)
 
@@ -15,6 +16,22 @@ class PatientInformationForm(forms.ModelForm):
     class Meta:
         model = PatientInformation
         exclude = ('user', 'today_date')
+        widgets = {
+            'accident_date': forms.DateTimeInput(
+                attrs={
+                    'class': 'form-control',
+                    'placeholder': 'Date of Accident'
+                }),
+            'date_of_birth': forms.DateTimeInput(
+                attrs={
+                    'class': 'form-control',
+                    'placeholder': 'Date of Birth'
+                }),
+            'modified_duties_availability': forms.NullBooleanSelect(
+                attrs={
+                    'class': 'form-control'
+                })
+        }
 
 
 class HealthHistoryForm(forms.ModelForm):
@@ -110,4 +127,7 @@ class AccidentHistoryForm(forms.ModelForm):
         }
 
 
-
+class MVAIntakeForm(forms.ModelForm):
+    class Meta:
+        model = MVAIntake
+        exclude = ('user', 'today_date')

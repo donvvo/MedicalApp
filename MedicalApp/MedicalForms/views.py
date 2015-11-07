@@ -8,13 +8,12 @@ from django.views.generic.edit import FormMixin, ProcessFormView
 
 from braces.views import LoginRequiredMixin
 
-from .models import PatientInformation, HealthHistory
 from .forms import PatientInformationForm, HealthHistoryForm,\
     HeadacheQuestionForm, CervicalSpineQuestionForm, ThoracicSpineQuestionForm,\
     LumbarSpineQuestionForm, PeripheralJointQuestion1Form,\
     PeripheralJointQuestion2Form, PeripheralJointQuestion3Form,\
     PeripheralJointQuestion4Form, OtherSubjectiveEvaluationQuestionForm,\
-    AssessmentForm, AccidentHistoryForm
+    AssessmentForm, AccidentHistoryForm, MVAIntakeForm
 
 
 class PatientInformationView(FormView):
@@ -35,6 +34,11 @@ class AssessmentView(FormView):
 class AccidentHistoryView(FormView):
     template_name = 'medicalforms/accident_history.html'
     form_class = AccidentHistoryForm
+
+
+class MVAIntakeView(FormView):
+    template_name = 'medicalforms/MVA_intake.html'
+    form_class = MVAIntakeForm
 
 
 # From https://gist.github.com/michelts/1029336#file-gistfile1-py-L6

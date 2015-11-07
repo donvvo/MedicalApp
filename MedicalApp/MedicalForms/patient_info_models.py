@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
 
+from .utils import MyCharField, MySelectField, IntegerRangeField
 from MedicalApp.users.models import User
 
 # Patient information form choices
@@ -37,34 +38,24 @@ class PatientInformation(models.Model):
     today_date = models.DateTimeField(auto_now_add=True, blank=True)
     accident_date = models.DateTimeField(blank=True)
     date_of_birth = models.DateTimeField(blank=True)
-    name = models.CharField(max_length=100, blank=True)
-    gender = models.CharField(max_length=10,
-                              choices=GENDER_CHOICES,
-                              blank=True)
-    address = models.CharField(max_length=200, blank=True)
-    city = models.CharField(max_length=100, blank=True)
-    postal_code = models.CharField(max_length=10, blank=True)
-    email = models.EmailField(blank=True)
-    first_language = models.CharField(max_length=100, blank=True)
-    home_phone = models.CharField(max_length=20, blank=True)
-    mobile_phone = models.CharField(max_length=20, blank=True)
-    work_phone = models.CharField(max_length=20, blank=True)
-    occupation = models.CharField(max_length=100, blank=True)
+    gender = MySelectField(GENDER_CHOICES, max_length=10)
+    address = MyCharField(max_length=200, placeholder='Address')
+    city = MyCharField(max_length=100, placeholder='City')
+    postal_code = MyCharField(max_length=10, placeholder='Postal Code')
+    first_language = MyCharField(max_length=100, placeholder='First Language')
+    home_phone = MyCharField(max_length=20, placeholder='Home Phone')
+    mobile_phone = MyCharField(max_length=20, placeholder='Mobile Phone')
+    work_phone = MyCharField(max_length=20, placeholder='Work Phone')
+    occupation = MyCharField(max_length=100, placeholder='Occupation')
     modified_duties_availability = models.NullBooleanField()
-    occupational_status = models.CharField(max_length=20,
-                                           choices=OCCUPATIONAL_STATUS_CHOICES,
-                                           blank=True)
-    job_requirements = models.CharField(max_length=20,
-                                        choices=JOB_REQUIREMENTS_CHOICES,
-                                        blank=True)
-    marital_status = models.CharField(max_length=20,
-                                      choices=MARITAL_STATUS_CHOICES,
-                                      blank=True)
-    number_of_children = models.IntegerField(blank=True)
-    ages = models.IntegerField(blank=True)
-    emergency_contact_name = models.CharField(max_length=100, blank=True)
-    emergency_contact_phone = models.CharField(max_length=20, blank=True)
-    emergency_contact_relationship = models.CharField(max_length=20, blank=True)
+    occupational_status = MySelectField(max_length=20, choices=OCCUPATIONAL_STATUS_CHOICES)
+    job_requirements = MySelectField(max_length=20, choices=JOB_REQUIREMENTS_CHOICES)
+    marital_status = MySelectField(max_length=20, choices=MARITAL_STATUS_CHOICES)
+    number_of_children = IntegerRangeField(min_value=0, placeholder='Number of Children')
+    ages = IntegerRangeField(min_value=1, placeholder='Ages')
+    emergency_contact_name = MyCharField(max_length=100, placeholder='Emergency Contact Name')
+    emergency_contact_phone = MyCharField(max_length=20, placeholder='Emergency Contact Phone')
+    emergency_contact_relationship = MyCharField(max_length=20, placeholder='Emergency Contact Relationship')
 
     def __str__(self):
         return 'Patient information for ' + self.user.first_name

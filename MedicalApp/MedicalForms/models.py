@@ -8,5 +8,6 @@ from .health_history_models import *
 from .subjective_evaluation_models import *
 from .assessment_models import *
 from .accident_history_models import *
+from .MVA_intake_models import *
 
 

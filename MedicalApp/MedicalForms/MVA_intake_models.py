@@ -1,0 +1,171 @@
+from django.db import models
+from django.utils.encoding import python_2_unicode_compatible
+
+from MedicalApp.users.models import User
+
+
+GAIT_CHOICES = (
+    ('Antalgic', 'Antalgic'),
+    ('Normal', 'Normal')
+)
+PLUS_MINUS_CHOICES = (
+    ('+', '+'),
+    ('-', '-')
+)
+
+
+@python_2_unicode_compatible
+class MVAIntake(models.Model):
+    user = models.ForeignKey(User)
+    today_date = models.DateTimeField(auto_now_add=True, blank=True)
+    gait = models.CharField(max_length=10, choices=GAIT_CHOICES, blank=True)
+    assistive_devices = models.CharField(max_length=100, blank=True)
+
+    def __str__(self):
+        return 'MVA intake for ' + self.user.first_name
+        + ' ' + self.user.last_name
+
+
+class Cervical(models.Model):
+    main_form = models.OneToOneField(MVAIntake)
+    neutral_l = models.CharField(max_length=1, choices=PLUS_MINUS_CHOICES, blank=True)
+    neutral_r = models.CharField(max_length=1, choices=PLUS_MINUS_CHOICES, blank=True)
+    jackson_l = models.CharField(max_length=1, choices=PLUS_MINUS_CHOICES, blank=True)
+    jackson_r = models.CharField(max_length=1, choices=PLUS_MINUS_CHOICES, blank=True)
+    spurling_l = models.CharField(max_length=1, choices=PLUS_MINUS_CHOICES, blank=True)
+    spurling_r = models.CharField(max_length=1, choices=PLUS_MINUS_CHOICES, blank=True)
+    hermitte_l = models.CharField(max_length=1, choices=PLUS_MINUS_CHOICES, blank=True)
+    hermitte_r = models.CharField(max_length=1, choices=PLUS_MINUS_CHOICES, blank=True)
+    julls_l = models.CharField(max_length=1, choices=PLUS_MINUS_CHOICES, blank=True)
+    julls_r = models.CharField(max_length=1, choices=PLUS_MINUS_CHOICES, blank=True)
+    adson_l = models.CharField(max_length=1, choices=PLUS_MINUS_CHOICES, blank=True)
+    adson_r = models.CharField(max_length=1, choices=PLUS_MINUS_CHOICES, blank=True)
+    wrights_l = models.CharField(max_length=1, choices=PLUS_MINUS_CHOICES, blank=True)
+    wrights_r = models.CharField(max_length=1, choices=PLUS_MINUS_CHOICES, blank=True)
+    edens_l = models.CharField(max_length=1, choices=PLUS_MINUS_CHOICES, blank=True)
+    edens_r = models.CharField(max_length=1, choices=PLUS_MINUS_CHOICES, blank=True)
+    easts_l = models.CharField(max_length=1, choices=PLUS_MINUS_CHOICES, blank=True)
+    easts_r = models.CharField(max_length=1, choices=PLUS_MINUS_CHOICES, blank=True)
+    doorbell_l = models.CharField(max_length=1, choices=PLUS_MINUS_CHOICES, blank=True)
+    doorbell_r = models.CharField(max_length=1, choices=PLUS_MINUS_CHOICES, blank=True)
+
+
+class Lumbar(models.Model):
+    main_form = models.OneToOneField(MVAIntake)
+    slr_l = models.CharField(max_length=1, choices=PLUS_MINUS_CHOICES, blank=True)
+    slr_r = models.CharField(max_length=1, choices=PLUS_MINUS_CHOICES, blank=True)
+    braggarts_l = models.CharField(max_length=1, choices=PLUS_MINUS_CHOICES, blank=True)
+    braggarts_r = models.CharField(max_length=1, choices=PLUS_MINUS_CHOICES, blank=True)
+    bowstring_l = models.CharField(max_length=1, choices=PLUS_MINUS_CHOICES, blank=True)
+    bowstring_r = models.CharField(max_length=1, choices=PLUS_MINUS_CHOICES, blank=True)
+    thomas_l = models.CharField(max_length=1, choices=PLUS_MINUS_CHOICES, blank=True)
+    thomas_r = models.CharField(max_length=1, choices=PLUS_MINUS_CHOICES, blank=True)
+    fig4_l = models.CharField(max_length=1, choices=PLUS_MINUS_CHOICES, blank=True)
+    fig4_r = models.CharField(max_length=1, choices=PLUS_MINUS_CHOICES, blank=True)
+    si_comp_l = models.CharField(max_length=1, choices=PLUS_MINUS_CHOICES, blank=True)
+    si_comp_r = models.CharField(max_length=1, choices=PLUS_MINUS_CHOICES, blank=True)
+    yeomans_l = models.CharField(max_length=1, choices=PLUS_MINUS_CHOICES, blank=True)
+    yeomans_r = models.CharField(max_length=1, choices=PLUS_MINUS_CHOICES, blank=True)
+    hibbs_l = models.CharField(max_length=1, choices=PLUS_MINUS_CHOICES, blank=True)
+    hibbs_r = models.CharField(max_length=1, choices=PLUS_MINUS_CHOICES, blank=True)
+    gillets_l = models.CharField(max_length=1, choices=PLUS_MINUS_CHOICES, blank=True)
+    gillets_r = models.CharField(max_length=1, choices=PLUS_MINUS_CHOICES, blank=True)
+    sorensons_l = models.CharField(max_length=1, choices=PLUS_MINUS_CHOICES, blank=True)
+
+
+class Knee(models.Model):
+    main_form = models.OneToOneField(MVAIntake)
+    flexion_l = models.IntegerField(blank=True)
+    flexion_r = models.IntegerField(blank=True)
+    extension_l = models.IntegerField(blank=True)
+    extension_r = models.IntegerField(blank=True)
+    internal_rot_l = models.IntegerField(blank=True)
+    internal_rot_r = models.IntegerField(blank=True)
+    external_rot_l = models.IntegerField(blank=True)
+    external_rot_r = models.IntegerField(blank=True)
+    varus_l = models.CharField(max_length=1, choices=PLUS_MINUS_CHOICES, blank=True)
+    varus_r = models.CharField(max_length=1, choices=PLUS_MINUS_CHOICES, blank=True)
+    valgus_l = models.CharField(max_length=1, choices=PLUS_MINUS_CHOICES, blank=True)
+    valgus_r = models.CharField(max_length=1, choices=PLUS_MINUS_CHOICES, blank=True)
+    anterior_drawer_l = models.CharField(max_length=1, choices=PLUS_MINUS_CHOICES, blank=True)
+    anterior_drawer_r = models.CharField(max_length=1, choices=PLUS_MINUS_CHOICES, blank=True)
+    posterior_drawer_l = models.CharField(max_length=1, choices=PLUS_MINUS_CHOICES, blank=True)
+    posterior_drawer_r = models.CharField(max_length=1, choices=PLUS_MINUS_CHOICES, blank=True)
+    joint_line_tenderness_l = models.CharField(max_length=1, choices=PLUS_MINUS_CHOICES, blank=True)
+    joint_line_tenderness_r = models.CharField(max_length=1, choices=PLUS_MINUS_CHOICES, blank=True)
+    thesselis_l = models.CharField(max_length=1, choices=PLUS_MINUS_CHOICES, blank=True)
+    thesselis_r = models.CharField(max_length=1, choices=PLUS_MINUS_CHOICES, blank=True)
+    mcmurrays_l = models.CharField(max_length=1, choices=PLUS_MINUS_CHOICES, blank=True)
+    mcmurrays_r = models.CharField(max_length=1, choices=PLUS_MINUS_CHOICES, blank=True)
+    patello_femoral_grind_l = models.CharField(max_length=1, choices=PLUS_MINUS_CHOICES, blank=True)
+    patello_femoral_grind_r = models.CharField(max_length=1, choices=PLUS_MINUS_CHOICES, blank=True)
+    obers_l = models.CharField(max_length=1, choices=PLUS_MINUS_CHOICES, blank=True)
+    obers_r = models.CharField(max_length=1, choices=PLUS_MINUS_CHOICES, blank=True)
+    nobles_comp_l = models.CharField(max_length=1, choices=PLUS_MINUS_CHOICES, blank=True)
+    nobles_comp_r = models.CharField(max_length=1, choices=PLUS_MINUS_CHOICES, blank=True)
+    patellar_comp_l = models.CharField(max_length=1, choices=PLUS_MINUS_CHOICES, blank=True)
+    patellar_comp_r = models.CharField(max_length=1, choices=PLUS_MINUS_CHOICES, blank=True)
+
+
+class Shoulder(models.Model):
+    main_form = models.OneToOneField(MVAIntake)
+    flexion_l = models.IntegerField(blank=True)
+    flexion_r = models.IntegerField(blank=True)
+    extension_l = models.IntegerField(blank=True)
+    extension_r = models.IntegerField(blank=True)
+    abduction_l = models.IntegerField(blank=True)
+    abduction_r = models.IntegerField(blank=True)
+    internal_rotation_l = models.IntegerField(blank=True)
+    internal_rotation_r = models.IntegerField(blank=True)
+    external_rotation_l = models.IntegerField(blank=True)
+    external_rotation_r = models.IntegerField(blank=True)
+    horizontal_abd_l = models.IntegerField(blank=True)
+    horizontal_abd_r = models.IntegerField(blank=True)
+    horizontal_add_l = models.IntegerField(blank=True)
+    horizontal_add_r = models.IntegerField(blank=True)
+    scapulocostal_rhythm_l = models.IntegerField(blank=True)
+    scapulocostal_rhythm_r = models.IntegerField(blank=True)
+    speeds_l = models.CharField(max_length=1, choices=PLUS_MINUS_CHOICES, blank=True)
+    speeds_r = models.CharField(max_length=1, choices=PLUS_MINUS_CHOICES, blank=True)
+    yergasons_l = models.CharField(max_length=1, choices=PLUS_MINUS_CHOICES, blank=True)
+    yergasons_r = models.CharField(max_length=1, choices=PLUS_MINUS_CHOICES, blank=True)
+    empty_can_l = models.CharField(max_length=1, choices=PLUS_MINUS_CHOICES, blank=True)
+    empty_can_r = models.CharField(max_length=1, choices=PLUS_MINUS_CHOICES, blank=True)
+    hornblowers_l = models.CharField(max_length=1, choices=PLUS_MINUS_CHOICES, blank=True)
+    hornblowers_r = models.CharField(max_length=1, choices=PLUS_MINUS_CHOICES, blank=True)
+    hawkins_kennedy_l = models.CharField(max_length=1, choices=PLUS_MINUS_CHOICES, blank=True)
+    hawkins_kennedy_r = models.CharField(max_length=1, choices=PLUS_MINUS_CHOICES, blank=True)
+    neers_l = models.CharField(max_length=1, choices=PLUS_MINUS_CHOICES, blank=True)
+    neers_r = models.CharField(max_length=1, choices=PLUS_MINUS_CHOICES, blank=True)
+    obriens_l = models.CharField(max_length=1, choices=PLUS_MINUS_CHOICES, blank=True)
+    obriens_r = models.CharField(max_length=1, choices=PLUS_MINUS_CHOICES, blank=True)
+    crank_l = models.CharField(max_length=1, choices=PLUS_MINUS_CHOICES, blank=True)
+    crank_r = models.CharField(max_length=1, choices=PLUS_MINUS_CHOICES, blank=True)
+    load_and_shift_l = models.CharField(max_length=1, choices=PLUS_MINUS_CHOICES, blank=True)
+    load_and_shift_r = models.CharField(max_length=1, choices=PLUS_MINUS_CHOICES, blank=True)
+    anterior_apprehension_l = models.CharField(max_length=1, choices=PLUS_MINUS_CHOICES, blank=True)
+    anterior_apprehension_r = models.CharField(max_length=1, choices=PLUS_MINUS_CHOICES, blank=True)
+
+
+class Elbow(models.Model):
+    main_form = models.OneToOneField(MVAIntake)
+    flexion_l = models.IntegerField(blank=True)
+    flexion_r = models.IntegerField(blank=True)
+    extension_l = models.IntegerField(blank=True)
+    extension_r = models.IntegerField(blank=True)
+    supination_l = models.IntegerField(blank=True)
+    supination_r = models.IntegerField(blank=True)
+    pronation_l = models.IntegerField(blank=True)
+    pronation_r = models.IntegerField(blank=True)
+    cozens_l = models.CharField(max_length=1, choices=PLUS_MINUS_CHOICES, blank=True)
+    cozens_r = models.CharField(max_length=1, choices=PLUS_MINUS_CHOICES, blank=True)
+    reverse_cozens_l = models.CharField(max_length=1, choices=PLUS_MINUS_CHOICES, blank=True)
+    reverse_cozens_r = models.CharField(max_length=1, choices=PLUS_MINUS_CHOICES, blank=True)
+    tinels_elbow_l = models.CharField(max_length=1, choices=PLUS_MINUS_CHOICES, blank=True)
+    tinels_elbow_r = models.CharField(max_length=1, choices=PLUS_MINUS_CHOICES, blank=True)
+    tinels_wrist_l = models.CharField(max_length=1, choices=PLUS_MINUS_CHOICES, blank=True)
+    tinels_wrist_r = models.CharField(max_length=1, choices=PLUS_MINUS_CHOICES, blank=True)
+    varus_stress_l = models.CharField(max_length=1, choices=PLUS_MINUS_CHOICES, blank=True)
+    varus_stress_r = models.CharField(max_length=1, choices=PLUS_MINUS_CHOICES, blank=True)
+    valgus_stress_l = models.CharField(max_length=1, choices=PLUS_MINUS_CHOICES, blank=True)
+    valgus_stress_r = models.CharField(max_length=1, choices=PLUS_MINUS_CHOICES, blank=True)
