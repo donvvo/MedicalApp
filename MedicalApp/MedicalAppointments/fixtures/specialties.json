@@ -1,0 +1,27 @@
+[
+{
+    "fields": {},
+    "model": "MedicalAppointments.doctorspecialty",
+    "pk": "Chiropodist"
+},
+{
+    "fields": {},
+    "model": "MedicalAppointments.doctorspecialty",
+    "pk": "Chiropractor"
+},
+{
+    "fields": {},
+    "model": "MedicalAppointments.doctorspecialty",
+    "pk": "Massage Therapist"
+},
+{
+    "fields": {},
+    "model": "MedicalAppointments.doctorspecialty",
+    "pk": "Nutritionist"
+},
+{
+    "fields": {},
+    "model": "MedicalAppointments.doctorspecialty",
+    "pk": "Physiotherapist"
+}
+]

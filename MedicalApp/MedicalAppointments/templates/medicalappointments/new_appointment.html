@@ -4,9 +4,7 @@
 
 {% block content %}
 
-<p>Goes to this page when the user clicks "create new appointment</p>
-
-<section class="gallery generic animated fadeInUp undefined visible">
+<section id="specialty-section" class="gallery generic animated fadeInUp undefined visible">
     <div class="container">
         <div class="row">
             <div class="col-sm-12">
@@ -18,11 +16,9 @@
         <div class="row">
             <div class="col-md-12">
                 <ul class="filters">
-                    <li><a href="#" class="btn btn-color-border-solid-3">Chiropractor</a></li>
-                    <li><a href="#" class="btn btn-color-border-solid-3">Massage Therapist</a></li>
-                    <li><a href="#" class="btn btn-color-border-solid-3">Physiotherapist</a></li>
-                    <li><a href="#" class="btn btn-color-border-solid-3">Chiropodist</a></li>
-                    <li><a href="#" class="btn btn-color-border-solid-3">Nutritionist</a></li>
+                    {% for specialty in object_list %}
+                        <li><a href="#" class="btn btn-color-border-solid-3 specialty-btn">{{specialty}}</a></li>
+                    {% endfor %}
                 </ul>
             </div>
         </div>
@@ -30,11 +26,8 @@
     </div>
 </section>
 
-
-<p>goes to this page after the user clicks the type of doctor they want.  css and js for this page should match the ones used in gallery.js</p>
-
 <!-- Gallery -->
-<section class="gallery generic animated fadeInUp">
+<section id="location-section" class="gallery generic animated fadeInUp">
     <div class="container">
         <div class="row">
             <div class="col-sm-12">
@@ -188,3 +181,10 @@
 <p>After they choose a clinic, you should take them to timetable.html</p>
 
 {% endblock content %}
+
+{% block javascript %}
+
+{{block.super}}
+<script src="{% static 'js/app.js' %}"></script>
+
+{% endblock javascript %}

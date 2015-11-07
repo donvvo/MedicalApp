@@ -16725,3 +16725,12 @@ a.tweet_avatar img {
 .errorlist {
   color: #f83434;
 }
+
+#specialty-section {
+  min-height: 700px
+}
+
+#location-section {
+  display: none;
+  min-height: 700px;
+}

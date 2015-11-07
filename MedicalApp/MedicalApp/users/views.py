@@ -11,7 +11,7 @@ from allauth.account.utils import complete_signup
 from allauth.account import app_settings
 
 from .models import User
-from MedicalAppointments.models import Patient
+from MedicalAppointments.models import Patient, Doctor
 from .forms import UserSettingsForm
 
 
@@ -34,6 +34,8 @@ class DoctorSignupView(SignupView):
     def form_valid(self, form):
         user = form.save(self.request)
         user.add_to_doctors_group()
+        doctor = Doctor(user=user)
+        doctor.save()
         return complete_signup(self.request, user,
                                app_settings.EMAIL_VERIFICATION,
                                self.get_success_url())
