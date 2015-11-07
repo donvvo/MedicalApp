@@ -69,9 +69,12 @@ class PatientDoctorRedirectView(LoginRequiredMixin, RedirectView):
     permanent = False
 
     def get_redirect_url(self, username):
-        print self.request.user.groups
-        return reverse("users:patient_profile",
+        if self.request.user.groups.filter(name="Doctors").exists():
+            return reverse("users:doctor_profile",
                        kwargs={"username": username})
+        else:
+            return reverse("users:patient_profile",
+                           kwargs={"username": username})
 
 
 class UserSettingsView(LoginRequiredMixin, UpdateView):

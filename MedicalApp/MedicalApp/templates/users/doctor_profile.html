@@ -27,14 +27,14 @@
                 <div class="row">
                     <div class="col-sm-5 hidden-xs">
                         <figure>
-                            <img src="img/doctors/doctor-01.jpg" class="img-responsive" alt="">
+                            <img src="{% static 'img/doctors/doctor-01.jpg' %}" class="img-responsive" alt="">
                         </figure>
                     </div>
                     <div class="col-sm-7">
                         <div class="tag-text">
-                            <h4>Alex Monett</h4>
-                            <span>Outpatient Surgery</span>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam non obcaecati quas magnam id odio maxime pariatur voluptate porro architecto, sint rem velit aperiam veritatis ducimus neque quae, in quibusdam?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam non obcaecati quas magnam id odio maxime pariatur voluptate porro architecto, sint rem velit aperiam veritatis ducimus neque quae, in quibusdam?pariatur voluptate porro architecto, sint rem velit aperiam veritatis ducimus neque quae, in quibusdam?</p>
+                            <h4>{{object.first_name}} {{object.last_name}}</h4>
+                            <span></span>
+                            <p>{{object.summary}}</p>
                         </div>
                         <h5 class="alternative-title">Doctor Statics</h5>
                         <div class="horizontal-bar">
