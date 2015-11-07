@@ -3,6 +3,7 @@ from __future__ import absolute_import, unicode_literals
 
 from django.core.urlresolvers import reverse
 from django.views.generic import DetailView, ListView, RedirectView, UpdateView
+from django.shortcuts import redirect, get_object_or_404
 
 from braces.views import LoginRequiredMixin
 from allauth.account.views import LoginView, SignupView
@@ -10,6 +11,7 @@ from allauth.account.utils import complete_signup
 from allauth.account import app_settings
 
 from .models import User
+from .forms import UserSettingsForm
 
 
 class UserLoginView(LoginView):
@@ -18,7 +20,6 @@ class UserLoginView(LoginView):
 
 class UserSignupView(SignupView):
     def form_valid(self, form):
-        print 'called'
         user = form.save(self.request)
         user.add_to_patients_group()
         return complete_signup(self.request, user,
@@ -73,17 +74,18 @@ class PatientDoctorRedirectView(LoginRequiredMixin, RedirectView):
                        kwargs={"username": username})
 
 
-class UserUpdateView(LoginRequiredMixin, UpdateView):
-
-    fields = ['name', ]
+class UserSettingsView(LoginRequiredMixin, UpdateView):
+    form_class = UserSettingsForm
+    template_name = 'users/user_settings.html'
+    slug_field = "username"
+    slug_url_kwarg = "username"
 
     # we already imported User in the view code above, remember?
     model = User
 
     # send the user back to their own page after a successful update
     def get_success_url(self):
-        return reverse("users:detail",
-                       kwargs={"username": self.request.user.username})
+        return reverse("users:account_redirect")
 
     def get_object(self):
         # Only get the User record for the user making the request

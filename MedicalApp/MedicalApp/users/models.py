@@ -5,6 +5,7 @@ import logging
 
 from django.contrib.auth.models import AbstractUser, Group
 from django.core.urlresolvers import reverse
+from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
 
 logger = logging.getLogger(__name__)
@@ -12,6 +13,11 @@ logger = logging.getLogger(__name__)
 
 @python_2_unicode_compatible
 class User(AbstractUser):
+    summary = models.TextField(blank=True)
+    image = models.ImageField(upload_to='images/',
+                              blank=True)
+    contact = models.CharField(max_length=20, blank=True)
+
     def __str__(self):
         return self.username
 

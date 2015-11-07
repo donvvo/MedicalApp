@@ -3,6 +3,8 @@ import logging
 from django import forms
 from allauth.account.forms import LoginForm, SignupForm
 
+from .models import User
+
 logger = logging.getLogger(__name__)
 
 
@@ -65,3 +67,35 @@ class UserSignupForm(SignupForm):
                             'placeholder': 'Confirm Password'})
         self.fields['password2'].error_messages['required'] = \
             "Password confirmation is required."
+
+
+class UserSettingsForm(forms.ModelForm):
+    def clean_remove_photo(self):
+        remove = self.cleaned_data["remove_photo"]
+        if remove:
+            self.cleaned_data['image'] = ""
+
+    class Meta:
+        model = User
+        fields = ("first_name", "last_name", "summary", "contact", "image")
+        widgets = {
+            'first_name': forms.TextInput(attrs={
+                                    'type': 'text',
+                                    'class': 'form-control',
+                                    'placeholder': 'First Name'
+                                    }),
+            'last_name': forms.TextInput(attrs={
+                                    'type': 'text',
+                                    'class': 'form-control',
+                                    'placeholder': 'Last Name'
+                                    }),
+            'summary': forms.Textarea(attrs={
+                                    'class': 'form-control message',
+                                    'placeholder': 'About Me'
+                                    }),
+            'contact': forms.TextInput(attrs={
+                                    'type': 'text',
+                                    'class': 'form-control',
+                                    'placeholder': 'Contact Number'
+                                    }),
+        }
