@@ -6,7 +6,7 @@
     <meta charset="utf-8">
 
     <!-- Page Title -->
-    <title>Doctor - Home Healt Center </title>
+    <title>Health Bound</title>
 
     <!-- Responsive Metatag -->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
@@ -69,20 +69,8 @@
         <div class="collapse navbar-collapse navbar-collapse navbar-right">
           <ul class="nav navbar-nav">
             <li class="active"><a href="{% url 'home' %}">Home</a></li>
-            <li><a href="doctors.html">Our Doctors</a></li>
-            <li>
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages <span class="caret"></span></a>
-              <ul class="dropdown-menu" role="menu">
-
-
-                <li><a href="gallery.html">Gallery</a></li>
-                <li><a href="single-doctor.html">Doctor Profile Page</a></li>
-                <li><a href="contact-map-right.html">Contact Map Right</a></li>
-                <li><a href="error-404.html">Error 404</a></li>
-              </ul>
-            </li>
+ 
             <li><a href="{% url 'medical_appointments:appointments' %}">Appointment</a></li>
-            <li><a href="timetable.html">Timetable</a></li>
             <li><a href="contact-map-right.html">Contact</a></li>
 
             {% if request.user.is_authenticated %}
@@ -109,6 +97,105 @@
 
 
   {% block content %}
+
+	<!-- Timetable -->
+	<section class="timetable generic animated fadeInUp">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="section-title">
+						<h3>Your Schedule</h3>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="timetable-responsive">
+						<table>
+							<thead>
+								<tr>
+									<th class="blue-extralight">Time</th>
+									<th class="blue-light">Monday</th>
+									<th class="blue-dark">Tuesday</th>
+									<th class="blue-light">Wednesday</th>
+									<th class="blue-dark">Thursday</th>
+									<th class="blue-light">Friday</th>
+									<th class="blue-dark">Saturday</th>
+									<th class="blue-light">Sunday</th>
+								</tr>
+							</thead>
+							<tr>
+								<th>06:00-07:00 AM</th>
+								<td><a class="ct-orange" href="#" title="You're off duty during this time."></a></td>
+								<td><a class="ct-orange" href="#" title="You're off duty during this time."></a></td>
+								<td><a class="ct-orange" href="#" title="You're off duty during this time."></a></td>
+								<td><a href="#">Marge.M</a></td>
+								<td><a href="#">MArge.M</a></td>
+								<td><a href="#">MArge.M</a></td>
+								<td><a href="#">MArge.M</a></td>
+							</tr>
+							<tr>
+								<th>08:00-09:00 AM</th>
+								<td><a class="ct-orange" href="#" title="You're off duty during this time."></a></td>
+								<td><a class="ct-orange" href="#" title="You're off duty during this time."></a></td>
+								<td><a class="ct-orange" href="#" title="You're off duty during this time."></a></td>
+								<td><a href="#">MArge.M</a></td>
+								<td><a href="#">MArge.M</a></td>
+								<td><a href="#">MArge.M</a></td>
+								<td><a href="#">MArge.M</a></td>
+							</tr>
+							<tr>
+								<th>09:00-17:00 AM</th>
+								<td><a class="ct-orange" href="#" title="You're off duty during this time."></a></td><td><a class="ct-orange" href="#" title="You're off duty during this time."></a></td><td><a class="ct-orange" href="#" title="You're off duty during this time."></a></td>
+								<td><a href="#">MArge.M</a></td>
+								<td><a href="#">MArge.M</a></td>
+								<td><a href="#">MArge.M</a></td>
+								<td><a href="#">MArge.M</a></td>
+							</tr>
+							<tr>
+								<th>09:00-07:00 AM</th>
+								<td><a class="ct-orange" href="#" title="You're off duty during this time."></a></td>
+								<td><a class="ct-orange" href="#" title="You're off duty during this time."></a></td>
+								<td><a class="ct-orange" href="#" title="You're off duty during this time."></a></td>
+								<td><a href="#">MArge.M</a></td>
+								<td><a href="#">MArge.M</a></td>
+								<td><a href="#">MArge.M</a></td>
+								<td><a href="#">MArge.M</a></td>
+															</tr>
+							<tr>
+								<th>08:00-09:00 AM</th>
+								<td><a class="ct-orange" href="#" title="You're off duty during this time."></a></td>
+								<td><a class="ct-orange" href="#" title="You're off duty during this time."></a></td>
+								<td><a class="ct-orange" href="#" title="You're off duty during this time."></a></td>
+								<td><a href="#">MArge.M</a></td>
+								<td><a href="#">MArge.M</a></td>
+								<td><a href="#">MArge.M</a></td>
+								<td><a href="#">MArge.M</a></td>
+							</tr>
+							<tr>
+								<th>09:00-17:00 AM</th>
+								<td><a class="ct-orange" href="#" title="You're off duty during this time."></a></td>
+								<td><a class="ct-orange" href="#" title="You're off duty during this time."></a></td>
+								<td><a class="ct-orange" href="#" title="You're off duty during this time."></a></td>
+								<td><a href="#">MArge.M</a></td>
+								<td><a href="#">MArge.M</a></td>
+								<td><a href="#">MArge.M</a></td>
+								<td><a href="#">MArge.M</a></td>
+							</tr>
+
+						</table>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</section>
+	<!-- End Timetable -->
+
+  
+  
+  
+  
 
   {% endblock content %}
   <!-- Footer -->
@@ -178,7 +265,7 @@
     <div class="copy">
       <div class="container">
         <div class="row">
-          <div class="col-sm-6"><p class="down">Dotor Medical Clinic. Copyright 2018. All Rights Reserved.<p></div>
+          <div class="col-sm-6"><p class="down">Health Bound. Copyright 2015. All Rights Reserved.<p></div>
           <div class="col-sm-6">
             <ul class="social-links">
               <li>
