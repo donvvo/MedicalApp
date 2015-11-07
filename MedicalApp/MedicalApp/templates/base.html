@@ -85,14 +85,20 @@
             <li><a href="timetable.html">Timetable</a></li>
             <li><a href="contact-map-right.html">Contact</a></li>
 
+            {% if request.user.is_authenticated %}
             <li>
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Don Vo <span class="caret"></span></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{request.user.first_name}} {{request.user.last_name}}<span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
                 <li><a href="shortcodes.html">Profile</a></li>
                 <li><a href="about-us.html">Settings</a></li>
                 <li><a href="{% url 'users:account_logout' %}">Logout</a></li>
               </ul>
             </li>
+            {% else %}
+            <li>
+              <a href="{% url 'users:account_login' %}">Login</a>
+            </li>
+            {% endif %}
           </ul>
         </div>
       </div>
