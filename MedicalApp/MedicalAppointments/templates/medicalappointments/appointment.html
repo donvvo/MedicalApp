@@ -23,56 +23,40 @@
 
         <div class="row">
             <div class="well">
-        <div class="list-group">
-          <a href="#" class="list-group-item">
-            <div class="row">
-                <div class="col-md-2">
-                    <img src="{% static 'img/news/news-thumbnail-144x144-02.jpg' %}" alt="//" class="img-responsive">
-                 </div>
-                <div class="col-md-5">
-                    <p>Address of the location goes here</p>
-                </div>
-                <div class="col-md-3">
-                    11:34 AM
-                </div>
-                <div class="col-md-2">
-                    <p>Your doctor</p>
-                    <img src="{% static 'img/news/news-thumbnail-144x144-02.jpg' %}" alt="//" class="img-responsive">
-                    <p>Dr.Vo</p>
-                </div>
+                <div class="list-group">
+                {% if object_list %}
+                    {% for appointment in object_list %}
+                        <a href="#" class="list-group-item">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <img src="{% static 'img/news/news-thumbnail-144x144-02.jpg' %}" alt="//" class="img-responsive">
+                                 </div>
+                                <div class="col-md-5">
+                                    <p>Address of the location goes here</p>
+                                </div>
+                                <div class="col-md-3">
+                                    11:34 AM
+                                </div>
+                                <div class="col-md-2">
+                                    <p>Your doctor</p>
+                                    <img src="{% static 'img/news/news-thumbnail-144x144-02.jpg' %}" alt="//" class="img-responsive">
+                                    <p>Dr.Vo</p>
+                                </div>
 
-            </div><!-- ./row -->
-          </a><!-- ./list-group-item -->
-            <a href="#" class="list-group-item">
-            <div class="row">
-                <div class="col-md-2">
-                    <img src="{% static 'img/news/news-thumbnail-144x144-02.jpg' %}" alt="//" class="img-responsive">
-                 </div>
-                <div class="col-md-5">
-                    <p>Address of the location goes here</p>
-                </div>
-                <div class="col-md-3">
-                    11:34 AM
-                </div>
-                <div class="col-md-2">
-                    <p>Your doctor</p>
-                    <img src="{% static 'img/news/news-thumbnail-144x144-02.jpg' %}" alt="//" class="img-responsive">
-                    <p>Dr.Vo</p>
-                </div>
+                            </div><!-- ./row -->
+                          </a><!-- ./list-group-item -->
+                    {% endfor %}
+                {% else %}
+                    <a href="{% url 'medical_appointments:new_appointments' %}" class="list-group-item">
+                        <div class="row">
+                            <div class="col-md-12 text-center">
+                                <p>You have no appointments.</p>
+                                <p>Click here to make an appointment!</p>
+                            </div>
 
-            </div><!-- ./row -->
-          </a><!-- ./list-group-item -->
-
-            <a href="{% url 'medical_appointments:new_appointments' %}" class="list-group-item">
-            <div class="row">
-                <div class="col-md-12 text-center">
-                    <p>You have no appointments.</p>
-                    <p>Click here to make an appointment!</p>
-                </div>
-
-            </div><!-- ./row -->
-          </a><!-- ./list-group-item -->
-
+                        </div><!-- ./row -->
+                    </a><!-- ./list-group-item -->
+                {% endif %}
         </div>
             </div>
         </div>
