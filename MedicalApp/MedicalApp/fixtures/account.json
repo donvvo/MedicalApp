@@ -1,0 +1,142 @@
+[
+{
+    "fields": {
+        "verified": true,
+        "user": 1,
+        "primary": true,
+        "email": "andrewjjung47@gmail.com"
+    },
+    "model": "account.emailaddress",
+    "pk": 1
+},
+{
+    "fields": {
+        "verified": true,
+        "user": 2,
+        "primary": true,
+        "email": "andrewjjung47@hotmail.com"
+    },
+    "model": "account.emailaddress",
+    "pk": 2
+},
+{
+    "fields": {
+        "verified": true,
+        "user": 4,
+        "primary": true,
+        "email": "test1@gmail.com"
+    },
+    "model": "account.emailaddress",
+    "pk": 4
+},
+{
+    "fields": {
+        "verified": true,
+        "user": 5,
+        "primary": true,
+        "email": "test2@gmail.com"
+    },
+    "model": "account.emailaddress",
+    "pk": 5
+},
+{
+    "fields": {
+        "verified": true,
+        "user": 6,
+        "primary": true,
+        "email": "test3@gmail.com"
+    },
+    "model": "account.emailaddress",
+    "pk": 6
+},
+{
+    "fields": {
+        "verified": true,
+        "user": 7,
+        "primary": true,
+        "email": "test4@gmail.com"
+    },
+    "model": "account.emailaddress",
+    "pk": 7
+},
+{
+    "fields": {
+        "verified": true,
+        "user": 8,
+        "primary": true,
+        "email": "test5@gmail.com"
+    },
+    "model": "account.emailaddress",
+    "pk": 8
+},
+{
+    "fields": {
+        "email_address": 1,
+        "key": "j855jgsf8nazwomxxip4ied5zbrcpa1rsvi1rpfzvo8yk1a9r1whofx8hk1r5gfl",
+        "sent": "2015-11-07T05:44:05.007Z",
+        "created": "2015-11-07T05:44:04.992Z"
+    },
+    "model": "account.emailconfirmation",
+    "pk": 1
+},
+{
+    "fields": {
+        "email_address": 2,
+        "key": "tjluj3wasesb6poufe2iiokyrnn0f75tj9ixsmdevf5gg53skpepjm68ytjqjyfm",
+        "sent": "2015-11-07T17:39:15.705Z",
+        "created": "2015-11-07T17:39:15.677Z"
+    },
+    "model": "account.emailconfirmation",
+    "pk": 2
+},
+{
+    "fields": {
+        "email_address": 4,
+        "key": "ezjv4rfacq0xvafh3psnjwppncruuamax6tb1m0x7duhrwwywrmgbpio0bucwleg",
+        "sent": "2015-11-07T21:31:26.365Z",
+        "created": "2015-11-07T21:31:26.335Z"
+    },
+    "model": "account.emailconfirmation",
+    "pk": 4
+},
+{
+    "fields": {
+        "email_address": 5,
+        "key": "7rxdm1oar5ctxhyqv6pk0d1cdkg25ybt7nd9yyibnheiedaapbnwftftrpeobbgy",
+        "sent": "2015-11-07T21:31:56.501Z",
+        "created": "2015-11-07T21:31:56.477Z"
+    },
+    "model": "account.emailconfirmation",
+    "pk": 5
+},
+{
+    "fields": {
+        "email_address": 6,
+        "key": "sha7m6yumltets1ioeyigh3jtpolmtg6udub7gpj4mnpynztnlesulsfxhomxuya",
+        "sent": "2015-11-07T21:32:34.082Z",
+        "created": "2015-11-07T21:32:34.060Z"
+    },
+    "model": "account.emailconfirmation",
+    "pk": 6
+},
+{
+    "fields": {
+        "email_address": 7,
+        "key": "bpbgxydghkkeuj0fvz0evfbr68m2pmc2cvljxd0wpzstsfc22hep0gihibschrn1",
+        "sent": "2015-11-07T21:33:03.243Z",
+        "created": "2015-11-07T21:33:03.213Z"
+    },
+    "model": "account.emailconfirmation",
+    "pk": 7
+},
+{
+    "fields": {
+        "email_address": 8,
+        "key": "mpu2d7501k3afqyrmb5ssrxgwfnk51jwsxfcjxes9zhszepao4u5okqaadhnooeq",
+        "sent": "2015-11-07T21:33:29.921Z",
+        "created": "2015-11-07T21:33:29.898Z"
+    },
+    "model": "account.emailconfirmation",
+    "pk": 8
+}
+]

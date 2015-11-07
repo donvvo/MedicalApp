@@ -33,7 +33,11 @@
                         <div class="tag-text">
                             <h4>{{object.first_name}} {{object.last_name}}</h4>
                             <span></span>
-                            <p>{{object.summary}}</p>
+                            {% if object.summary %}
+                                <p>{{object.summary}}</p>
+                            {% else %}
+                                <p>Please add summary from <a href="{% url 'users:user_settings' %}">settings</a></p>
+                            {% endif %}
                         </div>
                         <!--
                         <h5 class="alternative-title">Doctor Statics</h5>

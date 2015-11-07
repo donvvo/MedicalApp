@@ -1,0 +1,163 @@
+[
+{
+    "fields": {
+        "username": "admin",
+        "first_name": "DD",
+        "last_name": "Jung",
+        "image": "",
+        "is_active": true,
+        "summary": "qwefq",
+        "is_superuser": true,
+        "is_staff": true,
+        "last_login": "2015-11-07T21:25:28.614Z",
+        "contact": "666-333-4444",
+        "groups": [
+            1
+        ],
+        "user_permissions": [],
+        "password": "pbkdf2_sha256$20000$huyRBtWgbMtR$FrIT5UqD4S9OmVWK8sVw4VkQNsY6p7djWv/lAj8DZ3o=",
+        "email": "andrewjjung47@gmail.com",
+        "date_joined": "2015-11-07T05:43:08Z"
+    },
+    "model": "users.user",
+    "pk": 1
+},
+{
+    "fields": {
+        "username": "andrew",
+        "first_name": "Andrew",
+        "last_name": "Jung",
+        "image": "",
+        "is_active": true,
+        "summary": "asdfasdfasdfasdf",
+        "is_superuser": false,
+        "is_staff": false,
+        "last_login": "2015-11-07T17:46:07.503Z",
+        "contact": "4333333333",
+        "groups": [
+            2
+        ],
+        "user_permissions": [],
+        "password": "pbkdf2_sha256$20000$FtSaHO3Vd5bt$FXiA+JMhKs9dbYvh2bCcKsZlLG+Vs7y15RmtfApB3iA=",
+        "email": "andrewjjung47@hotmail.com",
+        "date_joined": "2015-11-07T17:39:15.503Z"
+    },
+    "model": "users.user",
+    "pk": 2
+},
+{
+    "fields": {
+        "username": "test",
+        "first_name": "Test",
+        "last_name": "Patient1",
+        "image": "",
+        "is_active": true,
+        "summary": "",
+        "is_superuser": false,
+        "is_staff": false,
+        "last_login": "2015-11-07T21:31:32.941Z",
+        "contact": "",
+        "groups": [
+            1
+        ],
+        "user_permissions": [],
+        "password": "pbkdf2_sha256$20000$0dd9SFNMUaw4$zHe1okH9k96LMjUZnKwrjLEk+zPFM5Reebqpk1ISiLI=",
+        "email": "test1@gmail.com",
+        "date_joined": "2015-11-07T21:31:26.153Z"
+    },
+    "model": "users.user",
+    "pk": 4
+},
+{
+    "fields": {
+        "username": "test2",
+        "first_name": "Test",
+        "last_name": "Patient2",
+        "image": "",
+        "is_active": true,
+        "summary": "",
+        "is_superuser": false,
+        "is_staff": false,
+        "last_login": "2015-11-07T21:32:07.165Z",
+        "contact": "",
+        "groups": [
+            1
+        ],
+        "user_permissions": [],
+        "password": "pbkdf2_sha256$20000$awJlHJSn1hgM$lXOHQJx6pCENgJEa2OO9pQ4EFnnRxE6F0anbP6TPEHM=",
+        "email": "test2@gmail.com",
+        "date_joined": "2015-11-07T21:31:56.297Z"
+    },
+    "model": "users.user",
+    "pk": 5
+},
+{
+    "fields": {
+        "username": "test3",
+        "first_name": "Test",
+        "last_name": "Patient3",
+        "image": "",
+        "is_active": true,
+        "summary": "",
+        "is_superuser": false,
+        "is_staff": false,
+        "last_login": "2015-11-07T21:32:41.947Z",
+        "contact": "",
+        "groups": [
+            1
+        ],
+        "user_permissions": [],
+        "password": "pbkdf2_sha256$20000$hWi2oTFttJCK$o4iT/f6cwfAgIOUYWGxezmNxBHLQy1lvudtknm60O7s=",
+        "email": "test3@gmail.com",
+        "date_joined": "2015-11-07T21:32:33.886Z"
+    },
+    "model": "users.user",
+    "pk": 6
+},
+{
+    "fields": {
+        "username": "test4",
+        "first_name": "Test",
+        "last_name": "Patient4",
+        "image": "",
+        "is_active": true,
+        "summary": "",
+        "is_superuser": false,
+        "is_staff": false,
+        "last_login": "2015-11-07T21:33:09.362Z",
+        "contact": "",
+        "groups": [
+            1
+        ],
+        "user_permissions": [],
+        "password": "pbkdf2_sha256$20000$2I4i6Gxa9uTQ$4rxsoDoeXwFUKAOcwrgB0AsZYrZxBx8J7Kb9KOVNISU=",
+        "email": "test4@gmail.com",
+        "date_joined": "2015-11-07T21:33:03.010Z"
+    },
+    "model": "users.user",
+    "pk": 7
+},
+{
+    "fields": {
+        "username": "test5",
+        "first_name": "Test",
+        "last_name": "Patient5",
+        "image": "",
+        "is_active": true,
+        "summary": "asdfasdfas",
+        "is_superuser": false,
+        "is_staff": false,
+        "last_login": "2015-11-07T21:33:36.583Z",
+        "contact": "",
+        "groups": [
+            1
+        ],
+        "user_permissions": [],
+        "password": "pbkdf2_sha256$20000$QKkz1Gzx7kKc$UdcJ83zE0WAcrWyK86e3CiO9Ft1WVk0lp4/+K6/IarQ=",
+        "email": "test5@gmail.com",
+        "date_joined": "2015-11-07T21:33:29.669Z"
+    },
+    "model": "users.user",
+    "pk": 8
+}
+]
