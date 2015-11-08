@@ -24,7 +24,7 @@ class AppointmentView(LoginRequiredMixin, ListView):
             return super(AppointmentView, self).dispatch(request,
                                                          *args, **kwargs)
         else:
-            redirect_url = reverse("users:~redirect")
+            redirect_url = reverse("users:account_redirect")
             return redirect(redirect_url)
 
     def get_queryset(self):
