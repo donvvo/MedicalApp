@@ -1,0 +1,82 @@
+[
+{
+    "fields": {
+        "clinic": "Test Clinic 1",
+        "specialty": "Physiotherapist"
+    },
+    "model": "MedicalAppointments.doctor",
+    "pk": 9
+},
+{
+    "fields": {
+        "clinic": "Test Clinic 2",
+        "specialty": "Chiropractor"
+    },
+    "model": "MedicalAppointments.doctor",
+    "pk": 10
+},
+{
+    "fields": {
+        "clinic": "Test Clinic 3",
+        "specialty": "Massage Therapist"
+    },
+    "model": "MedicalAppointments.doctor",
+    "pk": 11
+},
+{
+    "fields": {
+        "clinic": "Test Clinic 4",
+        "specialty": "Chiropodist"
+    },
+    "model": "MedicalAppointments.doctor",
+    "pk": 12
+},
+{
+    "fields": {
+        "clinic": "Test Clinic 5",
+        "specialty": "Nutritionist"
+    },
+    "model": "MedicalAppointments.doctor",
+    "pk": 13
+},
+{
+    "fields": {
+        "clinic": "Test Clinic 2",
+        "specialty": "Chiropractor"
+    },
+    "model": "MedicalAppointments.doctor",
+    "pk": 18
+},
+{
+    "fields": {
+        "clinic": "Test Clinic 3",
+        "specialty": "Chiropractor"
+    },
+    "model": "MedicalAppointments.doctor",
+    "pk": 19
+},
+{
+    "fields": {
+        "clinic": "Test Clinic 5",
+        "specialty": "Chiropractor"
+    },
+    "model": "MedicalAppointments.doctor",
+    "pk": 20
+},
+{
+    "fields": {
+        "clinic": "Test Clinic 1",
+        "specialty": "Chiropractor"
+    },
+    "model": "MedicalAppointments.doctor",
+    "pk": 21
+},
+{
+    "fields": {
+        "clinic": "Test Clinic 4",
+        "specialty": "Chiropractor"
+    },
+    "model": "MedicalAppointments.doctor",
+    "pk": 22
+}
+]
