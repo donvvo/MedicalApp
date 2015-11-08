@@ -1,12 +1,14 @@
 from django.core import serializers
 from django.core.urlresolvers import reverse
-from django.http import HttpResponseBadRequest, JsonResponse
+from django.http import HttpResponseBadRequest, HttpResponse
+
 from django.shortcuts import redirect, render_to_response
 from django.views.generic import DetailView, ListView
+import json
 
 from braces.views import LoginRequiredMixin
 
-from .models import Booking, DoctorSpecialty, Clinic
+from .models import Booking, DoctorSpecialty, Clinic, Doctor
 
 
 # Create your views here.
@@ -37,7 +39,7 @@ class NewAppointmentView(LoginRequiredMixin, ListView):
 def get_clinics(request):
     if request.method == 'GET':
         specialty = request.GET.get('specialty')
-        clinics = Clinic.objects.values()
-        print clinics
-        return JsonResponse(dict(clinics=list(clinics)))
+        doctors = Doctor.objects.filter(specialty__specialty=specialty)
+        clinics = [d.clinic for d in doctors]
+        return HttpResponse(serializers.serialize("json", clinics), content_type="application/json")
     return HttpResponseBadRequest()
