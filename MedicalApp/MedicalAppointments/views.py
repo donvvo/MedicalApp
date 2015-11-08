@@ -1,8 +1,9 @@
 import datetime
+import pytz
 
 from django.core import serializers
 from django.core.urlresolvers import reverse
-from django.http import HttpResponseBadRequest, HttpResponse
+from django.http import HttpResponseBadRequest, HttpResponse, HttpResponseRedirect
 from django.shortcuts import redirect, render_to_response, get_object_or_404
 from django.views.generic import DetailView, ListView
 from django.utils import timezone
@@ -109,5 +110,29 @@ class PatientTimetableView(LoginRequiredMixin, ListView):
     def get_context_data(self, **kwargs):
         context = super(PatientTimetableView, self).get_context_data(**kwargs)
         context['table'] = self.compare_with_bookings(context['object_list'])
+        context['clinic'] = self.kwargs.get('clinic', None).replace('+', ' ')
 
         return context
+
+
+def save_booking(request):
+    if request.method == 'POST':
+        year = int(request.POST.get('year'))
+        month = int(request.POST.get('month'))
+        date = int(request.POST.get('date'))
+        hour = int(request.POST.get('hour'))
+        minute = int(request.POST.get('minute'))
+
+        clinic_name = str(request.POST.get('clinic'))
+
+        booking_time = datetime.datetime(year=year, month=month, day=date, hour=hour, minute=minute)
+
+        timezone.make_aware(booking_time, timezone.get_current_timezone())
+
+        clinic = Clinic(pk=clinic_name)
+        doctor = Doctor(pk=10)
+        booking = Booking(clinic=clinic, patient=request.user.patient, doctor=doctor, time=booking_time)
+        booking.save()
+
+        return HttpResponseRedirect(reverse("medical_appointments:appointments"))
+    return HttpResponseBadRequest()

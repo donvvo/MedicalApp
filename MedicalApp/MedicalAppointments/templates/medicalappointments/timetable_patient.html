@@ -14,6 +14,7 @@
                 </div>
             </div>
         </div>
+        <div id="clinic-name" style="display:none">{{clinic}}</div>
         <div class="row">
             <div class="col-sm-12">
                 <div class="timetable-responsive">
@@ -33,7 +34,7 @@
                                     {% if element.1 %}
                                         <td><a class="ct-orange" href="#" title="All of our doctors are busy at this time.  Please find another another time."></a></td>
                                     {% else %}
-                                        <td><a href="#">Book Now</a></td>
+                                        <td><a class="booking-btn" type="button" data-toggle="modal" data-target="#myModal" data-year="{{element.0|date:'Y'}}" data-month="{{element.0|date:'m'}}" data-date="{{element.0|date:'j'}}" data-hour="{{element.0|time:'H'}}" data-minute="{{element.0|time:'i'}}" data-prettydate="{{element.0|date:'M j, Y'}}" data-prettytime="{{element.0|date:'h:i A'}}">Book Now</a></td>
                                     {% endif %}
                                 {% endfor %}
                             </tr>
@@ -61,7 +62,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" id="save-booking" class="btn btn-primary">Save changes</button>
       </div>
     </div>
   </div>
@@ -69,3 +70,74 @@
 
 
 {% endblock content %}
+
+{% block javascript %}
+
+{{block.super}}
+<script src="{% static 'django_js_reverse/js/reverse.js' %}"></script>
+<script>
+$(function() {
+    function getCookie(name) {
+      var cookieValue = null;
+      if (document.cookie && document.cookie != '') {
+          var cookies = document.cookie.split(';');
+          for (var i = 0; i < cookies.length; i++) {
+              var cookie = jQuery.trim(cookies[i]);
+              // Does this cookie string begin with the name we want?
+              if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                  cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                  break;
+              }
+          }
+      }
+      return cookieValue;
+    }
+
+    var csrftoken = getCookie('csrftoken');
+    function csrfSafeMethod(method) {
+      // these HTTP methods do not require CSRF protection
+      return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+    }
+    $.ajaxSetup({
+        beforeSend: function(xhr, settings) {
+            if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+              xhr.setRequestHeader("X-CSRFToken", csrftoken);
+            }
+        }
+    });
+
+    $('.booking-btn').click(function() {
+        var $this = $(this);
+        $year = $this.attr('data-year');
+        $month = $this.attr('data-month');
+        $date = $this.attr('data-date');
+        $hour = $this.attr('data-hour');
+        $minute = $this.attr('data-minute');
+        $prettyDate = $this.attr('data-prettydate');
+        $prettyTime = $this.attr('data-prettytime');
+        $clinic = $('#clinic-name')[0].textContent;
+
+        $('.modal-body').text('Confirm booking on ' + $prettyDate + ' at ' + $prettyTime);
+
+        $('#save-booking').click(function() {
+            $.ajax({
+                type:"POST",
+                url:"{% url 'medical_appointments:save_booking' %}",
+                data: {
+                    year: $year,
+                    month: $month,
+                    date: $date,
+                    hour: $hour,
+                    minute: $minute,
+                    clinic: $clinic
+                },
+                success: function(data){
+                    window.location.replace(Urls['medical_appointments:appointments']);
+                }
+            });
+        });
+    });
+});
+</script>
+
+{% endblock javascript %}
