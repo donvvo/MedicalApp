@@ -21,74 +21,23 @@
                         <thead>
                             <tr>
                                 <th class="blue-extralight">Time</th>
-                                <th class="blue-light">Monday</th>
-                                <th class="blue-dark">Tuesday</th>
-                                <th class="blue-light">Wednesday</th>
-                                <th class="blue-dark">Thursday</th>
-                                <th class="blue-light">Friday</th>
-                                <th class="blue-dark">Saturday</th>
-                                <th class="blue-light">Sunday</th>
+                                {% for day in table.0 %}
+                                    <th class="blue-light">{{day.0|date:"M j"}}<br>{{day.0|date:"D"}}</th>
+                                {% endfor %}
                             </tr>
                         </thead>
-                        <tr>
-                            <th>06:00-07:00 AM</th>
-                            <td><a class="ct-orange" href="#" title="You're off duty during this time."></a></td>
-                            <td><a class="ct-orange" href="#" title="You're off duty during this time."></a></td>
-                            <td><a class="ct-orange" href="#" title="You're off duty during this time."></a></td>
-                            <td><a href="#">Marge.M</a></td>
-                            <td><a href="#">MArge.M</a></td>
-                            <td><a href="#">MArge.M</a></td>
-                            <td><a href="#">MArge.M</a></td>
-                        </tr>
-                        <tr>
-                            <th>08:00-09:00 AM</th>
-                            <td><a class="ct-orange" href="#" title="You're off duty during this time."></a></td>
-                            <td><a class="ct-orange" href="#" title="You're off duty during this time."></a></td>
-                            <td><a class="ct-orange" href="#" title="You're off duty during this time."></a></td>
-                            <td><a href="#">MArge.M</a></td>
-                            <td><a href="#">MArge.M</a></td>
-                            <td><a href="#">MArge.M</a></td>
-                            <td><a href="#">MArge.M</a></td>
-                        </tr>
-                        <tr>
-                            <th>09:00-17:00 AM</th>
-                            <td><a class="ct-orange" href="#" title="You're off duty during this time."></a></td><td><a class="ct-orange" href="#" title="You're off duty during this time."></a></td><td><a class="ct-orange" href="#" title="You're off duty during this time."></a></td>
-                            <td><a href="#">MArge.M</a></td>
-                            <td><a href="#">MArge.M</a></td>
-                            <td><a href="#">MArge.M</a></td>
-                            <td><a href="#">MArge.M</a></td>
-                        </tr>
-                        <tr>
-                            <th>09:00-07:00 AM</th>
-                            <td><a class="ct-orange" href="#" title="You're off duty during this time."></a></td>
-                            <td><a class="ct-orange" href="#" title="You're off duty during this time."></a></td>
-                            <td><a class="ct-orange" href="#" title="You're off duty during this time."></a></td>
-                            <td><a href="#">MArge.M</a></td>
-                            <td><a href="#">MArge.M</a></td>
-                            <td><a href="#">MArge.M</a></td>
-                            <td><a href="#">MArge.M</a></td>
-                                                        </tr>
-                        <tr>
-                            <th>08:00-09:00 AM</th>
-                            <td><a class="ct-orange" href="#" title="You're off duty during this time."></a></td>
-                            <td><a class="ct-orange" href="#" title="You're off duty during this time."></a></td>
-                            <td><a class="ct-orange" href="#" title="You're off duty during this time."></a></td>
-                            <td><a href="#">MArge.M</a></td>
-                            <td><a href="#">MArge.M</a></td>
-                            <td><a href="#">MArge.M</a></td>
-                            <td><a href="#">MArge.M</a></td>
-                        </tr>
-                        <tr>
-                            <th>09:00-17:00 AM</th>
-                            <td><a class="ct-orange" href="#" title="You're off duty during this time."></a></td>
-                            <td><a class="ct-orange" href="#" title="You're off duty during this time."></a></td>
-                            <td><a class="ct-orange" href="#" title="You're off duty during this time."></a></td>
-                            <td><a href="#">MArge.M</a></td>
-                            <td><a href="#">MArge.M</a></td>
-                            <td><a href="#">MArge.M</a></td>
-                            <td><a href="#">MArge.M</a></td>
-                        </tr>
-
+                        {% for row in table %}
+                            <tr>
+                                <th>{{row.0.0|time:"h:i A"}}</th>
+                                {% for element in row %}
+                                    {% if element.1 %}
+                                        <td><a href="{% url 'users:patient_profile' username=element.1.username %}">{{element.1.first_name}} {{element.1.last_name}}</a></td>
+                                    {% else %}
+                                        <td><a class="ct-orange" href="#" title="You're off duty during this time."></a></td>
+                                    {% endif %}
+                                {% endfor %}
+                            </tr>
+                        {% endfor %}
                     </table>
                 </div>
             </div>

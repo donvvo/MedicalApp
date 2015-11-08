@@ -9,7 +9,7 @@
 },
 {
     "fields": {
-        "clinic": "Test Clinic 2",
+        "clinic": "Test Clinic 1",
         "specialty": "Chiropractor"
     },
     "model": "MedicalAppointments.doctor",

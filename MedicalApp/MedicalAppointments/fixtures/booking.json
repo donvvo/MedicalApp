@@ -1,0 +1,82 @@
+[
+{
+    "fields": {
+        "clinic": "Test Clinic 1",
+        "time": "2015-11-08T17:00:00Z",
+        "patient": 4,
+        "doctor": 10
+    },
+    "model": "MedicalAppointments.booking",
+    "pk": 1
+},
+{
+    "fields": {
+        "clinic": "Test Clinic 1",
+        "time": "2015-11-08T16:00:00Z",
+        "patient": 4,
+        "doctor": 10
+    },
+    "model": "MedicalAppointments.booking",
+    "pk": 2
+},
+{
+    "fields": {
+        "clinic": "Test Clinic 1",
+        "time": "2015-11-08T15:00:00Z",
+        "patient": 4,
+        "doctor": 10
+    },
+    "model": "MedicalAppointments.booking",
+    "pk": 3
+},
+{
+    "fields": {
+        "clinic": "Test Clinic 1",
+        "time": "2015-11-09T14:00:00Z",
+        "patient": 4,
+        "doctor": 10
+    },
+    "model": "MedicalAppointments.booking",
+    "pk": 4
+},
+{
+    "fields": {
+        "clinic": "Test Clinic 1",
+        "time": "2015-11-10T19:00:00Z",
+        "patient": 4,
+        "doctor": 10
+    },
+    "model": "MedicalAppointments.booking",
+    "pk": 5
+},
+{
+    "fields": {
+        "clinic": "Test Clinic 1",
+        "time": "2015-11-10T19:00:00Z",
+        "patient": 4,
+        "doctor": 10
+    },
+    "model": "MedicalAppointments.booking",
+    "pk": 6
+},
+{
+    "fields": {
+        "clinic": "Test Clinic 1",
+        "time": "2015-11-11T13:00:00Z",
+        "patient": 4,
+        "doctor": 10
+    },
+    "model": "MedicalAppointments.booking",
+    "pk": 7
+},
+{
+    "fields": {
+        "clinic": "Test Clinic 1",
+        "time": "2015-11-10T14:00:00Z",
+        "patient": 4,
+        "doctor": 10
+    },
+    "model": "MedicalAppointments.booking",
+    "pk": 8
+}
+]

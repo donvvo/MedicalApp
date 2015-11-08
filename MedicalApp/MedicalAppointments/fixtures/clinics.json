@@ -1,47 +1,47 @@
 [
-    {
-        "model": "MedicalAppointments.clinic",
-        "pk": "Test Clinic 1",
-        "fields": {
-            "city": "Toronto",
-            "address": "1524 Bathurst St.",
-            "postal_code": "M5P 3H3"
-        }
+{
+    "fields": {
+        "city": "Toronto",
+        "postal_code": "M5P 3H3",
+        "address": "1524 Bathurst St."
     },
-    {
-        "model": "MedicalAppointments.clinic",
-        "pk": "Test Clinic 2",
-        "fields": {
-            "city": "London",
-            "address": "960 Western Rd.",
-            "postal_code": "N6G 5G8"
-        }
+    "model": "MedicalAppointments.clinic",
+    "pk": "Test Clinic 1"
+},
+{
+    "fields": {
+        "city": "London",
+        "postal_code": "N6G 5G8",
+        "address": "960 Western Rd."
     },
-    {
-        "model": "MedicalAppointments.clinic",
-        "pk": "Test Clinic 3",
-        "fields": {
-            "city": "Montreal",
-            "address": "23 Centre St.",
-            "postal_code": "4J6 3U4"
-        }
+    "model": "MedicalAppointments.clinic",
+    "pk": "Test Clinic 2"
+},
+{
+    "fields": {
+        "city": "Montreal",
+        "postal_code": "4J6 3U4",
+        "address": "23 Centre St."
     },
-    {
-        "model": "MedicalAppointments.clinic",
-        "pk": "Test Clinic 4",
-        "fields": {
-            "city": "Calgary",
-            "address": "250 Heath St.",
-            "postal_code": "E5P 4Y3"
-        }
+    "model": "MedicalAppointments.clinic",
+    "pk": "Test Clinic 3"
+},
+{
+    "fields": {
+        "city": "Calgary",
+        "postal_code": "E5P 4Y3",
+        "address": "250 Heath St."
     },
-    {
-        "model": "MedicalAppointments.clinic",
-        "pk": "Test Clinic 5",
-        "fields": {
-            "city": "Mississauga",
-            "address": "66 Toledo Rd.",
-            "postal_code": "M6J 3UG"
-        }
-    }
+    "model": "MedicalAppointments.clinic",
+    "pk": "Test Clinic 4"
+},
+{
+    "fields": {
+        "city": "Mississauga",
+        "postal_code": "M6J 3UG",
+        "address": "66 Toledo Rd."
+    },
+    "model": "MedicalAppointments.clinic",
+    "pk": "Test Clinic 5"
+}
 ]
