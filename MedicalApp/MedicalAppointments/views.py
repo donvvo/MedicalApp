@@ -1,10 +1,11 @@
+import datetime
+
 from django.core import serializers
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseBadRequest, HttpResponse
-
-from django.shortcuts import redirect, render_to_response
+from django.shortcuts import redirect, render_to_response, get_object_or_404
 from django.views.generic import DetailView, ListView
-import json
+from django.utils import timezone
 
 from braces.views import LoginRequiredMixin
 
@@ -19,7 +20,6 @@ class AppointmentView(LoginRequiredMixin, ListView):
     def dispatch(self, request, *args, **kwargs):
         # Only patients can view
         if self.request.user.groups.filter(name="Patients").exists():
-            print 'yes'
             return super(AppointmentView, self).dispatch(request,
                                                          *args, **kwargs)
         else:
@@ -40,6 +40,74 @@ def get_clinics(request):
     if request.method == 'GET':
         specialty = request.GET.get('specialty')
         doctors = Doctor.objects.filter(specialty__specialty=specialty)
-        clinics = [d.clinic for d in doctors]
+        clinics = list(set([d.clinic for d in doctors]))
         return HttpResponse(serializers.serialize("json", clinics), content_type="application/json")
     return HttpResponseBadRequest()
+
+
+class PatientTimetableView(LoginRequiredMixin, ListView):
+    model = Booking
+    template_name = "medicalappointments/timetable_patient.html"
+
+    def dispatch(self, request, *args, **kwargs):
+        # Only patients can view
+        if self.request.user.groups.filter(name="Patients").exists():
+            return super(PatientTimetableView, self).dispatch(request,
+                                                         *args, **kwargs)
+        else:
+            redirect_url = reverse("users:~redirect")
+            return redirect(redirect_url)
+
+    def get_queryset(self):
+        clinic = self.kwargs.get('clinic', None).replace('+', ' ')
+        bookings = self.model.objects.filter(clinic=clinic).all()
+        return bookings
+
+    def get_dates_from_now(self):
+        today = timezone.now().date()
+        dates = []
+        for day_delta in range(7):
+            dates.append(today + datetime.timedelta(days=day_delta))
+        return dates
+
+    def get_time_interval(self):
+        start_hour = datetime.time(hour=6)
+        end_hour = datetime.time(hour=17)
+        interval = datetime.timedelta(minutes=30)
+        time_interval = []
+        dates = self.get_dates_from_now()
+
+        first_row = []
+        for day in dates:
+            first_row.append(datetime.datetime.combine(day, start_hour))
+        time_interval.append(first_row)
+
+        while time_interval[-1][0].time() < end_hour:
+            table_row = []
+            for day in time_interval[-1]:
+                table_row.append(day + interval)
+            time_interval.append(table_row)
+
+        return time_interval
+
+    def compare_with_bookings(self, bookings):
+        booking_time = [booking.time.replace(tzinfo=None) for booking in bookings]
+        time_interval = self.get_time_interval()
+
+        table = []
+        for row in time_interval:
+            table_row = []
+            for column in row:
+                if column in booking_time:
+                    table_row.append([column, True])
+                else:
+                    table_row.append([column, False])
+            table.append(table_row)
+
+        return table
+
+    def get_context_data(self, **kwargs):
+        context = super(PatientTimetableView, self).get_context_data(**kwargs)
+        context['table'] = self.compare_with_bookings(context['object_list'])
+
+        return context

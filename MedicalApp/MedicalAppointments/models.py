@@ -42,8 +42,12 @@ class Patient(models.Model):
         return self.user.first_name + ' ' + self.user.last_name
 
 
+@python_2_unicode_compatible
 class Booking(models.Model):
     clinic = models.ForeignKey(Clinic)
     patient = models.ForeignKey(Patient)
     doctor = models.ForeignKey(Doctor)
     time = models.DateTimeField()
+
+    def __str__(self):
+        return "Booking at " + self.clinic.pk + " at " + self.time.strftime('%H:%M -- %m/%d/%y')

@@ -63,6 +63,7 @@ $(function() {
                 specialty: specialty
             },
             success: function(data){
+                console.log(data);
                 var cities = [];
                 data.forEach(function(clinic) {
                     addClinic(clinic);

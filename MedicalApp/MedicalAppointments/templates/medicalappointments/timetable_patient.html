@@ -21,76 +21,23 @@
                         <thead>
                             <tr>
                                 <th class="blue-extralight">Time</th>
-                                <th class="blue-light">Monday</th>
-                                <th class="blue-dark">Tuesday</th>
-                                <th class="blue-light">Wednesday</th>
-                                <th class="blue-dark">Thursday</th>
-                                <th class="blue-light">Friday</th>
-                                <th class="blue-dark">Saterday</th>
-                                <th class="blue-light">Sunday</th>
+                                {% for day in table.0 %}
+                                    <th class="blue-light">{{day.0|date:"M j"}}<br>{{day.0|date:"D"}}</th>
+                                {% endfor %}
                             </tr>
                         </thead>
-                        <tr>
-                            <th>06:00-07:00 AM</th>
-                            <td><a class="ct-orange" href="#" title="All of our doctors are busy at this time.  Please find another another time."></a></td>
-                            <td><a class="ct-orange" href="#" title="All of our doctors are busy at this time.  Please find another another time."></a></td>
-                            <td><a class="ct-orange" href="#" title="All of our doctors are busy at this time.  Please find another another time."></a></td>
-                            <td><a type="button" data-toggle="modal" data-target="#myModal">Modal example is here</a></td>
-                            <td><a href="#">Book Now</a></td>
-                            <td><a href="#">Book Now</a></td>
-                            <td><a href="#">Book Now</a></td>
-                        </tr>
-                        <tr>
-                            <th>08:00-09:00 AM</th>
-                            <td><a class="ct-orange" href="#" title="All of our doctors are busy at this time.  Please find another another time."></a></td>
-                            <td><a class="ct-orange" href="#" title="All of our doctors are busy at this time.  Please find another another time."></a></td>
-                            <td><a class="ct-orange" href="#" title="All of our doctors are busy at this time.  Please find another another time."></a></td>
-                            <td><a href="#">Book Now</a></td>
-                            <td><a href="#">Book Now</a></td>
-                            <td><a href="#">Book Now</a></td>
-                            <td><a href="#">Book Now</a></td>
-                        </tr>
-                        <tr>
-                            <th>09:00-17:00 AM</th>
-                            <td><a class="ct-orange" href="#" title="All of our doctors are busy at this time.  Please find another another time."></a></td>
-                            <td><a class="ct-orange" href="#" title="All of our doctors are busy at this time.  Please find another another time."></a></td>
-                            <td><a class="ct-orange" href="#" title="All of our doctors are busy at this time.  Please find another another time."></a></td>
-                            <td><a href="#">Book Now</a></td>
-                            <td><a href="#">Book Now</a></td>
-                            <td><a href="#">Book Now</a></td>
-                            <td><a href="#">Book Now</a></td>
-                        </tr>
-                        <tr>
-                            <th>09:00-07:00 AM</th>
-                            <td><a class="ct-orange" href="#" title="All of our doctors are busy at this time.  Please find another another time."></a></td>
-                            <td><a class="ct-orange" href="#" title="All of our doctors are busy at this time.  Please find another another time."></a></td>
-                            <td><a class="ct-orange" href="#" title="All of our doctors are busy at this time.  Please find another another time."></a></td>
-                            <td><a href="#">Book Now</a></td>
-                            <td><a href="#">Book Now</a></td>
-                            <td><a href="#">Book Now</a></td>
-                            <td><a href="#">Book Now</a></td>
-                        </tr>
-                        <tr>
-                            <th>08:00-09:00 AM</th>
-                            <td><a class="ct-orange" href="#" title="All of our doctors are busy at this time.  Please find another another time."></a></td>
-                            <td><a class="ct-orange" href="#" title="All of our doctors are busy at this time.  Please find another another time."></a></td>
-                            <td><a class="ct-orange" href="#" title="All of our doctors are busy at this time.  Please find another another time."></a></td>
-                            <td><a href="#">Book Now</a></td>
-                            <td><a href="#">Book Now</a></td>
-                            <td><a href="#">Book Now</a></td>
-                            <td><a href="#">Book Now</a></td>
-                        </tr>
-                        <tr>
-                            <th>09:00-17:00 AM</th>
-                            <td><a class="ct-orange" href="#" title="All of our doctors are busy at this time.  Please find another another time."></a></td>
-                            <td><a class="ct-orange" href="#" title="All of our doctors are busy at this time.  Please find another another time."></a></td>
-                            <td><a class="ct-orange" href="#" title="All of our doctors are busy at this time.  Please find another another time."></a></td>
-                            <td><a href="#">Book Now</a></td>
-                            <td><a href="#">Book Now</a></td>
-                            <td><a href="#">Book Now</a></td>
-                            <td><a href="#">Book Now</a></td>
-                        </tr>
-
+                        {% for row in table %}
+                            <tr>
+                                <th>{{row.0.0|time:"h:i A"}}</th>
+                                {% for element in row %}
+                                    {% if element.1 %}
+                                        <td><a class="ct-orange" href="#" title="All of our doctors are busy at this time.  Please find another another time."></a></td>
+                                    {% else %}
+                                        <td><a href="#">Book Now</a></td>
+                                    {% endif %}
+                                {% endfor %}
+                            </tr>
+                        {% endfor %}
                     </table>
                 </div>
             </div>
