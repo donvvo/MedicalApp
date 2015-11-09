@@ -8,10 +8,10 @@ from django.contrib import admin
 from django.views.generic import TemplateView
 from django.views import defaults as default_views
 
-from MedicalAppointments.views import DoctorTimetableView
+from MedicalApp.users.views import HomeView
 
 urlpatterns = [
-    url(r'^$', DoctorTimetableView.as_view(), name="home"),
+    url(r'^$', HomeView.as_view(), name="home"),
 
     # Django Admin, use {% url 'admin:index' %}
     url(settings.ADMIN_URL, include(admin.site.urls)),
