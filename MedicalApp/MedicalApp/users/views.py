@@ -15,6 +15,16 @@ from MedicalAppointments.models import Patient, Doctor
 from .forms import UserSettingsForm
 
 
+class HomeView(LoginRequiredMixin, RedirectView):
+    permanent = False
+
+    def get_redirect_url(self):
+        if self.request.user.groups.filter(name="Doctors").exists():
+            return reverse("medical_appointments:timetable_doctor")
+        else:
+            return reverse("medical_appointments:appointments")
+
+
 class UserLoginView(LoginView):
     pass
 

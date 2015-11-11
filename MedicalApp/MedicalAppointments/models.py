@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
+from django.utils import timezone
 
 from MedicalApp.users.models import User
 
@@ -31,7 +32,8 @@ class Doctor(models.Model):
     clinic = models.ForeignKey(Clinic, blank=True, default="Test Clinic 1")
 
     def __str__(self):
-        return self.user.first_name + ' ' + self.user.last_name
+        return self.user.first_name + ' ' + self.user.last_name + ' -- ' + \
+        'Specialty: ' + self.specialty.specialty + ', Clinic: ' + self.clinic.name
 
 
 @python_2_unicode_compatible
@@ -50,4 +52,6 @@ class Booking(models.Model):
     time = models.DateTimeField()
 
     def __str__(self):
-        return "Booking at " + self.clinic.pk + " at " + self.time.strftime('%H:%M -- %m/%d/%y')
+        return "Booking at " + self.clinic.pk + " at " + \
+        timezone.localtime(self.time).strftime('%H:%M -- %m/%d/%y') + \
+        " for " + str(self.patient) + " with " + str(self.doctor)
