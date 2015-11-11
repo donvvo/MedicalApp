@@ -4,7 +4,7 @@ from test_plus.test import TestCase
 
 from ..views import (
     UserRedirectView,
-    UserUpdateView
+    #UserUpdateView
 )
 
 
@@ -34,7 +34,7 @@ class TestUserRedirectView(BaseUserTestCase):
         )
 
 
-class TestUserUpdateView(BaseUserTestCase):
+'''class TestUserUpdateView(BaseUserTestCase):
 
     def setUp(self):
         # call BaseUserTestCase.setUp()
@@ -61,4 +61,4 @@ class TestUserUpdateView(BaseUserTestCase):
         self.assertEqual(
             self.view.get_object(),
             self.user
-        )
+        )'''

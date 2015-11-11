@@ -1,6 +1,6 @@
 import datetime
-import pytz
 
+from django.contrib.auth.decorators import login_required
 from django.core import serializers
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseBadRequest, HttpResponse, HttpResponseRedirect
@@ -11,6 +11,7 @@ from django.utils import timezone
 from braces.views import LoginRequiredMixin
 
 from .models import Booking, DoctorSpecialty, Clinic, Doctor
+from .utils import get_clinics_by_specialty, get_time_table
 
 
 # Create your views here.
@@ -36,12 +37,21 @@ class NewAppointmentView(LoginRequiredMixin, ListView):
     model = DoctorSpecialty
     template_name = "medicalappointments/new_appointment.html"
 
+    def dispatch(self, request, *args, **kwargs):
+        # Only patients can view
+        if self.request.user.groups.filter(name="Patients").exists():
+            return super(AppointmentView, self).dispatch(request,
+                                                         *args, **kwargs)
+        else:
+            redirect_url = reverse("users:account_redirect")
+            return redirect(redirect_url)
 
+
+@login_required
 def get_clinics(request):
     if request.method == 'GET':
         specialty = request.GET.get('specialty')
-        doctors = Doctor.objects.filter(specialty__specialty=specialty)
-        clinics = list(set([d.clinic for d in doctors]))
+        clinics = get_clinics_by_specialty(specialty)
         return HttpResponse(serializers.serialize("json", clinics), content_type="application/json")
     return HttpResponseBadRequest()
 
@@ -155,54 +165,10 @@ class DoctorTimetableView(LoginRequiredMixin, ListView):
         bookings = self.model.objects.filter(doctor=self.request.user.doctor).all()
         return bookings
 
-    def get_dates_from_now(self):
-        today = timezone.now().date()
-        dates = []
-        for day_delta in range(7):
-            dates.append(today + datetime.timedelta(days=day_delta))
-        return dates
-
-    def get_time_interval(self):
-        start_hour = datetime.time(hour=6)
-        end_hour = datetime.time(hour=17)
-        interval = datetime.timedelta(minutes=30)
-        time_interval = []
-        dates = self.get_dates_from_now()
-
-        first_row = []
-        for day in dates:
-            first_row.append(datetime.datetime.combine(day, start_hour))
-        time_interval.append(first_row)
-
-        while time_interval[-1][0].time() < end_hour:
-            table_row = []
-            for day in time_interval[-1]:
-                table_row.append(day + interval)
-            time_interval.append(table_row)
-
-        return time_interval
-
-    def compare_with_bookings(self, bookings):
-        booking_time = [booking.time.replace(tzinfo=None) for booking in bookings]
-        time_interval = self.get_time_interval()
-
-        table = []
-        for row in time_interval:
-            table_row = []
-            for column in row:
-                if column in booking_time:
-                    for booking in bookings:
-                        if booking.time.replace(tzinfo=None) == column:
-                            table_row.append([column, booking.patient.user])
-                else:
-                    table_row.append([column, False])
-            table.append(table_row)
-
-        return table
-
     def get_context_data(self, **kwargs):
         context = super(DoctorTimetableView, self).get_context_data(**kwargs)
-        context['table'] = self.compare_with_bookings(context['object_list'])
+        context['table'] = get_time_table(
+            context['object_list'], table_start=6, table_end=17, table_interval=30)
 
         return context
 

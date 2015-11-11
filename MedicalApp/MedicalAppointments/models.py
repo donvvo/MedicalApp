@@ -50,4 +50,5 @@ class Booking(models.Model):
     time = models.DateTimeField()
 
     def __str__(self):
-        return "Booking at " + self.clinic.pk + " at " + self.time.strftime('%H:%M -- %m/%d/%y')
+        return "Booking at " + self.clinic.pk + " at " + self.time.strftime('%H:%M -- %m/%d/%y') + \
+        " for " + str(self.patient) + " with " + str(self.doctor)
