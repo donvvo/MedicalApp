@@ -38,6 +38,12 @@ urlpatterns = [
 
     url(r"^logout/$", logout, name="account_logout"),
 
+    url(
+        regex=r'^manage/$',
+        view=views.ManageMainView.as_view(),
+        name="manage_main"
+    ),
+
     # URL pattern for the UserRedirectView
     url(
         regex=r'^~redirect/$',

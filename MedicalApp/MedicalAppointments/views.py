@@ -137,17 +137,3 @@ class DoctorTimetableView(LoginRequiredMixin, ListView):
             context['object_list'], table_start=6, table_end=17, table_interval=30, num_doctor=1)
 
         return context
-
-
-class ManageMainView(LoginRequiredMixin, TemplateView):
-    model = Booking
-    template_name = "medicalappointments/manage_main.html"
-
-    def dispatch(self, request, *args, **kwargs):
-        # Only patients can view
-        if self.request.user.is_staff:
-            return super(ManageMainView, self).dispatch(request,
-                                                         *args, **kwargs)
-        else:
-            redirect_url = reverse("users:account_redirect")
-            return redirect(redirect_url)

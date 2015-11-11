@@ -2,7 +2,7 @@
 from __future__ import absolute_import, unicode_literals
 
 from django.core.urlresolvers import reverse
-from django.views.generic import DetailView, ListView, RedirectView, UpdateView
+from django.views.generic import DetailView, ListView, RedirectView, UpdateView, TemplateView
 from django.shortcuts import redirect, get_object_or_404
 
 from braces.views import LoginRequiredMixin
@@ -20,7 +20,7 @@ class HomeView(LoginRequiredMixin, RedirectView):
 
     def get_redirect_url(self):
         if self.request.user.is_staff:
-            return reverse("medical_appointments:manage_main")
+            return reverse("users:manage_main")
         elif self.request.user.groups.filter(name="Doctors").exists():
             return reverse("medical_appointments:timetable_doctor")
         else:
@@ -117,3 +117,16 @@ class UserListView(LoginRequiredMixin, ListView):
     # These next two lines tell the view to index lookups by username
     slug_field = "username"
     slug_url_kwarg = "username"
+
+
+class ManageMainView(LoginRequiredMixin, TemplateView):
+    template_name = "users/manage_main.html"
+
+    def dispatch(self, request, *args, **kwargs):
+        self.request.user.is_staff
+        if self.request.user.is_staff:
+            return super(ManageMainView, self).dispatch(request,
+                                                         *args, **kwargs)
+        else:
+            redirect_url = reverse("users:account_redirect")
+            return redirect(redirect_url)
