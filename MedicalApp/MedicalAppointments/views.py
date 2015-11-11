@@ -139,6 +139,11 @@ class DoctorTimetableView(LoginRequiredMixin, ListView):
         return context
 
 
+class ClinicListView(LoginRequiredMixin, ListView):
+    model = Clinic
+    template_name = "medicalappointments/clinic_list.html"
+
+
 class ClinicProfileView(LoginRequiredMixin, DetailView):
     model = Clinic
     template_name = "medicalappointments/clinic_profile.html"

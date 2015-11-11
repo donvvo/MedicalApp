@@ -16,6 +16,9 @@ class Clinic(models.Model):
     def __str__(self):
         return self.name
 
+    def url_name(self):
+        return self.name.replace(' ', '+')
+
 
 @python_2_unicode_compatible
 class DoctorSpecialty(models.Model):
