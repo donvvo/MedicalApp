@@ -152,7 +152,5 @@ class ClinicProfileView(LoginRequiredMixin, DetailView):
 
     def get_object(self):
         clinic_name = self.kwargs['clinicname']
-        print clinic_name
         clinic_name = clinic_name.replace('+', ' ')
-        print clinic_name
-        return self.model.objects.get(name=clinic_name)
+        return get_object_or_404(self.model, name=clinic_name)
