@@ -69,17 +69,18 @@ class TestUtils(TestCase):
         booking_time = []
         booking_time.append(timezone.now())
         booking_time.append(booking_time[0] + interval)
+        booking_time.append(booking_time[0] + datetime.timedelta(minutes=30))
 
         self.assertEqual(
             check_booking_in_timeslot(booking_time[1] + interval, interval, booking_time),
-            -1
+            []
         )
         self.assertEqual(
             check_booking_in_timeslot(booking_time[0], interval, booking_time),
-            0
+            [0, 2]
         )
         self.assertEqual(
             check_booking_in_timeslot(booking_time[1], interval, booking_time),
-            1
+            [1]
         )
 

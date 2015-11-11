@@ -22,17 +22,18 @@ def get_dates_from_now():
 
 
 def check_booking_in_timeslot(timeslot_start, interval, booking_time):
+    index_array = []
     index = 0
     for booking in booking_time:
         if timeslot_start <= booking < timeslot_start + interval:
             # Return the index of booking_time array
-            return index
+            index_array.append(index)
         index += 1
     # Return index of -1 if no booking exist in the time slot
-    return -1
+    return index_array
 
 
-def get_time_table(bookings, table_start, table_end, table_interval):
+def get_time_table(bookings, table_start, table_end, table_interval, num_doctor):
     booking_time = [booking.time for booking in bookings]
 
     TZ_UTC = pytz.utc
@@ -48,8 +49,8 @@ def get_time_table(bookings, table_start, table_end, table_interval):
     for day in dates:
         timeslot_start = datetime.datetime.combine(day, start_hour).astimezone(TZ_UTC)
         index = check_booking_in_timeslot(timeslot_start, interval, booking_time)
-        if index != -1:
-            first_row.append((timeslot_start, bookings[index].patient.user))
+        if index != [] and len(index) == num_doctor:
+            first_row.append((timeslot_start, bookings[index[0]].patient.user))
         else:
             first_row.append((timeslot_start, None))
 
@@ -60,10 +61,12 @@ def get_time_table(bookings, table_start, table_end, table_interval):
         for day in time_table[-1]:
             timeslot_start = day[0] + interval
             index = check_booking_in_timeslot(timeslot_start, interval, booking_time)
-            if index != -1:
-                table_row.append((timeslot_start, bookings[index].patient.user))
+            if index != [] and len(index) == num_doctor:
+                table_row.append((timeslot_start, bookings[index[0]].patient.user))
             else:
                 table_row.append((timeslot_start, None))
         time_table.append(table_row)
+
+    print time_table
 
     return time_table

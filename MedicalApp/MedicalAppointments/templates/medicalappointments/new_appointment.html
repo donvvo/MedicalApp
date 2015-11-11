@@ -109,11 +109,12 @@ $(function() {
                             '</figcaption>' +
                         '</figure>' +
                     '</div>';
-    var addClinic = function(clinic) {
+    var addClinic = function(clinic, specialty) {
         var $clinicItem = $(clinicHTML);
         $clinicItem.attr('class', $clinicItem.attr('class') + ' ' + clinic.fields.city);
         $clinicItem.find('h4').text(clinic.pk);
         var url = Urls['medical_appointments:timetable_patient'](encodeURIComponent(clinic.pk).replace(/%20/g, '+'));
+        url = url + '/' + specialty + '/';
         var $a = $clinicItem.find('a');
         $a.attr('href', url);
         $('#clinics').isotope('insert', $clinicItem);
@@ -130,7 +131,7 @@ $(function() {
             success: function(data){
                 var cities = [];
                 data.forEach(function(clinic) {
-                    addClinic(clinic);
+                    addClinic(clinic, specialty);
                     var city = clinic.fields.city;
                     if ($.inArray(city, cities) === -1) {
                         cities.push(city);
@@ -156,7 +157,6 @@ $(function() {
                 $('#specialty-section').hide();
                 $('#location-section').show();
 
-                console.log($('.filter'));
                 $('#show_all').click();
             }
         });
