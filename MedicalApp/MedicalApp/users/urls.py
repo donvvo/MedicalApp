@@ -44,6 +44,12 @@ urlpatterns = [
         name="manage_main"
     ),
 
+    url(
+        regex=r'^manage/doctors$',
+        view=views.DoctorsListView.as_view(),
+        name="doctors_list"
+    ),
+
     # URL pattern for the UserRedirectView
     url(
         regex=r'^~redirect/$',

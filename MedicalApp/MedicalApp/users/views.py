@@ -130,3 +130,17 @@ class ManageMainView(LoginRequiredMixin, TemplateView):
         else:
             redirect_url = reverse("users:account_redirect")
             return redirect(redirect_url)
+
+
+class DoctorsListView(LoginRequiredMixin, ListView):
+    model = Doctor
+    template_name = "users/doctors_list.html"
+
+    def dispatch(self, request, *args, **kwargs):
+        self.request.user.is_staff
+        if self.request.user.is_staff:
+            return super(DoctorsListView, self).dispatch(request,
+                                                         *args, **kwargs)
+        else:
+            redirect_url = reverse("users:account_redirect")
+            return redirect(redirect_url)
