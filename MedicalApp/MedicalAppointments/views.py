@@ -137,3 +137,5 @@ class DoctorTimetableView(LoginRequiredMixin, ListView):
             context['object_list'], table_start=6, table_end=17, table_interval=30, num_doctor=1)
 
         return context
+
+

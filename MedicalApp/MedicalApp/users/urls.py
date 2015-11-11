@@ -50,6 +50,12 @@ urlpatterns = [
         name="doctors_list"
     ),
 
+    url(
+        regex=r'^manage/doctors/sendlink$',
+        view=views.EmailDoctorView.as_view(),
+        name="email_doctor"
+    ),
+
     # URL pattern for the UserRedirectView
     url(
         regex=r'^~redirect/$',

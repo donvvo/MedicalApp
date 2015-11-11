@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- Add doctor -->
+<section class="generic newsletter bg-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 text-center">
+                <h6>Enter the email address of the doctor you would like to add</h6>
+                <form id="newsletter" class="input-group" action="{{request.path}}" method="post" accept-charset="utf-8" role="form">
+                    {% csrf_token %}
+                    {{form.email.error}}
+                    {{form.email}}
+                    <button type="submit" class="btn btn-send" data-loading-text="Sending...">Add</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Add doctor -->
+
+{% endblock content %}

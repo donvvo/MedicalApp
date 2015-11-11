@@ -1,18 +1,18 @@
 # -*- coding: utf-8 -*-
 from __future__ import absolute_import, unicode_literals
 
-from django.core.urlresolvers import reverse
+from django.core.urlresolvers import reverse, reverse_lazy
 from django.views.generic import DetailView, ListView, RedirectView, UpdateView, TemplateView
 from django.shortcuts import redirect, get_object_or_404
 
 from braces.views import LoginRequiredMixin
-from allauth.account.views import LoginView, SignupView
+from allauth.account.views import LoginView, SignupView, FormView
 from allauth.account.utils import complete_signup
 from allauth.account import app_settings
 
 from .models import User
 from MedicalAppointments.models import Patient, Doctor
-from .forms import UserSettingsForm
+from .forms import UserSettingsForm, EmailDoctorForm
 
 
 class HomeView(LoginRequiredMixin, RedirectView):
@@ -144,3 +144,22 @@ class DoctorsListView(LoginRequiredMixin, ListView):
         else:
             redirect_url = reverse("users:account_redirect")
             return redirect(redirect_url)
+
+
+class EmailDoctorView(LoginRequiredMixin, FormView):
+    template_name = "users/email_doctor.html"
+    form_class = EmailDoctorForm
+    success_url = reverse_lazy('users:doctors_list')
+
+    def dispatch(self, request, *args, **kwargs):
+        self.request.user.is_staff
+        if self.request.user.is_staff:
+            return super(EmailDoctorView, self).dispatch(request,
+                                                         *args, **kwargs)
+        else:
+            redirect_url = reverse("users:account_redirect")
+            return redirect(redirect_url)
+
+    def form_valid(self, form):
+        form.send_email(self.request.user.email, reverse("users:account_signup_doctors"))
+        return super(EmailDoctorView, self).form_valid(form)
