@@ -49,6 +49,8 @@ def get_time_table(bookings, table_start, table_end, table_interval, num_doctor)
     for day in dates:
         timeslot_start = datetime.datetime.combine(day, start_hour).astimezone(TZ_UTC)
         index = check_booking_in_timeslot(timeslot_start, interval, booking_time)
+        if len(index) > 0:
+            print index
         if index != [] and len(index) == num_doctor:
             first_row.append((timeslot_start, bookings[index[0]].patient.user))
         else:
@@ -66,7 +68,5 @@ def get_time_table(bookings, table_start, table_end, table_interval, num_doctor)
             else:
                 table_row.append((timeslot_start, None))
         time_table.append(table_row)
-
-    print time_table
 
     return time_table
