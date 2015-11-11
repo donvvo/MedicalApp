@@ -1,0 +1,138 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<!-- Clinic Profile-->
+<section class="profile-doctor generic animated fadeInUp">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 text-right">
+            {% if request.user.is_staff %}
+                <a href="#" class="btn btn-default btn-hover-bg"><span>Edit Profile</span></a>
+            {% endif %}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="section-title">
+                    <h3>Clinic Profile</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-9">
+                <div class="row">
+                    <div class="col-sm-5 hidden-xs">
+                        <figure>
+                            <img src="img/doctors/doctor-01.jpg" class="img-responsive" alt="">
+                        </figure>
+                    </div>
+                    <div class="col-sm-7">
+                        <div class="tag-text">
+                            <h4>{{object.name}}</h4>
+                            <span>Specialty</span>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam non obcaecati quas magnam id odio maxime pariatur voluptate porro architecto, sint rem velit aperiam veritatis ducimus neque quae, in quibusdam?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam non obcaecati quas magnam id odio maxime pariatur voluptate porro architecto, sint rem velit aperiam veritatis ducimus neque quae, in quibusdam?pariatur voluptate porro architecto, sint rem velit aperiam veritatis ducimus neque quae, in quibusdam?</p>
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div class="col-md-3">
+                <div class="sidebar sidebar-right">
+                    <h5 class="sidebar-title">About</h5>
+
+                    <div class="panel-group" id="accordion-work2">
+                        <div class="panel">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion-work2" href="#hours" class="collapsed">
+                                        <i class="fa fa-plus-square"></i>Hours
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="hours" class="panel-collapse collapse" style="height: 0px;">
+                                <div class="panel-body">
+                                    <p>Monday</p>
+                                    <p>Tuesday</p>
+                                    <p>etc</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion-work2" href="#collapseService" class="collapsed">
+                                        <i class="fa fa-plus-square"></i>Address
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseService" class="panel-collapse collapse" style="height: 0px;">
+                                <div class="panel-body">
+                                    <p>12313 Fake street,</p>
+                                    <p>Toronto, Ontario</p>
+                                    <p>F4D 343, Canada</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="panel">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion-work" href="#collapseBest" class="collapsed">
+                                        <i class="fa fa-plus-square"></i>Contact
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseBest" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <p>Phone number goes here</p>
+                                    <p>email address goes here</p>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="panel">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion-work" href="#doctors" class="collapsed">
+                                        <i class="fa fa-plus-square"></i>Doctors
+                                    </a>
+                                </h4>
+                            </div>
+
+                            <div id="doctors" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <ul class="media-list">
+                                    {% for doctor in object.doctor_set.all %}
+                                        <li class="media">
+                                            <a class="pull-left" href="blog-left-sidebar.html">
+                                                <img class="media-object" src="{% static 'img/news/news-thumbnail-144x144-01.jpg' %}" alt="//">
+                                            </a>
+                                            <div class="media-body">
+                                                <h5 class="media-heading"><a href="blog-left-sidebar.html">{{doctor.user.first_name}} {{doctor.user.last_name}}</a></h5>
+                                                <p class="media-meta">{{doctor.specialty}}</p>
+                                            </div>
+                                        </li>
+                                    {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+<!-- End Clinic Profile -->
+
+{% endblock content %}

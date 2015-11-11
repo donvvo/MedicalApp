@@ -139,3 +139,15 @@ class DoctorTimetableView(LoginRequiredMixin, ListView):
         return context
 
 
+class ClinicProfileView(LoginRequiredMixin, DetailView):
+    model = Clinic
+    template_name = "medicalappointments/clinic_profile.html"
+    slug_field = "name"
+    slug_url_kwarg = "clinicname"
+
+    def get_object(self):
+        clinic_name = self.kwargs['clinicname']
+        print clinic_name
+        clinic_name = clinic_name.replace('+', ' ')
+        print clinic_name
+        return self.model.objects.get(name=clinic_name)

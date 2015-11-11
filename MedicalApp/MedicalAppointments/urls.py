@@ -4,7 +4,7 @@ from __future__ import absolute_import, unicode_literals
 from django.conf.urls import url
 
 from .views import AppointmentView, NewAppointmentView, get_clinics, PatientTimetableView, save_booking,\
-    DoctorTimetableView
+    DoctorTimetableView, ClinicProfileView
 
 
 urlpatterns = [
@@ -13,6 +13,6 @@ urlpatterns = [
     url(r'^new/save/$', save_booking, name="save_booking"),
     url(r'^timetable/$', DoctorTimetableView.as_view(), name="timetable_doctor"),
     url(r'^new/timetable/(?P<clinic>[\w+]+)/(?P<specialty>\w+)/$', PatientTimetableView.as_view(), name="timetable_patient"),
-    url(r'^clinics/$', get_clinics, name="get_clinics"),
-
+    url(r'^clinics/.json$', get_clinics, name="get_clinics"),
+    url(r'^clinics/(?P<clinicname>[\w.@+-]+)/$', ClinicProfileView.as_view(), name='clinic_profile'),
 ]
