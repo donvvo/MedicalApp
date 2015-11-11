@@ -5,7 +5,7 @@ from django.core import serializers
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseBadRequest, HttpResponse, HttpResponseRedirect
 from django.shortcuts import redirect, render_to_response, get_object_or_404
-from django.views.generic import DetailView, ListView
+from django.views.generic import DetailView, ListView, TemplateView
 from django.utils import timezone
 
 from braces.views import LoginRequiredMixin
@@ -138,3 +138,16 @@ class DoctorTimetableView(LoginRequiredMixin, ListView):
 
         return context
 
+
+class ManageMainView(LoginRequiredMixin, TemplateView):
+    model = Booking
+    template_name = "medicalappointments/manage_main.html"
+
+    def dispatch(self, request, *args, **kwargs):
+        # Only patients can view
+        if self.request.user.is_staff:
+            return super(ManageMainView, self).dispatch(request,
+                                                         *args, **kwargs)
+        else:
+            redirect_url = reverse("users:account_redirect")
+            return redirect(redirect_url)

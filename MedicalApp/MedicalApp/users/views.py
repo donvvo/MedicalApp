@@ -19,7 +19,9 @@ class HomeView(LoginRequiredMixin, RedirectView):
     permanent = False
 
     def get_redirect_url(self):
-        if self.request.user.groups.filter(name="Doctors").exists():
+        if self.request.user.is_staff:
+            return reverse("medical_appointments:manage_main")
+        elif self.request.user.groups.filter(name="Doctors").exists():
             return reverse("medical_appointments:timetable_doctor")
         else:
             return reverse("medical_appointments:appointments")

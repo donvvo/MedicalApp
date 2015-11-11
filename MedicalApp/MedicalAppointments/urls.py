@@ -5,7 +5,7 @@ from django.conf.urls import url
 from django.views.generic import TemplateView
 
 from .views import AppointmentView, NewAppointmentView, get_clinics, PatientTimetableView, save_booking,\
-    DoctorTimetableView
+    DoctorTimetableView, ManageMainView
 
 
 urlpatterns = [
@@ -15,4 +15,6 @@ urlpatterns = [
     url(r'^timetable/$', DoctorTimetableView.as_view(), name="timetable_doctor"),
     url(r'^new/timetable/(?P<clinic>[\w+]+)/(?P<specialty>\w+)/$', PatientTimetableView.as_view(), name="timetable_patient"),
     url(r'^clinics/$', get_clinics, name="get_clinics"),
+    url(r'^manage/$', ManageMainView.as_view(), name="manage_main"),
+
 ]
