@@ -11,7 +11,14 @@ from . import views
 
 
 urlpatterns = [
-    url(r'^patient-information/$', views.PatientInformationView.as_view(), name="patient_info"),
+    # Patient information
+    url(r'^patient-information/(?P<pk>[\d]+)/$', views.PatientInformationView.as_view(),
+        name="patient_info"),
+    url(r'^patient-information/(?P<pk>[\d]+)/edit/$', views.PatientInformationEditView.as_view(),
+        name="patient_info_edit"),
+    url(r'^patient-information/(?P<pk>[\d]+)/new/$', views.PatientInformationCreateView.as_view(),
+        name="patient_info_new"),
+
     url(r'^health-history/$', views.HealthHistoryView.as_view(), name="health_history"),
     url(r'^subjective-evaluation/$', views.SubjectiveEvaluationView.as_view(), name="subjective_eval"),
     url(r'^assessment/$', views.AssessmentView.as_view(), name="assessment"),
@@ -19,13 +26,13 @@ urlpatterns = [
     url(r'^MVA-intake/$', views.MVAIntakeView.as_view(), name="MVA_intake"),
 
     # Report of Findings
-    url(r'^report-of-findings/(?P<pk>[\d]+)$', views.ReportOfFindingsView.as_view(),
+    url(r'^report-of-findings/(?P<pk>[\d]+)/$', views.ReportOfFindingsView.as_view(),
         name="report_of_findings"),
-    url(r'^report-of-findings/(?P<pk>[\d]+)/edit$', views.ReportOfFindingsEditView.as_view(),
+    url(r'^report-of-findings/(?P<pk>[\d]+)/edit/$', views.ReportOfFindingsEditView.as_view(),
         name="report_of_findings_edit"),
-    url(r'^report-of-findings/list$', views.ReportOfFindingsListView.as_view(),
+    url(r'^report-of-findings/list/$', views.ReportOfFindingsListView.as_view(),
         name="report_of_findings_list"),
-    url(r'^report-of-findings/(?P<pk>[\d]+)/new$', views.ReportOfFindingsCreateView.as_view(),
+    url(r'^report-of-findings/(?P<pk>[\d]+)/new/$', views.ReportOfFindingsCreateView.as_view(),
         name="report_of_findings_new"),
 
 
