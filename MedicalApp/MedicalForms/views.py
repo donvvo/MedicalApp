@@ -1,15 +1,25 @@
 # -*- coding: utf-8 -*-
 from __future__ import absolute_import, unicode_literals
 
+from django.contrib.auth.decorators import user_passes_test
 from django.core.urlresolvers import reverse, reverse_lazy
+from django.http import HttpResponseForbidden
 from django.views.generic import FormView, DetailView, ListView, CreateView, UpdateView
 from django.views.generic.base import TemplateResponseMixin
 from django.views.generic.edit import FormMixin, ProcessFormView
+from django.shortcuts import get_object_or_404
+from django.utils.decorators import method_decorator
 
 from braces.views import LoginRequiredMixin, GroupRequiredMixin
 
+from MedicalApp.utils import user_passes_test_with_kwargs
 from .models import *
 from .forms import *
+
+
+def owner_or_doctors(user, **kwargs):
+    user_id = int(kwargs['user_id'])
+    return user.pk == user_id or user.groups.filter(name="Doctors").exists()
 
 
 class DoctorOnlyMixin(LoginRequiredMixin, GroupRequiredMixin):
@@ -21,17 +31,41 @@ class DoctorOnlyMixin(LoginRequiredMixin, GroupRequiredMixin):
 class PatientInformationView(LoginRequiredMixin, DetailView):
     template_name = 'medicalforms/patient_information.html'
     model = PatientInformation
-    slug_field = "pk"
-    slug_url_kwarg = "pk"
+
+    def dispatch(self, request, *args, **kwargs):
+        '''try:
+            self.patient_info_form = get_object_or_404(self.model, user=)
+        if self.request.user.groups.filter(name="Patients").exists():
+            return super(AppointmentView, self).dispatch(request,
+                                                         *args, **kwargs)
+        else:
+            return HttpResponseForbidden()'''
+        pass
+
+    def get_object(self):
+        objects = self.model.objects.filter(user=self.request.user)
+        if objects.exists():
+            return objects.one()
+        else:
+            return PatientInformation(user=self.request.user)
 
 
 class PatientInformationEditView(LoginRequiredMixin, UpdateView):
     template_name = 'medicalforms/patient_information_edit.html'
     model = PatientInformation
     form_class = PatientInformationForm
-    success_url = reverse_lazy('medical_forms:patient_info_edit')
-    slug_field = "pk"
-    slug_url_kwarg = "pk"
+    success_url = reverse_lazy('medical_forms:patient_info')
+
+    @method_decorator(user_passes_test_with_kwargs(owner_or_doctors))
+    def dispatch(self, request, *args, **kwargs):
+        return super(PatientInformationEditView, self). dispatch(request, *args, **kwargs)
+
+    def get_object(self):
+        objects = self.model.objects.filter(user=self.request.user)
+        if objects.exists():
+            return objects.one()
+        else:
+            return PatientInformation(user=self.request.user)
 
 
 class PatientInformationCreateView(LoginRequiredMixin, CreateView):
