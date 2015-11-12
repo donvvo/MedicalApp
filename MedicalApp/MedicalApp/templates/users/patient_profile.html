@@ -40,7 +40,7 @@
                             {% endif %}
                         </div>
                         <h5 class="alternative-title">Patient Information</h5>
-                        <a href="{% url 'medical_forms:patient_info' %}" class="btn btn-default btn-hover-bg"><span>View</span></a>
+                        <a href="{% url 'medical_forms:patient_info' object.pk %}" class="btn btn-default btn-hover-bg"><span>View</span></a>
                         <h5 class="alternative-title">Health History</h5>
                         <a href="{% url 'medical_forms:health_history' %}" class="btn btn-default btn-hover-bg"><span>View</span></a>
                         <h5 class="alternative-title">Subjective Evaluation</h5>
