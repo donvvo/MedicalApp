@@ -15,6 +15,8 @@
             </div>
         </div>
         <div id="clinic-name" style="display:none">{{clinic}}</div>
+        <div id="specialty-name" style="display:none">{{specialty}}</div>
+
         <div class="row">
             <div class="col-sm-12">
                 <div class="timetable-responsive">
@@ -116,23 +118,25 @@ $(function() {
         $prettyDate = $this.attr('data-prettydate');
         $prettyTime = $this.attr('data-prettytime');
         $clinic = $('#clinic-name')[0].textContent;
+        $specialty = $('#specialty-name')[0].textContent;
 
         $('.modal-body').text('Confirm booking on ' + $prettyDate + ' at ' + $prettyTime);
 
         $('#save-booking').click(function() {
             $.ajax({
                 type:"POST",
-                url:"{% url 'medical_appointments:save_booking' %}",
+                url:"{{request.path}}",
                 data: {
                     year: $year,
                     month: $month,
                     date: $date,
                     hour: $hour,
                     minute: $minute,
-                    clinic: $clinic
+                    clinic: $clinic,
+                    specialty: $specialty
                 },
                 success: function(data){
-                    window.location.replace(Urls['medical_appointments:appointments']);
+                    window.location.replace(Urls['medical_appointments:appointments']());
                 }
             });
         });

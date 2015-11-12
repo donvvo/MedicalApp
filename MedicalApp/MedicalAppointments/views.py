@@ -1,4 +1,7 @@
 import datetime
+import pytz
+import random
+import time
 
 from django.contrib.auth.decorators import login_required
 from django.core import serializers
@@ -87,31 +90,42 @@ class PatientTimetableView(LoginRequiredMixin, ListView):
         context['table'] = get_time_table(
             context['object_list'], table_start=6, table_end=17, table_interval=30, num_doctor=len(self.doctors))
         context['clinic'] = self.kwargs.get('clinic', None).replace('+', ' ')
+        context['specialty'] = self.kwargs.get('specialty', None)
 
         return context
 
+    def post(self, request, *args, **kwargs):
+        if request.is_ajax():
+            year = int(request.POST.get('year'))
+            month = int(request.POST.get('month'))
+            date = int(request.POST.get('date'))
+            hour = int(request.POST.get('hour'))
+            minute = int(request.POST.get('minute'))
 
-def save_booking(request):
-    if request.method == 'POST':
-        year = int(request.POST.get('year'))
-        month = int(request.POST.get('month'))
-        date = int(request.POST.get('date'))
-        hour = int(request.POST.get('hour'))
-        minute = int(request.POST.get('minute'))
+            clinic_name = str(request.POST.get('clinic'))
+            specialty = str(request.POST.get('specialty'))
 
-        clinic_name = str(request.POST.get('clinic'))
+            local_tz = timezone.get_default_timezone()
+            TZ_UTC = pytz.utc
 
-        booking_time = datetime.datetime(year=year, month=month, day=date, hour=hour, minute=minute)
+            booking_time = datetime.datetime(year=year, month=month, day=date,
+                hour=hour, minute=minute, tzinfo=local_tz).astimezone(TZ_UTC)
 
-        timezone.make_aware(booking_time, timezone.get_current_timezone())
+            clinic = Clinic(pk=clinic_name)
 
-        clinic = Clinic(pk=clinic_name)
-        doctor = Doctor(pk=10)
-        booking = Booking(clinic=clinic, patient=request.user.patient, doctor=doctor, time=booking_time)
-        booking.save()
+            free_doctors = []
+            for doctor in clinic.doctor_set.filter(specialty_id=specialty):
+                if not (booking_time in [a.time for a in doctor.booking_set.all()]):
+                    free_doctors.append(doctor)
 
-        return HttpResponseRedirect(reverse("medical_appointments:appointments"))
-    return HttpResponseBadRequest()
+            print free_doctors
+
+            doctor = random.choice(free_doctors)
+            print doctor
+            booking = Booking(clinic=clinic, patient=request.user.patient, doctor=doctor, time=booking_time)
+            booking.save()
+
+            return HttpResponseRedirect(reverse("medical_appointments:appointments"))
 
 
 class DoctorTimetableView(LoginRequiredMixin, ListView):

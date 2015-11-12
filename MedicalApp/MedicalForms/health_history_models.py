@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
 
+from .utils import MyCharField, MySelectField, IntegerRangeField, MyNullBooleanField, MyTextField
 from MedicalApp.users.models import User
 
 
@@ -97,19 +98,18 @@ class HealthHistory(models.Model):
     genitourinary = models.ManyToManyField(Genitourinary, blank=True)
     cardiovascular = models.ManyToManyField(Cardiovascular, blank=True)
     woemn_only_choices = models.ManyToManyField(WomenOnlyChoices)
-    menstrual_flow = models.CharField(max_length=20,
-                                      choices=MENSTRUAL_FLOW_CHOICES,
-                                      blank=True)
-    pregnant = models.NullBooleanField()
+    menstrual_flow = MySelectField(max_length=20,
+                                      choices=MENSTRUAL_FLOW_CHOICES)
+    pregnant = MyNullBooleanField()
     previous_conditions = models.ManyToManyField(PreviousConditions,
                                                  blank=True)
-    cnd_disorders = models.CharField(max_length=100, blank=True)
-    current_medications = models.TextField(blank=True)
-    previous_surgeries = models.TextField(blank=True)
-    smoker = models.NullBooleanField(blank=True)
-    other_conditions = models.TextField(blank=True)
-    family_doctor = models.CharField(max_length=100, blank=True)
-    family_doctor_telephone = models.CharField(max_length=20, blank=True)
+    cnd_disorders = MyCharField(max_length=100)
+    current_medications = MyTextField()
+    previous_surgeries = MyTextField()
+    smoker = MyNullBooleanField()
+    other_conditions = MyTextField()
+    family_doctor = MyCharField(max_length=100)
+    family_doctor_telephone = MyCharField(max_length=20)
 
     def __str__(self):
         return 'Health history for ' + self.user.first_name

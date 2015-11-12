@@ -17,9 +17,32 @@ class DoctorOnlyMixin(LoginRequiredMixin, GroupRequiredMixin):
     raise_exception = True
 
 
-class PatientInformationView(FormView):
+# Patient information
+class PatientInformationView(LoginRequiredMixin, DetailView):
     template_name = 'medicalforms/patient_information.html'
+    model = PatientInformation
+    slug_field = "pk"
+    slug_url_kwarg = "pk"
+
+
+class PatientInformationEditView(LoginRequiredMixin, UpdateView):
+    template_name = 'medicalforms/patient_information_edit.html'
+    model = PatientInformation
     form_class = PatientInformationForm
+    success_url = reverse_lazy('medical_forms:patient_info_edit')
+    slug_field = "pk"
+    slug_url_kwarg = "pk"
+
+
+class PatientInformationCreateView(LoginRequiredMixin, CreateView):
+    template_name = 'medicalforms/patient_information_edit.html'
+    model = PatientInformation
+    form_class = PatientInformationForm
+    success_url = reverse_lazy('medical_forms:patient_info_new')
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super(ReportOfFindingsCreateView, self).form_valid(form)
 
 
 class HealthHistoryView(FormView):
@@ -72,7 +95,7 @@ class ReportOfFindingsCreateView(DoctorOnlyMixin, CreateView):
     template_name = 'medicalforms/report_of_findings_edit.html'
     model = ReportOfFindings
     form_class = ReportOffindingsForm
-    success_url = reverse_lazy('medical_forms:report_of_findings_list')
+    success_url = reverse_lazy('medical_forms:report_of_findings_new')
 
     def form_valid(self, form):
         form.instance.doctor = self.request.user.doctor

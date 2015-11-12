@@ -32,15 +32,16 @@
                                     <img src="{% static 'img/news/news-thumbnail-144x144-02.jpg' %}" alt="//" class="img-responsive">
                                  </div>
                                 <div class="col-md-5">
-                                    <p>Address of the location goes here</p>
+                                    <p>{{appointment.clinic.address}}, {{appointment.clinic.city}}
+                                    <br>{{appointment.clinic.postal_code}}</p>
                                 </div>
                                 <div class="col-md-3">
-                                    11:34 AM
+                                    {{appointment.time|time:"h:i A"}} -- {{appointment.time|date:"M j"}} {{appointment.time|date:"D"}}
                                 </div>
                                 <div class="col-md-2">
                                     <p>Your doctor</p>
                                     <img src="{% static 'img/news/news-thumbnail-144x144-02.jpg' %}" alt="//" class="img-responsive">
-                                    <p>Dr.Vo</p>
+                                    <p>{{appointment.doctor}}</p>
                                 </div>
 
                             </div><!-- ./row -->
