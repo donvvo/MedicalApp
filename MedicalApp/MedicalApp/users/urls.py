@@ -38,6 +38,24 @@ urlpatterns = [
 
     url(r"^logout/$", logout, name="account_logout"),
 
+    url(
+        regex=r'^manage/$',
+        view=views.ManageMainView.as_view(),
+        name="manage_main"
+    ),
+
+    url(
+        regex=r'^manage/doctors$',
+        view=views.DoctorsListView.as_view(),
+        name="doctors_list"
+    ),
+
+    url(
+        regex=r'^manage/doctors/sendlink$',
+        view=views.EmailDoctorView.as_view(),
+        name="email_doctor"
+    ),
+
     # URL pattern for the UserRedirectView
     url(
         regex=r'^~redirect/$',

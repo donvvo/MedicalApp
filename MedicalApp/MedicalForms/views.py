@@ -1,19 +1,20 @@
 # -*- coding: utf-8 -*-
 from __future__ import absolute_import, unicode_literals
 
-from django.core.urlresolvers import reverse
-from django.views.generic import FormView
+from django.core.urlresolvers import reverse, reverse_lazy
+from django.views.generic import FormView, DetailView, ListView, CreateView, UpdateView
 from django.views.generic.base import TemplateResponseMixin
 from django.views.generic.edit import FormMixin, ProcessFormView
 
-from braces.views import LoginRequiredMixin
+from braces.views import LoginRequiredMixin, GroupRequiredMixin
 
-from .forms import PatientInformationForm, HealthHistoryForm,\
-    HeadacheQuestionForm, CervicalSpineQuestionForm, ThoracicSpineQuestionForm,\
-    LumbarSpineQuestionForm, PeripheralJointQuestion1Form,\
-    PeripheralJointQuestion2Form, PeripheralJointQuestion3Form,\
-    PeripheralJointQuestion4Form, OtherSubjectiveEvaluationQuestionForm,\
-    AssessmentForm, AccidentHistoryForm, MVAIntakeForm
+from .models import *
+from .forms import *
+
+
+class DoctorOnlyMixin(LoginRequiredMixin, GroupRequiredMixin):
+    group_required = 'Doctors'
+    raise_exception = True
 
 
 class PatientInformationView(FormView):
@@ -39,6 +40,43 @@ class AccidentHistoryView(FormView):
 class MVAIntakeView(FormView):
     template_name = 'medicalforms/MVA_intake.html'
     form_class = MVAIntakeForm
+
+
+# Report of findings
+class ReportOfFindingsView(DoctorOnlyMixin, DetailView):
+    template_name = 'medicalforms/report_of_findings.html'
+    model = ReportOfFindings
+    # These next two lines tell the view to index lookups by username
+    slug_field = "pk"
+    slug_url_kwarg = "pk"
+
+
+class ReportOfFindingsListView(DoctorOnlyMixin, ListView):
+    template_name = 'medicalforms/report_of_findings_list.html'
+    model = ReportOfFindings
+
+    def get_queryset(self):
+        return self.model.objects.filter(doctor=self.request.user.doctor).all()
+
+
+class ReportOfFindingsEditView(DoctorOnlyMixin, UpdateView):
+    template_name = 'medicalforms/report_of_findings_edit.html'
+    model = ReportOfFindings
+    form_class = ReportOffindingsForm
+    success_url = reverse_lazy('medical_forms:report_of_findings_list')
+    slug_field = "pk"
+    slug_url_kwarg = "pk"
+
+
+class ReportOfFindingsCreateView(DoctorOnlyMixin, CreateView):
+    template_name = 'medicalforms/report_of_findings_edit.html'
+    model = ReportOfFindings
+    form_class = ReportOffindingsForm
+    success_url = reverse_lazy('medical_forms:report_of_findings_list')
+
+    def form_valid(self, form):
+        form.instance.doctor = self.request.user.doctor
+        return super(ReportOfFindingsCreateView, self).form_valid(form)
 
 
 # From https://gist.github.com/michelts/1029336#file-gistfile1-py-L6

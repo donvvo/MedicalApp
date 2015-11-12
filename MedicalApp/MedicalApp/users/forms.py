@@ -1,6 +1,9 @@
 import logging
 
 from django import forms
+from django.conf import settings
+from django.core.mail import EmailMessage
+
 from allauth.account.forms import LoginForm, SignupForm
 
 from .models import User
@@ -99,3 +102,24 @@ class UserSettingsForm(forms.ModelForm):
                                     'placeholder': 'Contact Number'
                                     }),
         }
+
+
+class EmailDoctorForm(forms.Form):
+    email = forms.EmailField(widget=forms.EmailInput(attrs={
+                                    'type': 'email',
+                                    'class': 'form-control',
+                                    'placeholder': 'Enter a valid E-mail'
+                                    }),
+                            error_messages={
+                                'invalid': "Please enter valid email address",
+                                'required': "Please enter an email address"
+                                })
+
+    def send_email(self, staff_email, link):
+        data = self.cleaned_data
+        msg = EmailMessage('Doctor Signup Link',
+                           link,
+                           staff_email,
+                           [data['email']])
+        msg.send()
+

@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+
+{% for item in object_list %}
+    <a href="{% url 'medical_forms:report_of_findings' item.pk %}">Link</a>
+    {{item}}
+{% endfor %}
+
+{% endblock content %}

@@ -1,7 +1,7 @@
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
 
-from .utils import MyCharField, MySelectField, IntegerRangeField
+from .utils import MyCharField, MySelectField, IntegerRangeField, MyNullBooleanField
 from MedicalApp.users.models import User
 
 # Patient information form choices
@@ -47,7 +47,7 @@ class PatientInformation(models.Model):
     mobile_phone = MyCharField(max_length=20, placeholder='Mobile Phone')
     work_phone = MyCharField(max_length=20, placeholder='Work Phone')
     occupation = MyCharField(max_length=100, placeholder='Occupation')
-    modified_duties_availability = models.NullBooleanField()
+    modified_duties_availability = MyNullBooleanField()
     occupational_status = MySelectField(max_length=20, choices=OCCUPATIONAL_STATUS_CHOICES)
     job_requirements = MySelectField(max_length=20, choices=JOB_REQUIREMENTS_CHOICES)
     marital_status = MySelectField(max_length=20, choices=MARITAL_STATUS_CHOICES)
@@ -56,6 +56,24 @@ class PatientInformation(models.Model):
     emergency_contact_name = MyCharField(max_length=100, placeholder='Emergency Contact Name')
     emergency_contact_phone = MyCharField(max_length=20, placeholder='Emergency Contact Phone')
     emergency_contact_relationship = MyCharField(max_length=20, placeholder='Emergency Contact Relationship')
+
+    # Current symptoms
+    current_complaint_1 = MyCharField(max_length=100)
+    current_complaint_2 = MyCharField(max_length=100)
+    current_complaint_3 = MyCharField(max_length=100)
+    current_complaint_4 = MyCharField(max_length=100)
+    previous_injury = MyNullBooleanField()
+    previous_injury_detail = MyCharField(max_length=100)
+    previous_work_injury = MyNullBooleanField()
+    previous_work_injury_detail = MyCharField(max_length=100)
+    previous_sporting_injury = MyNullBooleanField()
+    previous_sporting_injury_detail = MyCharField(max_length=100)
+    previous_therapy = MyNullBooleanField()
+    previous_therapy_detail = MyCharField(max_length=100)
+    hospitalized = MyNullBooleanField()
+    hospitalized_detail = MyCharField(max_length=100)
+    previous_test = MyNullBooleanField()
+    previous_test_detail = MyCharField(max_length=100)
 
     def __str__(self):
         return 'Patient information for ' + self.user.first_name

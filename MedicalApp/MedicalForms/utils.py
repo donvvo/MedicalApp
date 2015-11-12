@@ -41,6 +41,36 @@ class MySelectField(models.CharField):
         return super(MySelectField, self).formfield(**defaults)
 
 
+class MyTextField(models.TextField):
+    def __init__(self, placeholder='', **kwargs):
+        kwargs['blank'] = True
+        self.placeholder = placeholder
+        super(MyTextField, self).__init__(**kwargs)
+
+    def formfield(self, **kwargs):
+        defaults = {'widget': forms.Textarea(
+                attrs={
+                    'class': 'form-control',
+                    'placeholder': self.placeholder
+                }
+            )}
+        defaults.update(kwargs)
+
+        return super(MyTextField, self).formfield(**defaults)
+
+
+class MyNullBooleanField(models.NullBooleanField):
+    def formfield(self, **kwargs):
+        defaults = {'widget': forms.NullBooleanSelect(
+                attrs={
+                    'class': 'form-control'
+                }
+            )}
+        defaults.update(kwargs)
+
+        return super(MyNullBooleanField, self).formfield(**defaults)
+
+
 class IntegerRangeField(models.IntegerField):
     def __init__(self, placeholder='', min_value=None, max_value=None, **kwargs):
         kwargs['blank'] = True

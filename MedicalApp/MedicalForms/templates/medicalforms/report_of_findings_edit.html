@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block content %}
+
+<form action="{{request.path}}" method="post">
+    {% csrf_token %}
+    {{form.patient.label}}
+    {{form.patient}}
+    {{form.date_of_assessment.label}}
+    {{form.date_of_assessment}}
+    {{form.presenting_complaint.label}}
+    {{form.presenting_complaint}}
+    {{form.examination_findings.label}}
+    {{form.examination_findings}}
+    {{form.diagnosis.label}}
+    {{form.diagnosis}}
+    {{form.plan_of_management.label}}
+    {{form.plan_of_management}}
+    {{form.goals.label}}
+    {{form.goals}}
+    {{form.risks_discussed.label}}
+    {{form.risks_discussed}}
+    {{form.alternatives.label}}
+    {{form.alternatives}}
+    {{form.prognosis.label}}
+    {{form.prognosis}}
+    {{form.estimated_time_for_recovery.label}}
+    {{form.estimated_time_for_recovery}}
+    {{form.patient_questions.label}}
+    {{form.patient_questions}}
+    {{form.errors}}
+    <input type="submit" class="btn btn-default btn-color-border-solid" value="Save">
+</form>
+
+{% endblock %}
