@@ -12,12 +12,12 @@ from . import views
 
 urlpatterns = [
     # Patient information
+    url(r'^patient-information/new/$', views.PatientInformationCreateView.as_view(),
+        name="patient_info_new"),
     url(r'^patient-information/(?P<pk>[\d]+)/$', views.PatientInformationView.as_view(),
         name="patient_info"),
     url(r'^patient-information/(?P<pk>[\d]+)/edit/$', views.PatientInformationEditView.as_view(),
         name="patient_info_edit"),
-    url(r'^patient-information/(?P<pk>[\d]+)/new/$', views.PatientInformationCreateView.as_view(),
-        name="patient_info_new"),
 
     url(r'^health-history/$', views.HealthHistoryView.as_view(), name="health_history"),
     url(r'^subjective-evaluation/$', views.SubjectiveEvaluationView.as_view(), name="subjective_eval"),

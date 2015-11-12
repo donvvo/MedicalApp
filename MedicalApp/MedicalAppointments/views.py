@@ -8,7 +8,7 @@ from django.core import serializers
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseBadRequest, HttpResponse, HttpResponseRedirect
 from django.shortcuts import redirect, render_to_response, get_object_or_404
-from django.views.generic import DetailView, ListView, TemplateView
+from django.views.generic import DetailView, ListView, UpdateView
 from django.utils import timezone
 
 from braces.views import LoginRequiredMixin
@@ -161,6 +161,18 @@ class ClinicListView(LoginRequiredMixin, ListView):
 class ClinicProfileView(LoginRequiredMixin, DetailView):
     model = Clinic
     template_name = "medicalappointments/clinic_profile.html"
+    slug_field = "name"
+    slug_url_kwarg = "clinicname"
+
+    def get_object(self):
+        clinic_name = self.kwargs['clinicname']
+        clinic_name = clinic_name.replace('+', ' ')
+        return get_object_or_404(self.model, name=clinic_name)
+
+
+class ClinicProfileEditView(LoginRequiredMixin, DetailView):
+    model = Clinic
+    template_name = "medicalappointments/clinic_edit.html"
     slug_field = "name"
     slug_url_kwarg = "clinicname"
 

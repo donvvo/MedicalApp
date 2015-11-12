@@ -3,15 +3,20 @@ from django.utils.encoding import python_2_unicode_compatible
 from django.utils import timezone
 
 from MedicalApp.users.models import User
-
+from MedicalForms.utils import MyCharField, MySelectField, IntegerRangeField, MyNullBooleanField, MyTextField
 
 # Create your models here.
 @python_2_unicode_compatible
 class Clinic(models.Model):
     name = models.CharField(max_length=100, primary_key=True)
+    phone = models.CharField(max_length=20, blank=True)
+    email = models.EmailField(blank=True)
+    description = models.TextField(blank=True)
     city = models.CharField(max_length=20)
-    address = models.CharField(max_length=200)
-    postal_code = models.CharField(max_length=10)
+    address = models.CharField(max_length=200, blank=True)
+    postal_code = models.CharField(max_length=10, blank=True)
+    start_time = models.CharField(max_length=10, blank=True)
+    end_time = models.CharField(max_length=10, blank=True)
 
     def __str__(self):
         return self.name

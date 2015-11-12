@@ -10,7 +10,7 @@
         <div class="row">
             <div class="col-sm-12 text-right">
             {% if request.user.is_staff %}
-                <a href="#" class="btn btn-default btn-hover-bg"><span>Edit Profile</span></a>
+                <a href="{% url 'medical_appointments:clinic_profile_edit' object.url_name%}" class="btn btn-default btn-hover-bg"><span>Edit Profile</span></a>
             {% endif %}
             </div>
         </div>
@@ -27,7 +27,7 @@
                 <div class="row">
                     <div class="col-sm-5 hidden-xs">
                         <figure>
-                            <img src="img/doctors/doctor-01.jpg" class="img-responsive" alt="">
+                            <img src="{% static 'img/doctors/doctor-01.jpg' %}" class="img-responsive" alt="">
                         </figure>
                     </div>
                     <div class="col-sm-7">
@@ -109,16 +109,16 @@
 
                             <div id="doctors" class="panel-collapse collapse">
                                 <div class="panel-body">
-	                                
-	                                
-	                                
-	                 
-	                                
-	                                
-	                                
+
+
+
+
+
+
+
                                     <ul class="media-list">
                                     {% for doctor in object.doctor_set.all %}
-                                    
+
                                         <li class="media">
                                             <a class="pull-left" href="blog-left-sidebar.html">
                                                 <img class="media-object img-circle" src="{% static 'img/news/news-thumbnail-144x144-01.jpg' %}" alt="//">
