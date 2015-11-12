@@ -14,8 +14,6 @@ urlpatterns = [
     # Patient information
     url(r'^patient-information/(?P<user_id>[\d]+)/$', views.PatientInformationView.as_view(),
         name="patient_info"),
-    url(r'^patient-information/(?P<user_id>[\d]+)/edit/$', views.PatientInformationEditView.as_view(),
-        name="patient_info_edit"),
 
     url(r'^health-history/$', views.HealthHistoryView.as_view(), name="health_history"),
     url(r'^subjective-evaluation/$', views.SubjectiveEvaluationView.as_view(), name="subjective_eval"),

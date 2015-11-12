@@ -10,8 +10,302 @@
                 </div>
             </div>
         </div>
-        <a href="{% url 'medical_forms:patient_info_edit' object.pk %}">edit</a>
-        {{object}}
+        <div class="row">
+            <div class="col-sm-10 col-sm-offset-1">
+                <form action="{{request.path}}" method="post" accept-charset="utf-8">
+                {% csrf_token %}
+                    {% for field in form %}
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    {% for error in field.errors %}
+                                      <span class="errorlist">{{error}}</span>
+                                    {% endfor %}
+                                </div>
+                                {{field.label}}
+                                {{field}}
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+        <div class="row">
+            <div class="col-sm-12">
+                {{form.user.error}}
+                {{form.user.label}}
+                {{form.user}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                {{form.complete.error}}
+                {{form.complete.label}}
+                {{form.complete}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                {{form.today_date.error}}
+                {{form.today_date.label}}
+                {{form.today_date}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                {{form.accident_date.error}}
+                {{form.accident_date.label}}
+                {{form.accident_date}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                {{form.date_of_birth.error}}
+                {{form.date_of_birth.label}}
+                {{form.date_of_birth}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                {{form.gender.error}}
+                {{form.gender.label}}
+                {{form.gender}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                {{form.address.error}}
+                {{form.address.label}}
+                {{form.address}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                {{form.city.error}}
+                {{form.city.label}}
+                {{form.city}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                {{form.postal_code.error}}
+                {{form.postal_code.label}}
+                {{form.postal_code}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                {{form.first_language.error}}
+                {{form.first_language.label}}
+                {{form.first_language}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                {{form.home_phone.error}}
+                {{form.home_phone.label}}
+                {{form.home_phone}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                {{form.mobile_phone.error}}
+                {{form.mobile_phone.label}}
+                {{form.mobile_phone}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                {{form.work_phone.error}}
+                {{form.work_phone.label}}
+                {{form.work_phone}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                {{form.occupation.error}}
+                {{form.occupation.label}}
+                {{form.occupation}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                {{form.modified_duties_availability.error}}
+                {{form.modified_duties_availability.label}}
+                {{form.modified_duties_availability}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                {{form.occupational_status.error}}
+                {{form.occupational_status.label}}
+                {{form.occupational_status}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                {{form.job_requirements.error}}
+                {{form.job_requirements.label}}
+                {{form.job_requirements}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                {{form.marital_status.error}}
+                {{form.marital_status.label}}
+                {{form.marital_status}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                {{form.number_of_children.error}}
+                {{form.number_of_children.label}}
+                {{form.number_of_children}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                {{form.ages.error}}
+                {{form.ages.label}}
+                {{form.ages}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                {{form.emergency_contact_name.error}}
+                {{form.emergency_contact_name.label}}
+                {{form.emergency_contact_name}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                {{form.emergency_contact_phone.error}}
+                {{form.emergency_contact_phone.label}}
+                {{form.emergency_contact_phone}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                {{form.emergency_contact_relationship.error}}
+                {{form.emergency_contact_relationship.label}}
+                {{form.emergency_contact_relationship}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                {{form.current_complaint_1.error}}
+                {{form.current_complaint_1.label}}
+                {{form.current_complaint_1}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                {{form.current_complaint_2.error}}
+                {{form.current_complaint_2.label}}
+                {{form.current_complaint_2}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                {{form.current_complaint_3.error}}
+                {{form.current_complaint_3.label}}
+                {{form.current_complaint_3}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                {{form.current_complaint_4.error}}
+                {{form.current_complaint_4.label}}
+                {{form.current_complaint_4}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                {{form.previous_injury.error}}
+                {{form.previous_injury.label}}
+                {{form.previous_injury}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                {{form.previous_injury_detail.error}}
+                {{form.previous_injury_detail.label}}
+                {{form.previous_injury_detail}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                {{form.previous_work_injury.error}}
+                {{form.previous_work_injury.label}}
+                {{form.previous_work_injury}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                {{form.previous_work_injury_detail.error}}
+                {{form.previous_work_injury_detail.label}}
+                {{form.previous_work_injury_detail}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                {{form.previous_sporting_injury.error}}
+                {{form.previous_sporting_injury.label}}
+                {{form.previous_sporting_injury}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                {{form.previous_sporting_injury_detail.error}}
+                {{form.previous_sporting_injury_detail.label}}
+                {{form.previous_sporting_injury_detail}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                {{form.previous_therapy.error}}
+                {{form.previous_therapy.label}}
+                {{form.previous_therapy}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                {{form.previous_therapy_detail.error}}
+                {{form.previous_therapy_detail.label}}
+                {{form.previous_therapy_detail}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                {{form.hospitalized.error}}
+                {{form.hospitalized.label}}
+                {{form.hospitalized}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                {{form.hospitalized_detail.error}}
+                {{form.hospitalized_detail.label}}
+                {{form.hospitalized_detail}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                {{form.previous_test.error}}
+                {{form.previous_test.label}}
+                {{form.previous_test}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                {{form.previous_test_detail.error}}
+                {{form.previous_test_detail.label}}
+                {{form.previous_test_detail}}
+            </div>
+        </div>
+                    <input type="submit" class="btn btn-default btn-color-border-solid" value="Save">
+                </form>
+            </div>
+        </div>
     </div>
 </section>
 

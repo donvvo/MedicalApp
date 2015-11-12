@@ -27,34 +27,15 @@ class DoctorOnlyMixin(LoginRequiredMixin, GroupRequiredMixin):
     raise_exception = True
 
 
-# Patient information
-class PatientInformationView(LoginRequiredMixin, DetailView):
+class PatientInformationView(LoginRequiredMixin, UpdateView):
     template_name = 'medicalforms/patient_information.html'
-    model = PatientInformation
-
-    @method_decorator(user_passes_test_with_kwargs(owner_or_doctors))
-    def dispatch(self, request, *args, **kwargs):
-        user_id = int(kwargs['user_id'])
-        self.patient_info_form = self.model.objects.filter(pk=user_id)
-        if self.patient_info_form.exists():
-            return super(PatientInformationView, self).dispatch(request, *args, **kwargs)
-        else:
-            return redirect(reverse_lazy('medical_forms:patient_info_edit',
-                            kwargs={'user_id': user_id}))
-
-    def get_object(self):
-        return self.patient_info_form.get()
-
-
-class PatientInformationEditView(LoginRequiredMixin, UpdateView):
-    template_name = 'medicalforms/patient_information_edit.html'
     model = PatientInformation
     form_class = PatientInformationForm
 
     @method_decorator(user_passes_test_with_kwargs(owner_or_doctors))
     def dispatch(self, request, *args, **kwargs):
         self.user_id = int(kwargs['user_id'])
-        return super(PatientInformationEditView, self). dispatch(request, *args, **kwargs)
+        return super(PatientInformationView, self). dispatch(request, *args, **kwargs)
 
     def get_object(self):
         objects = self.model.objects.filter(pk=self.user_id)
@@ -65,17 +46,6 @@ class PatientInformationEditView(LoginRequiredMixin, UpdateView):
 
     def get_success_url(self):
         return reverse_lazy('medical_forms:patient_info', kwargs={'user_id': self.user_id})
-
-
-class PatientInformationCreateView(LoginRequiredMixin, CreateView):
-    template_name = 'medicalforms/patient_information_edit.html'
-    model = PatientInformation
-    form_class = PatientInformationForm
-    success_url = reverse_lazy('medical_forms:patient_info_new')
-
-    def form_valid(self, form):
-        form.instance.user = self.request.user
-        return super(ReportOfFindingsCreateView, self).form_valid(form)
 
 
 class HealthHistoryView(FormView):
