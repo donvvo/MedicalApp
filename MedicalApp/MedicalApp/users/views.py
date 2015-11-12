@@ -161,5 +161,6 @@ class EmailDoctorView(LoginRequiredMixin, FormView):
             return redirect(redirect_url)
 
     def form_valid(self, form):
-        form.send_email(self.request.user.email, reverse("users:account_signup_doctors"))
+        signin_uri = self.request.build_absolute_uri(reverse("users:account_signup_doctors"))
+        form.send_email(self.request.user.email, signin_uri)
         return super(EmailDoctorView, self).form_valid(form)
