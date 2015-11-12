@@ -109,11 +109,19 @@
 
                             <div id="doctors" class="panel-collapse collapse">
                                 <div class="panel-body">
+	                                
+	                                
+	                                
+	                 
+	                                
+	                                
+	                                
                                     <ul class="media-list">
                                     {% for doctor in object.doctor_set.all %}
+                                    
                                         <li class="media">
                                             <a class="pull-left" href="blog-left-sidebar.html">
-                                                <img class="media-object" src="{% static 'img/news/news-thumbnail-144x144-01.jpg' %}" alt="//">
+                                                <img class="media-object img-circle" src="{% static 'img/news/news-thumbnail-144x144-01.jpg' %}" alt="//">
                                             </a>
                                             <div class="media-body">
                                                 <h5 class="media-heading"><a href="blog-left-sidebar.html">{{doctor.user.first_name}} {{doctor.user.last_name}}</a></h5>
