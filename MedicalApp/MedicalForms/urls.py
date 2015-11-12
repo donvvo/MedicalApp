@@ -15,7 +15,8 @@ urlpatterns = [
     url(r'^patient-information/(?P<user_id>[\d]+)/$', views.PatientInformationView.as_view(),
         name="patient_info"),
 
-    url(r'^health-history/$', views.HealthHistoryView.as_view(), name="health_history"),
+    url(r'^health-history/(?P<user_id>[\d]+)/$', views.HealthHistoryView.as_view(),
+        name="health_history"),
     url(r'^subjective-evaluation/$', views.SubjectiveEvaluationView.as_view(), name="subjective_eval"),
     url(r'^assessment/$', views.AssessmentView.as_view(), name="assessment"),
     url(r'^accident-history/$', views.AccidentHistoryView.as_view(), name="accident_history"),

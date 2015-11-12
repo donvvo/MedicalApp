@@ -27,30 +27,37 @@ class DoctorOnlyMixin(LoginRequiredMixin, GroupRequiredMixin):
     raise_exception = True
 
 
-class PatientInformationView(LoginRequiredMixin, UpdateView):
-    template_name = 'medicalforms/patient_information.html'
-    model = PatientInformation
-    form_class = PatientInformationForm
-
+class PatientFormBaseView(LoginRequiredMixin, UpdateView):
+    # Only allows access to doctors or patients to their own forms
     @method_decorator(user_passes_test_with_kwargs(owner_or_doctors))
     def dispatch(self, request, *args, **kwargs):
         self.user_id = int(kwargs['user_id'])
-        return super(PatientInformationView, self). dispatch(request, *args, **kwargs)
+        return super(PatientFormBaseView, self). dispatch(request, *args, **kwargs)
 
     def get_object(self):
         objects = self.model.objects.filter(pk=self.user_id)
         if objects.exists():
             return objects.get()
         else:
-            return PatientInformation(pk=self.user_id)
+            return self.model(pk=self.user_id)
+
+
+class PatientInformationView(PatientFormBaseView):
+    template_name = 'medicalforms/patient_information.html'
+    model = PatientInformation
+    form_class = PatientInformationForm
 
     def get_success_url(self):
         return reverse_lazy('medical_forms:patient_info', kwargs={'user_id': self.user_id})
 
 
-class HealthHistoryView(FormView):
+class HealthHistoryView(PatientFormBaseView):
     template_name = 'medicalforms/health_history.html'
+    model = HealthHistory
     form_class = HealthHistoryForm
+
+    def get_success_url(self):
+        return reverse_lazy('medical_forms:patient_info', kwargs={'user_id': self.user_id})
 
 
 class AssessmentView(FormView):
