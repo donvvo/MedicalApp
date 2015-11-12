@@ -7,17 +7,20 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.views import defaults as default_views
 
-from .views import PatientInformationView, HealthHistoryView,\
-    SubjectiveEvaluationView, AssessmentView, AccidentHistoryView,\
-    MVAIntakeView
+from . import views
+
 
 urlpatterns = [
-    url(r'^patient-information/$', PatientInformationView.as_view(), name="patient_info"),
-    url(r'^health-history/$', HealthHistoryView.as_view(), name="health_history"),
-    url(r'^subjective-evaluation/$', SubjectiveEvaluationView.as_view(), name="subjective_eval"),
-    url(r'^assessment/$', AssessmentView.as_view(), name="assessment"),
-    url(r'^accident-history/$', AccidentHistoryView.as_view(), name="accident_history"),
-    url(r'^MVA-intake/$', MVAIntakeView.as_view(), name="MVA_intake"),
+    url(r'^patient-information/$', views.PatientInformationView.as_view(), name="patient_info"),
+    url(r'^health-history/$', views.HealthHistoryView.as_view(), name="health_history"),
+    url(r'^subjective-evaluation/$', views.SubjectiveEvaluationView.as_view(), name="subjective_eval"),
+    url(r'^assessment/$', views.AssessmentView.as_view(), name="assessment"),
+    url(r'^accident-history/$', views.AccidentHistoryView.as_view(), name="accident_history"),
+    url(r'^MVA-intake/$', views.MVAIntakeView.as_view(), name="MVA_intake"),
+    url(r'^report-of-findings/(?P<pk>[\d]+)$', views.ReportOfFindingsView.as_view(), name="report_of_findings"),
+    url(r'^report-of-findings/list$', views.ReportOfFindingsListView.as_view(), name="report_of_findings_list"),
+    url(r'^report-of-findings/new$', views.ReportOfFindingsCreateView.as_view(), name="report_of_findings_new"),
+
 
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

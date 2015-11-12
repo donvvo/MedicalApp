@@ -2,12 +2,7 @@ import logging
 
 from django import forms
 
-from .models import PatientInformation, HealthHistory, HeadacheQuestions,\
-    CervicalSpineQuestions, ThoracicSpineQuestions, LumbarSpineQuestions,\
-    PeripheralJointQuestions1, PeripheralJointQuestions2,\
-    PeripheralJointQuestions3, PeripheralJointQuestions4,\
-    OtherSubjectiveEvaluationQuestions, Assessment, AccidentHistory,\
-    MVAIntake
+from .models import *
 
 logger = logging.getLogger(__name__)
 
@@ -131,3 +126,9 @@ class MVAIntakeForm(forms.ModelForm):
     class Meta:
         model = MVAIntake
         exclude = ('user', 'today_date')
+
+
+class ReportOffindingsForm(forms.ModelForm):
+    class Meta:
+        model = ReportOfFindings
+        exclude = ('doctor', )

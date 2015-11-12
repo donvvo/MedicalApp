@@ -9,5 +9,5 @@ from .subjective_evaluation_models import *
 from .assessment_models import *
 from .accident_history_models import *
 from .MVA_intake_models import *
-
+from .report_of_findings_models import ReportOfFindings
 
