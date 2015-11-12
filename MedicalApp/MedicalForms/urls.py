@@ -17,9 +17,16 @@ urlpatterns = [
     url(r'^assessment/$', views.AssessmentView.as_view(), name="assessment"),
     url(r'^accident-history/$', views.AccidentHistoryView.as_view(), name="accident_history"),
     url(r'^MVA-intake/$', views.MVAIntakeView.as_view(), name="MVA_intake"),
-    url(r'^report-of-findings/(?P<pk>[\d]+)$', views.ReportOfFindingsView.as_view(), name="report_of_findings"),
-    url(r'^report-of-findings/list$', views.ReportOfFindingsListView.as_view(), name="report_of_findings_list"),
-    url(r'^report-of-findings/new$', views.ReportOfFindingsCreateView.as_view(), name="report_of_findings_new"),
+
+    # Report of Findings
+    url(r'^report-of-findings/(?P<pk>[\d]+)$', views.ReportOfFindingsView.as_view(),
+        name="report_of_findings"),
+    url(r'^report-of-findings/(?P<pk>[\d]+)/edit$', views.ReportOfFindingsEditView.as_view(),
+        name="report_of_findings_edit"),
+    url(r'^report-of-findings/list$', views.ReportOfFindingsListView.as_view(),
+        name="report_of_findings_list"),
+    url(r'^report-of-findings/(?P<pk>[\d]+)/new$', views.ReportOfFindingsCreateView.as_view(),
+        name="report_of_findings_new"),
 
 
 

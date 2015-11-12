@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 
+<a href="{% url 'medical_forms:report_of_findings_edit' object.pk %}">Edit</a>
 {{object}}
 
 {% endblock content %}

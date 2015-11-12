@@ -2,7 +2,7 @@
 from __future__ import absolute_import, unicode_literals
 
 from django.core.urlresolvers import reverse, reverse_lazy
-from django.views.generic import FormView, DetailView, ListView, CreateView
+from django.views.generic import FormView, DetailView, ListView, CreateView, UpdateView
 from django.views.generic.base import TemplateResponseMixin
 from django.views.generic.edit import FormMixin, ProcessFormView
 
@@ -42,6 +42,7 @@ class MVAIntakeView(FormView):
     form_class = MVAIntakeForm
 
 
+# Report of findings
 class ReportOfFindingsView(DoctorOnlyMixin, DetailView):
     template_name = 'medicalforms/report_of_findings.html'
     model = ReportOfFindings
@@ -56,6 +57,15 @@ class ReportOfFindingsListView(DoctorOnlyMixin, ListView):
 
     def get_queryset(self):
         return self.model.objects.filter(doctor=self.request.user.doctor).all()
+
+
+class ReportOfFindingsEditView(DoctorOnlyMixin, UpdateView):
+    template_name = 'medicalforms/report_of_findings_edit.html'
+    model = ReportOfFindings
+    form_class = ReportOffindingsForm
+    success_url = reverse_lazy('medical_forms:report_of_findings_list')
+    slug_field = "pk"
+    slug_url_kwarg = "pk"
 
 
 class ReportOfFindingsCreateView(DoctorOnlyMixin, CreateView):
