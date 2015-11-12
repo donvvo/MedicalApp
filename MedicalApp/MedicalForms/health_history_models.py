@@ -1,7 +1,7 @@
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
 
-from .utils import MyCharField, MySelectField, IntegerRangeField, MyNullBooleanField, MyTextField
+from .utils import MyCharField, MySelectField, MyNullBooleanField, MyTextField
 from MedicalApp.users.models import User
 
 

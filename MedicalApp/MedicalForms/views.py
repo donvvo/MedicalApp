@@ -57,7 +57,17 @@ class HealthHistoryView(PatientFormBaseView):
     form_class = HealthHistoryForm
 
     def get_success_url(self):
-        return reverse_lazy('medical_forms:patient_info', kwargs={'user_id': self.user_id})
+        return reverse_lazy('medical_forms:health_history', kwargs={'user_id': self.user_id})
+
+
+class AccidentHistoryView(PatientFormBaseView):
+    template_name = 'medicalforms/accident_history.html'
+    model = AccidentHistory
+    form_class = AccidentHistoryForm
+
+    def get_success_url(self):
+        return reverse_lazy('medical_forms:accident-history', kwargs={'user_id': self.user_id})
+
 
 
 class AssessmentView(FormView):
@@ -65,9 +75,7 @@ class AssessmentView(FormView):
     form_class = AssessmentForm
 
 
-class AccidentHistoryView(FormView):
-    template_name = 'medicalforms/accident_history.html'
-    form_class = AccidentHistoryForm
+
 
 
 class MVAIntakeView(FormView):
