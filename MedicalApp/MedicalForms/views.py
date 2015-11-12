@@ -7,7 +7,7 @@ from django.http import HttpResponseForbidden
 from django.views.generic import FormView, DetailView, ListView, CreateView, UpdateView
 from django.views.generic.base import TemplateResponseMixin
 from django.views.generic.edit import FormMixin, ProcessFormView
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, redirect
 from django.utils.decorators import method_decorator
 
 from braces.views import LoginRequiredMixin, GroupRequiredMixin
@@ -32,40 +32,39 @@ class PatientInformationView(LoginRequiredMixin, DetailView):
     template_name = 'medicalforms/patient_information.html'
     model = PatientInformation
 
+    @method_decorator(user_passes_test_with_kwargs(owner_or_doctors))
     def dispatch(self, request, *args, **kwargs):
-        '''try:
-            self.patient_info_form = get_object_or_404(self.model, user=)
-        if self.request.user.groups.filter(name="Patients").exists():
-            return super(AppointmentView, self).dispatch(request,
-                                                         *args, **kwargs)
+        user_id = int(kwargs['user_id'])
+        self.patient_info_form = self.model.objects.filter(pk=user_id)
+        if self.patient_info_form.exists():
+            return super(PatientInformationView, self).dispatch(request, *args, **kwargs)
         else:
-            return HttpResponseForbidden()'''
-        pass
+            return redirect(reverse_lazy('medical_forms:patient_info_edit',
+                            kwargs={'user_id': user_id}))
 
     def get_object(self):
-        objects = self.model.objects.filter(user=self.request.user)
-        if objects.exists():
-            return objects.one()
-        else:
-            return PatientInformation(user=self.request.user)
+        return self.patient_info_form.get()
 
 
 class PatientInformationEditView(LoginRequiredMixin, UpdateView):
     template_name = 'medicalforms/patient_information_edit.html'
     model = PatientInformation
     form_class = PatientInformationForm
-    success_url = reverse_lazy('medical_forms:patient_info')
 
     @method_decorator(user_passes_test_with_kwargs(owner_or_doctors))
     def dispatch(self, request, *args, **kwargs):
+        self.user_id = int(kwargs['user_id'])
         return super(PatientInformationEditView, self). dispatch(request, *args, **kwargs)
 
     def get_object(self):
-        objects = self.model.objects.filter(user=self.request.user)
+        objects = self.model.objects.filter(pk=self.user_id)
         if objects.exists():
-            return objects.one()
+            return objects.get()
         else:
-            return PatientInformation(user=self.request.user)
+            return PatientInformation(pk=self.user_id)
+
+    def get_success_url(self):
+        return reverse_lazy('medical_forms:patient_info', kwargs={'user_id': self.user_id})
 
 
 class PatientInformationCreateView(LoginRequiredMixin, CreateView):
