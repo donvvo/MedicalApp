@@ -32,7 +32,7 @@ def check_booking_in_timeslot(timeslot_start, interval, booking_time):
     # Return index of -1 if no booking exist in the time slot
     return index_array
 
-
+# TODO:// Make time table have different start and end time on different days
 def get_time_table(bookings, table_start, table_end, table_interval, num_doctor):
     booking_time = [booking.time for booking in bookings]
 
