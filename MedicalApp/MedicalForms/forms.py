@@ -149,6 +149,7 @@ class AcuteConcussionEvaluationForm(forms.ModelForm):
         model = AcuteConcussionEvaluation
         exclude = ('patient', 'doctor', 'completed_date')
         widgets = {
+            'location_of_impact': forms.CheckboxSelectMultiple(),
             'early_signs': forms.CheckboxSelectMultiple(),
             'red_flags': forms.CheckboxSelectMultiple(),
             'dignosis': forms.CheckboxSelectMultiple(),

@@ -12,17 +12,6 @@ REPORTER_CHOICES = (
     ('Other', 'Other')
 )
 
-LOCATION_CHOICES = (
-    ('Frontal', 'Frontal'),
-    ('Left Temp', 'Left Temp'),
-    ('Right Temp', 'Right Temp'),
-    ('Left Parietal', 'Left Parietal'),
-    ('Right Parietal', 'Right Parietal'),
-    ('Occipital', 'Occipital'),
-    ('Neck', 'Neck'),
-    ('Indirect Force', 'Indirect Force')
-)
-
 CAUSE_CHOICES = (
     ('MVC', 'MVC'),
     ('Pedestrian-MVC', 'Pedestrian-MVC'),
@@ -46,8 +35,16 @@ FOLLOW_UP_CHOICES = (
 
 
 @python_2_unicode_compatible
-class EarlySignChoices(models.Model):
+class LocationImpact(models.Model):
     choice = models.CharField(max_length=20)
+
+    def __str__(self):
+        return self.choice
+
+
+@python_2_unicode_compatible
+class EarlySign(models.Model):
+    choice = models.CharField(max_length=40)
 
     def __str__(self):
         return self.choice
@@ -55,7 +52,7 @@ class EarlySignChoices(models.Model):
 
 @python_2_unicode_compatible
 class RedFlags(models.Model):
-    choice = models.CharField(max_length=20)
+    choice = models.CharField(max_length=40)
 
     def __str__(self):
         return self.choice
@@ -63,7 +60,7 @@ class RedFlags(models.Model):
 
 @python_2_unicode_compatible
 class Diagnosis(models.Model):
-    choice = models.CharField(max_length=20)
+    choice = models.CharField(max_length=40)
 
     def __str__(self):
         return self.choice
@@ -71,7 +68,7 @@ class Diagnosis(models.Model):
 
 @python_2_unicode_compatible
 class Refferal(models.Model):
-    choice = models.CharField(max_length=20)
+    choice = models.CharField(max_length=40)
 
     def __str__(self):
         return self.choice
@@ -87,7 +84,7 @@ class AcuteConcussionEvaluation(models.Model):
     injury_description = MyCharField(max_length=100)
     evidence_of_blow = MyNullBooleanField()
     evidence_of_cranial_injury = MyNullBooleanField()
-    location_of_impact = MySelectField(max_length=20, choices=LOCATION_CHOICES)
+    location_of_impact = models.ManyToManyField(LocationImpact, blank=True)
     cause = MySelectField(max_length=20, choices=CAUSE_CHOICES)
     sports_specify = MyCharField(max_length=50)
     others_specify = MyCharField(max_length=50)
@@ -97,7 +94,7 @@ class AcuteConcussionEvaluation(models.Model):
     amnesia_after_duration = MyCharField(max_length=10)
     lost_of_consciousness = MyNullBooleanField()
     lost_of_consciousness_duration = MyCharField(max_length=10)
-    early_signs = models.ManyToManyField(EarlySignChoices, blank=True)
+    early_signs = models.ManyToManyField(EarlySign, blank=True)
     seizure = MyNullBooleanField()
     seizure_detail = MyCharField(max_length=10)
 

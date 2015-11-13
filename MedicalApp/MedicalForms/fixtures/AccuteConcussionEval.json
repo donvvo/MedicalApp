@@ -1,0 +1,254 @@
+[
+    {
+        "model": "MedicalForms.locationimpact",
+        "pk": 1,
+        "fields": {
+            "choice": "Frontal"
+        }
+    },
+    {
+        "model": "MedicalForms.locationimpact",
+        "pk": 2,
+        "fields": {
+            "choice": "Left Temp"
+        }
+    },
+    {
+        "model": "MedicalForms.locationimpact",
+        "pk": 3,
+        "fields": {
+            "choice": "Right Temp"
+        }
+    },
+    {
+        "model": "MedicalForms.locationimpact",
+        "pk": 4,
+        "fields": {
+            "choice": "Left Parietal"
+        }
+    },
+    {
+        "model": "MedicalForms.locationimpact",
+        "pk": 5,
+        "fields": {
+            "choice": "Right Parietal"
+        }
+    },
+    {
+        "model": "MedicalForms.locationimpact",
+        "pk": 6,
+        "fields": {
+            "choice": "Occipital"
+        }
+    },
+    {
+        "model": "MedicalForms.locationimpact",
+        "pk": 7,
+        "fields": {
+            "choice": "Neck"
+        }
+    },
+    {
+        "model": "MedicalForms.locationimpact",
+        "pk": 8,
+        "fields": {
+            "choice": "Indirect Force"
+        }
+    },
+    {
+        "model": "MedicalForms.earlysign",
+        "pk": 1,
+        "fields": {
+            "choice": "Appears dazed or stunned"
+        }
+    },
+    {
+        "model": "MedicalForms.earlysign",
+        "pk": 2,
+        "fields": {
+            "choice": "Is confused about events"
+        }
+    },
+    {
+        "model": "MedicalForms.earlysign",
+        "pk": 3,
+        "fields": {
+            "choice": "Answers questions slowly"
+        }
+    },
+    {
+        "model": "MedicalForms.earlysign",
+        "pk": 4,
+        "fields": {
+            "choice": "Repeats Questions"
+        }
+    },
+    {
+        "model": "MedicalForms.earlysign",
+        "pk": 5,
+        "fields": {
+            "choice": "Forgetful (recent info)"
+        }
+    },
+    {
+        "model": "MedicalForms.redflags",
+        "pk": 1,
+        "fields": {
+            "choice": "Headaches that worsen"
+        }
+    },
+    {
+        "model": "MedicalForms.redflags",
+        "pk": 2,
+        "fields": {
+            "choice": "Seizures"
+        }
+    },
+    {
+        "model": "MedicalForms.redflags",
+        "pk": 3,
+        "fields": {
+            "choice": "Focal neurologic signs"
+        }
+    },
+    {
+        "model": "MedicalForms.redflags",
+        "pk": 4,
+        "fields": {
+            "choice": "Looks very drowsy/can't be awakened"
+        }
+    },
+    {
+        "model": "MedicalForms.redflags",
+        "pk": 5,
+        "fields": {
+            "choice": "Repeated Vomiting"
+        }
+    },
+    {
+        "model": "MedicalForms.redflags",
+        "pk": 6,
+        "fields": {
+            "choice": "Slurred speech"
+        }
+    },
+    {
+        "model": "MedicalForms.redflags",
+        "pk": 7,
+        "fields": {
+            "choice": "Can't recognize people or places"
+        }
+    },
+    {
+        "model": "MedicalForms.redflags",
+        "pk": 8,
+        "fields": {
+            "choice": "Increasing confusion or irritability"
+        }
+    },
+    {
+        "model": "MedicalForms.redflags",
+        "pk": 9,
+        "fields": {
+            "choice": "Weakness or numbness in arms/legs"
+        }
+    },
+    {
+        "model": "MedicalForms.redflags",
+        "pk": 10,
+        "fields": {
+            "choice": "Neck pain"
+        }
+    },
+    {
+        "model": "MedicalForms.redflags",
+        "pk": 11,
+        "fields": {
+            "choice": "Unusual behavioral change"
+        }
+    },
+    {
+        "model": "MedicalForms.redflags",
+        "pk": 12,
+        "fields": {
+            "choice": "Change in state of consciousness"
+        }
+    },
+    {
+        "model": "MedicalForms.diagnosis",
+        "pk": 1,
+        "fields": {
+            "choice": "Concussion w/o LOC"
+        }
+    },
+    {
+        "model": "MedicalForms.diagnosis",
+        "pk": 2,
+        "fields": {
+            "choice": "Concussion w/ LOC"
+        }
+    },
+    {
+        "model": "MedicalForms.diagnosis",
+        "pk": 3,
+        "fields": {
+            "choice": "Concussion (Unspecified)"
+        }
+    },
+    {
+        "model": "MedicalForms.diagnosis",
+        "pk": 4,
+        "fields": {
+            "choice": "No Diagnosis"
+        }
+    },
+    {
+        "model": "MedicalForms.diagnosis",
+        "pk": 5,
+        "fields": {
+            "choice": "Other"
+        }
+    },
+    {
+        "model": "MedicalForms.refferal",
+        "pk": 1,
+        "fields": {
+            "choice": "Neuropsychological Testing"
+        }
+    },
+    {
+        "model": "MedicalForms.refferal",
+        "pk": 2,
+        "fields": {
+            "choice": "Emergency Department"
+        }
+    },
+    {
+        "model": "MedicalForms.refferal",
+        "pk": 3,
+        "fields": {
+            "choice": "Neurosurgery"
+        }
+    },
+    {
+        "model": "MedicalForms.refferal",
+        "pk": 4,
+        "fields": {
+            "choice": "Neurology"
+        }
+    },
+    {
+        "model": "MedicalForms.refferal",
+        "pk": 5,
+        "fields": {
+            "choice": "Sport Medicine"
+        }
+    },
+    {
+        "model": "MedicalForms.refferal",
+        "pk": 6,
+        "fields": {
+            "choice": "Physiatrist"
+        }
+    }
+]

@@ -44,16 +44,14 @@ class PatientFormBaseView(LoginRequiredMixin, UpdateView):
 
 class DoctorFormBaseView(DoctorOnlyMixin, UpdateView):
     def get_object(self):
-        objects = self.model.objects.filter(pk=self.user_id)
+        user_id = self.kwargs['user_id']
+        objects = self.model.objects.filter(pk=user_id)
+        print objects
         if objects.exists():
             return objects.get()
         else:
-            return self.model(pk=self.user_id)
-
-    def get_context_data(self, **kwargs):
-        context = super(DoctorFormBaseView, self).get_context_data(**kwargs)
-        context['doctors'] = True
-        return context
+            print self.model(pk=user_id)
+            return self.model(pk=user_id)
 
 
 class PatientInformationView(PatientFormBaseView):
@@ -140,10 +138,12 @@ class ReportOfFindingsCreateView(DoctorOnlyMixin, CreateView):
 
 
 class AcuteConcussionEvaluationView(DoctorFormBaseView):
-    template_name = 'medicalforms/acute_concussion_eval.html'
+    template_name = 'medicalforms/accute_concussion_eval.html'
     model = AcuteConcussionEvaluation
     form_class = AcuteConcussionEvaluationForm
-    success_url = reverse_lazy('medical_forms:acute_concussion_eval')
+
+    def get_success_url(self):
+        return reverse_lazy('medical_forms:acute-concussion-eval', kwargs={'user_id': self.user_id})
 
 
 # From https://gist.github.com/michelts/1029336#file-gistfile1-py-L6
