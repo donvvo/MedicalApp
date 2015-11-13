@@ -42,6 +42,20 @@ class PatientFormBaseView(LoginRequiredMixin, UpdateView):
             return self.model(pk=self.user_id)
 
 
+class DoctorFormBaseView(DoctorOnlyMixin, UpdateView):
+    def get_object(self):
+        objects = self.model.objects.filter(pk=self.user_id)
+        if objects.exists():
+            return objects.get()
+        else:
+            return self.model(pk=self.user_id)
+
+    def get_context_data(self, **kwargs):
+        context = super(DoctorFormBaseView, self).get_context_data(**kwargs)
+        context['doctors'] = True
+        return context
+
+
 class PatientInformationView(PatientFormBaseView):
     template_name = 'medicalforms/patient_information.html'
     model = PatientInformation
@@ -57,17 +71,30 @@ class HealthHistoryView(PatientFormBaseView):
     form_class = HealthHistoryForm
 
     def get_success_url(self):
-        return reverse_lazy('medical_forms:patient_info', kwargs={'user_id': self.user_id})
+        return reverse_lazy('medical_forms:health_history', kwargs={'user_id': self.user_id})
+
+
+class AccidentHistoryView(PatientFormBaseView):
+    template_name = 'medicalforms/accident_history.html'
+    model = AccidentHistory
+    form_class = AccidentHistoryForm
+
+    def get_success_url(self):
+        return reverse_lazy('medical_forms:accident-history', kwargs={'user_id': self.user_id})
+
+
+class TMJScreeningView(PatientFormBaseView):
+    template_name = 'medicalforms/tmj_screening.html'
+    model = TMJScreening
+    form_class = TMJScreeningForm
+
+    def get_success_url(self):
+        return reverse_lazy('medical_forms:tmj-screening', kwargs={'user_id': self.user_id})
 
 
 class AssessmentView(FormView):
     template_name = 'medicalforms/assessment.html'
     form_class = AssessmentForm
-
-
-class AccidentHistoryView(FormView):
-    template_name = 'medicalforms/accident_history.html'
-    form_class = AccidentHistoryForm
 
 
 class MVAIntakeView(FormView):
@@ -110,6 +137,13 @@ class ReportOfFindingsCreateView(DoctorOnlyMixin, CreateView):
     def form_valid(self, form):
         form.instance.doctor = self.request.user.doctor
         return super(ReportOfFindingsCreateView, self).form_valid(form)
+
+
+class AcuteConcussionEvaluationView(DoctorFormBaseView):
+    template_name = 'medicalforms/acute_concussion_eval.html'
+    model = AcuteConcussionEvaluation
+    form_class = AcuteConcussionEvaluationForm
+    success_url = reverse_lazy('medical_forms:acute_concussion_eval')
 
 
 # From https://gist.github.com/michelts/1029336#file-gistfile1-py-L6

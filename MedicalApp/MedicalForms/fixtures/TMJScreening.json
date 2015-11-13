@@ -1,0 +1,268 @@
+[
+    {
+        "model": "MedicalForms.pain",
+        "pk": 1,
+        "fields": {
+            "choice": "Speaking"
+        }
+    },
+    {
+        "model": "MedicalForms.pain",
+        "pk": 2,
+        "fields": {
+            "choice": "Grinding of teeth (Bruxism)"
+        }
+    },
+    {
+        "model": "MedicalForms.pain",
+        "pk": 3,
+        "fields": {
+            "choice": "Opening Wide"
+        }
+    },
+    {
+        "model": "MedicalForms.pain",
+        "pk": 4,
+        "fields": {
+            "choice": "Muscle soreness (face)"
+        }
+    },
+    {
+        "model": "MedicalForms.pain",
+        "pk": 5,
+        "fields": {
+            "choice": "Jaw-Joint"
+        }
+    },
+    {
+        "model": "MedicalForms.pain",
+        "pk": 6,
+        "fields": {
+            "choice": "Eating"
+        }
+    },
+    {
+        "model": "MedicalForms.pain",
+        "pk": 7,
+        "fields": {
+            "choice": "Facial pain"
+        }
+    },
+    {
+        "model": "MedicalForms.pain",
+        "pk": 8,
+        "fields": {
+            "choice": "Waking up with jaw pain"
+        }
+    },
+    {
+        "model": "MedicalForms.pain",
+        "pk": 9,
+        "fields": {
+            "choice": "Ear pain"
+        }
+    },
+    {
+        "model": "MedicalForms.pain",
+        "pk": 10,
+        "fields": {
+            "choice": "Throat pain"
+        }
+    },
+    {
+        "model": "MedicalForms.pain",
+        "pk": 11,
+        "fields": {
+            "choice": "Temples"
+        }
+    },
+    {
+        "model": "MedicalForms.pain",
+        "pk": 12,
+        "fields": {
+            "choice": "Chewing food"
+        }
+    },
+    {
+        "model": "MedicalForms.pain",
+        "pk": 13,
+        "fields": {
+            "choice": "Clenching at night"
+        }
+    },
+    {
+        "model": "MedicalForms.pain",
+        "pk": 14,
+        "fields": {
+            "choice": "Neck pain"
+        }
+    },
+    {
+        "model": "MedicalForms.pain",
+        "pk": 15,
+        "fields": {
+            "choice": "Jaw clicking or popping"
+        }
+    },
+    {
+        "model": "MedicalForms.pain",
+        "pk": 16,
+        "fields": {
+            "choice": "Jaw (Cheeks)"
+        }
+    },
+    {
+        "model": "MedicalForms.pain",
+        "pk": 17,
+        "fields": {
+            "choice": "Teeth pain"
+        }
+    },
+    {
+        "model": "MedicalForms.pain",
+        "pk": 18,
+        "fields": {
+            "choice": "Sleeping"
+        }
+    },
+    {
+        "model": "MedicalForms.symptom",
+        "pk": 1,
+        "fields": {
+            "choice": "Headaches"
+        }
+    },
+    {
+        "model": "MedicalForms.symptom",
+        "pk": 2,
+        "fields": {
+            "choice": "Clogged/Itchy Ears"
+        }
+    },
+    {
+        "model": "MedicalForms.symptom",
+        "pk": 3,
+        "fields": {
+            "choice": "Eyes sensitive to light"
+        }
+    },
+    {
+        "model": "MedicalForms.symptom",
+        "pk": 4,
+        "fields": {
+            "choice": "Pain behind eyes"
+        }
+    },
+    {
+        "model": "MedicalForms.symptom",
+        "pk": 5,
+        "fields": {
+            "choice": "Muscle twitching"
+        }
+    },
+    {
+        "model": "MedicalForms.symptom",
+        "pk": 6,
+        "fields": {
+            "choice": "Rigid or tight Jaw"
+        }
+    },
+    {
+        "model": "MedicalForms.symptom",
+        "pk": 7,
+        "fields": {
+            "choice": "Locking of Jaw"
+        }
+    },
+    {
+        "model": "MedicalForms.symptom",
+        "pk": 8,
+        "fields": {
+            "choice": "Ringing in the Ears"
+        }
+    },
+    {
+        "model": "MedicalForms.symptom",
+        "pk": 9,
+        "fields": {
+            "choice": "Hair/Scalp pain to touch"
+        }
+    },
+    {
+        "model": "MedicalForms.symptom",
+        "pk": 10,
+        "fields": {
+            "choice": "Blurry vision or spots"
+        }
+    },
+    {
+        "model": "MedicalForms.symptom",
+        "pk": 11,
+        "fields": {
+            "choice": "Poor Sleep Patterns"
+        }
+    },
+    {
+        "model": "MedicalForms.symptom",
+        "pk": 12,
+        "fields": {
+            "choice": "Dizziness"
+        }
+    },
+    {
+        "model": "MedicalForms.symptom",
+        "pk": 13,
+        "fields": {
+            "choice": "Clenching teeth day/night"
+        }
+    },
+    {
+        "model": "MedicalForms.symptom",
+        "pk": 14,
+        "fields": {
+            "choice": "Chewing on only one side of mouth"
+        }
+    },
+    {
+        "model": "MedicalForms.symptom",
+        "pk": 15,
+        "fields": {
+            "choice": "Ear Congestion"
+        }
+    },
+    {
+        "model": "MedicalForms.symptom",
+        "pk": 16,
+        "fields": {
+            "choice": "Sinus Congestion"
+        }
+    },
+    {
+        "model": "MedicalForms.symptom",
+        "pk": 17,
+        "fields": {
+            "choice": "Frequent clearing of throat"
+        }
+    },
+    {
+        "model": "MedicalForms.symptom",
+        "pk": 18,
+        "fields": {
+            "choice": "Difficulty swallowing"
+        }
+    },
+    {
+        "model": "MedicalForms.symptom",
+        "pk": 19,
+        "fields": {
+            "choice": "Visual disturbance"
+        }
+    },
+    {
+        "model": "MedicalForms.symptom",
+        "pk": 20,
+        "fields": {
+            "choice": "Balance disturbance"
+        }
+    }
+]

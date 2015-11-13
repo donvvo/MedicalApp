@@ -71,6 +71,44 @@ class MyNullBooleanField(models.NullBooleanField):
         return super(MyNullBooleanField, self).formfield(**defaults)
 
 
+class MyIntegerField(models.IntegerField):
+    def __init__(self, placeholder='', min_value=None, max_value=None, **kwargs):
+        kwargs['null'] = True
+        kwargs['blank'] = True
+        self.placeholder = placeholder
+        super(MyIntegerField, self).__init__(**kwargs)
+
+    def formfield(self, **kwargs):
+        defaults = {'widget': forms.NumberInput(
+                attrs={
+                    'class': 'form-control',
+                    'placeholder': self.placeholder
+                }
+            )}
+        defaults.update(kwargs)
+
+        return super(MyIntegerField, self).formfield(**defaults)
+
+
+class MyDateTimeField(models.DateTimeField):
+    def __init__(self, placeholder='', **kwargs):
+        kwargs['null'] = True
+        kwargs['blank'] = True
+        self.placeholder = placeholder
+        super(MyDateTimeField, self).__init__(**kwargs)
+
+    def formfield(self, **kwargs):
+        defaults = {'widget': forms.DateTimeInput(
+                attrs={
+                    'class': 'form-control',
+                    'placeholder': self.placeholder
+                }
+            )}
+        defaults.update(kwargs)
+
+        return super(MyDateTimeField, self).formfield(**defaults)
+
+
 class IntegerRangeField(models.IntegerField):
     def __init__(self, placeholder='', min_value=None, max_value=None, **kwargs):
         kwargs['null'] = True

@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
 
+from .utils import *
 from MedicalApp.users.models import User
 
 
@@ -46,32 +47,28 @@ class BodyPart(models.Model):
 @python_2_unicode_compatible
 class AccidentHistory(models.Model):
     user = models.ForeignKey(User)
-    description_and_location = models.TextField(blank=True)
-    road_condition = models.CharField(max_length=10,
-                                      choices=ROAD_CONDITION_CHOICES,
-                                      blank=True)
-    anticipation_of_accident = models.NullBooleanField()
-    time_of_the_day = models.DateTimeField(blank=True)
-    patient_vehicle = models.CharField(max_length=30, blank=True)
-    patient_vehicle_speed = models.IntegerField(blank=True)
-    other_vehicle = models.CharField(max_length=30, blank=True)
-    other_vehicle_speed = models.IntegerField(blank=True)
-    collision_type = models.CharField(max_length=30,
-                                      choices=COLLISION_TYPE_CHOICES,
-                                      blank=True)
-    vehicle_towed = models.NullBooleanField()
-    impact_with_objects = models.CharField(max_length=50, blank=True)
-    exit_from_vehicle = models.CharField(max_length=30,
-                                         choices=EXIT_FROM_VEHICLE_CHOICES,
-                                         blank=True)
-    loss_of_consciousness = models.NullBooleanField()
-    safety_equipment = models.NullBooleanField()
-    airbag_deployed = models.NullBooleanField()
-    driver = models.NullBooleanField()
+    description_and_location = MyTextField()
+    road_condition = MySelectField(max_length=10,
+                                      choices=ROAD_CONDITION_CHOICES)
+    anticipation_of_accident = MyNullBooleanField()
+    time_of_the_day = MyDateTimeField()
+    patient_vehicle = MyCharField(max_length=30)
+    patient_vehicle_speed = MyIntegerField()
+    other_vehicle = MyCharField(max_length=30)
+    other_vehicle_speed = MyIntegerField()
+    collision_type = MySelectField(max_length=30,
+                                      choices=COLLISION_TYPE_CHOICES)
+    vehicle_towed = MyNullBooleanField()
+    impact_with_objects = MyCharField(max_length=50)
+    exit_from_vehicle = MySelectField(max_length=30,
+                                         choices=EXIT_FROM_VEHICLE_CHOICES)
+    loss_of_consciousness = MyNullBooleanField()
+    safety_equipment = MyNullBooleanField()
+    airbag_deployed = MyNullBooleanField()
+    driver = MyNullBooleanField()
     passengers = models.ManyToManyField(PassengerLocation)
-    dominant_hand = models.CharField(max_length=20,
-                                     choices=DOMINANT_HAND_CHOICES,
-                                     blank=True)
+    dominant_hand = MySelectField(max_length=20,
+                                     choices=DOMINANT_HAND_CHOICES)
     body_part_collision = models.ManyToManyField(BodyPart, blank=True)
 
     def __str__(self):
