@@ -73,6 +73,7 @@ class MyNullBooleanField(models.NullBooleanField):
 
 class IntegerRangeField(models.IntegerField):
     def __init__(self, placeholder='', min_value=None, max_value=None, **kwargs):
+        kwargs['null'] = True
         kwargs['blank'] = True
         self.min_value, self.max_value = min_value, max_value
         self.placeholder = placeholder

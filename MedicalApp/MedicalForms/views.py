@@ -1,15 +1,25 @@
 # -*- coding: utf-8 -*-
 from __future__ import absolute_import, unicode_literals
 
+from django.contrib.auth.decorators import user_passes_test
 from django.core.urlresolvers import reverse, reverse_lazy
+from django.http import HttpResponseForbidden
 from django.views.generic import FormView, DetailView, ListView, CreateView, UpdateView
 from django.views.generic.base import TemplateResponseMixin
 from django.views.generic.edit import FormMixin, ProcessFormView
+from django.shortcuts import get_object_or_404, redirect
+from django.utils.decorators import method_decorator
 
 from braces.views import LoginRequiredMixin, GroupRequiredMixin
 
+from MedicalApp.utils import user_passes_test_with_kwargs
 from .models import *
 from .forms import *
+
+
+def owner_or_doctors(user, **kwargs):
+    user_id = int(kwargs['user_id'])
+    return user.pk == user_id or user.groups.filter(name="Doctors").exists()
 
 
 class DoctorOnlyMixin(LoginRequiredMixin, GroupRequiredMixin):
@@ -17,37 +27,37 @@ class DoctorOnlyMixin(LoginRequiredMixin, GroupRequiredMixin):
     raise_exception = True
 
 
-# Patient information
-class PatientInformationView(LoginRequiredMixin, DetailView):
+class PatientFormBaseView(LoginRequiredMixin, UpdateView):
+    # Only allows access to doctors or patients to their own forms
+    @method_decorator(user_passes_test_with_kwargs(owner_or_doctors))
+    def dispatch(self, request, *args, **kwargs):
+        self.user_id = int(kwargs['user_id'])
+        return super(PatientFormBaseView, self). dispatch(request, *args, **kwargs)
+
+    def get_object(self):
+        objects = self.model.objects.filter(pk=self.user_id)
+        if objects.exists():
+            return objects.get()
+        else:
+            return self.model(pk=self.user_id)
+
+
+class PatientInformationView(PatientFormBaseView):
     template_name = 'medicalforms/patient_information.html'
     model = PatientInformation
-    slug_field = "pk"
-    slug_url_kwarg = "pk"
-
-
-class PatientInformationEditView(LoginRequiredMixin, UpdateView):
-    template_name = 'medicalforms/patient_information_edit.html'
-    model = PatientInformation
     form_class = PatientInformationForm
-    success_url = reverse_lazy('medical_forms:patient_info_edit')
-    slug_field = "pk"
-    slug_url_kwarg = "pk"
+
+    def get_success_url(self):
+        return reverse_lazy('medical_forms:patient_info', kwargs={'user_id': self.user_id})
 
 
-class PatientInformationCreateView(LoginRequiredMixin, CreateView):
-    template_name = 'medicalforms/patient_information_edit.html'
-    model = PatientInformation
-    form_class = PatientInformationForm
-    success_url = reverse_lazy('medical_forms:patient_info_new')
-
-    def form_valid(self, form):
-        form.instance.user = self.request.user
-        return super(ReportOfFindingsCreateView, self).form_valid(form)
-
-
-class HealthHistoryView(FormView):
+class HealthHistoryView(PatientFormBaseView):
     template_name = 'medicalforms/health_history.html'
+    model = HealthHistory
     form_class = HealthHistoryForm
+
+    def get_success_url(self):
+        return reverse_lazy('medical_forms:patient_info', kwargs={'user_id': self.user_id})
 
 
 class AssessmentView(FormView):

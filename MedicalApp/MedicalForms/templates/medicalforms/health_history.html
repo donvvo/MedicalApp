@@ -1,9 +1,164 @@
 {% extends "base.html" %}
 {% block content %}
 
-<form action="#" method="post">
-    {% csrf_token %}
-    {{form}}
-</form>
+<section class="profile-doctor generic animated fadeInUp">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="section-title">
+                    <h3>Patient Information</h3>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-10 col-sm-offset-1">
+                <form action="#" method="post">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-sm-12">
+                            {{form.user.error}}
+                            {{form.user.label}}
+                            {{form.user}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            {{form.today_date.error}}
+                            {{form.today_date.label}}
+                            {{form.today_date}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            {{form.general.error}}
+                            {{form.general.label}}
+                            {{form.general}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            {{form.muscle_joint.error}}
+                            {{form.muscle_joint.label}}
+                            {{form.muscle_joint}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            {{form.skin.error}}
+                            {{form.skin.label}}
+                            {{form.skin}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            {{form.respiratory.error}}
+                            {{form.respiratory.label}}
+                            {{form.respiratory}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            {{form.gastrointestinal.error}}
+                            {{form.gastrointestinal.label}}
+                            {{form.gastrointestinal}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            {{form.genitourinary.error}}
+                            {{form.genitourinary.label}}
+                            {{form.genitourinary}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            {{form.cardiovascular.error}}
+                            {{form.cardiovascular.label}}
+                            {{form.cardiovascular}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            {{form.woemn_only_choices.error}}
+                            {{form.woemn_only_choices.label}}
+                            {{form.woemn_only_choices}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            {{form.menstrual_flow.error}}
+                            {{form.menstrual_flow.label}}
+                            {{form.menstrual_flow}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            {{form.pregnant.error}}
+                            {{form.pregnant.label}}
+                            {{form.pregnant}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            {{form.previous_conditions.error}}
+                            {{form.previous_conditions.label}}
+                            {{form.previous_conditions}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            {{form.cnd_disorders.error}}
+                            {{form.cnd_disorders.label}}
+                            {{form.cnd_disorders}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            {{form.current_medications.error}}
+                            {{form.current_medications.label}}
+                            {{form.current_medications}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            {{form.previous_surgeries.error}}
+                            {{form.previous_surgeries.label}}
+                            {{form.previous_surgeries}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            {{form.smoker.error}}
+                            {{form.smoker.label}}
+                            {{form.smoker}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            {{form.other_conditions.error}}
+                            {{form.other_conditions.label}}
+                            {{form.other_conditions}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            {{form.family_doctor.error}}
+                            {{form.family_doctor.label}}
+                            {{form.family_doctor}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            {{form.family_doctor_telephone.error}}
+                            {{form.family_doctor_telephone.label}}
+                            {{form.family_doctor_telephone}}
+                        </div>
+                    </div>
+                    <input type="submit" class="btn btn-default btn-color-border-solid" value="Save">
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
 
 {% endblock %}

@@ -34,10 +34,11 @@ MARITAL_STATUS_CHOICES = (
 # Patient information form
 @python_2_unicode_compatible
 class PatientInformation(models.Model):
-    user = models.ForeignKey(User)
-    today_date = models.DateTimeField(auto_now_add=True, blank=True)
-    accident_date = models.DateTimeField(blank=True)
-    date_of_birth = models.DateTimeField(blank=True)
+    user = models.OneToOneField(User, primary_key=True)
+    complete = models.BooleanField(default=False)
+    today_date = models.DateTimeField(auto_now_add=True)
+    accident_date = models.DateTimeField(blank=True, null=True)
+    date_of_birth = models.DateTimeField(blank=True, null=True)
     gender = MySelectField(GENDER_CHOICES, max_length=10)
     address = MyCharField(max_length=200, placeholder='Address')
     city = MyCharField(max_length=100, placeholder='City')
