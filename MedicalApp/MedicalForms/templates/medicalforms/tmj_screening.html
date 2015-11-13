@@ -16,6 +16,10 @@
                 {% csrf_token %}
                 <div class="row">
                     <div class="col-sm-12">
+                    {% for checkbox in form.pain %}
+                    {{checkbox.tag}}
+                    {{checkbox.choice_label}}
+                    {% endfor %}
                         {{form.pain.error}}
                         {{form.pain.label}}
                         {{form.pain}}

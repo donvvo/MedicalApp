@@ -21,6 +21,9 @@ urlpatterns = [
         name="accident_history"),
     url(r'^tmj-screening/(?P<user_id>[\d]+)/$', views.TMJScreeningView.as_view(),
         name="tmj-screening"),
+
+    url(r'^acute-concussion-eval/(?P<user_id>[\d]+)/$', views.AcuteConcussionEvaluationView.as_view(),
+        name="acute-concussion-eval"),
     url(r'^subjective-evaluation/$', views.SubjectiveEvaluationView.as_view(), name="subjective_eval"),
     url(r'^assessment/$', views.AssessmentView.as_view(), name="assessment"),
     url(r'^MVA-intake/$', views.MVAIntakeView.as_view(), name="MVA_intake"),

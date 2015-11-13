@@ -142,3 +142,15 @@ class TMJScreeningForm(forms.ModelForm):
             'pain': forms.CheckboxSelectMultiple(),
             'symptom': forms.CheckboxSelectMultiple()
         }
+
+
+class AcuteConcussionEvaluationForm(forms.ModelForm):
+    class Meta:
+        model = AcuteConcussionEvaluation
+        exclude = ('patient', 'doctor', 'completed_date')
+        widgets = {
+            'early_signs': forms.CheckboxSelectMultiple(),
+            'red_flags': forms.CheckboxSelectMultiple(),
+            'dignosis': forms.CheckboxSelectMultiple(),
+            'refferal': forms.CheckboxSelectMultiple(),
+        }

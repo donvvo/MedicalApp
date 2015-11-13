@@ -1,0 +1,520 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section class="profile-doctor generic animated fadeInUp">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="section-title">
+                    <h3>Accute Concussion Evaluation</h3>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-10 col-sm-offset-1">
+                <form action="{{request.path}}" method="post" accept-charset="utf-8">
+                    {% csrf_token %}
+                        <div class="row">
+                            <div class="col-sm-12">
+                                {{forms.dob.errors}}
+                                {{forms.dob.label}}
+                                {{forms.dob}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                {{forms.date_of_injury.errors}}
+                                {{forms.date_of_injury.label}}
+                                {{forms.date_of_injury}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                {{forms.reporter.errors}}
+                                {{forms.reporter.label}}
+                                {{forms.reporter}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                {{forms.injury_description.errors}}
+                                {{forms.injury_description.label}}
+                                {{forms.injury_description}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                {{forms.evidence_of_blow.errors}}
+                                {{forms.evidence_of_blow.label}}
+                                {{forms.evidence_of_blow}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                {{forms.evidence_of_cranial_injury.errors}}
+                                {{forms.evidence_of_cranial_injury.label}}
+                                {{forms.evidence_of_cranial_injury}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                {{forms.location_of_impact.errors}}
+                                {{forms.location_of_impact.label}}
+                                {{forms.location_of_impact}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                {{forms.cause.errors}}
+                                {{forms.cause.label}}
+                                {{forms.cause}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                {{forms.sports_specify.errors}}
+                                {{forms.sports_specify.label}}
+                                {{forms.sports_specify}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                {{forms.others_specify.errors}}
+                                {{forms.others_specify.label}}
+                                {{forms.others_specify}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                {{forms.amnesia_before.errors}}
+                                {{forms.amnesia_before.label}}
+                                {{forms.amnesia_before}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                {{forms.amnesia_before_duration.errors}}
+                                {{forms.amnesia_before_duration.label}}
+                                {{forms.amnesia_before_duration}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                {{forms.amnesia_after.errors}}
+                                {{forms.amnesia_after.label}}
+                                {{forms.amnesia_after}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                {{forms.amnesia_after_duration.errors}}
+                                {{forms.amnesia_after_duration.label}}
+                                {{forms.amnesia_after_duration}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                {{forms.lost_of_consciousness.errors}}
+                                {{forms.lost_of_consciousness.label}}
+                                {{forms.lost_of_consciousness}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                {{forms.lost_of_consciousness_duration.errors}}
+                                {{forms.lost_of_consciousness_duration.label}}
+                                {{forms.lost_of_consciousness_duration}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                {{forms.early_signs.errors}}
+                                {{forms.early_signs.label}}
+                                {{forms.early_signs}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                {{forms.seizure.errors}}
+                                {{forms.seizure.label}}
+                                {{forms.seizure}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                {{forms.seizure_detail.errors}}
+                                {{forms.seizure_detail.label}}
+                                {{forms.seizure_detail}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                {{forms.headache.errors}}
+                                {{forms.headache.label}}
+                                {{forms.headache}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                {{forms.nausea.errors}}
+                                {{forms.nausea.label}}
+                                {{forms.nausea}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                {{forms.vomiting.errors}}
+                                {{forms.vomiting.label}}
+                                {{forms.vomiting}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                {{forms.balance_problems.errors}}
+                                {{forms.balance_problems.label}}
+                                {{forms.balance_problems}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                {{forms.dizziness.errors}}
+                                {{forms.dizziness.label}}
+                                {{forms.dizziness}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                {{forms.visual_problems.errors}}
+                                {{forms.visual_problems.label}}
+                                {{forms.visual_problems}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                {{forms.fatigue.errors}}
+                                {{forms.fatigue.label}}
+                                {{forms.fatigue}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                {{forms.sensitivity_to_light.errors}}
+                                {{forms.sensitivity_to_light.label}}
+                                {{forms.sensitivity_to_light}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                {{forms.sensitivity_to_noise.errors}}
+                                {{forms.sensitivity_to_noise.label}}
+                                {{forms.sensitivity_to_noise}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                {{forms.numbness_and_tingling.errors}}
+                                {{forms.numbness_and_tingling.label}}
+                                {{forms.numbness_and_tingling}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                {{forms.physical_total.errors}}
+                                {{forms.physical_total.label}}
+                                {{forms.physical_total}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                {{forms.foggy.errors}}
+                                {{forms.foggy.label}}
+                                {{forms.foggy}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                {{forms.slow_down.errors}}
+                                {{forms.slow_down.label}}
+                                {{forms.slow_down}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                {{forms.difficulty_concentrating.errors}}
+                                {{forms.difficulty_concentrating.label}}
+                                {{forms.difficulty_concentrating}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                {{forms.difficulty_remembering.errors}}
+                                {{forms.difficulty_remembering.label}}
+                                {{forms.difficulty_remembering}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                {{forms.cognitive_total.errors}}
+                                {{forms.cognitive_total.label}}
+                                {{forms.cognitive_total}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                {{forms.irritability.errors}}
+                                {{forms.irritability.label}}
+                                {{forms.irritability}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                {{forms.sadness.errors}}
+                                {{forms.sadness.label}}
+                                {{forms.sadness}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                {{forms.more_emotional.errors}}
+                                {{forms.more_emotional.label}}
+                                {{forms.more_emotional}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                {{forms.nervousness.errors}}
+                                {{forms.nervousness.label}}
+                                {{forms.nervousness}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                {{forms.emotional_total.errors}}
+                                {{forms.emotional_total.label}}
+                                {{forms.emotional_total}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                {{forms.drowsiness.errors}}
+                                {{forms.drowsiness.label}}
+                                {{forms.drowsiness}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                {{forms.sleeping_less.errors}}
+                                {{forms.sleeping_less.label}}
+                                {{forms.sleeping_less}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                {{forms.sleeping_more.errors}}
+                                {{forms.sleeping_more.label}}
+                                {{forms.sleeping_more}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                {{forms.trouble_falling_asleep.errors}}
+                                {{forms.trouble_falling_asleep.label}}
+                                {{forms.trouble_falling_asleep}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                {{forms.sleep_total.errors}}
+                                {{forms.sleep_total.label}}
+                                {{forms.sleep_total}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                {{forms.all_total.errors}}
+                                {{forms.all_total.label}}
+                                {{forms.all_total}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                {{forms.excertion_physical.errors}}
+                                {{forms.excertion_physical.label}}
+                                {{forms.excertion_physical}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                {{forms.excertion_cognitive.errors}}
+                                {{forms.excertion_cognitive.label}}
+                                {{forms.excertion_cognitive}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                {{forms.overall_rating.errors}}
+                                {{forms.overall_rating.label}}
+                                {{forms.overall_rating}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                {{forms.concussion_history.errors}}
+                                {{forms.concussion_history.label}}
+                                {{forms.concussion_history}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                {{forms.previous_number.errors}}
+                                {{forms.previous_number.label}}
+                                {{forms.previous_number}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                {{forms.longest_duration.errors}}
+                                {{forms.longest_duration.label}}
+                                {{forms.longest_duration}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                {{forms.less_force_caused_reinjury.errors}}
+                                {{forms.less_force_caused_reinjury.label}}
+                                {{forms.less_force_caused_reinjury}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                {{forms.headache_history.errors}}
+                                {{forms.headache_history.label}}
+                                {{forms.headache_history}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                {{forms.prior_treatment.errors}}
+                                {{forms.prior_treatment.label}}
+                                {{forms.prior_treatment}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                {{forms.history_of_migraine.errors}}
+                                {{forms.history_of_migraine.label}}
+                                {{forms.history_of_migraine}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                {{forms.personal_family.errors}}
+                                {{forms.personal_family.label}}
+                                {{forms.personal_family}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                {{forms.learning_disabilities.errors}}
+                                {{forms.learning_disabilities.label}}
+                                {{forms.learning_disabilities}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                {{forms.attention_deficit.errors}}
+                                {{forms.attention_deficit.label}}
+                                {{forms.attention_deficit}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                {{forms.other_developmental.errors}}
+                                {{forms.other_developmental.label}}
+                                {{forms.other_developmental}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                {{forms.anxiety.errors}}
+                                {{forms.anxiety.label}}
+                                {{forms.anxiety}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                {{forms.depression.errors}}
+                                {{forms.depression.label}}
+                                {{forms.depression}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                {{forms.sleep_disorder.errors}}
+                                {{forms.sleep_disorder.label}}
+                                {{forms.sleep_disorder}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                {{forms.other_psychiatric.errors}}
+                                {{forms.other_psychiatric.label}}
+                                {{forms.other_psychiatric}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                {{forms.list_other_disorders.errors}}
+                                {{forms.list_other_disorders.label}}
+                                {{forms.list_other_disorders}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                {{forms.red_flags.errors}}
+                                {{forms.red_flags.label}}
+                                {{forms.red_flags}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                {{forms.dignosis.errors}}
+                                {{forms.dignosis.label}}
+                                {{forms.dignosis}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                {{forms.follow_up.errors}}
+                                {{forms.follow_up.label}}
+                                {{forms.follow_up}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                {{forms.refferal.errors}}
+                                {{forms.refferal.label}}
+                                {{forms.refferal}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                {{forms.refferal_others.errors}}
+                                {{forms.refferal_others.label}}
+                                {{forms.refferal_others}}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                {{forms.doctor.errors}}
+                                {{forms.doctor.label}}
+                                {{forms.doctor}}
+                            </div>
+                        </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
