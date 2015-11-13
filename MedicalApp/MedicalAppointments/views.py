@@ -170,7 +170,7 @@ class ClinicProfileView(LoginRequiredMixin, DetailView):
         return get_object_or_404(self.model, name=clinic_name)
 
 
-class ClinicProfileEditView(LoginRequiredMixin, DetailView):
+class ClinicProfileEditView(LoginRequiredMixin, UpdateView):
     model = Clinic
     template_name = "medicalappointments/clinic_edit.html"
     slug_field = "name"
