@@ -54,4 +54,4 @@ node_modules/
 rootkey.csv
 .vagrant/
 
-MedicalApp/MedicalForms/templates/medicalforms/patient_information_edit.html
+
