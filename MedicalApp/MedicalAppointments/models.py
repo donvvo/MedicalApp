@@ -3,20 +3,20 @@ from django.utils.encoding import python_2_unicode_compatible
 from django.utils import timezone
 
 from MedicalApp.users.models import User
-from MedicalForms.utils import MyCharField, MySelectField, IntegerRangeField, MyNullBooleanField, MyTextField
+from MedicalForms.utils import *
 
 # Create your models here.
 @python_2_unicode_compatible
 class Clinic(models.Model):
-    name = models.CharField(max_length=100, primary_key=True)
-    phone = models.CharField(max_length=20, blank=True)
-    email = models.EmailField(blank=True)
-    description = models.TextField(blank=True)
-    city = models.CharField(max_length=20)
-    address = models.CharField(max_length=200, blank=True)
-    postal_code = models.CharField(max_length=10, blank=True)
-    start_time = models.CharField(max_length=10, blank=True)
-    end_time = models.CharField(max_length=10, blank=True)
+    name = MyCharField(max_length=100, primary_key=True, placeholder='Clinic Name')
+    phone = MyCharField(max_length=20, placeholder='Phone Number')
+    email = MyEmailField(placeholder='Email Address')
+    description = MyTextField(placeholder='Description')
+    city = MyCharField(max_length=20, placeholder='City')
+    address = MyCharField(max_length=200, placeholder='Address')
+    postal_code = MyCharField(max_length=10, placeholder='Postal Code')
+    start_time = MyCharField(max_length=10, placeholder='Opening Hours')
+    end_time = MyCharField(max_length=10, placeholder='Closing Hours')
 
     def __str__(self):
         return self.name

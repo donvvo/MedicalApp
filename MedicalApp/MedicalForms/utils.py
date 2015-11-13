@@ -109,6 +109,24 @@ class MyDateTimeField(models.DateTimeField):
         return super(MyDateTimeField, self).formfield(**defaults)
 
 
+class MyEmailField(models.EmailField):
+    def __init__(self, placeholder='', **kwargs):
+        kwargs['blank'] = True
+        self.placeholder = placeholder
+        super(MyEmailField, self).__init__(**kwargs)
+
+    def formfield(self, **kwargs):
+        defaults = {'widget': forms.EmailInput(
+                attrs={
+                    'class': 'form-control',
+                    'placeholder': self.placeholder
+                }
+            )}
+        defaults.update(kwargs)
+
+        return super(MyEmailField, self).formfield(**defaults)
+
+
 class IntegerRangeField(models.IntegerField):
     def __init__(self, placeholder='', min_value=None, max_value=None, **kwargs):
         kwargs['null'] = True
