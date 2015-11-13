@@ -30,128 +30,221 @@
                     </div>
                     <div class="row">
                         <div class="col-sm-12">
+	                          <label class="control-label">General</label><br>
+	                        {% for checkbox in form.general %}
+							{{checkbox.tag}}
+							{{checkbox.choice_label}}
+               		     {% endfor %} 
+                           
                             {{form.general.error}}
-                            {{form.general.label}}
-                            {{form.general}}
+                       
                         </div>
                     </div>
+                    <hr class="divider-dashed-large">
                     <div class="row">
                         <div class="col-sm-12">
+	                        <label class="control-label">Muscle joint</label><br>
+	                        {% for checkbox in form.muscle_joint %}
+							{{checkbox.tag}}
+							{{checkbox.choice_label}}
+               		     {% endfor %}
+	                        
                             {{form.muscle_joint.error}}
-                            {{form.muscle_joint.label}}
-                            {{form.muscle_joint}}
+                    
                         </div>
                     </div>
+                    <hr class="divider-dashed-large">
                     <div class="row">
                         <div class="col-sm-12">
+	                        <label class="control-label">Skin</label><br>
+	                        {% for checkbox in form.skin %}
+							{{checkbox.tag}}
+							{{checkbox.choice_label}}
+               		     {% endfor %}
+               		     
                             {{form.skin.error}}
-                            {{form.skin.label}}
-                            {{form.skin}}
+                       
                         </div>
                     </div>
+                    <hr class="divider-dashed-large">
                     <div class="row">
                         <div class="col-sm-12">
+	                        <label class="control-label">Respiratory</label><br>
+	                        {% for checkbox in form.respiratory %}
+							{{checkbox.tag}}
+							{{checkbox.choice_label}}
+               		     {% endfor %}
+	                        
                             {{form.respiratory.error}}
-                            {{form.respiratory.label}}
-                            {{form.respiratory}}
+                      
                         </div>
                     </div>
+                    <hr class="divider-dashed-large">
                     <div class="row">
                         <div class="col-sm-12">
+	                        <label class="control-label">Gastrointestinal</label><br>
+	                        {% for checkbox in form.gastrointestinal %}
+							{{checkbox.tag}}
+							{{checkbox.choice_label}}
+               		     {% endfor %}
+	                        
                             {{form.gastrointestinal.error}}
-                            {{form.gastrointestinal.label}}
-                            {{form.gastrointestinal}}
                         </div>
                     </div>
+                    <hr class="divider-dashed-large">
                     <div class="row">
                         <div class="col-sm-12">
+	                        <label class="control-label">Genitourinary</label><br>
+	                        {% for checkbox in form.genitourinary %}
+							{{checkbox.tag}}
+							{{checkbox.choice_label}}
+               		     {% endfor %}
+	                        
                             {{form.genitourinary.error}}
-                            {{form.genitourinary.label}}
-                            {{form.genitourinary}}
+        
                         </div>
                     </div>
+                    <hr class="divider-dashed-large">
                     <div class="row">
                         <div class="col-sm-12">
+	                        <label class="control-label">Cardiovascular</label><br>
+	                        {% for checkbox in form.cardiovascular %}
+							{{checkbox.tag}}
+							{{checkbox.choice_label}}
+               		     {% endfor %}
+	                        
                             {{form.cardiovascular.error}}
-                            {{form.cardiovascular.label}}
-                            {{form.cardiovascular}}
+          
                         </div>
                     </div>
+                    <hr class="divider-dashed-large">
                     <div class="row">
                         <div class="col-sm-12">
+							 <label class="control-label">Women Only Choices</label><br>
+	                        {% for checkbox in form.woemn_only_choices %}
+							{{checkbox.tag}}
+							{{checkbox.choice_label}}
+               		     {% endfor %}
+               		     
                             {{form.woemn_only_choices.error}}
-                            {{form.woemn_only_choices.label}}
-                            {{form.woemn_only_choices}}
+      
                         </div>
                     </div>
+                    <hr class="divider-dashed-large">
                     <div class="row">
                         <div class="col-sm-12">
+	                     	 <label class="control-label">Menstrual Flow</label><br>
+	                        {% for checkbox in form.menstrual_flow %}
+							{{checkbox.tag}}
+							{{checkbox.choice_label}}
+               		     {% endfor %}
+               		          
                             {{form.menstrual_flow.error}}
-                            {{form.menstrual_flow.label}}
-                            {{form.menstrual_flow}}
+          
                         </div>
                     </div>
+                    <hr class="divider-dashed-large">
                     <div class="row">
                         <div class="col-sm-12">
+							<label class="control-label">Pregnant</label><br>
+	                        {% for checkbox in form.pregnant %}
+							{{checkbox.tag}}
+							{{checkbox.choice_label}}
+               		     {% endfor %}
+               		     
                             {{form.pregnant.error}}
-                            {{form.pregnant.label}}
-                            {{form.pregnant}}
+                   
                         </div>
                     </div>
+                    <hr class="divider-dashed-large">
                     <div class="row">
                         <div class="col-sm-12">
+							<label class="control-label">Previous Conditions</label><br>
+	                        {% for checkbox in form.previous_conditions %}
+							{{checkbox.tag}}
+							{{checkbox.choice_label}}
+               		     {% endfor %}
+               		     
                             {{form.previous_conditions.error}}
-                            {{form.previous_conditions.label}}
-                            {{form.previous_conditions}}
+         
                         </div>
                     </div>
+                  
                     <div class="row">
                         <div class="col-sm-12">
+	              
+               		     <div class="form-group">
+	               		     
+	               		     
                             {{form.cnd_disorders.error}}
                             {{form.cnd_disorders.label}}
                             {{form.cnd_disorders}}
+               		     </div>
                         </div>
                     </div>
+                    
                     <div class="row">
                         <div class="col-sm-12">
+	         
+               		     <div class="form-group">
                             {{form.current_medications.error}}
                             {{form.current_medications.label}}
                             {{form.current_medications}}
+               		     </div>
                         </div>
                     </div>
+                   
                     <div class="row">
                         <div class="col-sm-12">
+	   
+               		     <div class="form-group">
                             {{form.previous_surgeries.error}}
                             {{form.previous_surgeries.label}}
                             {{form.previous_surgeries}}
+               		     </div>
                         </div>
                     </div>
+                    
                     <div class="row">
                         <div class="col-sm-12">
+						<div class="form-group">
+               		     
                             {{form.smoker.error}}
                             {{form.smoker.label}}
                             {{form.smoker}}
+						</div>
                         </div>
                     </div>
+                   
                     <div class="row">
                         <div class="col-sm-12">
+							<div class="form-group">
                             {{form.other_conditions.error}}
                             {{form.other_conditions.label}}
                             {{form.other_conditions}}
+							</div>
                         </div>
                     </div>
+                   
                     <div class="row">
                         <div class="col-sm-12">
+	      
+               		     <div class="form-group">
                             {{form.family_doctor.error}}
                             {{form.family_doctor.label}}
                             {{form.family_doctor}}
+               		     </div>
                         </div>
                     </div>
+                  
                     <div class="row">
                         <div class="col-sm-12">
+							<div class="form-group">
+               		     
                             {{form.family_doctor_telephone.error}}
                             {{form.family_doctor_telephone.label}}
                             {{form.family_doctor_telephone}}
+							</div>
                         </div>
                     </div>
                     <input type="submit" class="btn btn-default btn-color-border-solid" value="Save">
