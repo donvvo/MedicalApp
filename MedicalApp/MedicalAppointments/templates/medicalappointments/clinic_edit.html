@@ -33,7 +33,7 @@
                         <a href="#" class="btn btn-default btn-color-bg btn-no-radius"><span>Change Photo</span></a>
                     </div>
                     <div class="col-sm-9">
-                        <form id="request" action="request-form.php" method="post" accept-charset="utf-8">
+                        <form id="request" action="{{request.path}}" method="post" accept-charset="utf-8">
 
         <div class="row">
             <div class="col-sm-12">
@@ -42,15 +42,15 @@
                             <div class="col-sm-12">
                                 <div class="form-group">
                                     <label for="name" class="sr-only">Name</label>
-                                    <input type="text" class="form-control" placeholder="Clinic Name" name="name"/></i>
+                                    {{form.name}}
                                 </div>
                                 <div class="form-group">
                                     <label for="phone" class="sr-only">Phone number</label>
-                                    <input type="text" class="form-control" placeholder="Phone Number" name="phone"/></i>
+                                    {{form.phone}}
                                 </div>
                                 <div class="form-group">
                                     <label for="email" class="sr-only">Email</label>
-                                    <input type="email" class="form-control" placeholder="Email Address" name="email"/></i>
+                                    {{form.email}}
                                 </div>
                             </div>
                         </div>
@@ -59,7 +59,7 @@
                             <div class="col-sm-12">
                                 <div class="form-group">
                                     <label for="description" class="sr-only">Description</label>
-                                    <i class="glyphicon glyphicon-pencil"><textarea class="form-control message" id="message" placeholder="Description"></textarea></i>
+                                    <i class="glyphicon glyphicon-pencil">{{form.description}}</i>
                                 </div>
                             </div>
                         </div>
@@ -76,21 +76,18 @@
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label for="address1" class="sr-only">Address 1</label>
-                                <input type="text" class="form-control" id="name" placeholder="Address" /></i>
+                                {{form.address}}
                             </div>
                             <div class="form-group">
-                                <label for="postal" class="sr-only">Postal Code</label>
-                                <select>
-                                  <option value="toronto">Toronto</option>
-                                  <option value="mississauga">Mississauga</option>
-                                </select>
+                                <label for="postal" class="sr-only">City</label>
+                                {{form.city}}
                             </div>
 
                         </div>
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label for="postal" class="sr-only">Postal Code</label>
-                                <input type="text" class="form-control" id="postal" placeholder="Postal Code" /></i>
+                                {{form.postal_code}}
                             </div>
 
                         </div>
@@ -112,14 +109,14 @@
                                 <div class="col-sm-4"><span>Start -- End</span></div>
                                 <div class="col-sm-4">
                                     <div class="form-group">
-                                    <input type="text" class="form-control" id="timein" placeholder="9:00AM">
+                                    {{form.start_time}}
                                   </div>
                                 </div>
                                 <div class="col-sm-4">
 
 
                                   <div class="form-group">
-                                    <input type="text" class="form-control" id="timeout" placeholder="5:00PM">
+                                    {{form.end_time}}
                                   </div>
 
                                 </div>
@@ -144,104 +141,23 @@
         <div class="row">
             <div class="col-sm-12">
                 <ul class="media-list">
+                    {% for doctor in object.doctor_set.all %}
                         <li class="media row">
                         <div class="col-xs-8 col-md-8">
-                            <a class="pull-left" href="blog-left-sidebar.html">
-                                <img class="media-object img-circle" src="img/news/news-thumbnail-144x144-01.jpg" alt="//">
+                            <a class="pull-left" href="{% url 'users:doctor_profile' doctor.user.username %}">
+                                <img class="media-object img-circle" src="{% static 'img/news/news-thumbnail-144x144-01.jpg' %}" alt="//">
                             </a>
                             <div class="media-body">
-                                <h5 class="media-heading"><a href="blog-left-sidebar.html">&nbsp;Doctor name</a></h5>
-                                <p class="media-meta">&nbsp;Position</p>
+                                <h5 class="media-heading"><a href="{% url 'users:doctor_profile' doctor.user.username %}">&nbsp;{{doctor.user.first_name}} {{doctor.user.last_name}}</a></h5>
+                                <p class="media-meta">&nbsp;{{doctor.specialty}}</p>
                             </div>
                         </div>
                             <div class="col-xs-4 col-md-4 text-center">
                             <a href="#" class="" type="button" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-remove-sign"></span></a>
                             </div>
                         </li>
-                        <li class="media row">
-                        <div class="col-xs-8 col-md-8">
-                            <a class="pull-left" href="blog-left-sidebar.html">
-                                <img class="media-object img-circle" src="img/news/news-thumbnail-144x144-01.jpg" alt="//">
-                            </a>
-                            <div class="media-body">
-                                <h5 class="media-heading"><a href="blog-left-sidebar.html">&nbsp;Doctor name</a></h5>
-                                <p class="media-meta">&nbsp;Position</p>
-                            </div>
-                        </div>
-                            <div class="col-xs-4 col-md-4 text-center">
-                            <a href="#" class="" type="button" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-remove-sign"></span></a>
-                            </div>
-                        </li>
-                        <li class="media row">
-                        <div class="col-xs-8 col-md-8">
-                            <a class="pull-left" href="blog-left-sidebar.html">
-                                <img class="media-object img-circle" src="img/news/news-thumbnail-144x144-01.jpg" alt="//">
-                            </a>
-                            <div class="media-body">
-                                <h5 class="media-heading"><a href="blog-left-sidebar.html">&nbsp;Doctor name</a></h5>
-                                <p class="media-meta">&nbsp;Position</p>
-                            </div>
-                        </div>
-                            <div class="col-xs-4 col-md-4 text-center">
-                            <a href="#" class="" type="button" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-remove-sign"></span></a>
-                            </div>
-                        </li>
-                        <li class="media row">
-                        <div class="col-xs-8 col-md-8">
-                            <a class="pull-left" href="blog-left-sidebar.html">
-                                <img class="media-object img-circle" src="img/news/news-thumbnail-144x144-01.jpg" alt="//">
-                            </a>
-                            <div class="media-body">
-                                <h5 class="media-heading"><a href="blog-left-sidebar.html">&nbsp;Doctor name</a></h5>
-                                <p class="media-meta">&nbsp;Position</p>
-                            </div>
-                        </div>
-                            <div class="col-xs-4 col-md-4 text-center">
-                            <a href="#" class="" type="button" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-remove-sign"></span></a>
-                            </div>
-                        </li>
-                        <li class="media row">
-                        <div class="col-xs-8 col-md-8">
-                            <a class="pull-left" href="blog-left-sidebar.html">
-                                <img class="media-object img-circle" src="img/news/news-thumbnail-144x144-01.jpg" alt="//">
-                            </a>
-                            <div class="media-body">
-                                <h5 class="media-heading"><a href="blog-left-sidebar.html">&nbsp;Doctor name</a></h5>
-                                <p class="media-meta">&nbsp;Position</p>
-                            </div>
-                        </div>
-                            <div class="col-xs-4 col-md-4 text-center">
-                            <a href="#" class="" type="button" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-remove-sign"></span></a>
-                            </div>
-                        </li>
-                        <li class="media row">
-                        <div class="col-xs-8 col-md-8">
-                            <a class="pull-left" href="blog-left-sidebar.html">
-                                <img class="media-object img-circle" src="img/news/news-thumbnail-144x144-01.jpg" alt="//">
-                            </a>
-                            <div class="media-body">
-                                <h5 class="media-heading"><a href="blog-left-sidebar.html">&nbsp;Doctor name</a></h5>
-                                <p class="media-meta">&nbsp;Position</p>
-                            </div>
-                        </div>
-                            <div class="col-xs-4 col-md-4 text-center">
-                            <a href="#" class="" type="button" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-remove-sign"></span></a>
-                            </div>
-                        </li>
-                        <li class="media row">
-                        <div class="col-xs-8 col-md-8">
-                            <a class="pull-left" href="blog-left-sidebar.html">
-                                <img class="media-object img-circle" src="img/news/news-thumbnail-144x144-01.jpg" alt="//">
-                            </a>
-                            <div class="media-body">
-                                <h5 class="media-heading"><a href="blog-left-sidebar.html">&nbsp;Doctor name</a></h5>
-                                <p class="media-meta">&nbsp;Position</p>
-                            </div>
-                        </div>
-                            <div class="col-xs-4 col-md-4 text-center">
-                            <a href="#" class="" type="button" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-remove-sign"></span></a>
-                            </div>
-                        </li>
+                    {% endfor %}
+
 
                     </ul>
             </div>

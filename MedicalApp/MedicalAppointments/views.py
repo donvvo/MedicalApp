@@ -161,8 +161,6 @@ class ClinicListView(LoginRequiredMixin, ListView):
 class ClinicProfileView(LoginRequiredMixin, DetailView):
     model = Clinic
     template_name = "medicalappointments/clinic_profile.html"
-    slug_field = "name"
-    slug_url_kwarg = "clinicname"
 
     def get_object(self):
         clinic_name = self.kwargs['clinicname']
@@ -173,8 +171,8 @@ class ClinicProfileView(LoginRequiredMixin, DetailView):
 class ClinicProfileEditView(LoginRequiredMixin, UpdateView):
     model = Clinic
     template_name = "medicalappointments/clinic_edit.html"
-    slug_field = "name"
-    slug_url_kwarg = "clinicname"
+    fields = ('name', 'phone', 'email', 'description', 'city', 'address', 'postal_code',
+        'start_time', 'end_time')
 
     def get_object(self):
         clinic_name = self.kwargs['clinicname']

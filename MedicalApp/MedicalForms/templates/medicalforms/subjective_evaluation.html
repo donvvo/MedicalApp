@@ -3,7 +3,70 @@
 
 <form action="#" method="post">
     {% csrf_token %}
-    {{forms.headache}}
+    {{forms.headache.label}}
+    <div class="row">
+        <div class="col-sm-12">
+            {{form.headache.present_pain.errors}}
+            {{form.headache.present_pain.label}}
+            {{form.headache.present_pain}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            {{form.headache.intensity.errors}}
+            {{form.headache.intensity.label}}
+            {{form.headache.intensity}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            {{form.headache.duration.errors}}
+            {{form.headache.duration.label}}
+            {{form.headache.duration}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            {{form.headache.numbness.errors}}
+            {{form.headache.numbness.label}}
+            {{form.headache.numbness}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            {{form.headache.paraesthesia.errors}}
+            {{form.headache.paraesthesia.label}}
+            {{form.headache.paraesthesia}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            {{form.headache.aggravated_by_movements.errors}}
+            {{form.headache.aggravated_by_movements.label}}
+            {{form.headache.aggravated_by_movements}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            {{form.headache.relieved_by.errors}}
+            {{form.headache.relieved_by.label}}
+            {{form.headache.relieved_by}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            {{form.headache.type_of_pain.errors}}
+            {{form.headache.type_of_pain.label}}
+            {{form.headache.type_of_pain}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            {{form.headache.aggravated_by.errors}}
+            {{form.headache.aggravated_by.label}}
+            {{form.headache.aggravated_by}}
+        </div>
+    </div>
     {{forms.cervical}}
     {{forms.thoracic}}
     {{forms.lumbar}}

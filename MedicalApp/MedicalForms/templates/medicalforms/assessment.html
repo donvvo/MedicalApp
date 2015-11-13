@@ -1,9 +1,150 @@
 {% extends "base.html" %}
 {% block content %}
 
-<form action="#" method="post">
-    {% csrf_token %}
-    {{form}}
-</form>
+<section class="profile-doctor generic animated fadeInUp">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="section-title">
+                    <h3>Assessment</h3>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-10 col-sm-offset-1">
+                <form action="{{request.path}}" method="post" accept-charset="utf-8">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-sm-12">
+                            {{form.date.error}}
+                            {{form.date.label}}
+                            {{form.date}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            {{form.visit_number.error}}
+                            {{form.visit_number.label}}
+                            {{form.visit_number}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            {{form.clinician.error}}
+                            {{form.clinician.label}}
+                            {{form.clinician}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            {{form.subjective_choices.error}}
+                            {{form.subjective_choices.label}}
+                            {{form.subjective_choices}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            {{form.subjective_description.error}}
+                            {{form.subjective_description.label}}
+                            {{form.subjective_description}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            {{form.assessment.error}}
+                            {{form.assessment.label}}
+                            {{form.assessment}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            {{form.objective.error}}
+                            {{form.objective.label}}
+                            {{form.objective}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            {{form.smt.error}}
+                            {{form.smt.label}}
+                            {{form.smt}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            {{form.stt.error}}
+                            {{form.stt.label}}
+                            {{form.stt}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            {{form.cardio.error}}
+                            {{form.cardio.label}}
+                            {{form.cardio}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            {{form.stretch.error}}
+                            {{form.stretch.label}}
+                            {{form.stretch}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            {{form.strength.error}}
+                            {{form.strength.label}}
+                            {{form.strength}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            {{form.ifc.error}}
+                            {{form.ifc.label}}
+                            {{form.ifc}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            {{form.u_s.error}}
+                            {{form.u_s.label}}
+                            {{form.u_s}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            {{form.heat.error}}
+                            {{form.heat.label}}
+                            {{form.heat}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            {{form.ice.error}}
+                            {{form.ice.label}}
+                            {{form.ice}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            {{form.ohter.error}}
+                            {{form.ohter.label}}
+                            {{form.ohter}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            {{form.education.error}}
+                            {{form.education.label}}
+                            {{form.education}}
+                        </div>
+                    </div>
+                    <input type="submit" class="btn btn-default btn-color-border-solid" value="Save">
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
 
 {% endblock %}
