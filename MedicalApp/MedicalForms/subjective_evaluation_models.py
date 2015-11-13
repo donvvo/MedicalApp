@@ -2,6 +2,7 @@ from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
 from django.core.validators import MaxValueValidator, MinValueValidator
 
+from .utils import *
 from MedicalApp.users.models import User
 
 
@@ -65,18 +66,14 @@ class OtherConditions(models.Model):
 # Subjective evaluation questions
 class BaseQuestions(models.Model):
     user = models.ForeignKey(User)
-    today_date = models.DateTimeField(auto_now_add=True, blank=True)
+    today_date = MyDateTimeField(auto_now_add=True, blank=True)
     present_pain = models.ManyToManyField(PresentPain, blank=True)
-    intensity = models.IntegerField(blank=True,
-                                    validators=[
-                                        MaxValueValidator(10),
-                                        MinValueValidator(0)
-                                    ])
-    duration = models.CharField(max_length=20, blank=True)
-    numbness = models.NullBooleanField()
-    paraesthesia = models.NullBooleanField()
-    aggravated_by_movements = models.CharField(max_length=100)
-    relieved_by = models.NullBooleanField()
+    intensity = IntegerRangeField(min_value=0, max_value=0)
+    duration = MyCharField(max_length=20)
+    numbness = MyNullBooleanField()
+    paraesthesia = MyNullBooleanField()
+    aggravated_by_movements = MyCharField(max_length=100)
+    relieved_by = MyNullBooleanField()
 
     class Meta:
         abstract = True
@@ -94,8 +91,8 @@ class HeadacheQuestions(BaseQuestions):
 
 class OtherQuestions(BaseQuestions):
     type_of_pain = models.ManyToManyField(TypeOfPainOthers, blank=True)
-    radiation = models.NullBooleanField()
-    pain_location = models.CharField(max_length=100)
+    radiation = MyNullBooleanField()
+    pain_location = MyCharField(max_length=100)
     aggravated_by = models.ManyToManyField(AggravatedByOthers, blank=True)
 
 
