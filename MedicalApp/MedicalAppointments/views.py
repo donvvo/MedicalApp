@@ -11,43 +11,30 @@ from django.shortcuts import redirect, render_to_response, get_object_or_404
 from django.views.generic import DetailView, ListView, UpdateView
 from django.utils import timezone
 
-from braces.views import LoginRequiredMixin
+from braces.views import LoginRequiredMixin, GroupRequiredMixin
 
 from .models import Booking, DoctorSpecialty, Clinic, Doctor
 from .utils import get_clinics_by_specialty, get_time_table
 
 
+class PatientOnlyMixin(LoginRequiredMixin, GroupRequiredMixin):
+    group_required = 'Patients'
+    raise_exception = True
+
+
 # Create your views here.
-class AppointmentView(LoginRequiredMixin, ListView):
+class AppointmentView(PatientOnlyMixin, ListView):
     model = Booking
     template_name = "medicalappointments/appointment.html"
-
-    def dispatch(self, request, *args, **kwargs):
-        # Only patients can view
-        if self.request.user.groups.filter(name="Patients").exists():
-            return super(AppointmentView, self).dispatch(request,
-                                                         *args, **kwargs)
-        else:
-            redirect_url = reverse("users:account_redirect")
-            return redirect(redirect_url)
 
     def get_queryset(self):
         bookings = self.model.objects.filter(patient=self.request.user.patient).all()
         return bookings
 
 
-class NewAppointmentView(LoginRequiredMixin, ListView):
+class NewAppointmentView(PatientOnlyMixin, ListView):
     model = DoctorSpecialty
     template_name = "medicalappointments/new_appointment.html"
-
-    def dispatch(self, request, *args, **kwargs):
-        # Only patients can view
-        if self.request.user.groups.filter(name="Patients").exists():
-            return super(NewAppointmentView, self).dispatch(request,
-                                                         *args, **kwargs)
-        else:
-            redirect_url = reverse("users:account_redirect")
-            return redirect(redirect_url)
 
 
 @login_required
