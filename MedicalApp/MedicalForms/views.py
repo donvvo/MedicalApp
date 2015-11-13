@@ -44,14 +44,12 @@ class PatientFormBaseView(LoginRequiredMixin, UpdateView):
 
 class DoctorFormBaseView(DoctorOnlyMixin, UpdateView):
     def get_object(self):
-        user_id = self.kwargs['user_id']
-        objects = self.model.objects.filter(pk=user_id)
-        print objects
+        self.user_id = self.kwargs['user_id']
+        objects = self.model.objects.filter(pk=self.user_id)
         if objects.exists():
             return objects.get()
         else:
-            print self.model(pk=user_id)
-            return self.model(pk=user_id)
+            return self.model(pk=self.user_id)
 
 
 class PatientInformationView(PatientFormBaseView):
@@ -90,9 +88,13 @@ class TMJScreeningView(PatientFormBaseView):
         return reverse_lazy('medical_forms:tmj-screening', kwargs={'user_id': self.user_id})
 
 
-class AssessmentView(FormView):
+class AssessmentView(DoctorFormBaseView):
     template_name = 'medicalforms/assessment.html'
+    model = Assessment
     form_class = AssessmentForm
+
+    def get_success_url(self):
+        return reverse_lazy('medical_forms:assessment', kwargs={'user_id': self.user_id})
 
 
 class MVAIntakeView(FormView):
