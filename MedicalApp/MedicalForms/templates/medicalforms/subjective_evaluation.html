@@ -6,9 +6,18 @@
     {{forms.headache.label}}
     <div class="row">
         <div class="col-sm-12">
+			
+	                        {% for checkbox in form.headache.present_pain %}
+	                        <div class="checkbox">
+					<label>
+							{{checkbox.tag}}
+							{{checkbox.choice_label}}
+					</label>
+	                        </div>
+               		     {% endfor %}	        
+	        
             {{form.headache.present_pain.errors}}
-            {{form.headache.present_pain.label}}
-            {{form.headache.present_pain}}
+
         </div>
     </div>
     <div class="row">
