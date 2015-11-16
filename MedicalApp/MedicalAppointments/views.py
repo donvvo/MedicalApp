@@ -1,7 +1,6 @@
 import datetime
 import pytz
 import random
-import time
 
 from django.contrib.auth.decorators import login_required
 from django.core import serializers
@@ -28,7 +27,7 @@ class AppointmentView(PatientOnlyMixin, ListView):
     template_name = "medicalappointments/appointment.html"
 
     def get_queryset(self):
-        bookings = self.model.objects.filter(patient=self.request.user.patient).all()
+        bookings = self.model.objects.filter(patient=self.request.user.patient, time__gte=timezone.now()).all()
         return bookings
 
 
@@ -66,7 +65,7 @@ class PatientTimetableView(LoginRequiredMixin, ListView):
     def get_queryset(self):
         bookings = self.model.objects.filter(clinic=self.clinic_name).all()
 
-        specialty = self.kwargs.get('specialty', None)
+        specialty = self.kwargs.get('specialty').replace('+', ' ')
 
         self.doctors = Doctor.objects.filter(clinic=self.clinic_name, specialty=specialty).all()
 
