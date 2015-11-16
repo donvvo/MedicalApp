@@ -117,14 +117,875 @@
                             </div>
                         </div>
                     </div>
-                    {{forms.cervical}}
-                    {{forms.thoracic}}
-                    {{forms.lumbar}}
-                    {{forms.joint1}}
-                    {{forms.joint2}}
-                    {{forms.joint3}}
-                    {{forms.joint4}}
-                    {{forms.others}}
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h4>Cervial Spine:</h4>
+                            <div class="form-group">
+                            {{forms.cervical.present_pain.errors}}
+                            {{forms.cervical.present_pain.label}}
+                            {% for checkbox in forms.cervical.present_pain %}
+                                <div class="checkbox">
+                                    <label>
+                                        {{checkbox.tag}}
+                                        {{checkbox.choice_label}}
+                                    </label>
+                                </div>
+                            {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                            {{forms.cervical.type_of_pain.errors}}
+                            {{forms.cervical.type_of_pain.label}}
+                            {% for checkbox in forms.cervical.type_of_pain %}
+                                <div class="checkbox">
+                                    <label>
+                                        {{checkbox.tag}}
+                                        {{checkbox.choice_label}}
+                                    </label>
+                                </div>
+                            {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                            {{forms.cervical.intensity.errors}}
+                            {{forms.cervical.intensity.label}}
+                            {{forms.cervical.intensity}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                            {{forms.cervical.duration.errors}}
+                            {{forms.cervical.duration.label}}
+                            {{forms.cervical.duration}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                            {{forms.cervical.radiation.errors}}
+                            {{forms.cervical.radiation.label}}
+                            {{forms.cervical.radiation}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                            {{forms.cervical.numbness.errors}}
+                            {{forms.cervical.numbness.label}}
+                            {{forms.cervical.numbness}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                            {{forms.cervical.paraesthesia.errors}}
+                            {{forms.cervical.paraesthesia.label}}
+                            {{forms.cervical.paraesthesia}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                            {{forms.cervical.pain_location.errors}}
+                            {{forms.cervical.pain_location.label}}
+                            {{forms.cervical.pain_location}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                            {{forms.cervical.aggravated_by.errors}}
+                            {{forms.cervical.aggravated_by.label}}
+                            {% for checkbox in forms.cervical.aggravated_by %}
+                                <div class="checkbox">
+                                    <label>
+                                        {{checkbox.tag}}
+                                        {{checkbox.choice_label}}
+                                    </label>
+                                </div>
+                            {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                            {{forms.cervical.aggravated_by_movements.errors}}
+                            {{forms.cervical.aggravated_by_movements.label}}
+                            {{forms.cervical.aggravated_by_movements}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                            {{forms.cervical.relieved_by.errors}}
+                            {{forms.cervical.relieved_by.label}}
+                            {{forms.cervical.relieved_by}}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h4>Thoracic Spine:</h4>
+                            <div class="form-group">
+                            {{forms.thoracic.present_pain.errors}}
+                            {{forms.thoracic.present_pain.label}}
+                            {% for checkbox in forms.thoracic.present_pain %}
+                                <div class="checkbox">
+                                    <label>
+                                        {{checkbox.tag}}
+                                        {{checkbox.choice_label}}
+                                    </label>
+                                </div>
+                            {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                            {{forms.thoracic.type_of_pain.errors}}
+                            {{forms.thoracic.type_of_pain.label}}
+                            {% for checkbox in forms.thoracic.type_of_pain %}
+                                <div class="checkbox">
+                                    <label>
+                                        {{checkbox.tag}}
+                                        {{checkbox.choice_label}}
+                                    </label>
+                                </div>
+                            {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                            {{forms.thoracic.intensity.errors}}
+                            {{forms.thoracic.intensity.label}}
+                            {{forms.thoracic.intensity}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                            {{forms.thoracic.duration.errors}}
+                            {{forms.thoracic.duration.label}}
+                            {{forms.thoracic.duration}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                            {{forms.thoracic.radiation.errors}}
+                            {{forms.thoracic.radiation.label}}
+                            {{forms.thoracic.radiation}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                            {{forms.thoracic.numbness.errors}}
+                            {{forms.thoracic.numbness.label}}
+                            {{forms.thoracic.numbness}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                            {{forms.thoracic.paraesthesia.errors}}
+                            {{forms.thoracic.paraesthesia.label}}
+                            {{forms.thoracic.paraesthesia}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                            {{forms.thoracic.pain_location.errors}}
+                            {{forms.thoracic.pain_location.label}}
+                            {{forms.thoracic.pain_location}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                            {{forms.thoracic.aggravated_by.errors}}
+                            {{forms.thoracic.aggravated_by.label}}
+                            {% for checkbox in forms.thoracic.aggravated_by %}
+                                <div class="checkbox">
+                                    <label>
+                                        {{checkbox.tag}}
+                                        {{checkbox.choice_label}}
+                                    </label>
+                                </div>
+                            {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                            {{forms.thoracic.aggravated_by_movements.errors}}
+                            {{forms.thoracic.aggravated_by_movements.label}}
+                            {{forms.thoracic.aggravated_by_movements}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                            {{forms.thoracic.relieved_by.errors}}
+                            {{forms.thoracic.relieved_by.label}}
+                            {{forms.thoracic.relieved_by}}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h4>Lumbar Spine:</h4>
+                            <div class="form-group">
+                            {{forms.lumbar.present_pain.errors}}
+                            {{forms.lumbar.present_pain.label}}
+                            {% for checkbox in forms.lumbar.present_pain %}
+                                <div class="checkbox">
+                                    <label>
+                                        {{checkbox.tag}}
+                                        {{checkbox.choice_label}}
+                                    </label>
+                                </div>
+                            {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                            {{forms.lumbar.type_of_pain.errors}}
+                            {{forms.lumbar.type_of_pain.label}}
+                            {% for checkbox in forms.lumbar.type_of_pain %}
+                                <div class="checkbox">
+                                    <label>
+                                        {{checkbox.tag}}
+                                        {{checkbox.choice_label}}
+                                    </label>
+                                </div>
+                            {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                            {{forms.lumbar.intensity.errors}}
+                            {{forms.lumbar.intensity.label}}
+                            {{forms.lumbar.intensity}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                            {{forms.lumbar.duration.errors}}
+                            {{forms.lumbar.duration.label}}
+                            {{forms.lumbar.duration}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                            {{forms.lumbar.radiation.errors}}
+                            {{forms.lumbar.radiation.label}}
+                            {{forms.lumbar.radiation}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                            {{forms.lumbar.numbness.errors}}
+                            {{forms.lumbar.numbness.label}}
+                            {{forms.lumbar.numbness}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                            {{forms.lumbar.paraesthesia.errors}}
+                            {{forms.lumbar.paraesthesia.label}}
+                            {{forms.lumbar.paraesthesia}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                            {{forms.lumbar.pain_location.errors}}
+                            {{forms.lumbar.pain_location.label}}
+                            {{forms.lumbar.pain_location}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                            {{forms.lumbar.aggravated_by.errors}}
+                            {{forms.lumbar.aggravated_by.label}}
+                            {% for checkbox in forms.lumbar.aggravated_by %}
+                                <div class="checkbox">
+                                    <label>
+                                        {{checkbox.tag}}
+                                        {{checkbox.choice_label}}
+                                    </label>
+                                </div>
+                            {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                            {{forms.lumbar.aggravated_by_movements.errors}}
+                            {{forms.lumbar.aggravated_by_movements.label}}
+                            {{forms.lumbar.aggravated_by_movements}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                            {{forms.lumbar.relieved_by.errors}}
+                            {{forms.lumbar.relieved_by.label}}
+                            {{forms.lumbar.relieved_by}}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h4>Peripheral Joint:</h4>
+                            <div class="form-group">
+                            {{forms.joint1.present_pain.errors}}
+                            {{forms.joint1.present_pain.label}}
+                            {% for checkbox in forms.joint1.present_pain %}
+                                <div class="checkbox">
+                                    <label>
+                                        {{checkbox.tag}}
+                                        {{checkbox.choice_label}}
+                                    </label>
+                                </div>
+                            {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                            {{forms.joint1.type_of_pain.errors}}
+                            {{forms.joint1.type_of_pain.label}}
+                            {% for checkbox in forms.joint1.type_of_pain %}
+                                <div class="checkbox">
+                                    <label>
+                                        {{checkbox.tag}}
+                                        {{checkbox.choice_label}}
+                                    </label>
+                                </div>
+                            {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                            {{forms.joint1.intensity.errors}}
+                            {{forms.joint1.intensity.label}}
+                            {{forms.joint1.intensity}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                            {{forms.joint1.duration.errors}}
+                            {{forms.joint1.duration.label}}
+                            {{forms.joint1.duration}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                            {{forms.joint1.radiation.errors}}
+                            {{forms.joint1.radiation.label}}
+                            {{forms.joint1.radiation}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                            {{forms.joint1.numbness.errors}}
+                            {{forms.joint1.numbness.label}}
+                            {{forms.joint1.numbness}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                            {{forms.joint1.paraesthesia.errors}}
+                            {{forms.joint1.paraesthesia.label}}
+                            {{forms.joint1.paraesthesia}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                            {{forms.joint1.pain_location.errors}}
+                            {{forms.joint1.pain_location.label}}
+                            {{forms.joint1.pain_location}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                            {{forms.joint1.aggravated_by.errors}}
+                            {{forms.joint1.aggravated_by.label}}
+                            {% for checkbox in forms.joint1.aggravated_by %}
+                                <div class="checkbox">
+                                    <label>
+                                        {{checkbox.tag}}
+                                        {{checkbox.choice_label}}
+                                    </label>
+                                </div>
+                            {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                            {{forms.joint1.aggravated_by_movements.errors}}
+                            {{forms.joint1.aggravated_by_movements.label}}
+                            {{forms.joint1.aggravated_by_movements}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                            {{forms.joint1.relieved_by.errors}}
+                            {{forms.joint1.relieved_by.label}}
+                            {{forms.joint1.relieved_by}}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                            {{forms.joint2.present_pain.errors}}
+                            {{forms.joint2.present_pain.label}}
+                            {% for checkbox in forms.joint2.present_pain %}
+                                <div class="checkbox">
+                                    <label>
+                                        {{checkbox.tag}}
+                                        {{checkbox.choice_label}}
+                                    </label>
+                                </div>
+                            {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                            {{forms.joint2.type_of_pain.errors}}
+                            {{forms.joint2.type_of_pain.label}}
+                            {% for checkbox in forms.joint2.type_of_pain %}
+                                <div class="checkbox">
+                                    <label>
+                                        {{checkbox.tag}}
+                                        {{checkbox.choice_label}}
+                                    </label>
+                                </div>
+                            {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                            {{forms.joint2.intensity.errors}}
+                            {{forms.joint2.intensity.label}}
+                            {{forms.joint2.intensity}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                            {{forms.joint2.duration.errors}}
+                            {{forms.joint2.duration.label}}
+                            {{forms.joint2.duration}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                            {{forms.joint2.radiation.errors}}
+                            {{forms.joint2.radiation.label}}
+                            {{forms.joint2.radiation}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                            {{forms.joint2.numbness.errors}}
+                            {{forms.joint2.numbness.label}}
+                            {{forms.joint2.numbness}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                            {{forms.joint2.paraesthesia.errors}}
+                            {{forms.joint2.paraesthesia.label}}
+                            {{forms.joint2.paraesthesia}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                            {{forms.joint2.pain_location.errors}}
+                            {{forms.joint2.pain_location.label}}
+                            {{forms.joint2.pain_location}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                            {{forms.joint2.aggravated_by.errors}}
+                            {{forms.joint2.aggravated_by.label}}
+                            {% for checkbox in forms.joint2.aggravated_by %}
+                                <div class="checkbox">
+                                    <label>
+                                        {{checkbox.tag}}
+                                        {{checkbox.choice_label}}
+                                    </label>
+                                </div>
+                            {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                            {{forms.joint2.aggravated_by_movements.errors}}
+                            {{forms.joint2.aggravated_by_movements.label}}
+                            {{forms.joint2.aggravated_by_movements}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                            {{forms.joint2.relieved_by.errors}}
+                            {{forms.joint2.relieved_by.label}}
+                            {{forms.joint2.relieved_by}}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                            {{forms.joint3.present_pain.errors}}
+                            {{forms.joint3.present_pain.label}}
+                            {% for checkbox in forms.joint3.present_pain %}
+                                <div class="checkbox">
+                                    <label>
+                                        {{checkbox.tag}}
+                                        {{checkbox.choice_label}}
+                                    </label>
+                                </div>
+                            {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                            {{forms.joint3.type_of_pain.errors}}
+                            {{forms.joint3.type_of_pain.label}}
+                            {% for checkbox in forms.joint3.type_of_pain %}
+                                <div class="checkbox">
+                                    <label>
+                                        {{checkbox.tag}}
+                                        {{checkbox.choice_label}}
+                                    </label>
+                                </div>
+                            {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                            {{forms.joint3.intensity.errors}}
+                            {{forms.joint3.intensity.label}}
+                            {{forms.joint3.intensity}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                            {{forms.joint3.duration.errors}}
+                            {{forms.joint3.duration.label}}
+                            {{forms.joint3.duration}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                            {{forms.joint3.radiation.errors}}
+                            {{forms.joint3.radiation.label}}
+                            {{forms.joint3.radiation}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                            {{forms.joint3.numbness.errors}}
+                            {{forms.joint3.numbness.label}}
+                            {{forms.joint3.numbness}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                            {{forms.joint3.paraesthesia.errors}}
+                            {{forms.joint3.paraesthesia.label}}
+                            {{forms.joint3.paraesthesia}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                            {{forms.joint3.pain_location.errors}}
+                            {{forms.joint3.pain_location.label}}
+                            {{forms.joint3.pain_location}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                            {{forms.joint3.aggravated_by.errors}}
+                            {{forms.joint3.aggravated_by.label}}
+                            {% for checkbox in forms.joint3.aggravated_by %}
+                                <div class="checkbox">
+                                    <label>
+                                        {{checkbox.tag}}
+                                        {{checkbox.choice_label}}
+                                    </label>
+                                </div>
+                            {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                            {{forms.joint3.aggravated_by_movements.errors}}
+                            {{forms.joint3.aggravated_by_movements.label}}
+                            {{forms.joint3.aggravated_by_movements}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                            {{forms.joint3.relieved_by.errors}}
+                            {{forms.joint3.relieved_by.label}}
+                            {{forms.joint3.relieved_by}}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                            {{forms.joint4.present_pain.errors}}
+                            {{forms.joint4.present_pain.label}}
+                            {% for checkbox in forms.joint4.present_pain %}
+                                <div class="checkbox">
+                                    <label>
+                                        {{checkbox.tag}}
+                                        {{checkbox.choice_label}}
+                                    </label>
+                                </div>
+                            {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                            {{forms.joint4.type_of_pain.errors}}
+                            {{forms.joint4.type_of_pain.label}}
+                            {% for checkbox in forms.joint4.type_of_pain %}
+                                <div class="checkbox">
+                                    <label>
+                                        {{checkbox.tag}}
+                                        {{checkbox.choice_label}}
+                                    </label>
+                                </div>
+                            {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                            {{forms.joint4.intensity.errors}}
+                            {{forms.joint4.intensity.label}}
+                            {{forms.joint4.intensity}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                            {{forms.joint4.duration.errors}}
+                            {{forms.joint4.duration.label}}
+                            {{forms.joint4.duration}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                            {{forms.joint4.radiation.errors}}
+                            {{forms.joint4.radiation.label}}
+                            {{forms.joint4.radiation}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                            {{forms.joint4.numbness.errors}}
+                            {{forms.joint4.numbness.label}}
+                            {{forms.joint4.numbness}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                            {{forms.joint4.paraesthesia.errors}}
+                            {{forms.joint4.paraesthesia.label}}
+                            {{forms.joint4.paraesthesia}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                            {{forms.joint4.pain_location.errors}}
+                            {{forms.joint4.pain_location.label}}
+                            {{forms.joint4.pain_location}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                            {{forms.joint4.aggravated_by.errors}}
+                            {{forms.joint4.aggravated_by.label}}
+                            {% for checkbox in forms.joint4.aggravated_by %}
+                                <div class="checkbox">
+                                    <label>
+                                        {{checkbox.tag}}
+                                        {{checkbox.choice_label}}
+                                    </label>
+                                </div>
+                            {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                            {{forms.joint4.aggravated_by_movements.errors}}
+                            {{forms.joint4.aggravated_by_movements.label}}
+                            {{forms.joint4.aggravated_by_movements}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                            {{forms.joint4.relieved_by.errors}}
+                            {{forms.joint4.relieved_by.label}}
+                            {{forms.joint4.relieved_by}}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h4>Other questions:</h4>
+                            <div class="form-group">
+                            {{forms.others.others.errors}}
+                            {{forms.others.others.label}}
+                            {% for checkbox in forms.others.others %}
+                                <div class="checkbox">
+                                    <label>
+                                        {{checkbox.tag}}
+                                        {{checkbox.choice_label}}
+                                    </label>
+                                </div>
+                            {% endfor %}
+                            </div>
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>
