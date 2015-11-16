@@ -6,7 +6,7 @@
 <div class="page-title">
     <div class="container">
         <h1>Let food be thy medicine and medicine be the food.</h1>
-        <div class="pagenation"><a href="{% url 'home' %}">Home</a> <i>></i> Doctor Profile Page</div>
+        <div class="pagenation"><a href="{% url 'home' %}">Home</a> <i>></i> Patient Profile Page</div>
     </div>
 </div>
 <!-- End Page Titles -->
@@ -14,6 +14,13 @@
 <!-- Single Patient-->
 <section class="profile-doctor generic animated fadeInUp">
     <div class="container">
+        <div class="row">
+          <div class="col-sm-12 text-right">
+            {% if object.pk == request.user.pk %}
+                <a href="{% url 'users:patient_profile_edit' %}" class="btn btn-default btn-hover-bg"><span>Edit Profile</span></a>
+            {% endif %}
+          </div>
+        </div>
         <div class="row">
             <div class="col-sm-12">
                 <div class="section-title">
@@ -36,7 +43,7 @@
                             {% if object.summary %}
                                 <p>{{object.summary}}</p>
                             {% elif object.username == request.user.username %}
-                                <p>Please add summary from <a href="{% url 'users:user_settings' %}">settings</a></p>
+                                <p><a href="{% url 'users:patient_profile_edit' %}">Please add summary</a></p>
                             {% endif %}
                         </div>
                         <h5 class="alternative-title">Patient Information</h5>
@@ -53,12 +60,9 @@
                         <a href="{% url 'medical_forms:acute-concussion-eval' object.pk %}" class="btn btn-default btn-hover-bg"><span>View</span></a>
                         <h5 class="alternative-title">Assessment</h5>
                         <a href="{% url 'medical_forms:assessment' object.pk %}" class="btn btn-default btn-hover-bg"><span>View</span></a>
-                        {% endif %}
                         <h5 class="alternative-title">Subjective Evaluation</h5>
                         <a href="{% url 'medical_forms:subjective_eval' %}" class="btn btn-default btn-hover-bg"><span>View</span></a>
-
-                        <h5 class="alternative-title">Form 6</h5>
-                        <a href="#" class="btn btn-default btn-hover-bg"><span>View</span></a>
+                        {% endif %}
                     </div>
                 </div>
 

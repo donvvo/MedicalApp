@@ -78,6 +78,12 @@ urlpatterns = [
     ),
 
     url(
+        regex=r'^patient/~edit$',
+        view=views.UserSettingsView.as_view(),
+        name='patient_profile_edit'
+    ),
+
+    url(
         regex=r'^doctor/(?P<username>[\w.@+-]+)/$',
         view=views.DoctorProfileView.as_view(),
         name='doctor_profile'
@@ -90,10 +96,4 @@ urlpatterns = [
         name='doctor_profile_edit'
     ),
 
-    # URL pattern for the UserUpdateView
-    url(
-        regex=r'^~settings/$',
-        view=views.UserSettingsView.as_view(),
-        name='user_settings'
-    ),
 ]

@@ -72,6 +72,24 @@ class PatientProfileView(LoginRequiredMixin, DetailView):
         return context
 
 
+class UserSettingsView(LoginRequiredMixin, UpdateView):
+    form_class = UserSettingsForm
+    template_name = 'users/user_settings.html'
+    slug_field = "username"
+    slug_url_kwarg = "username"
+
+    # we already imported User in the view code above, remember?
+    model = User
+
+    # send the user back to their own page after a successful update
+    def get_success_url(self):
+        return reverse("users:account_redirect")
+
+    def get_object(self):
+        # Only get the User record for the user making the request
+        return User.objects.get(username=self.request.user.username)
+
+
 class DoctorProfileView(LoginRequiredMixin, DetailView):
     model = User
     # These next two lines tell the view to index lookups by username
@@ -117,24 +135,6 @@ class PatientDoctorRedirectView(LoginRequiredMixin, RedirectView):
         else:
             return reverse("users:patient_profile",
                            kwargs={"username": username})
-
-
-class UserSettingsView(LoginRequiredMixin, UpdateView):
-    form_class = UserSettingsForm
-    template_name = 'users/user_settings.html'
-    slug_field = "username"
-    slug_url_kwarg = "username"
-
-    # we already imported User in the view code above, remember?
-    model = User
-
-    # send the user back to their own page after a successful update
-    def get_success_url(self):
-        return reverse("users:account_redirect")
-
-    def get_object(self):
-        # Only get the User record for the user making the request
-        return User.objects.get(username=self.request.user.username)
 
 
 class UserListView(LoginRequiredMixin, ListView):

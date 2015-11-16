@@ -6,8 +6,8 @@
 <!-- Page Titles -->
 <div class="page-title">
     <div class="container">
-        <h1>Profile</h1>
-        <div class="pagenation"><a href="#">Home</a> <i>></i> Profile</div>
+        <h1>Doctor Profile</h1>
+        <div class="pagenation"><a href="{% url 'home' %}">Home</a> <i>></i> Doctor Profile Page</div>
     </div>
 </div>
 <!-- End Page Titles -->
@@ -17,7 +17,9 @@
     <div class="container">
       <div class="row">
 	      <div class="col-sm-12 text-right">
-		      <a href="{% url 'users:doctor_profile_edit' %}" class="btn btn-default btn-hover-bg"><span>Edit Profile</span></a>
+            {% if object.pk == request.user.pk %}
+                <a href="{% url 'users:doctor_profile_edit' %}" class="btn btn-default btn-hover-bg"><span>Edit Profile</span></a>
+            {% endif %}
 	      </div>
       </div>
         <div class="row">

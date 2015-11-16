@@ -37,11 +37,11 @@
     <div class="container">
       <div class="row">
         <div class="col-sm-7">
+        {% if request.user.is_authenticated %}
           <ul class="nav nav-pills">
-            <li><a href="#">Welcome back Don!</a></li>
-
-
+            <li><a href="{% url 'users:account_redirect' %}">Welcome back {{request.user}}!</a></li>
           </ul>
+        {% endif %}
         </div>
         <div class="col-sm-5 text-right">
           <p class="left"><i class="fa fa-calendar-o"></i> Monday to Saturday - 8am to 9pm</p>
@@ -78,7 +78,7 @@
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{request.user.first_name}} {{request.user.last_name}}<span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
                 <li><a href="{% url 'users:account_redirect' %}">Profile</a></li>
-                <li><a href="{% url 'users:user_settings' %}">Settings</a></li>
+                <li><a href="#">Settings</a></li>
                 <li><a href="{% url 'users:account_logout' %}">Logout</a></li>
               </ul>
             </li>
