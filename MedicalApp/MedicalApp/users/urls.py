@@ -85,6 +85,13 @@ urlpatterns = [
 
     # URL pattern for the UserUpdateView
     url(
+        regex=r'^doctor/~edit/$',
+        view=views.DoctorProfileEditView.as_view(),
+        name='doctor_profile_edit'
+    ),
+
+    # URL pattern for the UserUpdateView
+    url(
         regex=r'^~settings/$',
         view=views.UserSettingsView.as_view(),
         name='user_settings'

@@ -32,7 +32,6 @@ pip-log.txt
 .coverage
 .tox
 nosetests.xml
-htmlcov
 
 # Translations
 *.mo
@@ -52,9 +51,7 @@ node_modules/
 
 # Compass
 .sass-cache
+rootkey.csv
+.vagrant/
 
-# virtual environments
-.env
 
-# User-uploaded media
-MedicalApp/media/

@@ -17,7 +17,7 @@
     <div class="container">
       <div class="row">
 	      <div class="col-sm-12 text-right">
-		      <a href="#" class="btn btn-default btn-hover-bg"><span>Edit Profile</span></a>
+		      <a href="{% url 'users:doctor_profile_edit' %}" class="btn btn-default btn-hover-bg"><span>Edit Profile</span></a>
 	      </div>
       </div>
         <div class="row">
@@ -41,13 +41,13 @@
                             <span></span>
                             <p>{{object.summary}}</p>
                         </div>
-             
+
                     </div>
                 </div>
-				
-               
 
-    
+
+
+
             </div>
 
             <div class="col-md-3">
@@ -102,7 +102,7 @@
                         </div>
                     </div>
 
-    
+
                 </div>
             </div>
         </div>

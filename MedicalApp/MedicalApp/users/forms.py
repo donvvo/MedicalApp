@@ -7,6 +7,7 @@ from django.core.mail import EmailMessage
 from allauth.account.forms import LoginForm, SignupForm
 
 from .models import User
+from MedicalAppointments.models import Doctor
 
 logger = logging.getLogger(__name__)
 
@@ -101,6 +102,20 @@ class UserSettingsForm(forms.ModelForm):
                                     'class': 'form-control',
                                     'placeholder': 'Contact Number'
                                     }),
+        }
+
+
+class DoctorSettingsForm(forms.ModelForm):
+    class Meta:
+        model = Doctor
+        fields = ("specialty", "clinic")
+        widgets = {
+            'specialty': forms.Select(attrs={
+                                    'class': 'form-control'
+                                    }),
+            'clinic': forms.Select(attrs={
+                                    'class': 'form-control'
+                                    })
         }
 
 

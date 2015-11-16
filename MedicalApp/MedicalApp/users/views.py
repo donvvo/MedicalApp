@@ -12,7 +12,8 @@ from allauth.account import app_settings
 
 from .models import User
 from MedicalAppointments.models import Patient, Doctor
-from .forms import UserSettingsForm, EmailDoctorForm
+from .forms import UserSettingsForm, EmailDoctorForm, DoctorSettingsForm
+from MedicalApp.utils import MultipleFormsView
 
 
 class HomeView(LoginRequiredMixin, RedirectView):
@@ -77,6 +78,25 @@ class DoctorProfileView(LoginRequiredMixin, DetailView):
     slug_field = "username"
     slug_url_kwarg = "username"
     template_name = "users/doctor_profile.html"
+
+
+class DoctorProfileEditView(LoginRequiredMixin, MultipleFormsView):
+    # These next two lines tell the view to index lookups by username
+    template_name = "users/doctor_settings.html"
+
+    form_classes = {
+        'user_settings': UserSettingsForm,
+        'doctor_settings': DoctorSettingsForm
+    }
+
+    def get_form_initial(self):
+        self.form_initial = {
+            'user_settings': get_object_or_404(User, pk=self.request.user.pk),
+            'doctor_settings': get_object_or_404(Doctor, user=self.request.user)
+        }
+
+    def get_success_url(self):
+        return reverse("users:account_redirect")
 
 
 class UserRedirectView(LoginRequiredMixin, RedirectView):
