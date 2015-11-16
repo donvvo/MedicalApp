@@ -36,12 +36,12 @@ class DoctorSpecialty(models.Model):
 @python_2_unicode_compatible
 class Doctor(models.Model):
     user = models.OneToOneField(User, primary_key=True)
-    specialty = models.ForeignKey(DoctorSpecialty, blank=True, default="Chiropractor")
-    clinic = models.ForeignKey(Clinic, blank=True, default="Test Clinic 1")
+    specialty = models.ForeignKey(DoctorSpecialty, blank=True, null=True)
+    clinic = models.ForeignKey(Clinic, blank=True, null=True)
 
     def __str__(self):
-        return self.user.first_name + ' ' + self.user.last_name + ' -- ' + \
-        'Specialty: ' + self.specialty.specialty + ', Clinic: ' + self.clinic.name
+        return str(self.user) + ' -- ' + 'Specialty: '
+        + str(self.specialty) + ', Clinic: ' + str(self.clinic)
 
 
 @python_2_unicode_compatible
