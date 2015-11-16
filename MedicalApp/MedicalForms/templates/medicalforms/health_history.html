@@ -11,7 +11,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-10 col-sm-offset-1">
+            <div class="col-sm-6 col-sm-offset-3">
                 <form action="{{request.path}}" method="post" accept-charset="utf-8">
                     {% csrf_token %}
                     <div class="row">
@@ -32,105 +32,137 @@
                         <div class="col-sm-12">
 	                          <label class="control-label">General</label><br>
 	                        {% for checkbox in form.general %}
+	                        <div class="checkbox">
+					<label>
 							{{checkbox.tag}}
 							{{checkbox.choice_label}}
+					</label>
+	                        </div>
                		     {% endfor %} 
                            
                             {{form.general.error}}
                        
                         </div>
                     </div>
-                    <hr class="divider-dashed-large">
+                   
                     <div class="row">
                         <div class="col-sm-12">
 	                        <label class="control-label">Muscle joint</label><br>
 	                        {% for checkbox in form.muscle_joint %}
+	                        <div class="checkbox">
+					<label>
 							{{checkbox.tag}}
 							{{checkbox.choice_label}}
+					</label>
+	                        </div>
                		     {% endfor %}
 	                        
                             {{form.muscle_joint.error}}
                     
                         </div>
                     </div>
-                    <hr class="divider-dashed-large">
+                    
                     <div class="row">
                         <div class="col-sm-12">
 	                        <label class="control-label">Skin</label><br>
 	                        {% for checkbox in form.skin %}
+	                        <div class="checkbox">
+					<label>
 							{{checkbox.tag}}
 							{{checkbox.choice_label}}
+					</label>
+	                        </div>
                		     {% endfor %}
                		     
                             {{form.skin.error}}
                        
                         </div>
                     </div>
-                    <hr class="divider-dashed-large">
+                   
                     <div class="row">
                         <div class="col-sm-12">
 	                        <label class="control-label">Respiratory</label><br>
 	                        {% for checkbox in form.respiratory %}
+							<div class="checkbox">
+					<label>
 							{{checkbox.tag}}
 							{{checkbox.choice_label}}
+					</label>
+							</div>
                		     {% endfor %}
 	                        
                             {{form.respiratory.error}}
                       
                         </div>
                     </div>
-                    <hr class="divider-dashed-large">
+                    
                     <div class="row">
                         <div class="col-sm-12">
 	                        <label class="control-label">Gastrointestinal</label><br>
 	                        {% for checkbox in form.gastrointestinal %}
+	                        <div class="checkbox">
+					<label>
 							{{checkbox.tag}}
 							{{checkbox.choice_label}}
+					</label>
+	                        </div>
                		     {% endfor %}
 	                        
                             {{form.gastrointestinal.error}}
                         </div>
                     </div>
-                    <hr class="divider-dashed-large">
+                    
                     <div class="row">
                         <div class="col-sm-12">
 	                        <label class="control-label">Genitourinary</label><br>
 	                        {% for checkbox in form.genitourinary %}
+	                        <div class="checkbox">
+					<label>
 							{{checkbox.tag}}
 							{{checkbox.choice_label}}
+					</label>
+	                        </div>
                		     {% endfor %}
 	                        
                             {{form.genitourinary.error}}
         
                         </div>
                     </div>
-                    <hr class="divider-dashed-large">
+                   
                     <div class="row">
                         <div class="col-sm-12">
 	                        <label class="control-label">Cardiovascular</label><br>
 	                        {% for checkbox in form.cardiovascular %}
+	                        <div class="checkbox">
+					<label>
 							{{checkbox.tag}}
 							{{checkbox.choice_label}}
+					</label>
+	                        </div>
                		     {% endfor %}
 	                        
                             {{form.cardiovascular.error}}
           
                         </div>
                     </div>
-                    <hr class="divider-dashed-large">
+                    
                     <div class="row">
                         <div class="col-sm-12">
 							 <label class="control-label">Women Only Choices</label><br>
 	                        {% for checkbox in form.woemn_only_choices %}
+	                        <div class="checkbox">
+					<label>
 							{{checkbox.tag}}
 							{{checkbox.choice_label}}
+					</label>
+	                        </div>
                		     {% endfor %}
                		     
                             {{form.woemn_only_choices.error}}
       
                         </div>
                     </div>
-                    <hr class="divider-dashed-large">
+                   
                     <div class="row">
                         <div class="col-sm-12">
 	                     	 <label class="control-label">Menstrual Flow</label><br>
@@ -143,26 +175,34 @@
           
                         </div>
                     </div>
-                    <hr class="divider-dashed-large">
+                    
                     <div class="row">
                         <div class="col-sm-12">
 							<label class="control-label">Pregnant</label><br>
 	                        {% for checkbox in form.pregnant %}
+	                        <div class="checkbox">
+					<label>
 							{{checkbox.tag}}
 							{{checkbox.choice_label}}
+					</label>
+	                        </div>
                		     {% endfor %}
                		     
                             {{form.pregnant.error}}
                    
                         </div>
                     </div>
-                    <hr class="divider-dashed-large">
+                   
                     <div class="row">
                         <div class="col-sm-12">
 							<label class="control-label">Previous Conditions</label><br>
 	                        {% for checkbox in form.previous_conditions %}
+	                        <div class="checkbox">
+					<label>
 							{{checkbox.tag}}
 							{{checkbox.choice_label}}
+					</label>
+	                        </div>
                		     {% endfor %}
                		     
                             {{form.previous_conditions.error}}
