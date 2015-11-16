@@ -1,89 +1,134 @@
 {% extends "base.html" %}
 {% block content %}
 
-<form action="#" method="post">
-    {% csrf_token %}
-    {{forms.headache.label}}
-    <div class="row">
-        <div class="col-sm-12">
-			
-	                        {% for checkbox in form.headache.present_pain %}
-	                        <div class="checkbox">
-					<label>
-							{{checkbox.tag}}
-							{{checkbox.choice_label}}
-					</label>
-	                        </div>
-               		     {% endfor %}	        
-	        
-            {{form.headache.present_pain.errors}}
-
+<section class="profile-doctor generic animated fadeInUp">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="section-title">
+                    <h3>Subjective Evaluation</h3>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6 col-sm-offset-3">
+                <form action="#" method="post">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h4>Headache:</h4>
+                            <div class="form-group">
+                            {{forms.headache.present_pain.errors}}
+                            {{forms.headache.present_pain.label}}
+                            {% for checkbox in forms.headache.present_pain %}
+                                <div class="checkbox">
+                					<label>
+                						{{checkbox.tag}}
+                						{{checkbox.choice_label}}
+                					</label>
+                                </div>
+                		    {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                            {{forms.headache.type_of_pain.errors}}
+                            {{forms.headache.type_of_pain.label}}
+                            {% for checkbox in forms.headache.type_of_pain %}
+                                <div class="checkbox">
+                                    <label>
+                                        {{checkbox.tag}}
+                                        {{checkbox.choice_label}}
+                                    </label>
+                                </div>
+                            {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                            {{forms.headache.intensity.errors}}
+                            {{forms.headache.intensity.label}}
+                            {{forms.headache.intensity}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                            {{forms.headache.duration.errors}}
+                            {{forms.headache.duration.label}}
+                            {{forms.headache.duration}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                            {{forms.headache.numbness.errors}}
+                            {{forms.headache.numbness.label}}
+                            {{forms.headache.numbness}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                            {{forms.headache.paraesthesia.errors}}
+                            {{forms.headache.paraesthesia.label}}
+                            {{forms.headache.paraesthesia}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                            {{forms.headache.aggravated_by.errors}}
+                            {{forms.headache.aggravated_by.label}}
+                            {% for checkbox in forms.headache.aggravated_by %}
+                                <div class="checkbox">
+                                    <label>
+                                        {{checkbox.tag}}
+                                        {{checkbox.choice_label}}
+                                    </label>
+                                </div>
+                            {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                            {{forms.headache.aggravated_by_movements.errors}}
+                            {{forms.headache.aggravated_by_movements.label}}
+                            {{forms.headache.aggravated_by_movements}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                            {{forms.headache.relieved_by.errors}}
+                            {{forms.headache.relieved_by.label}}
+                            {{forms.headache.relieved_by}}
+                            </div>
+                        </div>
+                    </div>
+                    {{forms.cervical}}
+                    {{forms.thoracic}}
+                    {{forms.lumbar}}
+                    {{forms.joint1}}
+                    {{forms.joint2}}
+                    {{forms.joint3}}
+                    {{forms.joint4}}
+                    {{forms.others}}
+                </form>
+            </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-sm-12">
-            {{form.headache.intensity.errors}}
-            {{form.headache.intensity.label}}
-            {{form.headache.intensity}}
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-12">
-            {{form.headache.duration.errors}}
-            {{form.headache.duration.label}}
-            {{form.headache.duration}}
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-12">
-            {{form.headache.numbness.errors}}
-            {{form.headache.numbness.label}}
-            {{form.headache.numbness}}
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-12">
-            {{form.headache.paraesthesia.errors}}
-            {{form.headache.paraesthesia.label}}
-            {{form.headache.paraesthesia}}
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-12">
-            {{form.headache.aggravated_by_movements.errors}}
-            {{form.headache.aggravated_by_movements.label}}
-            {{form.headache.aggravated_by_movements}}
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-12">
-            {{form.headache.relieved_by.errors}}
-            {{form.headache.relieved_by.label}}
-            {{form.headache.relieved_by}}
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-12">
-            {{form.headache.type_of_pain.errors}}
-            {{form.headache.type_of_pain.label}}
-            {{form.headache.type_of_pain}}
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-12">
-            {{form.headache.aggravated_by.errors}}
-            {{form.headache.aggravated_by.label}}
-            {{form.headache.aggravated_by}}
-        </div>
-    </div>
-    {{forms.cervical}}
-    {{forms.thoracic}}
-    {{forms.lumbar}}
-    {{forms.joint1}}
-    {{forms.joint2}}
-    {{forms.joint3}}
-    {{forms.joint4}}
-    {{forms.others}}
-</form>
+</section>
 
 {% endblock %}

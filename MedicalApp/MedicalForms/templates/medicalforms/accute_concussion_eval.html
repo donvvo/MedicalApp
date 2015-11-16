@@ -73,7 +73,14 @@
 	                            <div class="form-group">
                                 {{form.location_of_impact.errors}}
                                 {{form.location_of_impact.label}}
-                                {{form.location_of_impact}}
+                                {% for checkbox in form.location_of_impact %}
+                                <div class="checkbox">
+                                    <label>
+                                    {{checkbox.tag}}
+                                    {{checkbox.choice_label}}
+                                    </label>
+                                </div>
+                                {% endfor %}
 	                            </div>
                             </div>
                         </div>
@@ -163,7 +170,14 @@
 	                            <div class="form-group">
                                 {{form.early_signs.errors}}
                                 {{form.early_signs.label}}
-                                {{form.early_signs}}
+                                {% for checkbox in form.early_signs %}
+                                <div class="checkbox">
+                                    <label>
+                                    {{checkbox.tag}}
+                                    {{checkbox.choice_label}}
+                                    </label>
+                                </div>
+                                {% endfor %}
 	                            </div>
                             </div>
                         </div>
@@ -603,7 +617,14 @@
 	                            <div class="form-group">
                                 {{form.red_flags.errors}}
                                 {{form.red_flags.label}}
-                                {{form.red_flags}}
+                                {% for checkbox in form.red_flags %}
+                                <div class="checkbox">
+                                    <label>
+                                    {{checkbox.tag}}
+                                    {{checkbox.choice_label}}
+                                    </label>
+                                </div>
+                                {% endfor %}
 	                            </div>
                             </div>
                         </div>
@@ -612,7 +633,14 @@
 	                            <div class="form-group">
                                 {{form.dignosis.errors}}
                                 {{form.dignosis.label}}
-                                {{form.dignosis}}
+                                {% for checkbox in form.diagnosis %}
+                                <div class="checkbox">
+                                    <label>
+                                    {{checkbox.tag}}
+                                    {{checkbox.choice_label}}
+                                    </label>
+                                </div>
+                                {% endfor %}
 	                            </div>
                             </div>
                         </div>
@@ -630,7 +658,14 @@
 	                            <div class="form-group">
                                 {{form.refferal.errors}}
                                 {{form.refferal.label}}
-                                {{form.refferal}}
+                                {% for checkbox in form.refferal %}
+                                <div class="checkbox">
+                                    <label>
+                                    {{checkbox.tag}}
+                                    {{checkbox.choice_label}}
+                                    </label>
+                                </div>
+                                {% endfor %}
 	                            </div>
                             </div>
                         </div>

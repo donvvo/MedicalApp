@@ -35,7 +35,7 @@
                             <span></span>
                             {% if object.summary %}
                                 <p>{{object.summary}}</p>
-                            {% else %}
+                            {% elif object.username == request.user.username %}
                                 <p>Please add summary from <a href="{% url 'users:user_settings' %}">settings</a></p>
                             {% endif %}
                         </div>
