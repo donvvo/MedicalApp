@@ -1,4 +1,6 @@
 {% load staticfiles i18n %}
+{% load has_group %}
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -70,8 +72,9 @@
           <ul class="nav navbar-nav">
             <li class="active"><a href="{% url 'home' %}">Home</a></li>
 
-            <li><a href="{% url 'medical_appointments:appointments' %}">Appointment</a></li>
-            
+            {% if request.user|has_group:"Patients" %}
+              <li><a href="{% url 'medical_appointments:appointments' %}">Appointment</a></li>
+            {% endif %}
 
             {% if request.user.is_authenticated %}
             <li>
