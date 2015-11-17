@@ -1,11 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
 
-<<<<<<< HEAD
-=======
-
-
->>>>>>> dondon
 <section class="profile-doctor generic animated fadeInUp">
     <div class="container">
         <div class="row">
@@ -14,7 +9,6 @@
                     <h3>Subjective Evaluation</h3>
                 </div>
             </div>
-<<<<<<< HEAD
         </div>
         <div class="row">
             <div class="col-sm-6 col-sm-offset-3">
@@ -997,118 +991,6 @@
             </div>
         </div>
     </div>
-=======
-        </div>
-<div class="row">
-            <div class="col-sm-6 col-sm-offset-3">
-<form action="#" method="post">
-    {% csrf_token %}
-    {{forms.headache.label}}
-   
-    <div class="row">
-        <div class="col-sm-12">
-			
-	                        {% for checkbox in form.headache.present_pain %}
-	                        <div class="checkbox">
-					<label>
-							{{checkbox.tag}}
-							{{checkbox.choice_label}}
-					</label>
-	                        </div>
-               		     {% endfor %}	        
-	        
-            {{form.headache.present_pain.errors}}
-
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-12">
-	        <div class="form-group">
-            {{form.headache.intensity.errors}}
-            {{form.headache.intensity.label}}
-            {{form.headache.intensity}}
-	        </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-12">
-	        <div class="form-group">
-            {{form.headache.duration.errors}}
-            {{form.headache.duration.label}}
-            {{form.headache.duration}}
-	        </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-12">
-	        <div class="form-group">
-            {{form.headache.numbness.errors}}
-            {{form.headache.numbness.label}}
-            {{form.headache.numbness}}
-	        </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-12">
-	        <div class="form-group">
-            {{form.headache.paraesthesia.errors}}
-            {{form.headache.paraesthesia.label}}
-            {{form.headache.paraesthesia}}
-	        </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-12">
-	        <div class="form-group">
-            {{form.headache.aggravated_by_movements.errors}}
-            {{form.headache.aggravated_by_movements.label}}
-            {{form.headache.aggravated_by_movements}}
-	        </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-12">
-	        <div class="form-group">
-            {{form.headache.relieved_by.errors}}
-            {{form.headache.relieved_by.label}}
-            {{form.headache.relieved_by}}
-	        </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-12">
-	        <div class="form-group">
-		        
-            {{form.headache.type_of_pain.errors}}
-            {{form.headache.type_of_pain.label}}
-            {{form.headache.type_of_pain}}
-	        </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-12">
-	        <div class="form-group">
-            {{form.headache.aggravated_by.errors}}
-            {{form.headache.aggravated_by.label}}
-            {{form.headache.aggravated_by}}
-	        </div>
-        </div>
-    </div>
-    
-
-    {{forms.cervical}}
-    {{forms.thoracic}}
-    {{forms.lumbar}}
-    {{forms.joint1}}
-    {{forms.joint2}}
-    {{forms.joint3}}
-    {{forms.joint4}}
-    {{forms.others}}
-</form>
-            </div>
-</div>
-    </div>
->>>>>>> dondon
 </section>
 
 {% endblock %}
