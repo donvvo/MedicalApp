@@ -7,7 +7,7 @@ from django.core import serializers
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseBadRequest, HttpResponse, HttpResponseRedirect
 from django.shortcuts import redirect, render_to_response, get_object_or_404
-from django.views.generic import DetailView, ListView, UpdateView
+from django.views.generic import DetailView, ListView, UpdateView, CreateView
 from django.utils import timezone
 
 from braces.views import LoginRequiredMixin, GroupRequiredMixin
@@ -164,3 +164,11 @@ class ClinicProfileEditView(LoginRequiredMixin, UpdateView):
         clinic_name = self.kwargs['clinicname']
         clinic_name = clinic_name.replace('+', ' ')
         return get_object_or_404(self.model, name=clinic_name)
+
+
+class ClinicProfileCreateView(LoginRequiredMixin, CreateView):
+    model = Clinic
+    template_name = "medicalappointments/clinic_create.html"
+    fields = ('name', 'phone', 'email', 'description', 'city', 'address', 'postal_code',
+        'start_time', 'end_time')
+

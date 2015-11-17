@@ -1,3 +1,4 @@
+from django.core.urlresolvers import reverse_lazy
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils import timezone
@@ -23,6 +24,9 @@ class Clinic(models.Model):
 
     def url_name(self):
         return self.name.replace(' ', '+')
+
+    def get_absolute_url(self):
+        return reverse_lazy('medical_appointments:clinic_profile', kwargs={'clinicname': self.url_name()})
 
 
 @python_2_unicode_compatible

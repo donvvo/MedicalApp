@@ -4,7 +4,8 @@ from django.db import models
 
 class MyCharField(models.CharField):
     def __init__(self, placeholder='', **kwargs):
-        kwargs['blank'] = True
+        if not kwargs.get('primary_key'):
+            kwargs['blank'] = True
         self.placeholder = placeholder
         super(MyCharField, self).__init__(**kwargs)
 
