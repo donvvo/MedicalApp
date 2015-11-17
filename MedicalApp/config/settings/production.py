@@ -36,7 +36,7 @@ INSTALLED_APPS += ("djangosecure", )
 # raven sentry client
 # See https://docs.getsentry.com/hosted/clients/python/integrations/django/
 INSTALLED_APPS += ('raven.contrib.django.raven_compat', )
-SECURITY_MIDDLEWARE = (
+'''SECURITY_MIDDLEWARE = (
     'djangosecure.middleware.SecurityMiddleware',
 )
 RAVEN_MIDDLEWARE = ('raven.contrib.django.raven_compat.middleware.Sentry404CatchMiddleware',
@@ -55,7 +55,7 @@ SECURE_CONTENT_TYPE_NOSNIFF = env.bool(
 SECURE_BROWSER_XSS_FILTER = True
 SESSION_COOKIE_SECURE = False
 SESSION_COOKIE_HTTPONLY = True
-SECURE_SSL_REDIRECT = env.bool("DJANGO_SECURE_SSL_REDIRECT", default=True)
+SECURE_SSL_REDIRECT = env.bool("DJANGO_SECURE_SSL_REDIRECT", default=True)'''
 
 # SITE CONFIGURATION
 # ------------------------------------------------------------------------------
