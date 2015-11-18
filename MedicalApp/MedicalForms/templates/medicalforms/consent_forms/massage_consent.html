@@ -1,0 +1,45 @@
+{% extends "medicalforms/consent_forms/consent_base.html" %}
+
+{% block title %}
+Informed Consent to Massage Treatment
+{% endblock title %}
+
+{% block form_content %}
+
+<p>I, the undersigned give my full and voluntary consent to a treatment by a qualified massage therapist to assess and treat me in accordance with my needs.</p>
+
+<p>I acknowledge that I understand the nature of the treatment, the expected benefits of the treatment, and the material risks and side effects of the treatment proposed and any of the alternative options.</p>
+
+<p>I further comprehend the likely consequences of not having the treatment. </p>
+
+<p>I remain free to withdraw my consent in writing at any time and the treatment shall cease at such time as well.</p>
+
+<br>
+
+<div class="row">
+    <div class="col-sm-6">
+        <div class="form-group">
+        {{form.signature.error}}
+        {{form.signature.label}}
+        {{form.signature}}
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="form-group">
+        {{form.date.error}}
+        {{form.date.label}}
+        {{form.date}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.name.error}}
+        {{form.name.label}}
+        {{form.name}}
+        </div>
+    </div>
+</div>
+
+{% endblock form_content %}

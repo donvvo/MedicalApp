@@ -13650,7 +13650,6 @@ body .ui-tooltip {
 .ui-widget-content .ui-state-error,
 .ui-widget-header .ui-state-error {
   border: 1px solid #cd0a0a;
-  background: #fef1ec url("images/ui-bg_glass_95_fef1ec_1x400.png") 50% 50% repeat-x;
   color: #cd0a0a;
 }
 .ui-state-error a,
@@ -13702,22 +13701,12 @@ body .ui-tooltip {
 .ui-widget-header .ui-icon {
   background-image: url("images/ui-icons_222222_256x240.png");
 }
-.ui-state-default .ui-icon {
-  background-image: url("images/ui-icons_888888_256x240.png");
-}
 .ui-state-hover .ui-icon,
 .ui-state-focus .ui-icon {
   background-image: url("images/ui-icons_454545_256x240.png");
 }
 .ui-state-active .ui-icon {
   background-image: url("images/ui-icons_454545_256x240.png");
-}
-.ui-state-highlight .ui-icon {
-  background-image: url("images/ui-icons_2e83ff_256x240.png");
-}
-.ui-state-error .ui-icon,
-.ui-state-error-text .ui-icon {
-  background-image: url("images/ui-icons_cd0a0a_256x240.png");
 }
 /* positioning */
 .ui-icon-blank {
@@ -14275,7 +14264,6 @@ body .ui-tooltip {
 }
 /* Overlays */
 .ui-widget-overlay {
-  background: #aaaaaa url("images/ui-bg_flat_0_aaaaaa_40x100.png") 50% 50% repeat-x;
   opacity: .3;
   filter: alpha(opacity=30)
   /* support: IE8 */
@@ -14283,7 +14271,6 @@ body .ui-tooltip {
 .ui-widget-shadow {
   margin: -8px 0 0 -8px;
   padding: 8px;
-  background: #aaaaaa url("images/ui-bg_flat_0_aaaaaa_40x100.png") 50% 50% repeat-x;
   opacity: .3;
   filter: alpha(opacity=30);
   /* support: IE8 */
@@ -15216,10 +15203,6 @@ nav.navbar-collapse.navbar-collapse.navbar-right.collapse {
   user-select: none;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
-/* mouse grab icon */
-.grabbing {
-  cursor: url(grabbing.png) 8 8, move;
-}
 /* fix */
 .owl-carousel .owl-wrapper,
 .owl-carousel .owl-item {
@@ -15294,7 +15277,6 @@ nav.navbar-collapse.navbar-collapse.navbar-right.collapse {
 /* preloading images */
 .owl-item.loading {
   min-height: 150px;
-  background: url(AjaxLoader.gif) no-repeat center center;
 }
 /********************************* Page Title *********************************/
 .page-title {
@@ -16525,17 +16507,14 @@ nav.navbar-collapse.navbar-collapse.navbar-right.collapse {
   opacity: 1;
 }
 .sky-carousel .sc-nav-button.sc-prev {
-  background: url("../img/carrousell-left.png") no-repeat scroll center center transparent !important;
   left: 50%;
   margin-left: -175px;
 }
 .sky-carousel .sc-nav-button.sc-next {
-  background: url("../img/carrousell-right.png") no-repeat scroll center center transparent !important;
   right: 50%;
   margin-right: -175px;
 }
 .sky-carousel .sc-nav-button.sc-next:hover {
-  background: url("../img/carrousell-right.png") no-repeat scroll center center transparent !important;
 }
 .sky-carousel .sc-nav-button.sc-prev:hover {
   background-position: center center !important;

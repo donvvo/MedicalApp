@@ -11,7 +11,7 @@ from . import views
 
 
 urlpatterns = [
-    # Patient information
+    # Patient forms
     url(r'^patient-information/(?P<user_id>[\d]+)/$', views.PatientInformationView.as_view(),
         name="patient_info"),
 
@@ -21,6 +21,18 @@ urlpatterns = [
         name="accident_history"),
     url(r'^tmj-screening/(?P<user_id>[\d]+)/$', views.TMJScreeningView.as_view(),
         name="tmj-screening"),
+
+    # Patient Consent forms
+    url(r'^chiropractic-treatment/(?P<user_id>[\d]+)/$', views.ChiropracticTreatmentView.as_view(),
+        name="chiropractic-treatment"),
+    url(r'^physiotherapy-treatment/(?P<user_id>[\d]+)/$', views.PhysiotherapyTreatmentView.as_view(),
+        name="physiotherapy-treatment"),
+    url(r'^massage-treatment/(?P<user_id>[\d]+)/$', views.MassageTreatmentView.as_view(),
+        name="massage-treatment"),
+    url(r'^medical-authorization/(?P<user_id>[\d]+)/$', views.MedicalAuthorizationView.as_view(),
+        name="medical-authorization"),
+    url(r'^exchange-information/(?P<user_id>[\d]+)/$', views.ExchangeInformationView.as_view(),
+        name="exchange-information"),
 
     url(r'^acute-concussion-eval/(?P<user_id>[\d]+)/$', views.AcuteConcussionEvaluationView.as_view(),
         name="acute-concussion-eval"),

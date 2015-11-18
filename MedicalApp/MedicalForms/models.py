@@ -12,3 +12,4 @@ from .MVA_intake_models import *
 from .report_of_findings_models import ReportOfFindings
 from .tmj_screening_models import TMJScreening
 from .acute_concussion_evaluation_models import AcuteConcussionEvaluation
+from .consent_form_models import *

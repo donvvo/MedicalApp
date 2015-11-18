@@ -1,0 +1,46 @@
+{% extends "medicalforms/consent_forms/consent_base.html" %}
+
+{% block title %}
+Informed Consent to Chiropractic Treatment
+{% endblock title %}
+
+{% block form_content %}
+
+<p>There are risks and possible risks associated with manual therapy techniques used by doctors of chiropractic.  In particular you should note:</p>
+<p>(a) While rare, some patients may experience short term aggravation of symptoms or muscle and ligament strains or sprains as a result of manual therapy techniques.  Although uncommon, rib fractures have also been known to occur following certain manual therapy procedures;</p>
+<p>(b) There are reported cases of stroke associated with visits to medical doctors and chiropractors.  Research and scientific evidence does not establish a cause and effect relationship between chiropractic treatment and the occurrence of stroke rather, recent studies indicate that patients may be consulting medical doctors and chiropractors when they are in the early stages of a stroke.  In essence, there is a stroke already in progress.  However, you are being informed of this reported association because a stroke may cause serious neurological impairment or even death.  The possibility of such injuries occurring in association with upper cervical adjustment is extremely remote;</p>
+<p>(c) There are rare reported cases of disc injuries identified following cervical and lumbar spinal adjustment, although no scientific evidence has demonstrated such injuries are caused, or may be caused, by spinal adjustments or other chiropractic treatment;</p>
+<p>(d) There are infrequent reported cases of burns or skin irritation in association with the use of some types of electrical therapy offered by some doctors of chiropractic.</p>
+<p>I acknowledge I have read this consent and I have discussed, or have been offered the opportunity to discuss, with my chiropractor the nature and purpose of chiropractic treatment in general, (including spinal adjustment), the treatment options and recommendations for my condition, and the contents of this Consent.</p>
+<p>I consent to the chiropractic treatment recommended to me by my chiropractor including any recommended spinal adjustments.</p>
+<p>I intend this consent to apply to all my present and future chiropractic care.</p>
+
+<br>
+
+<div class="row">
+    <div class="col-sm-6">
+        <div class="form-group">
+        {{form.signature.error}}
+        {{form.signature.label}}
+        {{form.signature}}
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="form-group">
+        {{form.date.error}}
+        {{form.date.label}}
+        {{form.date}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.name.error}}
+        {{form.name.label}}
+        {{form.name}}
+        </div>
+    </div>
+</div>
+
+{% endblock form_content %}

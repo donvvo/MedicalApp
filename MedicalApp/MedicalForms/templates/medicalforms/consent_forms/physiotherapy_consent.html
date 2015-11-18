@@ -1,0 +1,55 @@
+{% extends "medicalforms/consent_forms/consent_base.html" %}
+
+{% block title %}
+Informed Consent to Physiotherapy Treatment
+{% endblock title %}
+
+{% block form_content %}
+
+<p>I give my permission to undergo physical examination by a physiotherapist, and treated thereafter by either the physiotherapist himself or by a Physiotherapy Assistant or Kinesiologist.</p>
+
+<p>I understand that I would be assessed and treated by a registered physiotherapist. Assessment will consist of history taking or interview, provocative tests, exposure and palpation of body part(s) that are essential for thorough examination. Treatment may consist of therapeutic, heating and cold modalities, manual therapy and exercises.</p>
+
+<p>I am aware that occasionally, some mild to moderate form of physical discomfort may arise from physical assessment and initial utilization of certain treatment. I understand that depending on patients health status, chronicity of musculoskeletal problem, age, activity level, etc, reaction to and efficacy of treatment may vary.</p>
+
+<p>Thus, I understand that I have to inform my physiotherapist immediately of any concerns or discomfort regarding my physical examination and treatment.</p>
+
+<h5>Consent for Personal Information</h5>
+
+<p>I understand that to provide me with physiotherapy services and products, this clinic will collect some information about me (e.g home telephone number, address, health number, medication used, email address to send some home instructions, and other pertinent information that may be essential to my physical recovery).</p>
+
+<p>I understand how the Privacy Policy of this Clinic applied to me. I have been given the chance to ask any questions I have about the Privacy Policy and they were answered to my satisfaction. I understand how the collection, use and disclosure of personal information are utilized, steps taken to protect the information, and my right to review this information.</p>
+
+<p>I also give the permission to the release of my physiotherapy information to my family physician specialist of if WSIB-related treatment, to my employer. I agree to this clinic in collecting, using and disclosing personal information about me as set out above and in this clinic’s Privacy Policy.</p>
+
+<p>I understand that, as explained in the Privacy Policy, there are some rare exceptions to these commitments.</p>
+
+<br>
+
+<div class="row">
+    <div class="col-sm-6">
+        <div class="form-group">
+        {{form.signature.error}}
+        {{form.signature.label}}
+        {{form.signature}}
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="form-group">
+        {{form.date.error}}
+        {{form.date.label}}
+        {{form.date}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.name.error}}
+        {{form.name.label}}
+        {{form.name}}
+        </div>
+    </div>
+</div>
+
+{% endblock form_content %}
