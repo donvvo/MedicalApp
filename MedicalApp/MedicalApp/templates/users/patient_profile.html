@@ -62,6 +62,12 @@
                         <a href="{% url 'medical_forms:chiropractic-treatment' object.pk %}" class="btn btn-default btn-hover-bg"><span>View</span></a>
                         <h5 class="alternative-title">Informed Consent to Physiotherapy Treatment</h5>
                         <a href="{% url 'medical_forms:physiotherapy-treatment' object.pk %}" class="btn btn-default btn-hover-bg"><span>View</span></a>
+                        <h5 class="alternative-title">Informed Consent to Massage Treatment</h5>
+                        <a href="{% url 'medical_forms:massage-treatment' object.pk %}" class="btn btn-default btn-hover-bg"><span>View</span></a>
+                        <h5 class="alternative-title">Medical Authorization</h5>
+                        <a href="{% url 'medical_forms:medical-authorization' object.pk %}" class="btn btn-default btn-hover-bg"><span>View</span></a>
+                        <h5 class="alternative-title">Patient Authorization Form for Exchange of Medical Information</h5>
+                        <a href="{% url 'medical_forms:exchange-information' object.pk %}" class="btn btn-default btn-hover-bg"><span>View</span></a>
 
                         {% if doctors %}
                         <h5 class="alternative-title">Accute Concussion Evaluation</h5>

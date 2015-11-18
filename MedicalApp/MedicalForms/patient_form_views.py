@@ -5,8 +5,10 @@ from django.utils.decorators import method_decorator
 from braces.views import LoginRequiredMixin, GroupRequiredMixin
 
 from MedicalApp.utils import user_passes_test_with_kwargs
-from .models import ChiropracticTreatment, PhysiotherapyTreatment
-from .forms import ChiropracticTreatmentForm, PhysiotherapyTreatmentForm
+from .models import ChiropracticTreatment, PhysiotherapyTreatment, MassageTreatment,\
+    MedicalAuthorization, ExchangeInformation
+from .forms import ChiropracticTreatmentForm, PhysiotherapyTreatmentForm,\
+    MassageTreatmentForm, MedicalAuthorizationForm, ExchangeInformationForm
 
 
 def owner_or_doctors(user, **kwargs):
@@ -34,7 +36,8 @@ class PatientFormBaseView(LoginRequiredMixin, UpdateView):
             return self.model(pk=self.user_id)
 
     def get_success_url(self):
-        return reverse_lazy('users:patient_profile', kwargs={'username': self.request.user.username})
+        return reverse_lazy('users:patient_profile', kwargs={'username': self.object.patient.user.username})
+
 
 # Consent form views.
 
@@ -49,4 +52,22 @@ class PhysiotherapyTreatmentView(PatientFormBaseView):
     template_name = 'medicalforms/consent_forms/physiotherapy_consent.html'
     model = PhysiotherapyTreatment
     form_class = PhysiotherapyTreatmentForm
+
+
+class MassageTreatmentView(PatientFormBaseView):
+    template_name = 'medicalforms/consent_forms/massage_consent.html'
+    model = MassageTreatment
+    form_class = MassageTreatmentForm
+
+
+class MedicalAuthorizationView(PatientFormBaseView):
+    template_name = 'medicalforms/consent_forms/medical_authorization.html'
+    model = MedicalAuthorization
+    form_class = MedicalAuthorizationForm
+
+
+class ExchangeInformationView(PatientFormBaseView):
+    template_name = 'medicalforms/consent_forms/exchange_of_medical_info.html'
+    model = ExchangeInformation
+    form_class = ExchangeInformationForm
 

@@ -1,0 +1,60 @@
+{% extends "medicalforms/consent_forms/consent_base.html" %}
+
+{% block title %}
+Medical Authorization
+{% endblock title %}
+
+{% block form_content %}
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.TO.error}}
+        {{form.TO.label}}
+        {{form.TO}}
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.RE.error}}
+        {{form.RE.label}}
+        {{form.RE}}
+        </div>
+    </div>
+</div>
+
+<p>I, the undersigned, do hereby authorize and direct you to release to my treating rehabilitation facility Bloor West Rehabilitation Centre, 3250 Bloor street West, Suite 126, Etobicoke, Ontario M8X 2X9 with my files and all relevant and permanent information, documents, reports, clinical notes and records, imaging findings, physiotherapy records and all papers relevant to the above reference(s) and let this be your goods for so doing.</p>
+
+<br>
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.date.error}}
+        {{form.date.label}}
+        {{form.date}}
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-6">
+        <div class="form-group">
+        {{form.patient_signature.error}}
+        {{form.patient_signature.label}}
+        {{form.patient_signature}}
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="form-group">
+        {{form.witness_signature.error}}
+        {{form.witness_signature.label}}
+        {{form.witness_signature}}
+        </div>
+    </div>
+</div>
+
+{% endblock form_content %}

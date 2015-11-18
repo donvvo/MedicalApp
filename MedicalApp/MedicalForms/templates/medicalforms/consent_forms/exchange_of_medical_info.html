@@ -1,0 +1,124 @@
+{% extends "medicalforms/consent_forms/consent_base.html" %}
+
+{% block title %}
+Patient Authorization Form for Exchange of Medical Information
+{% endblock title %}
+
+{% block form_content %}
+
+TO:
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.physician_name.error}}
+        <label class="control-label">Physician: Dr. </label>
+        {{form.physician_name}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.physician_address.error}}
+        <label class="control-label">Address: </label>
+        {{form.physician_address}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.physician_phone.error}}
+        <label class="control-label">Phone: </label>
+        {{form.physician_phone}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.physician_fax.error}}
+        <label class="control-label">Fax: </label>
+        {{form.physician_fax}}
+        </div>
+    </div>
+</div>
+
+RE:
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.patient_name.error}}
+        <label class="control-label">Patient Name: </label>
+        {{form.patient_name}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.patient_dob.error}}
+        <label class="control-label">DOB: </label>
+        {{form.patient_dob}}
+        </div>
+    </div>
+</div>
+
+<br>
+
+<p>I understand that I may refuse to sign this form, and that my rehabilitation care will not be affected if I do not sign this form.</p>
+
+<p>I, {{form.representative_name1}} hereby direct and authorize you to exchange my medical file and health information with Bloor West Rehabilitation Centre to the attention of:
+<br>
+<b>Dr. Eric H. Ho, DC, Clinician.</b>
+<br>
+</p>
+
+<p>Comments: for the purpose of determining appropriate treatment planning
+<br>
+Please forward any imaging reports including x-ray, ultrasound, MRI, CT scan from {{form.forward_from_name}}. Thank you.
+<br>
+{{form.include_notes}}Please include any specialist consultation/operative notes.
+</p>
+
+<div class="row">
+    <div class="col-sm-6">
+        <div class="form-group">
+        {{form.signature.error}}
+        {{form.signature}}
+        <label class="control-label">Signature of patient or patient’s Representative/Guardian (Form MUST be completed before signing)</label>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="form-group">
+        {{form.date.error}}
+        {{form.date}}
+        <label class="control-label">Date</label>
+        </div>
+    </div>
+</div>
+
+<p>If a patient’s representative signs this authorization, please complete the following:</p>
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.representative_name2.error}}
+        {{form.representative_name2}}
+        <label class="control-label">Print name of representative</label>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.representative_relationship.error}}
+        {{form.representative_relationship}}
+        <label class="control-label">Relationship to patient</label>
+        </div>
+    </div>
+</div>
+
+{% endblock form_content %}
