@@ -13,6 +13,7 @@ from django.utils.decorators import method_decorator
 from braces.views import LoginRequiredMixin, GroupRequiredMixin
 
 from MedicalApp.utils import user_passes_test_with_kwargs
+from .patient_form_views import ChiropracticTreatmentView
 from .models import *
 from .forms import *
 

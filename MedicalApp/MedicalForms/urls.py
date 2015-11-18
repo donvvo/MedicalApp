@@ -11,7 +11,7 @@ from . import views
 
 
 urlpatterns = [
-    # Patient information
+    # Patient forms
     url(r'^patient-information/(?P<user_id>[\d]+)/$', views.PatientInformationView.as_view(),
         name="patient_info"),
 
@@ -21,6 +21,8 @@ urlpatterns = [
         name="accident_history"),
     url(r'^tmj-screening/(?P<user_id>[\d]+)/$', views.TMJScreeningView.as_view(),
         name="tmj-screening"),
+    url(r'^chiropractic-treatment/(?P<user_id>[\d]+)/$', views.ChiropracticTreatmentView.as_view(),
+        name="chiropractic-treatment"),
 
     url(r'^acute-concussion-eval/(?P<user_id>[\d]+)/$', views.AcuteConcussionEvaluationView.as_view(),
         name="acute-concussion-eval"),

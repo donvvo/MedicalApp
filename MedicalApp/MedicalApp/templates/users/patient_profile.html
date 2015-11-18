@@ -55,6 +55,12 @@
                         <h5 class="alternative-title">TMJ Screening</h5>
                         <a href="{% url 'medical_forms:tmj-screening' object.pk %}" class="btn btn-default btn-hover-bg"><span>View</span></a>
 
+                        <br>
+                        <br>
+                        <h4>Consent Forms</h4>
+                        <h5 class="alternative-title">Informed Consent to Chiropractic Treatment</h5>
+                        <a href="{% url 'medical_forms:chiropractic-treatment' object.pk %}" class="btn btn-default btn-hover-bg"><span>View</span></a>
+
                         {% if doctors %}
                         <h5 class="alternative-title">Accute Concussion Evaluation</h5>
                         <a href="{% url 'medical_forms:acute-concussion-eval' object.pk %}" class="btn btn-default btn-hover-bg"><span>View</span></a>

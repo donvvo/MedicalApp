@@ -3,6 +3,7 @@ import logging
 from django import forms
 
 from .models import *
+from .patient_consent_forms import *
 
 logger = logging.getLogger(__name__)
 
