@@ -14,3 +14,14 @@ class ChiropracticTreatment(models.Model):
 
     def __str__(self):
         return 'Chiropractic Treatment Consent for ' + str(self.patient)
+
+
+@python_2_unicode_compatible
+class PhysiotherapyTreatment(models.Model):
+    patient = models.OneToOneField(Patient, primary_key=True)
+    signature = MyCharField(max_length=50)
+    date = MyDateTimeField()
+    name = MyCharField(max_length=50)
+
+    def __str__(self):
+        return 'Physiotherapy Treatment Consent for ' + str(self.patient)

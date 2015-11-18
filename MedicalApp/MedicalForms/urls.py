@@ -21,8 +21,12 @@ urlpatterns = [
         name="accident_history"),
     url(r'^tmj-screening/(?P<user_id>[\d]+)/$', views.TMJScreeningView.as_view(),
         name="tmj-screening"),
+
+    # Patient Consent forms
     url(r'^chiropractic-treatment/(?P<user_id>[\d]+)/$', views.ChiropracticTreatmentView.as_view(),
         name="chiropractic-treatment"),
+    url(r'^physiotherapy-treatment/(?P<user_id>[\d]+)/$', views.PhysiotherapyTreatmentView.as_view(),
+        name="physiotherapy-treatment"),
 
     url(r'^acute-concussion-eval/(?P<user_id>[\d]+)/$', views.AcuteConcussionEvaluationView.as_view(),
         name="acute-concussion-eval"),

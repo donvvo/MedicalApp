@@ -11,3 +11,9 @@ class ChiropracticTreatmentForm(forms.ModelForm):
     class Meta:
         model = ChiropracticTreatment
         exclude = ('patient', )
+
+
+class PhysiotherapyTreatmentForm(forms.ModelForm):
+    class Meta:
+        model = PhysiotherapyTreatment
+        exclude = ('patient', )
