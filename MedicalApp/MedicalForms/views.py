@@ -14,7 +14,8 @@ from braces.views import LoginRequiredMixin, GroupRequiredMixin
 
 from MedicalApp.utils import user_passes_test_with_kwargs
 from .patient_form_views import ChiropracticTreatmentView, PhysiotherapyTreatmentView,\
-    MassageTreatmentView, MedicalAuthorizationView, ExchangeInformationView
+    MassageTreatmentView, MedicalAuthorizationView, ExchangeInformationView,\
+    AuthorizationAndDirectionView, Section47View, StatutoryAccidentsBenefitsView
 from .models import *
 from .forms import *
 

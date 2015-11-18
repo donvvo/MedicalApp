@@ -6,9 +6,11 @@ from braces.views import LoginRequiredMixin, GroupRequiredMixin
 
 from MedicalApp.utils import user_passes_test_with_kwargs
 from .models import ChiropracticTreatment, PhysiotherapyTreatment, MassageTreatment,\
-    MedicalAuthorization, ExchangeInformation
+    MedicalAuthorization, ExchangeInformation, AuthorizationAndDirection,\
+    Section47, StatutoryAccidentsBenefits
 from .forms import ChiropracticTreatmentForm, PhysiotherapyTreatmentForm,\
-    MassageTreatmentForm, MedicalAuthorizationForm, ExchangeInformationForm
+    MassageTreatmentForm, MedicalAuthorizationForm, ExchangeInformationForm,\
+    AuthorizationAndDirectionForm, Section47Form, StatutoryAccidentsBenefitsForm
 
 
 def owner_or_doctors(user, **kwargs):
@@ -71,3 +73,20 @@ class ExchangeInformationView(PatientFormBaseView):
     model = ExchangeInformation
     form_class = ExchangeInformationForm
 
+
+class AuthorizationAndDirectionView(PatientFormBaseView):
+    template_name = 'medicalforms/consent_forms/authorization_and_direction.html'
+    model = AuthorizationAndDirection
+    form_class = AuthorizationAndDirectionForm
+
+
+class Section47View(PatientFormBaseView):
+    template_name = 'medicalforms/consent_forms/section_47.html'
+    model = Section47
+    form_class = Section47Form
+
+
+class StatutoryAccidentsBenefitsView(PatientFormBaseView):
+    template_name = 'medicalforms/consent_forms/statutory_accidents_benefits.html'
+    model = StatutoryAccidentsBenefits
+    form_class = StatutoryAccidentsBenefitsForm

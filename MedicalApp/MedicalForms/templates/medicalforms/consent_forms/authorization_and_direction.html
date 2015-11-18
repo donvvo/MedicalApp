@@ -1,0 +1,152 @@
+{% extends "medicalforms/consent_forms/consent_base.html" %}
+
+{% block title %}
+Authorization and Direction
+{% endblock title %}
+
+{% block form_content %}
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.TO.error}}
+        <label class="control-label">TO: </label>
+        {{form.TO}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.FROM.error}}
+        <label class="control-label">FROM: </label>
+        {{form.FROM}}
+        </div>
+    </div>
+</div>
+
+RE:
+<br>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.patient_name.error}}
+        <label class="control-label">Patient's Name: </label>
+        {{form.patient_name}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.automobile_insurer.error}}
+        <label class="control-label">Automobile Insurer: </label>
+        {{form.automobile_insurer}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.claim_policy_number.error}}
+        <label class="control-label">Claim/Policy Number: </label>
+        {{form.claim_policy_number}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.date_of_loss.error}}
+        <label class="control-label">Date of Loss: </label>
+        {{form.date_of_loss}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.SIN.error}}
+        <label class="control-label">Social Insurance Number: </label>
+        {{form.SIN}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.legal_representative.error}}
+        <label class="control-label">Legal Representative: </label>
+        {{form.legal_representative}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.primary_insurer.error}}
+        <label class="control-label">Primary Insurer: </label>
+        {{form.primary_insurer}}
+        </div>
+    </div>
+</div>
+
+<p>I, {{form.authorize_name}}, AUTHORIZE AND DIRECT you as follows:</p>
+
+<p>1. Full and Final Settlement: <br>
+In the event of Full and Final Settlement, I authorize and direct you to remit payment directly to Bloor West Rehabilitation Centre, in satisfaction of its accounts first, prior to remitting payment for the reminder of settlement funds to either myself or my legal representative.
+</p>
+
+<p>2. Release of Information: <br>
+I authorize Bloor West Rehabilitation Centre to furnish to my Insurance Company, Physician, Case Worker, Adjuster, Employer or Lawyer all information in your possession directly relating to my medical condition and treatment received at the above clinic.</p>
+
+<p>3. Direct Billing: <br>
+I authorize and direct you to accept direct billing from Bloor West Rehabilitation Centre, for any and all documentation pertaining to benefits paid.</p>
+
+<p>4. Negotiation and Meditation: <br>
+I authorize Bloor West Rehabilitation Centre and its agents to negotiate, mediate and litigate on my behalf and to receive payment for treatment and services provided by Bloor West Rehabilitation Centre.</p>
+
+<p>5. Denied and Incurred Treatment: <br>
+In the event of Denied and Incurred Treatment, I authorize and direct you to remit payment directly to Bloor West Rehabilitation Centre, in satisfaction of its outstanding accounts for any services rendered.</p>
+
+<p>All prior Direction and Authorizations, Instructions and Powers of Attorneys are hereby revoked.<br>
+This shall be your full, complete, sufficient and irrevocable authorization for so doing.</p>
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.date.error}}
+        <label class="control-label">Date: </label>
+        {{form.date}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.patient_signature.error}}
+        <label class="control-label">Patient's Signature: </label>
+        {{form.patient_signature}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.witness_name.error}}
+        <label class="control-label">Witness' Name: </label>
+        {{form.witness_name}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.witness_signature.error}}
+        <label class="control-label">Witness' Signature: </label>
+        {{form.witness_signature}}
+        </div>
+    </div>
+</div>
+
+{% endblock form_content %}

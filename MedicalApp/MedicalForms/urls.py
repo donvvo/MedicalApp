@@ -33,6 +33,12 @@ urlpatterns = [
         name="medical-authorization"),
     url(r'^exchange-information/(?P<user_id>[\d]+)/$', views.ExchangeInformationView.as_view(),
         name="exchange-information"),
+    url(r'^authorization-and-direction/(?P<user_id>[\d]+)/$', views.AuthorizationAndDirectionView.as_view(),
+        name="authorization-and-direction"),
+    url(r'^section47/(?P<user_id>[\d]+)/$', views.Section47View.as_view(),
+        name="section47"),
+    url(r'^statutory-accidents-benefits/(?P<user_id>[\d]+)/$', views.StatutoryAccidentsBenefitsView.as_view(),
+        name="statutory-accidents-benefits"),
 
     url(r'^acute-concussion-eval/(?P<user_id>[\d]+)/$', views.AcuteConcussionEvaluationView.as_view(),
         name="acute-concussion-eval"),

@@ -66,8 +66,14 @@
                         <a href="{% url 'medical_forms:massage-treatment' object.pk %}" class="btn btn-default btn-hover-bg"><span>View</span></a>
                         <h5 class="alternative-title">Medical Authorization</h5>
                         <a href="{% url 'medical_forms:medical-authorization' object.pk %}" class="btn btn-default btn-hover-bg"><span>View</span></a>
-                        <h5 class="alternative-title">Patient Authorization Form for Exchange of Medical Information</h5>
+                        <h5 class="alternative-title">Exchange of Medical Information</h5>
                         <a href="{% url 'medical_forms:exchange-information' object.pk %}" class="btn btn-default btn-hover-bg"><span>View</span></a>
+                        <h5 class="alternative-title">Authorization and Direction</h5>
+                        <a href="{% url 'medical_forms:authorization-and-direction' object.pk %}" class="btn btn-default btn-hover-bg"><span>View</span></a>
+                        <h5 class="alternative-title">Section 47</h5>
+                        <a href="{% url 'medical_forms:section47' object.pk %}" class="btn btn-default btn-hover-bg"><span>View</span></a>
+                        <h5 class="alternative-title">Statutory Accidents Benefits Schedule</h5>
+                        <a href="{% url 'medical_forms:statutory-accidents-benefits' object.pk %}" class="btn btn-default btn-hover-bg"><span>View</span></a>
 
                         {% if doctors %}
                         <h5 class="alternative-title">Accute Concussion Evaluation</h5>

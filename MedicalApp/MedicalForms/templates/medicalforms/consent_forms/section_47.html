@@ -1,0 +1,71 @@
+{% extends "medicalforms/consent_forms/consent_base.html" %}
+
+{% block title %}
+{% endblock title %}
+
+{% block form_content %}
+
+<p>
+To Whom It May Concern:
+</p>
+
+<p>
+I am aware that as per Section 47 (2) of the Statutory Accident Benefits Schedule (SABS), I must exhaust my personal collateral coverage prior to my automobile insurance reimbursing my treating facility for services rendered.
+</p>
+
+<p>
+I am aware that any funds I do receive from the above-mentioned extended health carrier are to promptly be paid to Bloor West Rehabilitation Centre.  I am also aware that a copy of the Explanation of Benefits is to be provided also so that it may be forwarded to my automobile insurance adjuster so not to delay any payment to Bloor West Rehabilitation Centre.
+</p>
+
+<p>
+In the event that I fail to provide Bloor West Rehabilitation Centre with payment or the explanation of benefits, I am aware that the amount may be deducted from my settlement portion upon my file closing or that Bloor West Rehabilitation Centre reserves the right to seek further action.
+</p>
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.date.error}}
+        <label class="control-label">Date: </label>
+        {{form.date}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.patient_name.error}}
+        <label class="control-label">Patient's Name: </label>
+        {{form.patient_name}}
+        </div>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.patient_signature.error}}
+        <label class="control-label">Patient's Signature: </label>
+        {{form.patient_signature}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.witness_name.error}}
+        <label class="control-label">Witness' Name: </label>
+        {{form.witness_name}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.witness_signature.error}}
+        <label class="control-label">Witness' Signature: </label>
+        {{form.witness_signature}}
+        </div>
+    </div>
+</div>
+
+{% endblock form_content %}

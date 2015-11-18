@@ -1,0 +1,63 @@
+{% extends "medicalforms/consent_forms/consent_base.html" %}
+
+{% block title %}
+{% endblock title %}
+
+{% block form_content %}
+
+<p>
+To Whom It May Concern:
+</p>
+
+<p>
+Subject to the Statutory Accidents Benefits Schedule, in those circumstances where prior approval is required, I understand that if I undertake any of the proposed services prior to approval by the insurer, I will be responsible for payment to my provider for any of the services rendered on my behalf and will be paid by my legal representative out of my settlement once my Accident Benefit file has been settled and closed.
+</p>
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.date.error}}
+        <label class="control-label">Date: </label>
+        {{form.date}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.patient_name.error}}
+        <label class="control-label">Patient's Name: </label>
+        {{form.patient_name}}
+        </div>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.patient_signature.error}}
+        <label class="control-label">Patient's Signature: </label>
+        {{form.patient_signature}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.witness_name.error}}
+        <label class="control-label">Witness' Name: </label>
+        {{form.witness_name}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.witness_signature.error}}
+        <label class="control-label">Witness' Signature: </label>
+        {{form.witness_signature}}
+        </div>
+    </div>
+</div>
+
+{% endblock form_content %}

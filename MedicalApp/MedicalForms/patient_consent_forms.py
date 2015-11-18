@@ -35,3 +35,21 @@ class ExchangeInformationForm(forms.ModelForm):
     class Meta:
         model = ExchangeInformation
         exclude = ('patient', )
+
+
+class AuthorizationAndDirectionForm(forms.ModelForm):
+    class Meta:
+        model = AuthorizationAndDirection
+        exclude = ('patient', )
+
+
+class Section47Form(forms.ModelForm):
+    class Meta:
+        model = Section47
+        exclude = ('patient', )
+
+
+class StatutoryAccidentsBenefitsForm(forms.ModelForm):
+    class Meta:
+        model = StatutoryAccidentsBenefits
+        exclude = ('patient', )
