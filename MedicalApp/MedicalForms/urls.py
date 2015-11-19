@@ -14,7 +14,6 @@ urlpatterns = [
     # Patient forms
     url(r'^patient-information/(?P<user_id>[\d]+)/$', views.PatientInformationView.as_view(),
         name="patient_info"),
-
     url(r'^health-history/(?P<user_id>[\d]+)/$', views.HealthHistoryView.as_view(),
         name="health_history"),
     url(r'^accident-history/(?P<user_id>[\d]+)/$', views.AccidentHistoryView.as_view(),

@@ -5,12 +5,8 @@ from django.utils.decorators import method_decorator
 from braces.views import LoginRequiredMixin, GroupRequiredMixin
 
 from MedicalApp.utils import user_passes_test_with_kwargs
-from .models import ChiropracticTreatment, PhysiotherapyTreatment, MassageTreatment,\
-    MedicalAuthorization, ExchangeInformation, AuthorizationAndDirection,\
-    Section47, StatutoryAccidentsBenefits
-from .forms import ChiropracticTreatmentForm, PhysiotherapyTreatmentForm,\
-    MassageTreatmentForm, MedicalAuthorizationForm, ExchangeInformationForm,\
-    AuthorizationAndDirectionForm, Section47Form, StatutoryAccidentsBenefitsForm
+from .models import *
+from .forms import *
 
 
 def owner_or_doctors(user, **kwargs):
@@ -41,9 +37,14 @@ class PatientFormBaseView(LoginRequiredMixin, UpdateView):
         return reverse_lazy('users:patient_profile', kwargs={'username': self.object.patient.user.username})
 
 
+# Patient forms
+class AccidentHistoryView(PatientFormBaseView):
+    template_name = 'medicalforms/accident_history.html'
+    model = AccidentHistory
+    form_class = AccidentHistoryForm
+
+
 # Consent form views.
-
-
 class ChiropracticTreatmentView(PatientFormBaseView):
     template_name = 'medicalforms/consent_forms/chiropractic_consent.html'
     model = ChiropracticTreatment

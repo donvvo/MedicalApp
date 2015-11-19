@@ -1,0 +1,79 @@
+[
+    {
+        "model": "MedicalForms.passengerlocation",
+        "pk": 1,
+        "fields": {
+            "choice": "Front"
+        }
+    },
+    {
+        "model": "MedicalForms.passengerlocation",
+        "pk": 2,
+        "fields": {
+            "choice": "Back Left"
+        }
+    },
+    {
+        "model": "MedicalForms.passengerlocation",
+        "pk": 3,
+        "fields": {
+            "choice": "Back Right"
+        }
+    },
+    {
+        "model": "MedicalForms.bodypart",
+        "pk": 1,
+        "fields": {
+            "choice": "Head"
+        }
+    },
+    {
+        "model": "MedicalForms.bodypart",
+        "pk": 2,
+        "fields": {
+            "choice": "Shoulder"
+        }
+    },
+    {
+        "model": "MedicalForms.bodypart",
+        "pk": 3,
+        "fields": {
+            "choice": "Arm"
+        }
+    },
+    {
+        "model": "MedicalForms.bodypart",
+        "pk": 4,
+        "fields": {
+            "choice": "Hand"
+        }
+    },
+    {
+        "model": "MedicalForms.bodypart",
+        "pk": 5,
+        "fields": {
+            "choice": "Chest"
+        }
+    },
+    {
+        "model": "MedicalForms.bodypart",
+        "pk": 6,
+        "fields": {
+            "choice": "Hip"
+        }
+    },
+    {
+        "model": "MedicalForms.bodypart",
+        "pk": 7,
+        "fields": {
+            "choice": "Leg"
+        }
+    },
+    {
+        "model": "MedicalForms.bodypart",
+        "pk": 8,
+        "fields": {
+            "choice": "Knee"
+        }
+    }
+]

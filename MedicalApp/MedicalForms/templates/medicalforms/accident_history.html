@@ -1,207 +1,273 @@
-{% extends "base.html" %}
-{% block content %}
+{% extends "medicalforms/form_base.html" %}
 
-<section class="profile-doctor generic animated fadeInUp">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="section-title">
-                    <h3>Accident History</h3>
-                </div>
-            </div>
+{% block title %}
+Accident History
+{% endblock title %}
+
+{% block form_content %}
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="col-sm-12">
+            {% for error in form.description_and_location.errors %}
+            <span class="errorlist">{{error}}</span>
+            {% endfor %}
         </div>
-        <div class="row">
-            <div class="col-sm-6 col-sm-offset-3">
-                <form action="{{request.path}}" method="post" accept-charset="utf-8">
-                    {% csrf_token %}
-
-                    <div class="row">
-                        <div class="col-sm-12">
-<div class="form-group">
-                            {{form.user.error}}
-                            {{form.user.label}}
-                            {{form.user}}
-</div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12">
-	                        <div class="form-group">
-                            {{form.description_and_location.error}}
-                            {{form.description_and_location.label}}
-                            {{form.description_and_location}}
-	                        </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12">
-	                         <div class="form-group">
-                            {{form.road_condition.error}}
-                            {{form.road_condition.label}}
-                            {{form.road_condition}}
-	                         </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12">
-	                        <div class="form-group">
-                            {{form.anticipation_of_accident.error}}
-                            {{form.anticipation_of_accident.label}}
-                            {{form.anticipation_of_accident}}
-	                        </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12">
-	                        <div class="form-group">
-                            {{form.time_of_the_day.error}}
-                            {{form.time_of_the_day.label}}
-                            {{form.time_of_the_day}}
-	                        </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12">
-	                        <div class="form-group">
-                            {{form.patient_vehicle.error}}
-                            {{form.patient_vehicle.label}}
-                            {{form.patient_vehicle}}
-	                        </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12">
-	                        <div class="form-group">
-                            {{form.patient_vehicle_speed.error}}
-                            {{form.patient_vehicle_speed.label}}
-                            {{form.patient_vehicle_speed}}
-	                        </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12">
-	                        <div class="form-group">
-                            {{form.other_vehicle.error}}
-                            {{form.other_vehicle.label}}
-                            {{form.other_vehicle}}
-	                        </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12">
-	                        <div class="form-group">
-                            {{form.other_vehicle_speed.error}}
-                            {{form.other_vehicle_speed.label}}
-                            {{form.other_vehicle_speed}}
-	                        </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12">
-	                        <div class="form-group">
-                            {{form.collision_type.error}}
-                            {{form.collision_type.label}}
-                            {{form.collision_type}}
-	                        </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12">
-	                        <div class="form-group">
-                            {{form.vehicle_towed.error}}
-                            {{form.vehicle_towed.label}}
-                            {{form.vehicle_towed}}
-	                        </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12">
-	                        <div class="form-group">
-                            {{form.impact_with_objects.error}}
-                            {{form.impact_with_objects.label}}
-                            {{form.impact_with_objects}}
-	                        </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12">
-	                        <div class="form-group">
-                            {{form.exit_from_vehicle.error}}
-                            {{form.exit_from_vehicle.label}}
-                            {{form.exit_from_vehicle}}
-	                        </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12">
-	                        <div class="form-group">
-                            {{form.loss_of_consciousness.error}}
-                            {{form.loss_of_consciousness.label}}
-                            {{form.loss_of_consciousness}}
-	                        </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12">
-	                        <div class="form-group">
-                            {{form.safety_equipment.error}}
-                            {{form.safety_equipment.label}}
-                            {{form.safety_equipment}}
-	                        </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12">
-	                        <div class="form-group">
-                            {{form.airbag_deployed.error}}
-                            {{form.airbag_deployed.label}}
-                            {{form.airbag_deployed}}
-	                        </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12">
-	                        <div class="form-group">
-                            {{form.driver.error}}
-                            {{form.driver.label}}
-                            {{form.driver}}
-	                        </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12">
-	                        <div class="form-group">
-                            {{form.passengers.error}}
-                            {{form.passengers.label}}
-                            {{form.passengers}}
-	                        </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12">
-	                        <div class="form-group">
-                            {{form.dominant_hand.error}}
-                            {{form.dominant_hand.label}}
-                            {{form.dominant_hand}}
-	                        </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12">
-	                        <div class="form-group">
-                            {{form.body_part_collision.error}}
-                            {{form.body_part_collision.label}}
-                            {{form.body_part_collision}}
-	                        </div>
-	                        
-	                       
-                        </div>
-                    </div>
-                    <input type="submit" class="btn btn-default btn-color-border-solid" value="Save">
-                </form>
-            </div>
+        <div class="form-group">
+        <label class="control-label">Description and Location of the accident: </label>
+        {{form.description_and_location}}
         </div>
     </div>
-</section>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="col-sm-12">
+            {% for error in form.road_condition.errors %}
+            <span class="errorlist">{{error}}</span>
+            {% endfor %}
+        </div>
+         <div class="form-group">
+        <label class="control-label">Condition of the road: </label>
+        {{form.road_condition}}
+         </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="col-sm-12">
+            {% for error in form.anticipation_of_accident.errors %}
+            <span class="errorlist">{{error}}</span>
+            {% endfor %}
+        </div>
+        <div class="form-group">
+        <label class="control-label">Anticipation of Accident?: </label>
+        {{form.anticipation_of_accident}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="col-sm-12">
+            {% for error in form.time_of_the_day.errors %}
+            <span class="errorlist">{{error}}</span>
+            {% endfor %}
+        </div>
+        <div class="form-group">
+        <label class="control-label">Time of the day: </label>
+        {{form.time_of_the_day}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="col-sm-12">
+            {% for error in form.patient_vehicle.errors %}
+            <span class="errorlist">{{error}}</span>
+            {% endfor %}
+        </div>
+        <div class="form-group">
+        <label class="control-label">Patient's vehicle: </label>
+        {{form.patient_vehicle}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="col-sm-12">
+            {% for error in form.patient_vehicle_speed.errors %}
+            <span class="errorlist">{{error}}</span>
+            {% endfor %}
+        </div>
+        <div class="form-group">
+        <label class="control-label">Speed (km/hr): </label>
+        {{form.patient_vehicle_speed}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="col-sm-12">
+            {% for error in form.other_vehicle.errors %}
+            <span class="errorlist">{{error}}</span>
+            {% endfor %}
+        </div>
+        <div class="form-group">
+        <label class="control-label">Other vehicle: </label>
+        {{form.other_vehicle}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="col-sm-12">
+            {% for error in form.other_vehicle_speed.errors %}
+            <span class="errorlist">{{error}}</span>
+            {% endfor %}
+        </div>
+        <div class="form-group">
+        <label class="control-label">Speed (km/hr): </label>
+        {{form.other_vehicle_speed}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="col-sm-12">
+            {% for error in form.collision_type.errors %}
+            <span class="errorlist">{{error}}</span>
+            {% endfor %}
+        </div>
+        <div class="form-group">
+        <label class="control-label">Collision type: </label>
+        {{form.collision_type}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="col-sm-12">
+            {% for error in form.vehicle_towed.errors %}
+            <span class="errorlist">{{error}}</span>
+            {% endfor %}
+        </div>
+        <div class="form-group">
+        <label class="control-label">Was the vehicle towed? </label>
+        {{form.vehicle_towed}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="col-sm-12">
+            {% for error in form.impact_with_objects.errors %}
+            <span class="errorlist">{{error}}</span>
+            {% endfor %}
+        </div>
+        <div class="form-group">
+        <label class="control-label">Impact with other Objects: </label>
+        {{form.impact_with_objects}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="col-sm-12">
+            {% for error in form.exit_from_vehicle.errors %}
+            <span class="errorlist">{{error}}</span>
+            {% endfor %}
+        </div>
+        <div class="form-group">
+        <label class="control-label">Exit from vehicle: </label>
+        {{form.exit_from_vehicle}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="col-sm-12">
+            {% for error in form.loss_of_consciousness.errors %}
+            <span class="errorlist">{{error}}</span>
+            {% endfor %}
+        </div>
+        <div class="form-group">
+        <label class="control-label">Loss of consciousness: </label>
+        {{form.loss_of_consciousness}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="col-sm-12">
+            {% for error in form.safety_equipment.errors %}
+            <span class="errorlist">{{error}}</span>
+            {% endfor %}
+        </div>
+        <div class="form-group">
+        <label class="control-label">Safety equipment (seatbelt): </label>
+        {{form.safety_equipment}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="col-sm-12">
+            {% for error in form.airbag_deployed.errors %}
+            <span class="errorlist">{{error}}</span>
+            {% endfor %}
+        </div>
+        <div class="form-group">
+        <label class="control-label">Air-bag deployed: </label>
+        {{form.airbag_deployed}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="col-sm-12">
+            {% for error in form.driver.errors %}
+            <span class="errorlist">{{error}}</span>
+            {% endfor %}
+        </div>
+        <div class="form-group">
+        <label class="control-label">Were you the driver? </label>
+        {{form.driver}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="col-sm-12">
+            {% for error in form.passengers.errors %}
+            <span class="errorlist">{{error}}</span>
+            {% endfor %}
+        </div>
+        <div class="form-group">
+        <label class="control-label">Passengers? </label>
+        {% for checkbox in form.passengers %}
+            <div class="checkbox">
+                <label>
+                    {{checkbox.tag}}
+                    {{checkbox.choice_label}}
+                </label>
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="col-sm-12">
+            {% for error in form.dominant_hand.errors %}
+            <span class="errorlist">{{error}}</span>
+            {% endfor %}
+        </div>
+        <div class="form-group">
+        <label class="control-label">Dominant Hand: </label>
+        {{form.dominant_hand}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="col-sm-12">
+            {% for error in form.body_part_collision.errors %}
+            <span class="errorlist">{{error}}</span>
+            {% endfor %}
+        </div>
+        <div class="form-group">
+        <label class="control-label">Did any part of your body collide with any objects? (check all that apply): </label>
+        {% for checkbox in form.body_part_collision %}
+            <div class="checkbox">
+                <label>
+                    {{checkbox.tag}}
+                    {{checkbox.choice_label}}
+                </label>
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+</div>
 
-{% endblock %}
+{{form.non_field_errors}}
+
+{% endblock form_content %}

@@ -15,7 +15,8 @@ from braces.views import LoginRequiredMixin, GroupRequiredMixin
 from MedicalApp.utils import user_passes_test_with_kwargs
 from .patient_form_views import ChiropracticTreatmentView, PhysiotherapyTreatmentView,\
     MassageTreatmentView, MedicalAuthorizationView, ExchangeInformationView,\
-    AuthorizationAndDirectionView, Section47View, StatutoryAccidentsBenefitsView
+    AuthorizationAndDirectionView, Section47View, StatutoryAccidentsBenefitsView,\
+    AccidentHistoryView
 from .models import *
 from .forms import *
 
@@ -71,15 +72,6 @@ class HealthHistoryView(PatientFormBaseView):
 
     def get_success_url(self):
         return reverse_lazy('medical_forms:health_history', kwargs={'user_id': self.user_id})
-
-
-class AccidentHistoryView(PatientFormBaseView):
-    template_name = 'medicalforms/accident_history.html'
-    model = AccidentHistory
-    form_class = AccidentHistoryForm
-
-    def get_success_url(self):
-        return reverse_lazy('medical_forms:accident-history', kwargs={'user_id': self.user_id})
 
 
 class TMJScreeningView(PatientFormBaseView):

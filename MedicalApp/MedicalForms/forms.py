@@ -4,6 +4,7 @@ from django import forms
 
 from .models import *
 from .patient_consent_forms import *
+from .patient_forms import *
 
 logger = logging.getLogger(__name__)
 
@@ -111,16 +112,6 @@ class AssessmentForm(forms.ModelForm):
     class Meta:
         model = Assessment
         exclude = ('user', 'today_date')
-
-
-class AccidentHistoryForm(forms.ModelForm):
-    class Meta:
-        model = AccidentHistory
-        exclude = ('user', 'today_date')
-        widgets = {
-            'passengers': forms.CheckboxSelectMultiple(),
-            'body_part_collision': forms.CheckboxSelectMultiple()
-        }
 
 
 class MVAIntakeForm(forms.ModelForm):

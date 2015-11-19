@@ -2,7 +2,7 @@ from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
 
 from .utils import *
-from MedicalApp.users.models import User
+from MedicalAppointments.models import Patient
 
 
 # Accident history choices
@@ -46,7 +46,8 @@ class BodyPart(models.Model):
 # Accident history
 @python_2_unicode_compatible
 class AccidentHistory(models.Model):
-    user = models.ForeignKey(User)
+    patient = models.OneToOneField(Patient, primary_key=True)
+    today_date = models.DateTimeField(auto_now_add=True)
     description_and_location = MyTextField()
     road_condition = MySelectField(max_length=10,
                                       choices=ROAD_CONDITION_CHOICES)
@@ -66,11 +67,10 @@ class AccidentHistory(models.Model):
     safety_equipment = MyNullBooleanField()
     airbag_deployed = MyNullBooleanField()
     driver = MyNullBooleanField()
-    passengers = models.ManyToManyField(PassengerLocation)
+    passengers = models.ManyToManyField(PassengerLocation, blank=True)
     dominant_hand = MySelectField(max_length=20,
                                      choices=DOMINANT_HAND_CHOICES)
     body_part_collision = models.ManyToManyField(BodyPart, blank=True)
 
     def __str__(self):
-        return 'Health history for ' + self.user.first_name
-        + ' ' + self.user.last_name
+        return 'Accident History for ' + str(self.patient)
