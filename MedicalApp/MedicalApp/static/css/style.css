@@ -11602,7 +11602,7 @@ blockquote h4 {
   position: relative;
 }
 .sidebar-title:before {
-  background-color: #1671c4;
+  background-color: #359960;
   top: 32px;
   content: " ";
   display: block;
@@ -11630,7 +11630,7 @@ blockquote h4 {
   font-size: 1.3em;
 }
 .alternative-title:before {
-  background-color: #1671c4;
+  background-color: #359960;
   top: 42px;
   content: " ";
   display: block;
@@ -12506,7 +12506,7 @@ blockquote h4 {
 }
 /********************************* Footer *********************************/
 .footer-top {
-  background-color: #f0f0f0;
+  background-color: #e1e1e1;
 }
 .footer-top h5 {
   color: #fff;
@@ -12540,7 +12540,7 @@ blockquote h4 {
   -webkit-box-shadow: 0 0 10px #359960;
 }
 .copy {
-  background-color: #68A9B1;
+  background-color: #359960;
   line-height: 20px;
   padding: 15px 0;
 }
@@ -14520,7 +14520,7 @@ figure.effect-chico:hover h4 {
   margin: 13px;
 }
 .boxes-content li:hover .name {
-  background: #3da5e2;
+  background: #359960;
   transition: all 0.5s ease-in-out;
 }
 .boxes-content li:hover .name strong {
@@ -14542,7 +14542,7 @@ figure.effect-chico:hover h4 {
   text-transform: capitalize;
 }
 .boxes-content li .name strong {
-  color: #07a8dc;
+  color: #359960;
   display: block;
   font-size: 0.78em;
   font-weight: 600;
@@ -15673,10 +15673,10 @@ nav.navbar-collapse.navbar-collapse.navbar-right.collapse {
   -webkit-transition: box-shadow 0.3s, -webkit-transform 0.3;
 }
 .social-links li a:hover {
-  color: #359960;
+  color: white;
 }
 .social-links li a:hover::before {
-  box-shadow: inset 0 0 0 2px #359960;
+  box-shadow: inset 0 0 0 2px white;
   transform: scale3d(1, 1, 1);
   -webkit-transform: scale3d(1, 1, 1);
 }

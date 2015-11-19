@@ -4,18 +4,23 @@
 
 {% block content %}
 
+<!-- Page Titles -->
+<div class="page-title">
+    <div class="container">
+	    <div class="section-title">
+        <h1>Welcome</h1>
+	    </div>
+        
+    </div>
+</div>
+<!-- End Page Titles -->
+
 <!-- Admin main -->
 <section class="generic">
     <div class="container">
+  
         <div class="row">
-            <div class="col-sm-12">
-                <div class="section-title">
-                    <h3>Welcome</h3>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-0 col-md-2"></div>
+            
             <div class="col-sm-6 col-md-4">
                 <a href="{% url 'users:doctors_list' %}" class="featured-item ct-icon">
                     <figure>
@@ -42,7 +47,21 @@
 
                 </a>
             </div>
-            <div class="col-sm-0 col-md-2"></div>
+         
+           <div class="col-sm-6 col-md-4">
+                <a href="{% url 'medical_appointments:clinic_list' %}" class="featured-item ct-icon">
+                    <figure>
+                        <img class="img-responsive" src="{% static 'img/features/featured-2.jpg' %}" alt="//">
+                        <div class="icon-image"><span class="glyphicon glyphicon-picture"></span></div>
+                    </figure>
+                    <div class="content text-center">
+                        <h4>Manage Patients</h4>
+
+                    </div>
+
+                </a>
+            </div>
+            
         </div>
     </div>
 </section>
