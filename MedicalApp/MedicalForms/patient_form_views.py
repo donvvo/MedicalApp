@@ -2,7 +2,7 @@ from django.core.urlresolvers import reverse_lazy
 from django.views.generic import UpdateView
 from django.utils.decorators import method_decorator
 
-from braces.views import LoginRequiredMixin, GroupRequiredMixin
+from braces.views import LoginRequiredMixin
 
 from MedicalApp.utils import user_passes_test_with_kwargs
 from .models import *
@@ -12,11 +12,6 @@ from .forms import *
 def owner_or_doctors(user, **kwargs):
     user_id = int(kwargs['user_id'])
     return user.pk == user_id or user.groups.filter(name="Doctors").exists()
-
-
-class DoctorOnlyMixin(LoginRequiredMixin, GroupRequiredMixin):
-    group_required = 'Doctors'
-    raise_exception = True
 
 
 class PatientFormBaseView(LoginRequiredMixin, UpdateView):

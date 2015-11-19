@@ -39,6 +39,9 @@ urlpatterns = [
     url(r'^statutory-accidents-benefits/(?P<user_id>[\d]+)/$', views.StatutoryAccidentsBenefitsView.as_view(),
         name="statutory-accidents-benefits"),
 
+    # Doctor forms
+    url(r'^plan-of-management/(?P<user_id>[\d]+)/$', views.PlanOfManagementView.as_view(),
+        name="plan-of-management"),
     url(r'^acute-concussion-eval/(?P<user_id>[\d]+)/$', views.AcuteConcussionEvaluationView.as_view(),
         name="acute-concussion-eval"),
     url(r'^assessment/(?P<user_id>[\d]+)/$', views.AssessmentView.as_view(),

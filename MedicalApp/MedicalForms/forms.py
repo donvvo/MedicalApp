@@ -5,6 +5,7 @@ from django import forms
 from .models import *
 from .patient_consent_forms import *
 from .patient_forms import *
+from .doctor_forms import *
 
 logger = logging.getLogger(__name__)
 

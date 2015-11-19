@@ -1,0 +1,529 @@
+{% extends "medicalforms/form_base.html" %}
+
+{% block title %}
+Plan of Management
+{% endblock title %}
+
+{% block form_content %}
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+            {{form.name.errors}}
+            <label class="control-label">Name: </label>
+            {{form.name}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+            {{form.start_date.errors}}
+            <label class="control-label">Start Date: </label>
+            {{form.start_date}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+            {{form.end_date.errors}}
+            <label class="control-label">End Date: </label>
+            {{form.end_date}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+            {{form.ffs_poc.errors}}
+            {{form.ffs_poc}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+            {{form.poc_detail.errors}}
+            <label class="control-label">POC: </label>
+            {{form.poc_detail}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+            {{form.duration_week.errors}}
+            <label class="control-label">Duration: </label>
+            {{form.duration_week}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+            {{form.for_week.errors}}
+            <label class="control-label">for </label>
+            {{form.for_week}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+            {{form.acu_mass.errors}}
+            <label class="control-label">#ACU: </label>
+            {{form.acu_mass}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+            {{form.acu_week.errors}}
+            <label class="control-label">Week </label>
+            {{form.acu_week}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+            {{form.acu_for_week.errors}}
+            <label class="control-label">for </label>
+            {{form.acu_for_week}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+            {{form.diagnosis_1.errors}}
+            <label class="control-label">1. </label>
+            {{form.diagnosis_1}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+            {{form.diagnosis_2.errors}}
+            <label class="control-label">2. </label>
+            {{form.diagnosis_2}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+            {{form.diagnosis_3.errors}}
+            <label class="control-label">3. </label>
+            {{form.diagnosis_3}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+            {{form.diagnosis_4.errors}}
+            <label class="control-label">4. </label>
+            {{form.diagnosis_4}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+            {{form.diagnosis_5.errors}}
+            <label class="control-label">5. </label>
+            {{form.diagnosis_5}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+            {{form.dob.errors}}
+            <label class="control-label">DOB: </label>
+            {{form.dob}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+            {{form.claim_number.errors}}
+            <label class="control-label">CLAIM #: </label>
+            {{form.claim_number}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+            {{form.ice_heat.errors}}
+            {{form.ice_heat}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+            {{form.ice_heat_region.errors}}
+            {{form.ice_heat_region}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+            {{form.laser.errors}}
+            <label class="control-label">Laser: </label>
+            {{form.laser}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+            {{form.laser_region.errors}}
+            {{form.laser_region}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+            {{form.ultrasound.errors}}
+            <label class="control-label">Laser: </label>
+            {{form.ultrasound}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+            {{form.ultrasound_percent.errors}}
+            {{form.ultrasound_percent}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+            {{form.ultrasound_w.errors}}
+            {{form.ultrasound_w}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+            {{form.ultrasound_min.errors}}
+            {{form.ultrasound_min}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+            {{form.ultrasound_region.errors}}
+            {{form.ultrasound_region}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+            {{form.ifc.errors}}
+            <label class="control-label">IFC: </label>
+            {{form.ifc}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+            {{form.ifc_region.errors}}
+            {{form.ifc_region}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+            {{form.ems_russian.errors}}
+            <label class="control-label">EMS/RUSSIAN: </label>
+            {{form.ems_russian}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+            {{form.microcurrent.errors}}
+            <label class="control-label">MICROCURRENT: </label>
+            {{form.microcurrent}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+            {{form.bike_time.errors}}
+            <label class="control-label">BIKE: </label>
+            {{form.bike_time}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+            {{form.bike_load.errors}}
+            {{form.bike_load}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+            {{form.treadmill_time.errors}}
+            <label class="control-label">TREADMILL: </label>
+            {{form.treadmill_time}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+            {{form.treadmill_load.errors}}
+            {{form.treadmill_load}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+            {{form.elliptical_time.errors}}
+            <label class="control-label">ELLIPTICAL: </label>
+            {{form.elliptical_time}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+            {{form.elliptical_load.errors}}
+            {{form.elliptical_load}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+            {{form.stt_region.errors}}
+            <label class="control-label">STT: </label>
+            {{form.stt_region}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+            {{form.mob_region.errors}}
+            <label class="control-label">MOB: </label>
+            {{form.mob_region}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+            {{form.smt_region.errors}}
+            <label class="control-label">SMT: </label>
+            {{form.smt_region}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+            {{form.neck_muscles.errors}}
+            <label class="control-label">NECK: </label>
+            {{form.neck_muscles}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+            {{form.neck_exercies.errors}}
+            {{form.neck_exercies}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+            {{form.shoulder_muscles.errors}}
+            <<label class="control-label">SHOULDER/ARM: </label>
+            {{form.shoulder_muscles}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+            {{form.shoulder_exercies.errors}}
+            {{form.shoulder_exercies}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+            {{form.forarm_muscles.errors}}
+            <label class="control-label">FOREARM/WRIST: </label>
+            {{form.forarm_muscles}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+            {{form.forarm_exercies.errors}}
+            {{form.forarm_exercies}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+            {{form.ts_muscles.errors}}
+            <label class="control-label">T/S - UPPER BAC: </label>
+            {{form.ts_muscles}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+            {{form.ts_exercies.errors}}
+            {{form.ts_exercies}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+            {{form.ls_muscles.errors}}
+            <label class="control-label">L/S - LOW BACK: </label>
+            {{form.ls_muscles}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+            {{form.ls_exercies.errors}}
+            {{form.ls_exercies}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+            {{form.hip_muscles.errors}}
+            <label class="control-label">HIP: </label>
+            {{form.hip_muscles}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+            {{form.hip_exercies.errors}}
+            {{form.hip_exercies}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+            {{form.thigh_muscles.errors}}
+            <label class="control-label">THICH/KNEE: </label>
+            {{form.thigh_muscles}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+            {{form.thigh_exercies.errors}}
+            {{form.thigh_exercies}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+            {{form.lower_leg_muscles.errors}}
+            <label class="control-label">LOWER LEG: </label>
+            {{form.lower_leg_muscles}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+            {{form.lower_leg_exercies.errors}}
+            {{form.lower_leg_exercies}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+            {{form.ankle_muscles.errors}}
+            <label class="control-label">ANKLE/FOOT: </label>
+            {{form.ankle_muscles}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+            {{form.ankle_exercies.errors}}
+            {{form.ankle_exercies}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+            {{form.core_muscles.errors}}
+            <label class="control-label">CORE: </label>
+            {{form.core_muscles}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+            {{form.core_exercies.errors}}
+            {{form.core_exercies}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+            {{form.notes.errors}}
+            <label class="control-label">NOTES/CORRESPONDENCE: </label>
+            {{form.notes}}
+        </div>
+    </div>
+</div>
+
+{% endblock form_content %}
+

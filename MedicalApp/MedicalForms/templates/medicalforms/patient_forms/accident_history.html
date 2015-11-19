@@ -268,6 +268,271 @@ Accident History
     </div>
 </div>
 
+<br>
+<h5>Symptoms following accident: </h5>
+<br>
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.headache.errors}}
+        <label class="control-label">Headache </label>
+        {{form.headache}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.dizziness.errors}}
+        <label class="control-label">Dizziness </label>
+        {{form.dizziness}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.chest_pain.errors}}
+        <label class="control-label">Chest pain </label>
+        {{form.chest_pain}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.nausea_voimit.errors}}
+        <label class="control-label">Nausea / vomit </label>
+        {{form.nausea_voimit}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.bleeding.errors}}
+        <label class="control-label">Bleeding </label>
+        {{form.bleeding}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.head_neck.errors}}
+        <label class="control-label">Head / Neck </label>
+        {{form.head_neck}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.back.errors}}
+        <label class="control-label">Back </label>
+        {{form.back}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.shoulders.errors}}
+        <label class="control-label">Shoulders </label>
+        {{form.shoulders}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.shoulders_which.errors}}
+        <label class="control-label">Which side of shoulders? </label>
+        {% for checkbox in form.shoulders_which %}
+            <div class="checkbox">
+                <label>
+                    {{checkbox.tag}}
+                    {{checkbox.choice_label}}
+                </label>
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.legs.errors}}
+        <label class="control-label">Legs </label>
+        {{form.legs}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.legs_which.errors}}
+        <label class="control-label">Which side of legs? </label>
+        {% for checkbox in form.legs_which %}
+            <div class="checkbox">
+                <label>
+                    {{checkbox.tag}}
+                    {{checkbox.choice_label}}
+                </label>
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.arms.errors}}
+        <label class="control-label">Arms </label>
+        {{form.arms}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.arms_which.errors}}
+        <label class="control-label">Which side of arms? </label>
+        {% for checkbox in form.arms_which %}
+            <div class="checkbox">
+                <label>
+                    {{checkbox.tag}}
+                    {{checkbox.choice_label}}
+                </label>
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.other.errors}}
+        <label class="control-label">Other: </label>
+        {{form.other}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.emergency_personnel.errors}}
+        <label class="control-label">Emergency Personnel on Scene (check all that apply) </label>
+        {% for checkbox in form.emergency_personnel %}
+            <div class="checkbox">
+                <label>
+                    {{checkbox.tag}}
+                    {{checkbox.choice_label}}
+                </label>
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.hospitalized.errors}}
+        <label class="control-label">Hospitalized? </label>
+        {{form.hospitalized}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.transportation.errors}}
+        <label class="control-label">Transporation: </label>
+        {{form.transportation}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.examination_date.errors}}
+        <label class="control-label">Date: </label>
+        {{form.examination_date}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.examination_type.errors}}
+        <label class="control-label">Examinations </label>
+        {% for checkbox in form.examination_type %}
+            <div class="checkbox">
+                <label>
+                    {{checkbox.tag}}
+                    {{checkbox.choice_label}}
+                </label>
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.examination_other.errors}}
+        <label class="control-label">Other: </label>
+        {{form.examination_other}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.treatment.errors}}
+        <label class="control-label">Treatment: </label>
+        {{form.treatment}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.seen_doctor.errors}}
+        <label class="control-label">Have you seen a doctor since the accident? </label>
+        {{form.seen_doctor}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.doctor_name.errors}}
+        <label class="control-label">Who: </label>
+        {{form.doctor_name}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.doctor_date.errors}}
+        <label class="control-label">Date: </label>
+        {{form.doctor_date}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.treatment_recommendation.errors}}
+        <label class="control-label">Treatment / Recommendations </label>
+        {{form.treatment_recommendation}}
+        </div>
+    </div>
+</div>
+
 {{form.non_field_errors}}
 
 {% endblock form_content %}

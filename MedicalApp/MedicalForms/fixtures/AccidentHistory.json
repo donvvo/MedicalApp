@@ -75,5 +75,89 @@
         "fields": {
             "choice": "Knee"
         }
+    },
+    {
+        "model": "MedicalForms.shouldersleftright",
+        "pk": 1,
+        "fields": {
+            "choice": "Left"
+        }
+    },
+    {
+        "model": "MedicalForms.shouldersleftright",
+        "pk": 2,
+        "fields": {
+            "choice": "Right"
+        }
+    },
+    {
+        "model": "MedicalForms.legsleftright",
+        "pk": 1,
+        "fields": {
+            "choice": "Left"
+        }
+    },
+    {
+        "model": "MedicalForms.legsleftright",
+        "pk": 2,
+        "fields": {
+            "choice": "Right"
+        }
+    },
+    {
+        "model": "MedicalForms.armsleftright",
+        "pk": 1,
+        "fields": {
+            "choice": "Left"
+        }
+    },
+    {
+        "model": "MedicalForms.armsleftright",
+        "pk": 2,
+        "fields": {
+            "choice": "Right"
+        }
+    },
+    {
+        "model": "MedicalForms.emergencypersonnel",
+        "pk": 1,
+        "fields": {
+            "choice": "Police"
+        }
+    },
+    {
+        "model": "MedicalForms.emergencypersonnel",
+        "pk": 2,
+        "fields": {
+            "choice": "Fire Truck"
+        }
+    },
+    {
+        "model": "MedicalForms.emergencypersonnel",
+        "pk": 3,
+        "fields": {
+            "choice": "Ambulance"
+        }
+    },
+    {
+        "model": "MedicalForms.examinations",
+        "pk": 1,
+        "fields": {
+            "choice": "X-rays"
+        }
+    },
+    {
+        "model": "MedicalForms.examinations",
+        "pk": 2,
+        "fields": {
+            "choice": "CT-Scan"
+        }
+    },
+    {
+        "model": "MedicalForms.examinations",
+        "pk": 3,
+        "fields": {
+            "choice": "MRI"
+        }
     }
 ]

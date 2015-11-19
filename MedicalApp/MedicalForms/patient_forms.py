@@ -32,5 +32,10 @@ class AccidentHistoryForm(forms.ModelForm):
         exclude = ('patient', 'today_date')
         widgets = {
             'passengers': forms.CheckboxSelectMultiple(),
-            'body_part_collision': forms.CheckboxSelectMultiple()
+            'body_part_collision': forms.CheckboxSelectMultiple(),
+            'shoulders_which': forms.CheckboxSelectMultiple(),
+            'legs_which': forms.CheckboxSelectMultiple(),
+            'arms_which': forms.CheckboxSelectMultiple(),
+            'emergency_personnel': forms.CheckboxSelectMultiple(),
+            'examination_type': forms.CheckboxSelectMultiple()
         }
