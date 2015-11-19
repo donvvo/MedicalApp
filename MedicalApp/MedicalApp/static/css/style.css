@@ -11585,7 +11585,7 @@ blockquote h4 {
   margin-top: 0;
 }
 .widget-title:after {
-  background-color: #1671c4;
+  background-color: #6DAE06;
   top: 43px;
   content: " ";
   display: block;
@@ -12506,7 +12506,7 @@ blockquote h4 {
 }
 /********************************* Footer *********************************/
 .footer-top {
-  background-color: #1a2a65;
+  background-color: #f0f0f0;
 }
 .footer-top h5 {
   color: #fff;
@@ -12540,12 +12540,12 @@ blockquote h4 {
   -webkit-box-shadow: 0 0 10px #359960;
 }
 .copy {
-  background-color: #223887;
+  background-color: #68A9B1;
   line-height: 20px;
   padding: 15px 0;
 }
 .copy p.down {
-  color: #8C9FE2;
+  color: white;
   padding-top: 20px;
 }
 @media handheld, only screen and (max-width: 767px) {
@@ -15659,7 +15659,7 @@ nav.navbar-collapse.navbar-collapse.navbar-right.collapse {
 }
 .social-links li a::before {
   border-radius: inherit;
-  box-shadow: inset 0 0 0 35px #1f3279;
+  box-shadow: inset 0 0 0 35px #ffffff;
   content: '';
   height: 100%;
   left: 0;
