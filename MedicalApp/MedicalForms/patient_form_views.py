@@ -44,6 +44,12 @@ class PatientInformationView(PatientFormBaseView):
     form_class = PatientInformationForm
 
 
+class HealthHistoryView(PatientFormBaseView):
+    template_name = 'medicalforms/patient_forms/health_history.html'
+    model = HealthHistory
+    form_class = HealthHistoryForm
+
+
 class AccidentHistoryView(PatientFormBaseView):
     template_name = 'medicalforms/patient_forms/accident_history.html'
     model = AccidentHistory

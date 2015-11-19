@@ -1,0 +1,245 @@
+{% extends "medicalforms/form_base.html" %}
+
+{% block title %}
+Health History
+{% endblock title %}
+
+{% block form_content %}
+
+<div class="row">
+    <div class="col-sm-12">
+        <label class="control-label">General</label><br>
+        {% for checkbox in form.general %}
+        <div class="checkbox">
+            <label>
+    		{{checkbox.tag}}
+    		{{checkbox.choice_label}}
+            </label>
+        </div>
+        {% endfor %}
+        {{form.general.error}}
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12">
+        <label class="control-label">Muscle / Joint</label><br>
+        {% for checkbox in form.muscle_joint %}
+        <div class="checkbox">
+            <label>
+    		{{checkbox.tag}}
+    		{{checkbox.choice_label}}
+            </label>
+        </div>
+	     {% endfor %}
+
+        {{form.muscle_joint.error}}
+
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12">
+        <label class="control-label">Skin</label><br>
+        {% for checkbox in form.skin %}
+        <div class="checkbox">
+            <label>
+    		{{checkbox.tag}}
+    		{{checkbox.choice_label}}
+            </label>
+        </div>
+	     {% endfor %}
+
+        {{form.skin.error}}
+
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12">
+        <label class="control-label">Respiratory</label><br>
+        {% for checkbox in form.respiratory %}
+		<div class="checkbox">
+            <label>
+    		{{checkbox.tag}}
+    		{{checkbox.choice_label}}
+            </label>
+		</div>
+	     {% endfor %}
+
+        {{form.respiratory.error}}
+
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12">
+        <label class="control-label">Gastrointestinal</label><br>
+        {% for checkbox in form.gastrointestinal %}
+        <div class="checkbox">
+            <label>
+    		{{checkbox.tag}}
+    		{{checkbox.choice_label}}
+            </label>
+        </div>
+	     {% endfor %}
+
+        {{form.gastrointestinal.error}}
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12">
+        <label class="control-label">Genitourinary</label><br>
+        {% for checkbox in form.genitourinary %}
+        <div class="checkbox">
+            <label>
+    		{{checkbox.tag}}
+    		{{checkbox.choice_label}}
+            </label>
+        </div>
+	     {% endfor %}
+
+        {{form.genitourinary.error}}
+
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12">
+        <label class="control-label">Cardiovascular</label><br>
+        {% for checkbox in form.cardiovascular %}
+        <div class="checkbox">
+            <label>
+    		{{checkbox.tag}}
+    		{{checkbox.choice_label}}
+            </label>
+        </div>
+	     {% endfor %}
+
+        {{form.cardiovascular.error}}
+
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12">
+		 <label class="control-label">Women Only</label><br>
+        {% for checkbox in form.women_only_choices %}
+        <div class="checkbox">
+            <label>
+    		{{checkbox.tag}}
+    		{{checkbox.choice_label}}
+            </label>
+        </div>
+	     {% endfor %}
+
+        {{form.women_only_choices.error}}
+
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12">
+        <label class="control-label">Menstrual Flow</label><br>
+        {{form.menstrual_flow}}
+        {{form.menstrual_flow.error}}
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12">
+		<label class="control-label">Pregnant</label><br>
+        {{form.pregnant}}
+        {{form.pregnant.error}}
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12">
+		<label class="control-label">Check any of the conditions you have or have had:</label><br>
+        {% for checkbox in form.previous_conditions %}
+        <div class="checkbox">
+            <label>
+    		{{checkbox.tag}}
+    		{{checkbox.choice_label}}
+            </label>
+        </div>
+	     {% endfor %}
+
+        {{form.previous_conditions.error}}
+    </div>
+</div>
+
+Central Nervous System Disorders
+<div class="row">
+    <div class="col-sm-12">
+	     <div class="form-group">
+        {{form.cnd_disorders.error}}
+        <label class="control-label">If yes, specify</label>
+        {{form.cnd_disorders}}
+	     </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12">
+	     <div class="form-group">
+        {{form.current_medications.error}}
+        <label class="control-label">Please list any medication you are currently taking and why:</label>
+        {{form.current_medications}}
+	     </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12">
+	     <div class="form-group">
+        {{form.previous_surgeries.error}}
+        <label class="control-label">Have you had any surgeries? When?</label>
+        {{form.previous_surgeries}}
+	     </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12">
+	<div class="form-group">
+        {{form.smoker.error}}
+        <label class="control-label">Are you currently, or ever been a smoker?</label>
+        {{form.smoker}}
+	</div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12">
+		<div class="form-group">
+        {{form.other_conditions.error}}
+        <label class="control-label">Any other conditions/concerns not stated above:</label>
+        {{form.other_conditions}}
+		</div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.family_doctor.error}}
+        <label class="control-label">Family Doctor:</label>
+        {{form.family_doctor}}
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12">
+		<div class="form-group">
+        {{form.family_doctor_telephone.error}}
+        <label class="control-label">Tel:</label>
+        {{form.family_doctor_telephone}}
+		</div>
+    </div>
+</div>
+
+{% endblock form_content%}

@@ -9,23 +9,6 @@ from .patient_forms import *
 logger = logging.getLogger(__name__)
 
 
-class HealthHistoryForm(forms.ModelForm):
-    class Meta:
-        model = HealthHistory
-        exclude = ('user', 'today_date')
-        widgets = {
-            'general': forms.CheckboxSelectMultiple(),
-            'muscle_joint': forms.CheckboxSelectMultiple(),
-            'skin': forms.CheckboxSelectMultiple(),
-            'respiratory': forms.CheckboxSelectMultiple(),
-            'gastrointestinal': forms.CheckboxSelectMultiple(),
-            'genitourinary': forms.CheckboxSelectMultiple(),
-            'cardiovascular': forms.CheckboxSelectMultiple(),
-            'woemn_only_choices': forms.CheckboxSelectMultiple(),
-            'previous_conditions': forms.CheckboxSelectMultiple()
-        }
-
-
 # Subjective evaluation
 class BaseSubjectiveEvalForm(forms.ModelForm):
     class Meta:

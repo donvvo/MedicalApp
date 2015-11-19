@@ -2,7 +2,7 @@ from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
 
 from .utils import *
-from MedicalApp.users.models import User
+from MedicalAppointments.models import Patient
 
 
 MENSTRUAL_FLOW_CHOICES = (
@@ -88,7 +88,7 @@ class PreviousConditions(models.Model):
 # Health history
 @python_2_unicode_compatible
 class HealthHistory(models.Model):
-    user = models.ForeignKey(User)
+    patient = models.OneToOneField(Patient, primary_key=True)
     today_date = models.DateTimeField(auto_now_add=True, blank=True)
     general = models.ManyToManyField(General, blank=True)
     muscle_joint = models.ManyToManyField(MuscleJoint, blank=True)
@@ -97,7 +97,7 @@ class HealthHistory(models.Model):
     gastrointestinal = models.ManyToManyField(Gastrointestinal, blank=True)
     genitourinary = models.ManyToManyField(Genitourinary, blank=True)
     cardiovascular = models.ManyToManyField(Cardiovascular, blank=True)
-    woemn_only_choices = models.ManyToManyField(WomenOnlyChoices)
+    women_only_choices = models.ManyToManyField(WomenOnlyChoices, blank=True)
     menstrual_flow = MySelectField(max_length=20,
                                       choices=MENSTRUAL_FLOW_CHOICES)
     pregnant = MyNullBooleanField()
@@ -112,5 +112,4 @@ class HealthHistory(models.Model):
     family_doctor_telephone = MyCharField(max_length=20)
 
     def __str__(self):
-        return 'Health history for ' + self.user.first_name
-        + ' ' + self.user.last_name
+        return 'Health history for ' + str(self.patient)
