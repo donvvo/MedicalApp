@@ -1,0 +1,30 @@
+[
+    {
+        "model": "MedicalForms.dischargereasons",
+        "pk": 1,
+        "fields": {
+            "choice": "Health objectives reached, no more treatments are medically necessary"
+        }
+    },
+    {
+        "model": "MedicalForms.dischargereasons",
+        "pk": 2,
+        "fields": {
+            "choice": "Treatments have not resulted in expected improvements in patient's health deeming them further medically unnecessary"
+        }
+    },
+    {
+        "model": "MedicalForms.dischargereasons",
+        "pk": 3,
+        "fields": {
+            "choice": "Patient has stopped visits due to lack of funding (including private, EHC, MVA, WSIB patients)"
+        }
+    },
+    {
+        "model": "MedicalForms.dischargereasons",
+        "pk": 4,
+        "fields": {
+            "choice": "Patient has stopped visits for reasons other than financial, please specify"
+        }
+    }
+]

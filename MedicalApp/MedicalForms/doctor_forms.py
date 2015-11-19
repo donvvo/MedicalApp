@@ -7,3 +7,12 @@ class PlanOfManagementForm(forms.ModelForm):
     class Meta:
         model = PlanOfManagement
         exclude = ('patient', 'today_date')
+
+
+class PatientDischargeForm(forms.ModelForm):
+    class Meta:
+        model = PatientDischarge
+        exclude = ('patient', 'today_date')
+        widgets = {
+            'discharge_reason': forms.CheckboxSelectMultiple()
+        }

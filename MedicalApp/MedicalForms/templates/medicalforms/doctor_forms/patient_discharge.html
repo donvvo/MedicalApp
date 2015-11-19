@@ -1,0 +1,106 @@
+{% extends "medicalforms/form_base.html" %}
+
+{% block title %}
+Patient Discharge
+{% endblock title %}
+
+{% block form_content %}
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+            {{form.discharge_reason.errors}}
+            <label class="control-label">Reason(s) for Discharge: </label>
+            {% for checkbox in form.discharge_reason %}
+            <div class="checkbox">
+                <label>
+                    {{checkbox.tag}}
+                    {{checkbox.choice_label}}
+                </label>
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+            {{form.initial_complaint.errors}}
+            <label class="control-label">Initial Complaint: </label>
+            {{form.initial_complaint}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+            {{form.progress_to_date.errors}}
+            <label class="control-label">Progress to Date: </label>
+            {{form.progress_to_date}}
+        </div>
+    </div>
+</div>
+<h5>Post-discharge Recommendations:</h5>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+            {{form.reccurance_recommendation.errors}}
+            <label class="control-label">In order to prevent recurrence of the impairment or injury it is recommended: </label>
+            {{form.reccurance_recommendation}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+            {{form.risks_complications.errors}}
+            <label class="control-label">Potential risks and complications due to the impairment are: </label>
+            {{form.risks_complications}}
+        </div>
+    </div>
+</div>
+<h5>Follow up scheduled for:</h5>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-inline">
+            <div class="form-group">
+            {{form.schedule_date.errors}}
+            <label class="control-label">Date: </label>
+            {{form.schedule_date}}
+            </div>,
+            <div class="form-group">
+            {{form.communication.errors}}
+            <label class="control-label">Preferred form of communication (tel, e-mail) </label>
+            {{form.communication}}
+            </div>
+        </div>
+
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+            {{form.other_notes.errors}}
+            <label class="control-label">Other Notes </label>
+            {{form.other_notes}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-inline">
+            <div class="form-group">
+            {{form.clinician.errors}}
+            <label class="control-label">Clinician: </label>
+            {{form.clinician}}
+            </div>
+            <div class="form-group">
+            {{form.sign_date.errors}}
+            <label class="control-label">Date: </label>
+            {{form.sign_date}}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock form_content %}

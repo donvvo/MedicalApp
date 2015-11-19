@@ -32,3 +32,9 @@ class PlanOfManagementView(DoctorFormBaseView):
     template_name = 'medicalforms/doctor_forms/plan_of_management.html'
     model = PlanOfManagement
     form_class = PlanOfManagementForm
+
+
+class PatientDischargeView(DoctorFormBaseView):
+    template_name = 'medicalforms/doctor_forms/patient_discharge.html'
+    model = PatientDischarge
+    form_class = PatientDischargeForm

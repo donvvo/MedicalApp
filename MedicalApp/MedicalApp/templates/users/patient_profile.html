@@ -33,7 +33,7 @@
                 <div class="row">
                     <div class="col-sm-5 hidden-xs">
                         <figure>
-                            <img src="{% static 'img/doctors/doctor-01.jpg' %}" class="img-responsive" alt="">
+                            <img src="{% static 'img/profile-img.png' %}" class="img-responsive" alt="">
                         </figure>
                     </div>
                     <div class="col-sm-7">
@@ -81,6 +81,8 @@
                         <h4>Doctor Forms</h4>
                         <h5 class="alternative-title">Plan of Management</h5>
                         <a href="{% url 'medical_forms:plan-of-management' object.pk %}" class="btn btn-default btn-hover-bg"><span>View</span></a>
+                        <h5 class="alternative-title">Patient Discharge</h5>
+                        <a href="{% url 'medical_forms:patient-discharge' object.pk %}" class="btn btn-default btn-hover-bg"><span>View</span></a>
                         <h5 class="alternative-title">Accute Concussion Evaluation</h5>
                         <a href="{% url 'medical_forms:acute-concussion-eval' object.pk %}" class="btn btn-default btn-hover-bg"><span>View</span></a>
                         <h5 class="alternative-title">Assessment</h5>

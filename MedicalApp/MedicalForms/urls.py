@@ -42,6 +42,8 @@ urlpatterns = [
     # Doctor forms
     url(r'^plan-of-management/(?P<user_id>[\d]+)/$', views.PlanOfManagementView.as_view(),
         name="plan-of-management"),
+    url(r'^patient-discharge/(?P<user_id>[\d]+)/$', views.PatientDischargeView.as_view(),
+        name="patient-discharge"),
     url(r'^acute-concussion-eval/(?P<user_id>[\d]+)/$', views.AcuteConcussionEvaluationView.as_view(),
         name="acute-concussion-eval"),
     url(r'^assessment/(?P<user_id>[\d]+)/$', views.AssessmentView.as_view(),
