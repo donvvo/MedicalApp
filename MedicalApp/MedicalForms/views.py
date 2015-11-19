@@ -13,10 +13,7 @@ from django.utils.decorators import method_decorator
 from braces.views import LoginRequiredMixin, GroupRequiredMixin
 
 from MedicalApp.utils import user_passes_test_with_kwargs
-from .patient_form_views import ChiropracticTreatmentView, PhysiotherapyTreatmentView,\
-    MassageTreatmentView, MedicalAuthorizationView, ExchangeInformationView,\
-    AuthorizationAndDirectionView, Section47View, StatutoryAccidentsBenefitsView,\
-    AccidentHistoryView
+from .patient_form_views import *
 from .models import *
 from .forms import *
 
@@ -54,15 +51,6 @@ class DoctorFormBaseView(DoctorOnlyMixin, UpdateView):
             return objects.get()
         else:
             return self.model(pk=self.user_id)
-
-
-class PatientInformationView(PatientFormBaseView):
-    template_name = 'medicalforms/patient_information.html'
-    model = PatientInformation
-    form_class = PatientInformationForm
-
-    def get_success_url(self):
-        return reverse_lazy('medical_forms:patient_info', kwargs={'user_id': self.user_id})
 
 
 class HealthHistoryView(PatientFormBaseView):

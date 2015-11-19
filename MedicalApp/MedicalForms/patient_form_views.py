@@ -38,8 +38,14 @@ class PatientFormBaseView(LoginRequiredMixin, UpdateView):
 
 
 # Patient forms
+class PatientInformationView(PatientFormBaseView):
+    template_name = 'medicalforms/patient_forms/patient_information.html'
+    model = PatientInformation
+    form_class = PatientInformationForm
+
+
 class AccidentHistoryView(PatientFormBaseView):
-    template_name = 'medicalforms/accident_history.html'
+    template_name = 'medicalforms/patient_forms/accident_history.html'
     model = AccidentHistory
     form_class = AccidentHistoryForm
 

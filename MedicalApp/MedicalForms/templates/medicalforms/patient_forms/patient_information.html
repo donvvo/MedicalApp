@@ -1,0 +1,336 @@
+{% extends "medicalforms/form_base.html" %}
+
+{% block title %}
+Patient Information
+{% endblock title %}
+
+{% block form_content %}
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.accident_date.error}}
+        <label class="control-label">Date of Accident: </label>
+        {{form.accident_date}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.date_of_birth.error}}
+        <label class="control-label">Date of Birth: </label>
+        {{form.date_of_birth}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.gender.error}}
+        <label class="control-label">Gender: </label>
+        {{form.gender}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.address.error}}
+        <label class="control-label">Address: </label>
+        {{form.address}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.city.error}}
+        <label class="control-label">City: </label>
+        {{form.city}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.postal_code.error}}
+        <label class="control-label">Postal Code: </label>
+        {{form.postal_code}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.first_language.error}}
+        <label class="control-label">1st Language: </label>
+        {{form.first_language}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.home_phone.error}}
+        <label class="control-label">Home Phone: </label>
+        {{form.home_phone}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.mobile_phone.error}}
+        <label class="control-label">Mobile Phone: </label>
+        {{form.mobile_phone}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.work_phone.error}}
+        <label class="control-label">Work Phone: </label>
+        {{form.work_phone}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.occupation.error}}
+        <label class="control-label">Occupation: </label>
+        {{form.occupation}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.modified_duties_availability.error}}
+        <label class="control-label">Are Modified Duties Available? </label>
+        {{form.modified_duties_availability}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.occupational_status.error}}
+        <label class="control-label">Occupational Status: </label>
+        {{form.occupational_status}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.job_requirements.error}}
+        <label class="control-label">Job Requirements: </label>
+        {{form.job_requirements}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.marital_status.error}}
+        <label class="control-label">Marital Status: </label>
+        {{form.marital_status}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.number_of_children.error}}
+        <label class="control-label">Children #: </label>
+        {{form.number_of_children}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.ages.error}}
+        <label class="control-label">Age(s): </label>
+        {{form.ages}}
+        </div>
+    </div>
+</div>
+In case of emergency, whom may we contact?
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.emergency_contact_name.error}}
+        <label class="control-label">Name: </label>
+        {{form.emergency_contact_name}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.emergency_contact_phone.error}}
+        <label class="control-label">Tel: </label>
+        {{form.emergency_contact_phone}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.emergency_contact_relationship.error}}
+        <label class="control-label">Relationship: </label>
+        {{form.emergency_contact_relationship}}
+        </div>
+    </div>
+</div>
+Current complaint(s) and when they started - in order of importance
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.current_complaint_1.error}}
+        <label class="control-label">1) </label>
+        {{form.current_complaint_1}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.current_complaint_2.error}}
+        <label class="control-label">2) </label>
+        {{form.current_complaint_2}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.current_complaint_3.error}}
+        <label class="control-label">3) </label>
+        {{form.current_complaint_3}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.current_complaint_4.error}}
+        <label class="control-label">4) </label>
+        {{form.current_complaint_4}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.previous_injury.error}}
+        <label class="control-label">Have you had any previous injuries before? </label>
+        {{form.previous_injury}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.previous_injury_detail.error}}
+        <label class="control-label">If yes, when? </label>
+        {{form.previous_injury_detail}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.previous_work_injury.error}}
+        <label class="control-label">Have you had any previous work injuries? </label>
+        {{form.previous_work_injury}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.previous_work_injury_detail.error}}
+        <label class="control-label">If yes, when? </label>
+        {{form.previous_work_injury_detail}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.previous_sporting_injury.error}}
+        <label class="control-label">Have you had any previous sporting injuries? </label>
+        {{form.previous_sporting_injury}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.previous_sporting_injury_detail.error}}
+        <label class="control-label">If yes, when? </label>
+        {{form.previous_sporting_injury_detail}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.previous_therapy.error}}
+        <label class="control-label">Have you received any previous therapy? </label>
+        {{form.previous_therapy}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.previous_therapy_detail.error}}
+        <label class="control-label">If yes, where? </label>
+        {{form.previous_therapy_detail}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.hospitalized.error}}
+        <label class="control-label">Have you ever been hospitalized? </label>
+        {{form.hospitalized}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.hospitalized_detail.error}}
+        <label class="control-label">If yes, for what and when? </label>
+        {{form.hospitalized_detail}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.previous_test.error}}
+        <label class="control-label">Havey you had any previous X-rays, MRI, or other tests? </label>
+        {{form.previous_test}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.previous_test_detail.error}}
+        <label class="control-label">If yes, when? </label>
+        {{form.previous_test_detail}}
+        </div>
+    </div>
+</div>
+
+{% endblock form_content %}

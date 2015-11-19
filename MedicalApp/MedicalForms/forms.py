@@ -9,28 +9,6 @@ from .patient_forms import *
 logger = logging.getLogger(__name__)
 
 
-class PatientInformationForm(forms.ModelForm):
-    class Meta:
-        model = PatientInformation
-        exclude = ('user', 'today_date')
-        widgets = {
-            'accident_date': forms.DateTimeInput(
-                attrs={
-                    'class': 'form-control',
-                    'placeholder': 'Date of Accident'
-                }),
-            'date_of_birth': forms.DateTimeInput(
-                attrs={
-                    'class': 'form-control',
-                    'placeholder': 'Date of Birth'
-                }),
-            'modified_duties_availability': forms.NullBooleanSelect(
-                attrs={
-                    'class': 'form-control'
-                })
-        }
-
-
 class HealthHistoryForm(forms.ModelForm):
     class Meta:
         model = HealthHistory
