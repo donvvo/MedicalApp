@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import absolute_import, unicode_literals
 
+from django.contrib import messages
 from django.core.urlresolvers import reverse, reverse_lazy
 from django.views.generic import DetailView, ListView, RedirectView, UpdateView, TemplateView
 from django.shortcuts import redirect, get_object_or_404
@@ -121,8 +122,11 @@ class UserRedirectView(LoginRequiredMixin, RedirectView):
     permanent = False
 
     def get_redirect_url(self):
-        return reverse("users:patient_doctor_redirect",
-                       kwargs={"username": self.request.user.username})
+        if self.request.user.is_staff:
+            return reverse('users:manage_main')
+        else:
+            return reverse("users:patient_doctor_redirect",
+                           kwargs={"username": self.request.user.username})
 
 
 class PatientDoctorRedirectView(LoginRequiredMixin, RedirectView):
@@ -137,11 +141,18 @@ class PatientDoctorRedirectView(LoginRequiredMixin, RedirectView):
                            kwargs={"username": username})
 
 
-class UserListView(LoginRequiredMixin, ListView):
-    model = User
-    # These next two lines tell the view to index lookups by username
-    slug_field = "username"
-    slug_url_kwarg = "username"
+class PatientsListView(LoginRequiredMixin, ListView):
+    model = Patient
+    template_name = "users/patient_list.html"
+
+    def dispatch(self, request, *args, **kwargs):
+        self.request.user.is_staff
+        if self.request.user.is_staff:
+            return super(PatientsListView, self).dispatch(request,
+                                                         *args, **kwargs)
+        else:
+            redirect_url = reverse("users:account_redirect")
+            return redirect(redirect_url)
 
 
 class ManageMainView(LoginRequiredMixin, TemplateView):
@@ -188,4 +199,5 @@ class EmailDoctorView(LoginRequiredMixin, FormView):
     def form_valid(self, form):
         signin_uri = self.request.build_absolute_uri(reverse("users:account_signup_doctors"))
         form.send_email(self.request.user.email, signin_uri)
+        messages.add_message(self.request, messages.SUCCESS, 'Signup email sent to a doctor.')
         return super(EmailDoctorView, self).form_valid(form)

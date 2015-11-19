@@ -10,13 +10,6 @@ from . import views
 from django.views.generic import TemplateView
 
 urlpatterns = [
-    # URL pattern for the UserListView
-    url(
-        regex=r'^$',
-        view=views.UserListView.as_view(),
-        name='list'
-    ),
-
     # URL pattern for the UserLoginView
     url(
         regex=r'^login/$',
@@ -50,6 +43,12 @@ urlpatterns = [
         regex=r'^manage/$',
         view=views.ManageMainView.as_view(),
         name="manage_main"
+    ),
+
+    url(
+        regex=r'^manage/patients$',
+        view=views.PatientsListView.as_view(),
+        name="patient_list"
     ),
 
     url(
