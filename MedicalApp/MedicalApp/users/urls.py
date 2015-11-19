@@ -7,6 +7,8 @@ from allauth.account.views import logout
 
 from . import views
 
+from django.views.generic import TemplateView
+
 urlpatterns = [
     # URL pattern for the UserListView
     url(
@@ -20,6 +22,12 @@ urlpatterns = [
         regex=r'^login/$',
         view=views.UserLoginView.as_view(),
         name='account_login'
+    ),
+
+    url(
+        regex=r'^settings/$',
+        view=TemplateView.as_view(template_name="users/settings.html"),
+        name='settings'
     ),
 
     # URL pattern for the DoctorSignupView
@@ -95,5 +103,4 @@ urlpatterns = [
         view=views.DoctorProfileEditView.as_view(),
         name='doctor_profile_edit'
     ),
-
 ]
