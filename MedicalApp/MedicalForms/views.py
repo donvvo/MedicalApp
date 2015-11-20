@@ -54,15 +54,6 @@ class DoctorFormBaseView(DoctorOnlyMixin, UpdateView):
             return self.model(pk=self.user_id)
 
 
-class TMJScreeningView(PatientFormBaseView):
-    template_name = 'medicalforms/tmj_screening.html'
-    model = TMJScreening
-    form_class = TMJScreeningForm
-
-    def get_success_url(self):
-        return reverse_lazy('medical_forms:tmj-screening', kwargs={'user_id': self.user_id})
-
-
 class AssessmentView(DoctorFormBaseView):
     template_name = 'medicalforms/assessment.html'
     model = Assessment

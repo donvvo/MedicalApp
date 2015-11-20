@@ -1,0 +1,186 @@
+{% extends "medicalforms/form_base.html" %}
+{% load static %}
+
+{% block title %}
+TMJ Screening
+{% endblock title %}
+
+{% block form_content %}
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+           <label class="control-label">DOI</label><br>
+        {{form.doi.error}}
+
+        {{form.doi}}
+        </div>
+    </div>
+</div>
+
+<br>
+<p>This questionnaire was designed to provide important facts regarding the history of your condition.  To assist in determining the source of any problem, please take your time and answer each question as completely and honestly as possible.  Please sign each page.</p>
+<p><b>Note:</b> Please ensure that symptoms identified in the following questionnaire were not present before the MVA or have been greatly exacerbated after the MVA.</p>
+<br>
+
+<div class="row">
+    <div class="col-sm-12">
+    <label class="control-label">Pain</label><br>
+    {% for checkbox in form.pain %}
+    <div class="checkbox">
+	<label>
+    {{checkbox.tag}}
+    {{checkbox.choice_label}}
+	</label>
+    </div>
+    {% endfor %}
+
+        {{form.pain.error}}
+
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12">
+        <label class="control-label">Symptoms</label><br>
+    {% for checkbox in form.symptom %}
+    <div class="checkbox">
+	<label>
+    {{checkbox.tag}}
+    {{checkbox.choice_label}}
+	</label>
+    </div>
+    {% endfor %}
+
+        {{form.symptom.error}}
+
+
+    </div>
+</div>
+
+<br>
+<div class="row">
+                <div class="col-sm-2">
+                    <img class="img-responsive" src="{% static 'img/pain-pattern-1.png' %}" alt="//">
+
+                </div>
+                <div class="col-sm-2">
+                    <img class="img-responsive" src="{% static 'img/pain-pattern-2.png' %}" alt="//">
+                    <select class="form-control">
+                      <option>Mild</option>
+                      <option>Moderate</option>
+                      <option>Severe</option>
+                    </select>
+                    <select class="form-control">
+                      <option>B</option>
+                      <option>D</option>
+                      <option>N</option>
+                      <option>P</option>
+                      <option>S</option>
+                      <option>T</option>
+                      <option>R</option>
+                    </select>
+                </div>
+                <div class="col-sm-2">
+                    <img class="img-responsive" src="{% static 'img/pain-pattern-3.png' %}" alt="//">
+                    <select class="form-control">
+                      <option>Mild</option>
+                      <option>Moderate</option>
+                      <option>Severe</option>
+                    </select>
+                    <select class="form-control">
+                      <option>B</option>
+                      <option>D</option>
+                      <option>N</option>
+                      <option>P</option>
+                      <option>S</option>
+                      <option>T</option>
+                      <option>R</option>
+                    </select>
+                </div>
+                <div class="col-sm-2">
+                    <img class="img-responsive" src="{% static 'img/pain-pattern-4.png' %}" alt="//">
+                    <select class="form-control">
+                      <option>Mild</option>
+                      <option>Moderate</option>
+                      <option>Severe</option>
+                    </select>
+                    <select class="form-control">
+                      <option>B</option>
+                      <option>D</option>
+                      <option>N</option>
+                      <option>P</option>
+                      <option>S</option>
+                      <option>T</option>
+                      <option>R</option>
+                    </select>
+                </div>
+                <div class="col-sm-2">
+                    <img class="img-responsive" src="{% static 'img/pain-pattern-5.png' %}" alt="//">
+                    <select class="form-control">
+                      <option>Mild</option>
+                      <option>Moderate</option>
+                      <option>Severe</option>
+                    </select>
+                    <select class="form-control">
+                      <option>B</option>
+                      <option>D</option>
+                      <option>N</option>
+                      <option>P</option>
+                      <option>S</option>
+                      <option>T</option>
+                      <option>R</option>
+                    </select>
+                </div>
+            </div>
+<div class="row">
+    <div class="col-sm-12">
+        <p>Rate your pain intensity (0 is NO PAIN and 10 is MOST SEVERE PAIN)</p>
+        <label class="radio-inline">
+  <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 1
+</label>
+<label class="radio-inline">
+  <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 2
+</label>
+<label class="radio-inline">
+  <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 3
+</label>
+<label class="radio-inline">
+  <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 4
+</label>
+<label class="radio-inline">
+  <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 5
+</label>
+<label class="radio-inline">
+  <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 6
+</label>
+<label class="radio-inline">
+  <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 7
+</label>
+<label class="radio-inline">
+  <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 8
+</label>
+<label class="radio-inline">
+  <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 9
+</label>
+<label class="radio-inline">
+  <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 10
+</label>
+
+
+    </div>
+</div>
+<br>
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+           <label class="control-label">Signature</label><br>
+        {{form.signature.error}}
+
+        {{form.signature}}
+        </div>
+    </div>
+</div>
+
+{% endblock form_content %}

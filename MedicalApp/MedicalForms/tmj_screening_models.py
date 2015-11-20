@@ -25,6 +25,7 @@ class Symptom(models.Model):
 class TMJScreening(models.Model):
     patient = models.OneToOneField(Patient, primary_key=True)
     today_date = MyDateTimeField(auto_now_add=True)
+    doi = MyDateTimeField()
     pain = models.ManyToManyField(Pain)
     symptom = models.ManyToManyField(Symptom)
     signature = MyCharField(max_length=50)

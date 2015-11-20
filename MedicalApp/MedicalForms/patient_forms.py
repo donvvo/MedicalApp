@@ -44,3 +44,13 @@ class AccidentHistoryForm(forms.ModelForm):
                                     'type': 'radio'
                                 })
         }
+
+
+class TMJScreeningForm(forms.ModelForm):
+    class Meta:
+        model = TMJScreening
+        exclude = ('patient', )
+        widgets = {
+            'pain': forms.CheckboxSelectMultiple(),
+            'symptom': forms.CheckboxSelectMultiple()
+        }

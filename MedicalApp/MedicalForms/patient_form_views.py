@@ -51,6 +51,12 @@ class AccidentHistoryView(PatientFormBaseView):
     form_class = AccidentHistoryForm
 
 
+class TMJScreeningView(PatientFormBaseView):
+    template_name = 'medicalforms/patient_forms/tmj_screening.html'
+    model = TMJScreening
+    form_class = TMJScreeningForm
+
+
 # Consent form views.
 class ChiropracticTreatmentView(PatientFormBaseView):
     template_name = 'medicalforms/consent_forms/chiropractic_consent.html'
