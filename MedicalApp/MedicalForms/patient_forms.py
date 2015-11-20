@@ -37,5 +37,10 @@ class AccidentHistoryForm(forms.ModelForm):
             'legs_which': forms.CheckboxSelectMultiple(),
             'arms_which': forms.CheckboxSelectMultiple(),
             'emergency_personnel': forms.CheckboxSelectMultiple(),
-            'examination_type': forms.CheckboxSelectMultiple()
+            'examination_type': forms.CheckboxSelectMultiple(),
+            'collision_type': forms.RadioSelect(
+                                choices=COLLISION_TYPE_CHOICES,
+                                attrs={
+                                    'type': 'radio'
+                                })
         }

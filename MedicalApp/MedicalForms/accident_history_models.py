@@ -108,7 +108,8 @@ class AccidentHistory(models.Model):
     collision_type = MySelectField(max_length=30,
                                       choices=COLLISION_TYPE_CHOICES)
     vehicle_towed = MyNullBooleanField()
-    impact_with_objects = MyCharField(max_length=50)
+    impact_with_objects = MyNullBooleanField()
+    impact_with_objects_detail = MyCharField(max_length=50)
     exit_from_vehicle = MySelectField(max_length=30,
                                          choices=EXIT_FROM_VEHICLE_CHOICES)
     loss_of_consciousness = MyNullBooleanField()
@@ -137,6 +138,7 @@ class AccidentHistory(models.Model):
     other = MyCharField(max_length=50)
     emergency_personnel = models.ManyToManyField(EmergencyPersonnel, blank=True)
     hospitalized = MyNullBooleanField()
+    hospitalized_detail = MyCharField(max_length=100)
     transportation = MySelectField(max_length=20, choices=TRANSPORTATION_CHOICES)
     examination_date = MyDateTimeField()
     examination_type = models.ManyToManyField(Examinations, blank=True)

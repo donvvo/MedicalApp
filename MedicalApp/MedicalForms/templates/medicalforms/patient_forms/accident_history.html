@@ -1,4 +1,5 @@
 {% extends "medicalforms/form_base.html" %}
+{% load static %}
 
 {% block title %}
 Accident History
@@ -20,20 +21,18 @@ Accident History
     </div>
 </div>
 <div class="row">
-    <div class="col-sm-12">
+    <div class="col-sm-6">
         <div class="col-sm-12">
             {% for error in form.road_condition.errors %}
             <span class="errorlist">{{error}}</span>
             {% endfor %}
         </div>
-         <div class="form-group">
+        <div class="form-group">
         <label class="control-label">Condition of the road: </label>
         {{form.road_condition}}
-         </div>
+        </div>
     </div>
-</div>
-<div class="row">
-    <div class="col-sm-12">
+    <div class="col-sm-6">
         <div class="col-sm-12">
             {% for error in form.anticipation_of_accident.errors %}
             <span class="errorlist">{{error}}</span>
@@ -59,7 +58,7 @@ Accident History
     </div>
 </div>
 <div class="row">
-    <div class="col-sm-12">
+    <div class="col-sm-6">
         <div class="col-sm-12">
             {% for error in form.patient_vehicle.errors %}
             <span class="errorlist">{{error}}</span>
@@ -70,9 +69,7 @@ Accident History
         {{form.patient_vehicle}}
         </div>
     </div>
-</div>
-<div class="row">
-    <div class="col-sm-12">
+    <div class="col-sm-6">
         <div class="col-sm-12">
             {% for error in form.patient_vehicle_speed.errors %}
             <span class="errorlist">{{error}}</span>
@@ -85,7 +82,7 @@ Accident History
     </div>
 </div>
 <div class="row">
-    <div class="col-sm-12">
+    <div class="col-sm-6">
         <div class="col-sm-12">
             {% for error in form.other_vehicle.errors %}
             <span class="errorlist">{{error}}</span>
@@ -96,9 +93,7 @@ Accident History
         {{form.other_vehicle}}
         </div>
     </div>
-</div>
-<div class="row">
-    <div class="col-sm-12">
+    <div class="col-sm-6">
         <div class="col-sm-12">
             {% for error in form.other_vehicle_speed.errors %}
             <span class="errorlist">{{error}}</span>
@@ -110,6 +105,7 @@ Accident History
         </div>
     </div>
 </div>
+
 <div class="row">
     <div class="col-sm-12">
         <div class="col-sm-12">
@@ -119,7 +115,30 @@ Accident History
         </div>
         <div class="form-group">
         <label class="control-label">Collision type: </label>
-        {{form.collision_type}}
+        <div class="row">
+            <div class="col-sm-3">
+                <label class="radio-inline">{{form.collision_type.0.choice_label}}<br>
+                {{form.collision_type.0.tag}} <img class="img-responsive" src="{% static 'img/car4.png' %}" alt="//" style="display:inline;"><img class="img-responsive" src="{% static 'img/car3.png' %}" alt="//" style="display:inline;">
+                </label>
+            </div>
+            <div class="col-sm-3">
+                <label class="radio-inline">{{form.collision_type.1.choice_label}}<br>
+                {{form.collision_type.1.tag}}<img class="img-responsive" src="{% static 'img/car4.png' %}" alt="//" style="display:inline;"><img class="img-responsive" src="{% static 'img/car1.png' %}" alt="//" style="display:inline;">
+
+                </label>
+            </div>
+            <div class="col-sm-3">
+                <label class="radio-inline">{{form.collision_type.2.choice_label}}<br>
+                    {{form.collision_type.2.tag}}<img class="img-responsive" src="{% static 'img/car1.png' %}" alt="//" style="display:inline;"><img class="img-responsive" src="{% static 'img/car1.png' %}" alt="//" style="display:inline;">
+                </label>
+            </div>
+            <div class="col-sm-3">
+                <label class="radio-inline">{{form.collision_type.3.choice_label}}<br>
+                {{form.collision_type.3.tag}}<img class="img-responsive" src="{% static 'img/car4.png' %}" alt="//" style="display:inline;"><img class="img-responsive" src="{% static 'img/car4.png' %}" alt="//" style="display:inline;">
+                </label>
+            </div>
+
+        </div>
         </div>
     </div>
 </div>
@@ -137,7 +156,7 @@ Accident History
     </div>
 </div>
 <div class="row">
-    <div class="col-sm-12">
+    <div class="col-sm-6">
         <div class="col-sm-12">
             {% for error in form.impact_with_objects.errors %}
             <span class="errorlist">{{error}}</span>
@@ -148,9 +167,20 @@ Accident History
         {{form.impact_with_objects}}
         </div>
     </div>
+    <div class="col-sm-6">
+        <div class="col-sm-12">
+            {% for error in form.impact_with_objects_detail.errors %}
+            <span class="errorlist">{{error}}</span>
+            {% endfor %}
+        </div>
+        <div class="form-group">
+        <label class="control-label">If yes, details: </label>
+        {{form.impact_with_objects_detail}}
+        </div>
+    </div>
 </div>
 <div class="row">
-    <div class="col-sm-12">
+    <div class="col-sm-6">
         <div class="col-sm-12">
             {% for error in form.exit_from_vehicle.errors %}
             <span class="errorlist">{{error}}</span>
@@ -161,9 +191,7 @@ Accident History
         {{form.exit_from_vehicle}}
         </div>
     </div>
-</div>
-<div class="row">
-    <div class="col-sm-12">
+    <div class="col-sm-6">
         <div class="col-sm-12">
             {% for error in form.loss_of_consciousness.errors %}
             <span class="errorlist">{{error}}</span>
@@ -176,7 +204,7 @@ Accident History
     </div>
 </div>
 <div class="row">
-    <div class="col-sm-12">
+    <div class="col-sm-6">
         <div class="col-sm-12">
             {% for error in form.safety_equipment.errors %}
             <span class="errorlist">{{error}}</span>
@@ -187,9 +215,7 @@ Accident History
         {{form.safety_equipment}}
         </div>
     </div>
-</div>
-<div class="row">
-    <div class="col-sm-12">
+    <div class="col-sm-6">
         <div class="col-sm-12">
             {% for error in form.airbag_deployed.errors %}
             <span class="errorlist">{{error}}</span>
@@ -222,14 +248,12 @@ Accident History
             {% endfor %}
         </div>
         <div class="form-group">
-        <label class="control-label">Passengers? </label>
+        <label class="control-label">Passengers? </label><br>
         {% for checkbox in form.passengers %}
-            <div class="checkbox">
-                <label>
-                    {{checkbox.tag}}
-                    {{checkbox.choice_label}}
-                </label>
-            </div>
+            <label class="radio-inline">
+                {{checkbox.tag}}
+                {{checkbox.choice_label}}
+            </label>
         {% endfor %}
         </div>
     </div>
@@ -273,34 +297,28 @@ Accident History
 <br>
 
 <div class="row">
-    <div class="col-sm-12">
+    <div class="col-sm-3">
         <div class="form-group">
         {{form.headache.errors}}
         <label class="control-label">Headache </label>
         {{form.headache}}
         </div>
     </div>
-</div>
-<div class="row">
-    <div class="col-sm-12">
+    <div class="col-sm-3">
         <div class="form-group">
         {{form.dizziness.errors}}
         <label class="control-label">Dizziness </label>
         {{form.dizziness}}
         </div>
     </div>
-</div>
-<div class="row">
-    <div class="col-sm-12">
+    <div class="col-sm-3">
         <div class="form-group">
         {{form.chest_pain.errors}}
         <label class="control-label">Chest pain </label>
         {{form.chest_pain}}
         </div>
     </div>
-</div>
-<div class="row">
-    <div class="col-sm-12">
+    <div class="col-sm-3">
         <div class="form-group">
         {{form.nausea_voimit.errors}}
         <label class="control-label">Nausea / vomit </label>
@@ -318,16 +336,14 @@ Accident History
     </div>
 </div>
 <div class="row">
-    <div class="col-sm-12">
+    <div class="col-sm-6">
         <div class="form-group">
         {{form.head_neck.errors}}
         <label class="control-label">Head / Neck </label>
         {{form.head_neck}}
         </div>
     </div>
-</div>
-<div class="row">
-    <div class="col-sm-12">
+    <div class="col-sm-6">
         <div class="form-group">
         {{form.back.errors}}
         <label class="control-label">Back </label>
@@ -336,76 +352,64 @@ Accident History
     </div>
 </div>
 <div class="row">
-    <div class="col-sm-12">
+    <div class="col-sm-6">
         <div class="form-group">
         {{form.shoulders.errors}}
         <label class="control-label">Shoulders </label>
         {{form.shoulders}}
         </div>
     </div>
-</div>
-<div class="row">
-    <div class="col-sm-12">
+    <div class="col-sm-6">
         <div class="form-group">
         {{form.shoulders_which.errors}}
-        <label class="control-label">Which side of shoulders? </label>
+        <label class="control-label">Which side of shoulders? </label><br>
         {% for checkbox in form.shoulders_which %}
-            <div class="checkbox">
-                <label>
-                    {{checkbox.tag}}
-                    {{checkbox.choice_label}}
-                </label>
-            </div>
+            <label class="radio-inline">
+                {{checkbox.tag}}
+                {{checkbox.choice_label}}
+            </label>
         {% endfor %}
         </div>
     </div>
 </div>
 <div class="row">
-    <div class="col-sm-12">
+    <div class="col-sm-6">
         <div class="form-group">
         {{form.legs.errors}}
         <label class="control-label">Legs </label>
         {{form.legs}}
         </div>
     </div>
-</div>
-<div class="row">
-    <div class="col-sm-12">
+    <div class="col-sm-6">
         <div class="form-group">
         {{form.legs_which.errors}}
-        <label class="control-label">Which side of legs? </label>
+        <label class="control-label">Which side of legs? </label><br>
         {% for checkbox in form.legs_which %}
-            <div class="checkbox">
-                <label>
-                    {{checkbox.tag}}
-                    {{checkbox.choice_label}}
-                </label>
-            </div>
+            <label class="radio-inline">
+                {{checkbox.tag}}
+                {{checkbox.choice_label}}
+            </label>
         {% endfor %}
         </div>
     </div>
 </div>
 <div class="row">
-    <div class="col-sm-12">
+    <div class="col-sm-6">
         <div class="form-group">
         {{form.arms.errors}}
         <label class="control-label">Arms </label>
         {{form.arms}}
         </div>
     </div>
-</div>
-<div class="row">
-    <div class="col-sm-12">
+    <div class="col-sm-6">
         <div class="form-group">
         {{form.arms_which.errors}}
-        <label class="control-label">Which side of arms? </label>
+        <label class="control-label">Which side of arms? </label><br>
         {% for checkbox in form.arms_which %}
-            <div class="checkbox">
-                <label>
-                    {{checkbox.tag}}
-                    {{checkbox.choice_label}}
-                </label>
-            </div>
+            <label class="radio-inline">
+                {{checkbox.tag}}
+                {{checkbox.choice_label}}
+            </label>
         {% endfor %}
         </div>
     </div>
@@ -423,24 +427,29 @@ Accident History
     <div class="col-sm-12">
         <div class="form-group">
         {{form.emergency_personnel.errors}}
-        <label class="control-label">Emergency Personnel on Scene (check all that apply) </label>
+        <label class="control-label">Emergency Personnel on Scene (check all that apply) </label><br>
         {% for checkbox in form.emergency_personnel %}
-            <div class="checkbox">
-                <label>
-                    {{checkbox.tag}}
-                    {{checkbox.choice_label}}
-                </label>
-            </div>
+            <label class="radio-inline">
+                {{checkbox.tag}}
+                {{checkbox.choice_label}}
+            </label>
         {% endfor %}
         </div>
     </div>
 </div>
 <div class="row">
-    <div class="col-sm-12">
+    <div class="col-sm-6">
         <div class="form-group">
         {{form.hospitalized.errors}}
         <label class="control-label">Hospitalized? </label>
         {{form.hospitalized}}
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="form-group">
+        {{form.hospitalized_detail.errors}}
+        <label class="control-label">If yes, detail? </label>
+        {{form.hospitalized_detail}}
         </div>
     </div>
 </div>
@@ -463,23 +472,19 @@ Accident History
     </div>
 </div>
 <div class="row">
-    <div class="col-sm-12">
+    <div class="col-sm-6">
         <div class="form-group">
         {{form.examination_type.errors}}
-        <label class="control-label">Examinations </label>
+        <label class="control-label">Examinations </label><br>
         {% for checkbox in form.examination_type %}
-            <div class="checkbox">
-                <label>
-                    {{checkbox.tag}}
-                    {{checkbox.choice_label}}
-                </label>
-            </div>
+            <label class="radio-inline">
+                {{checkbox.tag}}
+                {{checkbox.choice_label}}
+            </label>
         {% endfor %}
         </div>
     </div>
-</div>
-<div class="row">
-    <div class="col-sm-12">
+    <div class="col-sm-6">
         <div class="form-group">
         {{form.examination_other.errors}}
         <label class="control-label">Other: </label>
@@ -497,25 +502,21 @@ Accident History
     </div>
 </div>
 <div class="row">
-    <div class="col-sm-12">
+    <div class="col-sm-6">
         <div class="form-group">
         {{form.seen_doctor.errors}}
         <label class="control-label">Have you seen a doctor since the accident? </label>
         {{form.seen_doctor}}
         </div>
     </div>
-</div>
-<div class="row">
-    <div class="col-sm-12">
+    <div class="col-sm-3">
         <div class="form-group">
         {{form.doctor_name.errors}}
         <label class="control-label">Who: </label>
         {{form.doctor_name}}
         </div>
     </div>
-</div>
-<div class="row">
-    <div class="col-sm-12">
+    <div class="col-sm-3">
         <div class="form-group">
         {{form.doctor_date.errors}}
         <label class="control-label">Date: </label>

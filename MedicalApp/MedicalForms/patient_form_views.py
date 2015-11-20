@@ -11,7 +11,7 @@ from .forms import *
 
 def owner_or_doctors(user, **kwargs):
     user_id = int(kwargs['user_id'])
-    return user.pk == user_id or user.groups.filter(name="Doctors").exists()
+    return user.pk == user_id or user.groups.filter(name="Doctors").exists() or user.is_staff
 
 
 class PatientFormBaseView(LoginRequiredMixin, UpdateView):
