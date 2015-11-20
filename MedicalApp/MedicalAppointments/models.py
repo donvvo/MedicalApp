@@ -3,7 +3,7 @@ from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils import timezone
 
-from MedicalApp.users.models import User
+from MedicalApp.users import models as users_model
 from MedicalForms.utils import *
 
 # Create your models here.
@@ -39,7 +39,7 @@ class DoctorSpecialty(models.Model):
 
 @python_2_unicode_compatible
 class Doctor(models.Model):
-    user = models.OneToOneField(User, primary_key=True)
+    user = models.OneToOneField(users_model.User, primary_key=True)
     specialty = models.ForeignKey(DoctorSpecialty, blank=True, null=True)
     clinic = models.ForeignKey(Clinic, blank=True, null=True)
 
@@ -50,7 +50,7 @@ class Doctor(models.Model):
 
 @python_2_unicode_compatible
 class Patient(models.Model):
-    user = models.OneToOneField(User, primary_key=True)
+    user = models.OneToOneField(users_model.User, primary_key=True)
 
     def __str__(self):
         return self.user.first_name + ' ' + self.user.last_name

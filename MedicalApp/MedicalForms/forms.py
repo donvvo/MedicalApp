@@ -82,12 +82,6 @@ class MVAIntakeForm(forms.ModelForm):
         exclude = ('user', 'today_date')
 
 
-class ReportOffindingsForm(forms.ModelForm):
-    class Meta:
-        model = ReportOfFindings
-        exclude = ('doctor', )
-
-
 class AcuteConcussionEvaluationForm(forms.ModelForm):
     class Meta:
         model = AcuteConcussionEvaluation

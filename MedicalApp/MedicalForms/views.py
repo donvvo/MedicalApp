@@ -68,43 +68,6 @@ class MVAIntakeView(FormView):
     form_class = MVAIntakeForm
 
 
-# Report of findings
-class ReportOfFindingsView(DoctorOnlyMixin, DetailView):
-    template_name = 'medicalforms/report_of_findings.html'
-    model = ReportOfFindings
-    # These next two lines tell the view to index lookups by username
-    slug_field = "pk"
-    slug_url_kwarg = "pk"
-
-
-class ReportOfFindingsListView(DoctorOnlyMixin, ListView):
-    template_name = 'medicalforms/report_of_findings_list.html'
-    model = ReportOfFindings
-
-    def get_queryset(self):
-        return self.model.objects.filter(doctor=self.request.user.doctor).all()
-
-
-class ReportOfFindingsEditView(DoctorOnlyMixin, UpdateView):
-    template_name = 'medicalforms/report_of_findings_edit.html'
-    model = ReportOfFindings
-    form_class = ReportOffindingsForm
-    success_url = reverse_lazy('medical_forms:report_of_findings_list')
-    slug_field = "pk"
-    slug_url_kwarg = "pk"
-
-
-class ReportOfFindingsCreateView(DoctorOnlyMixin, CreateView):
-    template_name = 'medicalforms/report_of_findings_edit.html'
-    model = ReportOfFindings
-    form_class = ReportOffindingsForm
-    success_url = reverse_lazy('medical_forms:report_of_findings_new')
-
-    def form_valid(self, form):
-        form.instance.doctor = self.request.user.doctor
-        return super(ReportOfFindingsCreateView, self).form_valid(form)
-
-
 class AcuteConcussionEvaluationView(DoctorFormBaseView):
     template_name = 'medicalforms/accute_concussion_eval.html'
     model = AcuteConcussionEvaluation

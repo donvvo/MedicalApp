@@ -50,16 +50,8 @@ urlpatterns = [
         name="assessment"),
     url(r'^subjective-evaluation/$', views.SubjectiveEvaluationView.as_view(), name="subjective_eval"),
     url(r'^MVA-intake/$', views.MVAIntakeView.as_view(), name="MVA_intake"),
-
-    # Report of Findings
-    url(r'^report-of-findings/(?P<pk>[\d]+)/$', views.ReportOfFindingsView.as_view(),
-        name="report_of_findings"),
-    url(r'^report-of-findings/(?P<pk>[\d]+)/edit/$', views.ReportOfFindingsEditView.as_view(),
-        name="report_of_findings_edit"),
-    url(r'^report-of-findings/list/$', views.ReportOfFindingsListView.as_view(),
-        name="report_of_findings_list"),
-    url(r'^report-of-findings/(?P<pk>[\d]+)/new/$', views.ReportOfFindingsCreateView.as_view(),
-        name="report_of_findings_new"),
+    url(r'^report-of-findings/(?P<user_id>[\d]+)/$', views.ReportOfFindingsView.as_view(),
+        name="report-of-findings"),
 
 
 

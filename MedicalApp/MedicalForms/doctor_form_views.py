@@ -38,3 +38,10 @@ class PatientDischargeView(DoctorFormBaseView):
     template_name = 'medicalforms/doctor_forms/patient_discharge.html'
     model = PatientDischarge
     form_class = PatientDischargeForm
+
+
+class ReportOfFindingsView(DoctorFormBaseView):
+    template_name = 'medicalforms/doctor_forms/report_of_findings.html'
+    model = ReportOfFindings
+    form_class = ReportOfFindingsForm
+

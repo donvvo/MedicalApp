@@ -1,0 +1,134 @@
+{% extends "medicalforms/form_base.html" %}
+
+{% block title %}
+Report of Findings
+{% endblock title %}
+
+{% block form_content %}
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+            {{form.date_of_assessment.errors}}
+            <label class="control-label">Date of Assessment: </label>
+            {{form.date_of_assessment}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+            {{form.presenting_complaint.errors}}
+            <label class="control-label">Presenting Complaint: </label>
+            {{form.presenting_complaint}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+            {{form.examination_findings.errors}}
+            <label class="control-label">Examination Findings: </label>
+            {{form.examination_findings}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+            {{form.diagnosis.errors}}
+            <label class="control-label">Diagnosis: </label>
+            {{form.diagnosis}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+            {{form.plan_of_management.errors}}
+            <label class="control-label">Plan of Management (Passive (STT, SMT, modality) Active Care (stretch/strength) Frequency/Duration, Further Imaging Physiotherapy): </label>
+            {{form.plan_of_management}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+            {{form.goals.errors}}
+            <label class="control-label">Goals (Benefits, Outcome Measures, Disability): </label>
+            {{form.goals}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+            {{form.risks_discussed.errors}}
+            <label class="control-label">Risks Discussed: </label>
+            {{form.risks_discussed}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+            {{form.alternatives.errors}}
+            <label class="control-label">Alternatives: </label>
+            {{form.alternatives}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+            {{form.prognosis.errors}}
+            <label class="control-label">Prognosis (Positive Factors, negative Factors, Short-term/Long-term, Expected Recovery): </label>
+            {{form.prognosis}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+            {{form.estimated_time_for_recovery.errors}}
+            <label class="control-label">Estimated time for recovery: </label>
+            {{form.estimated_time_for_recovery}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+            {{form.patient_questions.errors}}
+            <label class="control-label">Patient Questions: </label>
+            {{form.patient_questions}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-4">
+        <div class="form-group">
+            {{form.signature_date.errors}}
+            <label class="control-label">Date: </label>
+            {{form.signature_date}}
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="form-group">
+            {{form.patient_signature.errors}}
+            <label class="control-label">Patient Signature: </label>
+            {{form.patient_signature}}
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="form-group">
+            {{form.clinician_signature.errors}}
+            <label class="control-label">Clinician Signature </label>
+            {{form.clinician_signature}}
+        </div>
+    </div>
+</div>
+
+{{form.non_field_errors}}
+
+{% endblock form_content %}

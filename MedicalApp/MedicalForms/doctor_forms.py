@@ -16,3 +16,10 @@ class PatientDischargeForm(forms.ModelForm):
         widgets = {
             'discharge_reason': forms.CheckboxSelectMultiple()
         }
+
+
+class ReportOfFindingsForm(forms.ModelForm):
+    class Meta:
+        model = ReportOfFindings
+        exclude = ('patient', 'doctor')
+
