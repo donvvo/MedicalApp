@@ -118,23 +118,23 @@ Accident History
         <div class="row">
             <div class="col-sm-3">
                 <label class="radio-inline">{{form.collision_type.0.choice_label}}<br>
-                {{form.collision_type.0.tag}} <img class="img-responsive" src="{% static 'img/car4.png' %}" alt="//" style="display:inline;"><img class="img-responsive" src="{% static 'img/car3.png' %}" alt="//" style="display:inline;">
+                {{form.collision_type.0.tag}} <img class="img-responsive" src="{% static 'img/car4.png' %}" alt="//" style="display:inline;"><img id="front-end-collision" class="img-responsive" src="{% static 'img/car3.png' %}" alt="//" style="display:inline; position:relative; left:50px;">
                 </label>
             </div>
             <div class="col-sm-3">
                 <label class="radio-inline">{{form.collision_type.1.choice_label}}<br>
-                {{form.collision_type.1.tag}}<img class="img-responsive" src="{% static 'img/car4.png' %}" alt="//" style="display:inline;"><img class="img-responsive" src="{% static 'img/car1.png' %}" alt="//" style="display:inline;">
+                {{form.collision_type.1.tag}}<img id="side-end-collision" class="img-responsive" src="{% static 'img/car4.png' %}" alt="//" style="display:inline; position:relative;"><img class="img-responsive" src="{% static 'img/car1.png' %}" alt="//" style="display:inline; position:relative; left:50px;">
 
                 </label>
             </div>
             <div class="col-sm-3">
                 <label class="radio-inline">{{form.collision_type.2.choice_label}}<br>
-                    {{form.collision_type.2.tag}}<img class="img-responsive" src="{% static 'img/car1.png' %}" alt="//" style="display:inline;"><img class="img-responsive" src="{% static 'img/car1.png' %}" alt="//" style="display:inline;">
+                    {{form.collision_type.2.tag}}<img class="img-responsive" src="{% static 'img/car1.png' %}" alt="//" style="display:inline;"><img id="side-swipe-collision" class="img-responsive" src="{% static 'img/car1.png' %}" alt="//" style="display:inline; position:relative;">
                 </label>
             </div>
             <div class="col-sm-3">
                 <label class="radio-inline">{{form.collision_type.3.choice_label}}<br>
-                {{form.collision_type.3.tag}}<img class="img-responsive" src="{% static 'img/car4.png' %}" alt="//" style="display:inline;"><img class="img-responsive" src="{% static 'img/car4.png' %}" alt="//" style="display:inline;">
+                {{form.collision_type.3.tag}}<img id="rear-end-collision" class="img-responsive" src="{% static 'img/car4.png' %}" alt="//" style="display:inline; position:relative;"><img class="img-responsive" src="{% static 'img/car4.png' %}" alt="//" style="display:inline; position:relative; left:50px;">
                 </label>
             </div>
 
@@ -142,6 +142,7 @@ Accident History
         </div>
     </div>
 </div>
+<br>
 <div class="row">
     <div class="col-sm-12">
         <div class="col-sm-12">
