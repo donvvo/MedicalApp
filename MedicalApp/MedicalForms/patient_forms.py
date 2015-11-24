@@ -54,3 +54,15 @@ class TMJScreeningForm(forms.ModelForm):
             'pain': forms.CheckboxSelectMultiple(),
             'symptom': forms.CheckboxSelectMultiple()
         }
+
+
+class LowerExtremityForm(forms.ModelForm):
+    class Meta:
+        model = LowerExtremity
+        exclude = ('patient', )
+
+
+class UpperExtremityForm(forms.ModelForm):
+    class Meta:
+        model = UpperExtremity
+        exclude = ('patient', )

@@ -42,6 +42,23 @@ class MySelectField(models.CharField):
         return super(MySelectField, self).formfield(**defaults)
 
 
+class MyRadioField(models.CharField):
+    def __init__(self, choices=None, **kwargs):
+        kwargs['blank'] = True
+        self.my_choices = choices
+        super(MyRadioField, self).__init__(**kwargs)
+
+    def formfield(self, **kwargs):
+        defaults = {'widget': forms.RadioSelect(
+                        choices=self.my_choices,
+                        attrs={
+                            'type': 'radio'
+                        })}
+        defaults.update(kwargs)
+
+        return super(MyRadioField, self).formfield(**defaults)
+
+
 class MyTextField(models.TextField):
     def __init__(self, placeholder='', **kwargs):
         kwargs['blank'] = True

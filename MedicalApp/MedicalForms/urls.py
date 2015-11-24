@@ -20,6 +20,10 @@ urlpatterns = [
         name="accident_history"),
     url(r'^tmj-screening/(?P<user_id>[\d]+)/$', views.TMJScreeningView.as_view(),
         name="tmj-screening"),
+    url(r'^lower-extremity/(?P<user_id>[\d]+)/$', views.LowerExtremityView.as_view(),
+        name="lower-extremity"),
+    url(r'^upper-extremity/(?P<user_id>[\d]+)/$', views.UpperExtremityView.as_view(),
+        name="upper-extremity"),
 
     # Patient Consent forms
     url(r'^chiropractic-treatment/(?P<user_id>[\d]+)/$', views.ChiropracticTreatmentView.as_view(),

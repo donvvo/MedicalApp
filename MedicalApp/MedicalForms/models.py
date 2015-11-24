@@ -15,3 +15,5 @@ from .acute_concussion_evaluation_models import AcuteConcussionEvaluation
 from .consent_form_models import *
 from .plan_of_management_models import *
 from .model_folder.patient_discharge_models import *
+from .model_folder.patient_models.lower_extremity_models import *
+from .model_folder.patient_models.upper_extremity_models import *

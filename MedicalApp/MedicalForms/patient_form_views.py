@@ -57,6 +57,18 @@ class TMJScreeningView(PatientFormBaseView):
     form_class = TMJScreeningForm
 
 
+class LowerExtremityView(PatientFormBaseView):
+    template_name = 'medicalforms/patient_forms/lower_extremity.html'
+    model = LowerExtremity
+    form_class = LowerExtremityForm
+
+
+class UpperExtremityView(PatientFormBaseView):
+    template_name = 'medicalforms/patient_forms/upper_extremity.html'
+    model = UpperExtremity
+    form_class = UpperExtremityForm
+
+
 # Consent form views.
 class ChiropracticTreatmentView(PatientFormBaseView):
     template_name = 'medicalforms/consent_forms/chiropractic_consent.html'
