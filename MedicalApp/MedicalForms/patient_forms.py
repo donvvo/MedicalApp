@@ -66,3 +66,4 @@ class UpperExtremityForm(forms.ModelForm):
     class Meta:
         model = UpperExtremity
         exclude = ('patient', )
+

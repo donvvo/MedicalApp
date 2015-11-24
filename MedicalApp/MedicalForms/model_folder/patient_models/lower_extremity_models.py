@@ -38,7 +38,6 @@ class LowerExtremity(models.Model):
     question_18 = MyRadioField(max_length=2, choices=SCALE_CHOICES)
     question_19 = MyRadioField(max_length=2, choices=SCALE_CHOICES)
     question_20 = MyRadioField(max_length=2, choices=SCALE_CHOICES)
-    column_totals = MyRadioField(max_length=2, choices=SCALE_CHOICES)
 
     def __str__(self):
         return 'Lower Extremity Functional Scale (LEFS) for ' + str(self.patient)
