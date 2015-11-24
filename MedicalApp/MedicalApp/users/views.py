@@ -180,11 +180,10 @@ class DoctorsListView(LoginRequiredMixin, StaffuserRequiredMixin, ListView):
 
     def get_queryset(self):
         queryset = super(DoctorsListView, self).get_queryset()
-        clinic = self.request.GET.get('clinic', None)
+        clinic = self.request.GET.get('clinic', '')
         sortby = self.request.GET.get('sortby', '')
         if clinic:
             queryset = queryset.filter(clinic=clinic)
-        print queryset
         if sortby == 'desc':
             return queryset.order_by('-user__last_name')
         else:

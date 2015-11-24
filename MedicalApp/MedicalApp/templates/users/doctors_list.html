@@ -25,9 +25,11 @@
                     <form class="form-inline" action="{{request.path}}" method="get">
                         <label for="clinic">Filter by Clinic:
                             <select class="form-control filter" name="clinic" id="id_clinic">
-                                <option value="all">All</option>
+                                <option value="">All</option>
                                 {% for clinic in clinics %}
-                                    <option value="{{clinic}}">{{clinic}}</option>
+                                    <option value="{{clinic}}" {% if request.GET.clinic == clinic.name %}
+                                    selected
+                                {% endif %}>{{clinic}}</option>
                                 {% endfor %}
                             </select>
                         </label>
