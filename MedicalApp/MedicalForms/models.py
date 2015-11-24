@@ -17,3 +17,5 @@ from .plan_of_management_models import *
 from .model_folder.patient_discharge_models import *
 from .model_folder.patient_models.lower_extremity_models import *
 from .model_folder.patient_models.upper_extremity_models import *
+from .model_folder.patient_models.neck_disability_models import *
+

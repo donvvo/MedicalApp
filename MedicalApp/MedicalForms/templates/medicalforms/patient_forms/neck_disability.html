@@ -1,0 +1,393 @@
+{% extends "medicalforms/form_base.html" %}
+
+{% block title %}
+Neck Disability Index
+{% endblock title %}
+
+{% block form_content %}
+
+<p>This questionnaire is designed to help us better understand how your <b>neck pain</b> affects your ability to manage everyday life activities. Please mark in each section the <b>one box</b> that applies to  you. <br>
+Although you may consider that two of the statements in any one section relate to you, please mark the box that <b>most closely</b> describes your present day situation.</p>
+<br>
+
+<div class="row">
+    <div class="col-sm-12">
+        <label class="control-label">Section 1 - Pain Intensity</label><br>
+        <div class="checkbox">
+            <label>
+            {{form.question_1.0.tag}} I have no neck pain at the moment.
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{form.question_1.1.tag}} The pain is very mild at the moment.
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{form.question_1.2.tag}} The pain is moderate at the moment.
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{form.question_1.3.tag}} The pain is fairly severe at the moment.
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{form.question_1.4.tag}} The pain is very severe at the moment.
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{form.question_1.5.tag}} The pain is the worst imaginable at the moment.
+            </label>
+        </div>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-sm-12">
+        <label class="control-label">Section 2 - Personal Care</label><br>
+        <div class="checkbox">
+            <label>
+            {{form.question_2.0.tag}} I can look after myself normally without causing extra neck pain.
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{form.question_2.1.tag}} I can look after myself normally, but it causes extra neck pain.
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{form.question_2.2.tag}} It is painful to look after myself, and I am slow and careful.
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{form.question_2.3.tag}} I need some help but manage most of my personal care.
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{form.question_2.4.tag}} I need help every day in most aspects of self care.
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{form.question_2.5.tag}} I do not get dressed. I wash with difficulty and stay in bed.
+            </label>
+        </div>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-sm-12">
+        <label class="control-label">Section 3 - Lifting</label><br>
+        <div class="checkbox">
+            <label>
+            {{form.question_3.0.tag}} I can lift heavy weights without causing extra neck pain.
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{form.question_3.1.tag}} I can lift heavy weights, but it gives me extra neck pain.
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{form.question_3.2.tag}} Neck pain prevents me from lifting heavy weights off the floor, but I can manage if items are conveniently positioned, ie. on a table.
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{form.question_3.3.tag}} Neck pain prevents me from lifting heavy weights, but I can manage light weights if they are conveniently positioned.
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{form.question_3.4.tag}} I can lift only very light weights.
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{form.question_3.5.tag}} I cannot lift or carry anything at all.
+            </label>
+        </div>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-sm-12">
+        <label class="control-label">Section 4 - Reading</label><br>
+        <div class="checkbox">
+            <label>
+            {{form.question_4.0.tag}} I can read as much as I want with no neck pain.
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{form.question_4.1.tag}} I can read as much as I want with slight neck pain.
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{form.question_4.2.tag}} I can read as much as I want with moderate neck pain.
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{form.question_4.3.tag}} I can't read as much as I want because of moderate neck pain.
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{form.question_4.4.tag}} I can't read as much as I want because of severe neck pain.
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{form.question_4.5.tag}} I can't read at all.
+            </label>
+        </div>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-sm-12">
+        <label class="control-label">Section 5 - Headaches</label><br>
+        <div class="checkbox">
+            <label>
+            {{form.question_5.0.tag}} I have no headaches at all.
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{form.question_5.1.tag}} I have slight headaches that come infrequently.
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{form.question_5.2.tag}} I have moderate headaches that come infrequently.
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{form.question_5.3.tag}} I have moderate headaches that come frequently.
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{form.question_5.4.tag}} I have severe headaches that come frequently.
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{form.question_5.5.tag}} I have headaches almost all the time.
+            </label>
+        </div>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-sm-12">
+        <label class="control-label">Section 6 - Concentration</label><br>
+        <div class="checkbox">
+            <label>
+            {{form.question_6.0.tag}} I can concentrate fully without difficulty.
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{form.question_6.1.tag}} I can concentrate fully with slight difficulty.
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{form.question_6.2.tag}} I have a fair degree of difficulty concentrating.
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{form.question_6.3.tag}} I have a lot of difficulty concentrating.
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{form.question_6.4.tag}} I have a great deal of difficulty concentrating.
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{form.question_6.5.tag}} I can't concentrate at all.
+            </label>
+        </div>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-sm-12">
+        <label class="control-label">Section 7 - Work</label><br>
+        <div class="checkbox">
+            <label>
+            {{form.question_7.0.tag}} I can do as much work as I want.
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{form.question_7.1.tag}} I can only do my usual work, but no more.
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{form.question_7.2.tag}} I can do most of my usual work, but no more.
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{form.question_7.3.tag}} I can't do my usual work.
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{form.question_7.4.tag}} I can hardly do any work at all.
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{form.question_7.5.tag}} I can't do any work at all.
+            </label>
+        </div>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-sm-12">
+        <label class="control-label">Section 8 - Driving</label><br>
+        <div class="checkbox">
+            <label>
+            {{form.question_8.0.tag}} I can drive my car without neck pain.
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{form.question_8.1.tag}} I can drive my car with only slight neck pain.
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{form.question_8.2.tag}} I can drive as long as I want with moderate neck pain.
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{form.question_8.3.tag}} I can't drive as long as I want because of moderate neck pain.
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{form.question_8.4.tag}} I can hardly drive at all because of severe neck pain.
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{form.question_8.5.tag}} I can't drive my car at all because of neck pain.
+            </label>
+        </div>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-sm-12">
+        <label class="control-label">Section 9 - Sleeping</label><br>
+        <div class="checkbox">
+            <label>
+            {{form.question_9.0.tag}} I have no trouble sleeping.
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{form.question_9.1.tag}} My sleep is slightly disturbed for less than 1 hour.
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{form.question_9.2.tag}} My sleep is mildly disturbed for up to 1 - 2 hours.
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{form.question_9.3.tag}} My sleep is moderately disturbed for up to 2 - 3 hours.
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{form.question_9.4.tag}} My sleep is greatly disturbed for up to 3 - 5 hours.
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{form.question_9.5.tag}} My sleep is completely disturbed for up to 5 - 7 hours.
+            </label>
+        </div>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-sm-12">
+        <label class="control-label">Section 10 - Recreation</label><br>
+        <div class="checkbox">
+            <label>
+            {{form.question_10.0.tag}} I am able to engage in all my recreational activities with no neck pain at all.
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{form.question_10.1.tag}} I am able to engage in all my recreational activities with some neck pain.
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{form.question_10.2.tag}} I am able to engage in most, but not all of my recreational activities because of my neck pain.
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{form.question_10.3.tag}} I am able to engage in a few of my recreational activities because of neck pain.
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{form.question_10.4.tag}} I can hardly do recreational activities due to neck pain.
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{form.question_10.5.tag}} I can't do any recreational activities due to neck pain.
+            </label>
+        </div>
+    </div>
+</div>
+
+<p>Score: <span id="total-score"></span> / 50</p>
+
+{% endblock form_content %}
+
+{% block javascript %}
+
+{{block.super}}
+<script>
+function calcScore() {
+    var score1 = $('div.col-sm-12 div.checkbox:nth-of-type(2) input:checked').length * 1;
+    var score2 = $('div.col-sm-12 div.checkbox:nth-of-type(3) input:checked').length * 2;
+    var score3 = $('div.col-sm-12 div.checkbox:nth-of-type(4) input:checked').length * 3;
+    var score4 = $('div.col-sm-12 div.checkbox:nth-of-type(5) input:checked').length * 4;
+    var score5 = $('div.col-sm-12 div.checkbox:nth-of-type(6) input:checked').length * 5;
+    $('#total-score').text(score1 + score2 + score3 + score4 + score5);
+}
+$('input:radio').change(calcScore);
+calcScore();
+</script>
+
+{% endblock javascript %}

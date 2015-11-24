@@ -69,6 +69,12 @@ class UpperExtremityView(PatientFormBaseView):
     form_class = UpperExtremityForm
 
 
+class NeckDisabilityView(PatientFormBaseView):
+    template_name = 'medicalforms/patient_forms/neck_disability.html'
+    model = NeckDisability
+    form_class = NeckDisabilityForm
+
+
 # Consent form views.
 class ChiropracticTreatmentView(PatientFormBaseView):
     template_name = 'medicalforms/consent_forms/chiropractic_consent.html'

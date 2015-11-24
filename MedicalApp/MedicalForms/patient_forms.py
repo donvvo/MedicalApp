@@ -67,3 +67,9 @@ class UpperExtremityForm(forms.ModelForm):
         model = UpperExtremity
         exclude = ('patient', )
 
+
+class NeckDisabilityForm(forms.ModelForm):
+    class Meta:
+        model = NeckDisability
+        exclude = ('patient', 'last_modified')
+
