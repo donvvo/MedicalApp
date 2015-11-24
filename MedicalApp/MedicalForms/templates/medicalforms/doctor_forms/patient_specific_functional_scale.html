@@ -1,0 +1,132 @@
+{% extends "medicalforms/form_base.html" %}
+
+{% block title %}
+The Patient-Specific Functional Scale
+{% endblock title %}
+
+{% block form_content %}
+
+<p>This useful questionnaire can be used to quantify activity limitation and measure functional outcome for patients with any orthopaedic condition.</p>
+
+<p><b>Clinician to read and fill in below: </b>Complete at the end of the history and prior to physical examination.</p>
+
+<h5>Initial Assessment:</h5>
+
+<p>I am going to ask you to identify up to three important activities that you are unable to do or are having difficulty with as a result of your {{form.problem}} problem. Today, are there any activities that you are unable to do or having difficulty with because of your <span id="form-problem"></span> problem? (Clinician: show scale to patient and have the patient rate each activity).</p>
+
+<h5>Follow-up Assessments:</h5>
+
+<p>When I assessed you on (state previous assessment date), you told me that you had difficulty with (read all activities from list at a time). Today, do you still have difficulty with: (read and have patient score each item in the list)?</p>
+
+<h5>Patient-specific activity scoring scheme (Point to one number):</h5>
+
+<div class="col-sm-12 col-xs-12">
+    <div class="row">
+        <div class="col-sm-1 col-xs-1">0</div>
+        <div class="col-sm-1 col-xs-1">1</div>
+        <div class="col-sm-1 col-xs-1">2</div>
+        <div class="col-sm-1 col-xs-1">3</div>
+        <div class="col-sm-1 col-xs-1">4</div>
+        <div class="col-sm-1 col-xs-1">5</div>
+        <div class="col-sm-1 col-xs-1">6</div>
+        <div class="col-sm-1 col-xs-1">7</div>
+        <div class="col-sm-1 col-xs-1">8</div>
+        <div class="col-sm-1 col-xs-1">9</div>
+        <div class="col-sm-1 col-xs-1">10</div>
+    </div>
+    <div class="row">
+        <div class="col-sm-2 col-xs-2">Unable to perform activity</div>
+        <div class="col-sm-2 col-sm-offset-8 col-xs-2 col-xs-offset-8">Able to perform activity at same level as before injury or problem</div>
+    </div>
+</div>
+
+<b>(Date and Score)</b>
+
+<b>Activity Initial</b>
+
+<table class="table table-condensed">
+    <tr>
+        <th><b>Activity</b></th>
+        <th><b>Initial</b></th>
+        <th>{{form.date_1}}</th>
+        <th>{{form.date_2}}</th>
+        <th>{{form.date_3}}</th>
+        <th>{{form.date_4}}</th>
+        <th>{{form.date_5}}</th>
+    </tr>
+    <tr>
+        <th>1. {{form.activity_1}}</th>
+        <th>{{form.score_1_1}}</th>
+        <th>{{form.score_1_2}}</th>
+        <th>{{form.score_1_3}}</th>
+        <th>{{form.score_1_4}}</th>
+        <th>{{form.score_1_5}}</th>
+        <th>{{form.score_1_6}}</th>
+    </tr>
+    <tr>
+        <th>2. {{form.activity_2}}</th>
+        <th>{{form.score_2_1}}</th>
+        <th>{{form.score_2_2}}</th>
+        <th>{{form.score_2_3}}</th>
+        <th>{{form.score_2_4}}</th>
+        <th>{{form.score_2_5}}</th>
+        <th>{{form.score_2_6}}</th>
+    </tr>
+    <tr>
+        <th>3. {{form.activity_3}}</th>
+        <th>{{form.score_3_1}}</th>
+        <th>{{form.score_3_2}}</th>
+        <th>{{form.score_3_3}}</th>
+        <th>{{form.score_3_4}}</th>
+        <th>{{form.score_3_5}}</th>
+        <th>{{form.score_3_6}}</th>
+    </tr>
+    <tr>
+        <th>4. {{form.activity_4}}</th>
+        <th>{{form.score_4_1}}</th>
+        <th>{{form.score_4_2}}</th>
+        <th>{{form.score_4_3}}</th>
+        <th>{{form.score_4_4}}</th>
+        <th>{{form.score_4_5}}</th>
+        <th>{{form.score_4_6}}</th>
+    </tr>
+    <tr>
+        <th>5. {{form.activity_5}}</th>
+        <th>{{form.score_5_1}}</th>
+        <th>{{form.score_5_2}}</th>
+        <th>{{form.score_5_3}}</th>
+        <th>{{form.score_5_4}}</th>
+        <th>{{form.score_5_5}}</th>
+        <th>{{form.score_5_6}}</th>
+    </tr>
+    <tr>
+        <th>Additional</th>
+        <th>{{form.score_additional_1}}</th>
+        <th>{{form.score_additional_2}}</th>
+        <th>{{form.score_additional_3}}</th>
+        <th>{{form.score_additional_4}}</th>
+        <th>{{form.score_additional_5}}</th>
+        <th>{{form.score_additional_6}}</th>
+    </tr>
+    <tr>
+        <th>Average Score</th>
+        <th>{{form.score_average_1}}</th>
+        <th>{{form.score_average_2}}</th>
+        <th>{{form.score_average_3}}</th>
+        <th>{{form.score_average_4}}</th>
+        <th>{{form.score_average_5}}</th>
+        <th>{{form.score_average_6}}</th>
+    </tr>
+</table>
+
+<p>Total score = sum of the activity scores / number of activities<br>
+Minimum detectable change (90%CI) for average score = 2 points<br>
+Minimum detectable change (90%CI) for single activity score = 3 points</p>
+
+<p>PSFS developed by: Stratford, P., Gill, C., Westaway, M., &amp; Binkley, J. (1995).
+Assessing disability and change on individual patients: a report of a patient specific measure.
+Physiotherapy Canada, 47, 258-263.</p>
+
+<p>Reproduced with the permission of the authors.</p>
+
+{% endblock form_content%}

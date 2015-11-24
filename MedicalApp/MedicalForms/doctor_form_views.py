@@ -45,3 +45,9 @@ class ReportOfFindingsView(DoctorFormBaseView):
     model = ReportOfFindings
     form_class = ReportOfFindingsForm
 
+
+class PatientSpecificView(DoctorFormBaseView):
+    template_name = 'medicalforms/doctor_forms/patient_specific_functional_scale.html'
+    model = PatientSpecific
+    form_class = PatientSpecificForm
+

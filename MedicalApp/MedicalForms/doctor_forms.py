@@ -23,3 +23,9 @@ class ReportOfFindingsForm(forms.ModelForm):
         model = ReportOfFindings
         exclude = ('patient', 'doctor')
 
+
+class PatientSpecificForm(forms.ModelForm):
+    class Meta:
+        model = PatientSpecific
+        exclude = ('patient', )
+

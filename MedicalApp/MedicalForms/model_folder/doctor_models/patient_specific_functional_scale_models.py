@@ -1,0 +1,66 @@
+from django.db import models
+from django.utils.encoding import python_2_unicode_compatible
+
+from ...utils import *
+from MedicalAppointments.models import Patient
+
+
+@python_2_unicode_compatible
+class PatientSpecific(models.Model):
+    patient = models.OneToOneField(Patient, primary_key=True)
+
+    date_1 = MyDateTimeField()
+    date_2 = MyDateTimeField()
+    date_3 = MyDateTimeField()
+    date_4 = MyDateTimeField()
+    date_5 = MyDateTimeField()
+    activity_1 = MyCharField(max_length=20)
+    score_1_1 = IntegerRangeField(min_value=0, max_value=10)
+    score_1_2 = IntegerRangeField(min_value=0, max_value=10)
+    score_1_3 = IntegerRangeField(min_value=0, max_value=10)
+    score_1_4 = IntegerRangeField(min_value=0, max_value=10)
+    score_1_5 = IntegerRangeField(min_value=0, max_value=10)
+    score_1_6 = IntegerRangeField(min_value=0, max_value=10)
+    activity_2 = MyCharField(max_length=20)
+    score_2_1 = IntegerRangeField(min_value=0, max_value=10)
+    score_2_2 = IntegerRangeField(min_value=0, max_value=10)
+    score_2_3 = IntegerRangeField(min_value=0, max_value=10)
+    score_2_4 = IntegerRangeField(min_value=0, max_value=10)
+    score_2_5 = IntegerRangeField(min_value=0, max_value=10)
+    score_2_6 = IntegerRangeField(min_value=0, max_value=10)
+    activity_3 = MyCharField(max_length=20)
+    score_3_1 = IntegerRangeField(min_value=0, max_value=10)
+    score_3_2 = IntegerRangeField(min_value=0, max_value=10)
+    score_3_3 = IntegerRangeField(min_value=0, max_value=10)
+    score_3_4 = IntegerRangeField(min_value=0, max_value=10)
+    score_3_5 = IntegerRangeField(min_value=0, max_value=10)
+    score_3_6 = IntegerRangeField(min_value=0, max_value=10)
+    activity_4 = MyCharField(max_length=20)
+    score_4_1 = IntegerRangeField(min_value=0, max_value=10)
+    score_4_2 = IntegerRangeField(min_value=0, max_value=10)
+    score_4_3 = IntegerRangeField(min_value=0, max_value=10)
+    score_4_4 = IntegerRangeField(min_value=0, max_value=10)
+    score_4_5 = IntegerRangeField(min_value=0, max_value=10)
+    score_4_6 = IntegerRangeField(min_value=0, max_value=10)
+    activity_5 = MyCharField(max_length=20)
+    score_5_1 = IntegerRangeField(min_value=0, max_value=10)
+    score_5_2 = IntegerRangeField(min_value=0, max_value=10)
+    score_5_3 = IntegerRangeField(min_value=0, max_value=10)
+    score_5_4 = IntegerRangeField(min_value=0, max_value=10)
+    score_5_5 = IntegerRangeField(min_value=0, max_value=10)
+    score_5_6 = IntegerRangeField(min_value=0, max_value=10)
+    score_additional_1 = IntegerRangeField(min_value=0, max_value=10)
+    score_additional_2 = IntegerRangeField(min_value=0, max_value=10)
+    score_additional_3 = IntegerRangeField(min_value=0, max_value=10)
+    score_additional_4 = IntegerRangeField(min_value=0, max_value=10)
+    score_additional_5 = IntegerRangeField(min_value=0, max_value=10)
+    score_additional_6 = IntegerRangeField(min_value=0, max_value=10)
+    score_average_1 = IntegerRangeField(min_value=0, max_value=10)
+    score_average_2 = IntegerRangeField(min_value=0, max_value=10)
+    score_average_3 = IntegerRangeField(min_value=0, max_value=10)
+    score_average_4 = IntegerRangeField(min_value=0, max_value=10)
+    score_average_5 = IntegerRangeField(min_value=0, max_value=10)
+    score_average_6 = IntegerRangeField(min_value=0, max_value=10)
+
+    def __str__(self):
+        return 'Patient-Specific Functional Scale for ' + str(self.patient)

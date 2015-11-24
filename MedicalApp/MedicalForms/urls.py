@@ -58,6 +58,8 @@ urlpatterns = [
     url(r'^MVA-intake/$', views.MVAIntakeView.as_view(), name="MVA_intake"),
     url(r'^report-of-findings/(?P<user_id>[\d]+)/$', views.ReportOfFindingsView.as_view(),
         name="report-of-findings"),
+    url(r'^patient-specific-funtional-scale/(?P<user_id>[\d]+)/$', views.PatientSpecificView.as_view(),
+        name="patient-specific-funtional-scale"),
 
 
 
