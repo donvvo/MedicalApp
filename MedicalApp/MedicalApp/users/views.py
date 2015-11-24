@@ -6,13 +6,13 @@ from django.core.urlresolvers import reverse, reverse_lazy
 from django.views.generic import DetailView, ListView, RedirectView, UpdateView, TemplateView
 from django.shortcuts import redirect, get_object_or_404
 
-from braces.views import LoginRequiredMixin
+from braces.views import LoginRequiredMixin, StaffuserRequiredMixin
 from allauth.account.views import LoginView, SignupView, FormView
 from allauth.account.utils import complete_signup
 from allauth.account import app_settings
 
 from .models import User
-from MedicalAppointments.models import Patient, Doctor
+from MedicalAppointments.models import Patient, Doctor, Clinic
 from .forms import UserSettingsForm, EmailDoctorForm, DoctorSettingsForm
 from MedicalApp.utils import MultipleFormsView
 
@@ -141,18 +141,18 @@ class PatientDoctorRedirectView(LoginRequiredMixin, RedirectView):
                            kwargs={"username": username})
 
 
-class PatientsListView(LoginRequiredMixin, ListView):
+class PatientsListView(LoginRequiredMixin, StaffuserRequiredMixin, ListView):
     model = Patient
     template_name = "users/patient_list.html"
+    raise_exception = True
 
-    def dispatch(self, request, *args, **kwargs):
-        self.request.user.is_staff
-        if self.request.user.is_staff:
-            return super(PatientsListView, self).dispatch(request,
-                                                         *args, **kwargs)
+    def get_queryset(self):
+        queryset = super(PatientsListView, self).get_queryset()
+        sortby = self.request.GET.get('sortby', '')
+        if sortby == 'desc':
+            return queryset.order_by('-user__last_name')
         else:
-            redirect_url = reverse("users:account_redirect")
-            return redirect(redirect_url)
+            return queryset.order_by('user__last_name')
 
 
 class ManageMainView(LoginRequiredMixin, TemplateView):
@@ -168,18 +168,27 @@ class ManageMainView(LoginRequiredMixin, TemplateView):
             return redirect(redirect_url)
 
 
-class DoctorsListView(LoginRequiredMixin, ListView):
+class DoctorsListView(LoginRequiredMixin, StaffuserRequiredMixin, ListView):
     model = Doctor
     template_name = "users/doctors_list.html"
+    raise_exception = True
 
-    def dispatch(self, request, *args, **kwargs):
-        self.request.user.is_staff
-        if self.request.user.is_staff:
-            return super(DoctorsListView, self).dispatch(request,
-                                                         *args, **kwargs)
+    def get_context_data(self, **kwargs):
+        context = super(DoctorsListView, self).get_context_data(**kwargs)
+        context['clinics'] = Clinic.objects.all()
+        return context
+
+    def get_queryset(self):
+        queryset = super(DoctorsListView, self).get_queryset()
+        clinic = self.request.GET.get('clinic', None)
+        sortby = self.request.GET.get('sortby', '')
+        if clinic:
+            queryset = queryset.filter(clinic=clinic)
+        print queryset
+        if sortby == 'desc':
+            return queryset.order_by('-user__last_name')
         else:
-            redirect_url = reverse("users:account_redirect")
-            return redirect(redirect_url)
+            return queryset.order_by('user__last_name')
 
 
 class EmailDoctorView(LoginRequiredMixin, FormView):

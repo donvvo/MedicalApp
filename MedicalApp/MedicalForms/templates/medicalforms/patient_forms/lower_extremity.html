@@ -198,20 +198,22 @@ Lower Extremity Functional Scale (LEFS)
 
 {{block.super}}
 <script>
-function calcScore() {
-    var score0 = $('tr th:nth-child(2) input:checked').length * 0;
-    var score1 = $('tr th:nth-child(3) input:checked').length * 1;
-    var score2 = $('tr th:nth-child(4) input:checked').length * 2;
-    var score3 = $('tr th:nth-child(5) input:checked').length * 3;
-    var score4 = $('tr th:nth-child(6) input:checked').length * 4;
-    $('#total-0').text(score0);
-    $('#total-1').text(score1);
-    $('#total-2').text(score2);
-    $('#total-3').text(score3);
-    $('#total-4').text(score4);
-}
-$('input:radio').change(calcScore);
-calcScore();
+$(function() {
+    function calcScore() {
+        var score0 = $('tr th:nth-child(2) input:checked').length * 0;
+        var score1 = $('tr th:nth-child(3) input:checked').length * 1;
+        var score2 = $('tr th:nth-child(4) input:checked').length * 2;
+        var score3 = $('tr th:nth-child(5) input:checked').length * 3;
+        var score4 = $('tr th:nth-child(6) input:checked').length * 4;
+        $('#total-0').text(score0);
+        $('#total-1').text(score1);
+        $('#total-2').text(score2);
+        $('#total-3').text(score3);
+        $('#total-4').text(score4);
+    }
+    $('input:radio').change(calcScore);
+    calcScore();
+});
 </script>
 
 {% endblock javascript %}
