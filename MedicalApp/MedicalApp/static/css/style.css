@@ -11874,6 +11874,7 @@ blockquote h4 {
 }
 .btn-color-bg-dark-border:hover {
   background-color: #990000;
+  border-color: #d43f3a;
 }
 .btn-color-bg-light-icon {
   background: #359960;

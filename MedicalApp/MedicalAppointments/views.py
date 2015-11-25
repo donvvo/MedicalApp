@@ -165,6 +165,13 @@ class ClinicProfileEditView(LoginRequiredMixin, UpdateView):
         clinic_name = clinic_name.replace('+', ' ')
         return get_object_or_404(self.model, name=clinic_name)
 
+    def post(self, request, *args, **kwargs):
+        if request.POST.get('Delete'):
+            clinic = self.get_object()
+            clinic.delete()
+            return redirect(reverse('medical_appointments:clinic_list'))
+        return super(ClinicProfileEditView, self).post(request, *args, **kwargs)
+
 
 class ClinicProfileCreateView(LoginRequiredMixin, CreateView):
     model = Clinic
