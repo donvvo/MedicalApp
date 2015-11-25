@@ -53,7 +53,7 @@
                 <div class="col-md-12 text-center">
                     <ul class="boxes-content">
                         {% for doctor in object_list %}
-                        <li><a href="{% url 'users:doctor_profile' doctor.user.username %}">
+                        <li><a href="{% url 'users:doctor_profile' doctor.user.pk %}">
                             <div class="name">
                                 <h6>{{doctor.user.first_name}} {{doctor.user.last_name}}</h6>
                                 <strong>{{doctor.specialty}}</strong>

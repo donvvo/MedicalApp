@@ -94,8 +94,8 @@ class UserSettingsView(LoginRequiredMixin, UpdateView):
 class DoctorProfileView(LoginRequiredMixin, DetailView):
     model = User
     # These next two lines tell the view to index lookups by username
-    slug_field = "username"
-    slug_url_kwarg = "username"
+    slug_field = "pk"
+    slug_url_kwarg = "user_id"
     template_name = "users/doctor_profile.html"
 
 
@@ -109,13 +109,14 @@ class DoctorProfileEditView(LoginRequiredMixin, MultipleFormsView):
     }
 
     def get_form_initial(self):
+        self.user_id = self.kwargs['user_id']
         self.form_initial = {
-            'user_settings': get_object_or_404(User, pk=self.request.user.pk),
-            'doctor_settings': get_object_or_404(Doctor, user=self.request.user)
+            'user_settings': get_object_or_404(User, pk=self.user_id),
+            'doctor_settings': get_object_or_404(Doctor, pk=self.user_id)
         }
 
     def get_success_url(self):
-        return reverse("users:account_redirect")
+        return reverse("users:doctor_profile", kwargs={"user_id": self.user_id})
 
 
 class UserRedirectView(LoginRequiredMixin, RedirectView):
