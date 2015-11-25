@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section class="profile-doctor generic animated fadeInUp">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="section-title">
+                    <h3>Attendance Sheet</h3>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-8 col-sm-offset-2">
+                <h5>Name: {{user}}</h5>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h5 class="alternative-title">Treatment Plan</h5>
+                        </div>
+                        {% for entry in treatment_plan %}
+                            <div class="col-sm-6">
+                                <label for="">{{forloop.counter}}. Treatment Plan: {{entry.plan_name}}</label>
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="">Approved: {{entry.approved}}</label>
+                            </div>
+                        {% endfor %}
+                        <div class="col-sm-12">
+                            <a href="{% url 'medical_forms:treatmentplan-add' user.pk %}" class="btn btn-default btn-hover-bg"><span>New Entry</span></a>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <h5 class="alternative-title">Date and Signature</h5>
+                        </div>
+                        {% for entry in date_signature %}
+                            <div class="col-sm-6">
+                                <label for="">{{forloop.counter}}. Date: {{entry.signature_date}}</label>
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="">Signature: {{entry.signature}}</label>
+                            </div>
+                        {% endfor %}
+                        <div class="col-sm-12">
+                            <a href="{% url 'medical_forms:datesignature-add' user.pk %}" class="btn btn-default btn-hover-bg"><span>New Entry</span></a>
+                        </div>
+                        <div class="col-sm-12">
+                            <br>
+                            <a href="{% url 'users:patient_profile' user.username %}" class="btn btn-default btn-color-border-solid">Back</a>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

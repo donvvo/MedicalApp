@@ -19,4 +19,5 @@ from .model_folder.patient_models.lower_extremity_models import *
 from .model_folder.patient_models.upper_extremity_models import *
 from .model_folder.patient_models.neck_disability_models import *
 from .model_folder.doctor_models.patient_specific_functional_scale_models import *
+from .model_folder.doctor_models.attendance_sheet_models import *
 

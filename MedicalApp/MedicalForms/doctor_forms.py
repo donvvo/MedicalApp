@@ -29,3 +29,15 @@ class PatientSpecificForm(forms.ModelForm):
         model = PatientSpecific
         exclude = ('patient', )
 
+
+class TreatmentPlanAddForm(forms.ModelForm):
+    class Meta:
+        model = TreatmentPlan
+        exclude = ('patient', 'date_added')
+
+
+class DateSignatureAddForm(forms.ModelForm):
+    class Meta:
+        model = DateSignature
+        exclude = ('patient', )
+

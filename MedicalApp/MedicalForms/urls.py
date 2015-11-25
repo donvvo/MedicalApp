@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+from django.views.generic import TemplateView
 from django.conf import settings
 from django.conf.urls import include, url
 from django.conf.urls.static import static
@@ -60,6 +61,12 @@ urlpatterns = [
         name="report-of-findings"),
     url(r'^patient-specific-funtional-scale/(?P<user_id>[\d]+)/$', views.PatientSpecificView.as_view(),
         name="patient-specific-funtional-scale"),
+    url(r'^attendance-sheet/(?P<user_id>[\d]+)/$', views.AttendanceSheetView.as_view(),
+        name="attendance-sheet"),
+    url(r'^attendance-sheet/(?P<user_id>[\d]+)/treatmentplan/add$', views.TreatmentPlanAddView.as_view(),
+        name="treatmentplan-add"),
+    url(r'^attendance-sheet/(?P<user_id>[\d]+)/datesignature/add$', views.DateSignatureAddView.as_view(),
+        name="datesignature-add"),
 
 
 
