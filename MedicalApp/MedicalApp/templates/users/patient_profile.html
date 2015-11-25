@@ -16,8 +16,8 @@
     <div class="container">
         <div class="row">
           <div class="col-sm-12 text-right">
-            {% if object.pk == request.user.pk %}
-                <a href="{% url 'users:patient_profile_edit' %}" class="btn btn-default btn-hover-bg"><span>Edit Profile</span></a>
+            {% if object.pk == request.user.pk or request.user.is_staff %}
+                <a href="{% url 'users:patient_profile_edit' object.pk %}" class="btn btn-default btn-hover-bg"><span>Edit Profile</span></a>
             {% endif %}
           </div>
         </div>

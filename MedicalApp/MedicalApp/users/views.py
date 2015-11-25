@@ -62,9 +62,8 @@ class DoctorSignupView(SignupView):
 
 class PatientProfileView(LoginRequiredMixin, DetailView):
     model = User
-    # These next two lines tell the view to index lookups by username
-    slug_field = "username"
-    slug_url_kwarg = "username"
+    slug_field = "pk"
+    slug_url_kwarg = "user_id"
     template_name = "users/patient_profile.html"
 
     def get_context_data(self, **kwargs):
@@ -76,31 +75,31 @@ class PatientProfileView(LoginRequiredMixin, DetailView):
 class UserSettingsView(LoginRequiredMixin, UpdateView):
     form_class = UserSettingsForm
     template_name = 'users/user_settings.html'
-    slug_field = "username"
-    slug_url_kwarg = "username"
+    slug_field = "pk"
+    slug_url_kwarg = "user_id"
 
-    # we already imported User in the view code above, remember?
     model = User
 
     # send the user back to their own page after a successful update
     def get_success_url(self):
-        return reverse("users:account_redirect")
+        return reverse("users:patient_profile", kwargs={'user_id': self.kwargs['user_id']})
 
-    def get_object(self):
-        # Only get the User record for the user making the request
-        return User.objects.get(username=self.request.user.username)
+    def post(self, request, *args, **kwargs):
+        if request.POST.get('Delete'):
+            user = self.get_object()
+            user.delete()
+            return redirect(reverse('users:patient_list'))
+        return super(UserSettingsView, self).post(request, *args, **kwargs)
 
 
 class DoctorProfileView(LoginRequiredMixin, DetailView):
     model = User
-    # These next two lines tell the view to index lookups by username
     slug_field = "pk"
     slug_url_kwarg = "user_id"
     template_name = "users/doctor_profile.html"
 
 
 class DoctorProfileEditView(LoginRequiredMixin, MultipleFormsView):
-    # These next two lines tell the view to index lookups by username
     template_name = "users/doctor_settings.html"
 
     form_classes = {
@@ -135,19 +134,19 @@ class UserRedirectView(LoginRequiredMixin, RedirectView):
             return reverse('users:manage_main')
         else:
             return reverse("users:patient_doctor_redirect",
-                           kwargs={"username": self.request.user.username})
+                           kwargs={"user_id": self.request.user.pk})
 
 
 class PatientDoctorRedirectView(LoginRequiredMixin, RedirectView):
     permanent = False
 
-    def get_redirect_url(self, username):
+    def get_redirect_url(self, user_id):
         if self.request.user.groups.filter(name="Doctors").exists():
             return reverse("users:doctor_profile",
-                       kwargs={"user_id": self.request.user.pk})
+                       kwargs={"user_id": user_id})
         else:
             return reverse("users:patient_profile",
-                           kwargs={"username": username})
+                           kwargs={"user_id": user_id})
 
 
 class PatientsListView(LoginRequiredMixin, StaffuserRequiredMixin, ListView):

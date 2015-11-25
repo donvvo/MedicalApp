@@ -33,7 +33,7 @@
                 <div class="col-md-12 text-center">
                     <ul class="boxes-content">
                         {% for patient in object_list %}
-                        <li><a href="{% url 'users:patient_profile' patient.user.username %}">
+                        <li><a href="{% url 'users:patient_profile' patient.user.pk %}">
                             <div class="name">
                                 <h6>{{patient}}</h6>
                                 <figure><img src="{% static 'img/doctors/doc01.jpg' %}" alt="//"></figure>

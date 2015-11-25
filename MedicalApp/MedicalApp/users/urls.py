@@ -72,20 +72,20 @@ urlpatterns = [
 
     # URL pattern for the PatientDoctorRedirectView
     url(
-        regex=r'^(?P<username>[\w.@+-]+)/$',
+        regex=r'^(?P<user_id>[\w.@+-]+)/$',
         view=views.PatientDoctorRedirectView.as_view(),
         name='patient_doctor_redirect'
     ),
 
     # URL pattern for the UserDetailView
     url(
-        regex=r'^patient/(?P<username>[\w.@+-]+)/$',
+        regex=r'^patient/(?P<user_id>[\w.@+-]+)/$',
         view=views.PatientProfileView.as_view(),
         name='patient_profile'
     ),
 
     url(
-        regex=r'^patient/~edit$',
+        regex=r'^patient/(?P<user_id>[\d]+)/edit/$',
         view=views.UserSettingsView.as_view(),
         name='patient_profile_edit'
     ),
