@@ -144,11 +144,11 @@
                     {% for doctor in object.doctor_set.all %}
                         <li class="media row">
                         <div class="col-xs-8 col-md-8">
-                            <a class="pull-left" href="{% url 'users:doctor_profile' doctor.user.username %}">
+                            <a class="pull-left" href="{% url 'users:doctor_profile' doctor.user.pk %}">
                                 <img class="media-object img-circle" src="{% static 'img/news/news-thumbnail-144x144-01.jpg' %}" alt="//">
                             </a>
                             <div class="media-body">
-                                <h5 class="media-heading"><a href="{% url 'users:doctor_profile' doctor.user.username %}">&nbsp;{{doctor.user.first_name}} {{doctor.user.last_name}}</a></h5>
+                                <h5 class="media-heading"><a href="{% url 'users:doctor_profile' doctor.user.pk %}">&nbsp;{{doctor.user.first_name}} {{doctor.user.last_name}}</a></h5>
                                 <p class="media-meta">&nbsp;{{doctor.specialty}}</p>
                             </div>
                         </div>

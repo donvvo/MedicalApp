@@ -11868,9 +11868,12 @@ blockquote h4 {
   box-shadow: inset 0 -3px 0 0 rgba(0, 0, 0, 0.2);
 }
 .btn-color-bg-dark-border {
-  background: #27419e;
-  border-color: #359960;
-  color: #ffffff;
+  color: #fff;
+  background-color: #d9534f;
+  border-color: #d43f3a;
+}
+.btn-color-bg-dark-border:hover {
+  background-color: #990000;
 }
 .btn-color-bg-light-icon {
   background: #359960;
