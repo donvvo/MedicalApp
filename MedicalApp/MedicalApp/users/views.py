@@ -136,7 +136,7 @@ class PatientDoctorRedirectView(LoginRequiredMixin, RedirectView):
     def get_redirect_url(self, username):
         if self.request.user.groups.filter(name="Doctors").exists():
             return reverse("users:doctor_profile",
-                       kwargs={"username": username})
+                       kwargs={"user_id": self.request.user.pk})
         else:
             return reverse("users:patient_profile",
                            kwargs={"username": username})

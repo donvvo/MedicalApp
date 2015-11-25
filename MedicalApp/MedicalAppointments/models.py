@@ -41,7 +41,7 @@ class DoctorSpecialty(models.Model):
 class Doctor(models.Model):
     user = models.OneToOneField(users_model.User, primary_key=True)
     specialty = models.ForeignKey(DoctorSpecialty, blank=True, null=True)
-    clinic = models.ForeignKey(Clinic, blank=True, null=True)
+    clinic = models.ForeignKey(Clinic, blank=True, null=True, on_delete=models.SET_NULL)
 
     def __str__(self):
         return str(self.user) + ' -- ' + 'Specialty: '
