@@ -118,12 +118,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <div>
-                                <ul class="items_list">
-                                    <li>
-                                        <div class="row">
-                                            <div class="col-sm-4"><span>Start -- End</span></div>
-                                            <div class="col-sm-4">
+							<div class="row">
+                                            <div class="col-sm-2"><h6>Monday</h6></div>
+                                            <div class="col-sm-5">
                                                 <div class="form-group">
                                                     {% for error in form.start_time.errors %}
                                                       <span class="errorlist">{{error}}</span>
@@ -131,7 +128,7 @@
                                                     {{form.start_time}}
                                                 </div>
                                             </div>
-                                            <div class="col-sm-4">
+                                            <div class="col-sm-5">
                                                 {% for error in form.end_time.errors %}
                                                       <span class="errorlist">{{error}}</span>
                                                     {% endfor %}
@@ -140,10 +137,122 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </li>
-                                </ul>
-                            </div>
-                            <br><br>
+							<div class="row">
+                                            <div class="col-sm-2"><h6>TUESDAY</h6></div>
+                                            <div class="col-sm-5">
+                                                <div class="form-group">
+                                                    {% for error in form.start_time.errors %}
+                                                      <span class="errorlist">{{error}}</span>
+                                                    {% endfor %}
+                                                    {{form.start_time}}
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-5">
+                                                {% for error in form.end_time.errors %}
+                                                      <span class="errorlist">{{error}}</span>
+                                                    {% endfor %}
+                                                <div class="form-group">
+                                                    {{form.end_time}}
+                                                </div>
+                                            </div>
+                                        </div>
+							<div class="row">
+                                            <div class="col-sm-2"><h6>WEDNESDAY</h6></div>
+                                            <div class="col-sm-5">
+                                                <div class="form-group">
+                                                    {% for error in form.start_time.errors %}
+                                                      <span class="errorlist">{{error}}</span>
+                                                    {% endfor %}
+                                                    {{form.start_time}}
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-5">
+                                                {% for error in form.end_time.errors %}
+                                                      <span class="errorlist">{{error}}</span>
+                                                    {% endfor %}
+                                                <div class="form-group">
+                                                    {{form.end_time}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-2"><h6>THURSDAY</h6></div>
+                                            <div class="col-sm-5">
+                                                <div class="form-group">
+                                                    {% for error in form.start_time.errors %}
+                                                      <span class="errorlist">{{error}}</span>
+                                                    {% endfor %}
+                                                    {{form.start_time}}
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-5">
+                                                {% for error in form.end_time.errors %}
+                                                      <span class="errorlist">{{error}}</span>
+                                                    {% endfor %}
+                                                <div class="form-group">
+                                                    {{form.end_time}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-2"><h6>FRIDAY</h6></div>
+                                            <div class="col-sm-5">
+                                                <div class="form-group">
+                                                    {% for error in form.start_time.errors %}
+                                                      <span class="errorlist">{{error}}</span>
+                                                    {% endfor %}
+                                                    {{form.start_time}}
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-5">
+                                                {% for error in form.end_time.errors %}
+                                                      <span class="errorlist">{{error}}</span>
+                                                    {% endfor %}
+                                                <div class="form-group">
+                                                    {{form.end_time}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-2"><h6>SATURDAY</h6></div>
+                                            <div class="col-sm-5">
+                                                <div class="form-group">
+                                                    {% for error in form.start_time.errors %}
+                                                      <span class="errorlist">{{error}}</span>
+                                                    {% endfor %}
+                                                    {{form.start_time}}
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-5">
+                                                {% for error in form.end_time.errors %}
+                                                      <span class="errorlist">{{error}}</span>
+                                                    {% endfor %}
+                                                <div class="form-group">
+                                                    {{form.end_time}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-2"><h6>SUNDAY</h6></div>
+                                            <div class="col-sm-5">
+                                                <div class="form-group">
+                                                    {% for error in form.start_time.errors %}
+                                                      <span class="errorlist">{{error}}</span>
+                                                    {% endfor %}
+                                                    {{form.start_time}}
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-5">
+                                                {% for error in form.end_time.errors %}
+                                                      <span class="errorlist">{{error}}</span>
+                                                    {% endfor %}
+                                                <div class="form-group">
+                                                    {{form.end_time}}
+                                                </div>
+                                            </div>
+                                        </div>
+                      
+                            <br><hr><br>
                             <input type="submit" class="btn btn-default btn-color-border-solid" value="Save">
                         </form>
                     </div>
