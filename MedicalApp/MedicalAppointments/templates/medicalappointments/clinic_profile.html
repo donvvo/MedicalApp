@@ -78,9 +78,9 @@
                             </div>
                             <div id="collapseService" class="panel-collapse collapse" style="height: 0px;">
                                 <div class="panel-body">
-                                    <p>12313 Fake street,</p>
-                                    <p>Toronto, Ontario</p>
-                                    <p>F4D 343, Canada</p>
+                                    <p>{{object.address}},</p>
+                                    <p>{{object.city}}</p>
+                                    <p>{{object.postal_code}}</p>
                                 </div>
                             </div>
                         </div>
@@ -95,8 +95,8 @@
                             </div>
                             <div id="collapseBest" class="panel-collapse collapse">
                                 <div class="panel-body">
-                                    <p>Phone number goes here</p>
-                                    <p>email address goes here</p>
+                                    <p>{{object.phone}}</p>
+                                    <p>{{object.email}}</p>
                                 </div>
                             </div>
                         </div>
@@ -129,7 +129,7 @@
                                     </ul>
                                 </div>
 
-                                <center><a href="#" class="btn btn-default btn-color-bg-dark-icon"><span>Add Doctor</span></a></center>
+                                <center><a href="{% url 'medical_appointments:add_doctor' object.url_name %}" class="btn btn-default btn-color-bg-dark-icon"><span>Add Doctor</span></a></center>
 
 
                             </div>

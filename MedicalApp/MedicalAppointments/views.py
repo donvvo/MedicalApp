@@ -208,5 +208,5 @@ class AddDoctorView(LoginRequiredMixin, StaffuserRequiredMixin, TemplateView):
         doctor.clinic = clinic
         doctor.save()
 
-        return redirect(reverse('medical_appointments:clinic_profile_edit', kwargs={'clinicname': clinic_name}))
+        return redirect(reverse('medical_appointments:clinic_profile', kwargs={'clinicname': clinic_name}))
 
