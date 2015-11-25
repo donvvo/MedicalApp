@@ -15,5 +15,6 @@ urlpatterns = [
     url(r'^clinics/list/$', views.ClinicListView.as_view(), name='clinic_list'),
     url(r'^clinics/(?P<clinicname>[\w.@+-]+)/$', views.ClinicProfileView.as_view(), name='clinic_profile'),
     url(r'^clinics/(?P<clinicname>[\w.@+-]+)/edit$', views.ClinicProfileEditView.as_view(), name='clinic_profile_edit'),
+    url(r'^clinics/(?P<clinicname>[\w.@+-]+)/add-doctor$', views.AddDoctorView.as_view(), name='add_doctor'),
     url(r'^clinics/~create$', views.ClinicProfileCreateView.as_view(), name='clinic_profile_create')
 ]

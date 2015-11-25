@@ -34,7 +34,11 @@
                         <div class="tag-text">
                             <h4>{{object.name}}</h4>
                             <span>Specialty</span>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam non obcaecati quas magnam id odio maxime pariatur voluptate porro architecto, sint rem velit aperiam veritatis ducimus neque quae, in quibusdam?Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam non obcaecati quas magnam id odio maxime pariatur voluptate porro architecto, sint rem velit aperiam veritatis ducimus neque quae, in quibusdam?pariatur voluptate porro architecto, sint rem velit aperiam veritatis ducimus neque quae, in quibusdam?</p>
+                            {% if object.description %}
+                                <p>{{object.description}}</p>
+                            {% elif request.user.is_staff %}
+                                <p><a href="{% url 'medical_appointments:clinic_profile_edit' object.url_name %}">Please add description</a></p>
+                            {% endif %}
                         </div>
 
                     </div>
@@ -124,10 +128,10 @@
                                     {% endfor %}
                                     </ul>
                                 </div>
-                                
+
                                 <center><a href="#" class="btn btn-default btn-color-bg-dark-icon"><span>Add Doctor</span></a></center>
-                                
-                                
+
+
                             </div>
                         </div>
                     </div>

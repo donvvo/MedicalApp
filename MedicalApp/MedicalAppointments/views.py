@@ -7,10 +7,10 @@ from django.core import serializers
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseBadRequest, HttpResponse, HttpResponseRedirect
 from django.shortcuts import redirect, render_to_response, get_object_or_404
-from django.views.generic import DetailView, ListView, UpdateView, CreateView
+from django.views.generic import DetailView, ListView, UpdateView, CreateView, TemplateView
 from django.utils import timezone
 
-from braces.views import LoginRequiredMixin, GroupRequiredMixin
+from braces.views import LoginRequiredMixin, StaffuserRequiredMixin, GroupRequiredMixin
 
 from .models import Booking, DoctorSpecialty, Clinic, Doctor
 from .utils import get_clinics_by_specialty, get_time_table
@@ -170,6 +170,13 @@ class ClinicProfileEditView(LoginRequiredMixin, UpdateView):
             clinic = self.get_object()
             clinic.delete()
             return redirect(reverse('medical_appointments:clinic_list'))
+        elif request.POST.get('DeleteDoctor'):
+            doctor = get_object_or_404(Doctor, user_id=request.POST.get('doctor_id'))
+            print doctor
+            doctor.clinic = None
+            doctor.save()
+
+            return redirect(reverse('medical_appointments:clinic_profile_edit', kwargs={'clinicname': self.kwargs['clinicname']}))
         return super(ClinicProfileEditView, self).post(request, *args, **kwargs)
 
 
@@ -178,4 +185,28 @@ class ClinicProfileCreateView(LoginRequiredMixin, CreateView):
     template_name = "medicalappointments/clinic_create.html"
     fields = ('name', 'phone', 'email', 'description', 'city', 'address', 'postal_code',
         'start_time', 'end_time')
+
+
+class AddDoctorView(LoginRequiredMixin, StaffuserRequiredMixin, TemplateView):
+    raise_exception = True
+    template_name = "medicalappointments/add_doctor.html"
+
+    def get_context_data(self, **kwargs):
+        context = super(AddDoctorView, self).get_context_data()
+        clinic_name = kwargs['clinicname']
+        context['clinic_name'] = clinic_name
+        doctors = Doctor.objects.exclude(clinic=clinic_name.replace('+', ' '))
+        print doctors
+        context['doctors'] = doctors
+
+        return context
+
+    def post(self, request, *args, **kwargs):
+        doctor = get_object_or_404(Doctor, user=request.POST.get('doctor'))
+        clinic_name = kwargs['clinicname']
+        clinic = get_object_or_404(Clinic, name=clinic_name.replace('+', ' '))
+        doctor.clinic = clinic
+        doctor.save()
+
+        return redirect(reverse('medical_appointments:clinic_profile_edit', kwargs={'clinicname': clinic_name}))
 
