@@ -115,6 +115,14 @@ class DoctorProfileEditView(LoginRequiredMixin, MultipleFormsView):
             'doctor_settings': get_object_or_404(Doctor, pk=self.user_id)
         }
 
+    def post(self, request, *args, **kwargs):
+        self.user_id = kwargs['user_id']
+        if request.POST.get('Delete'):
+            user = get_object_or_404(User, pk=self.user_id)
+            user.delete()
+            return redirect(reverse('users:doctors_list'))
+        return super(DoctorProfileEditView, self).post(request, *args, **kwargs)
+
     def get_success_url(self):
         return reverse("users:doctor_profile", kwargs={"user_id": self.user_id})
 
