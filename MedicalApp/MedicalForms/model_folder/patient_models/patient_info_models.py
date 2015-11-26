@@ -1,7 +1,7 @@
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
 
-from .utils import *
+from ...utils import *
 from MedicalAppointments.models import Patient
 
 # Patient information form choices

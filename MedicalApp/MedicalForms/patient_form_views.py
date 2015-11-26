@@ -1,4 +1,5 @@
-from django.core.urlresolvers import reverse_lazy
+from django.core.urlresolvers import reverse, reverse_lazy
+from django.shortcuts import redirect
 from django.views.generic import UpdateView
 from django.utils.decorators import method_decorator
 
@@ -21,15 +22,24 @@ class PatientFormBaseView(LoginRequiredMixin, UpdateView):
         self.user_id = int(kwargs['user_id'])
         return super(PatientFormBaseView, self). dispatch(request, *args, **kwargs)
 
+    def get(self, request, *args, **kwargs):
+        response = super(PatientFormBaseView, self).get(request, *args, **kwargs)
+        if self.assigned:
+            return response
+        else:
+            return redirect(reverse('users:patient_profile', kwargs={'user_id': self.user_id}))
+
     def get_object(self):
         objects = self.model.objects.filter(pk=self.user_id)
         if objects.exists():
+            self.assigned = True
             return objects.get()
         else:
-            return self.model(pk=self.user_id)
+            self.assigned = False
+            return self.model(pk=self.user_id).save()
 
     def get_success_url(self):
-        return reverse_lazy('users:patient_profile', kwargs={'username': self.object.patient.user.username})
+        return reverse_lazy('users:patient_profile', kwargs={'user_id': self.object.patient.user.pk})
 
 
 # Patient forms
