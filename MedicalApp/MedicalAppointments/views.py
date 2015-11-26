@@ -73,8 +73,9 @@ class PatientTimetableView(LoginRequiredMixin, ListView):
 
     def get_context_data(self, **kwargs):
         context = super(PatientTimetableView, self).get_context_data(**kwargs)
+        clinic = get_object_or_404(Clinic, name=self.clinic_name)
         context['table'] = get_time_table(
-            context['object_list'], table_start=6, table_end=17, table_interval=30, num_doctor=len(self.doctors))
+            context['object_list'], clinic=clinic, table_interval=30, num_doctor=len(self.doctors))
         context['clinic'] = self.kwargs.get('clinic', None).replace('+', ' ')
         context['specialty'] = self.kwargs.get('specialty', None)
 
@@ -134,7 +135,7 @@ class DoctorTimetableView(LoginRequiredMixin, ListView):
     def get_context_data(self, **kwargs):
         context = super(DoctorTimetableView, self).get_context_data(**kwargs)
         context['table'] = get_time_table(
-            context['object_list'], table_start=6, table_end=17, table_interval=30, num_doctor=1)
+            context['object_list'], clinic=self.request.user.doctor.clinic, table_interval=30, num_doctor=1)
 
         return context
 
@@ -158,7 +159,10 @@ class ClinicProfileEditView(LoginRequiredMixin, UpdateView):
     model = Clinic
     template_name = "medicalappointments/clinic_edit.html"
     fields = ('name', 'phone', 'email', 'description', 'city', 'address', 'postal_code',
-        'start_time', 'end_time')
+        'start_time_mon', 'end_time_mon', 'start_time_tue', 'end_time_tue',
+        'start_time_wed', 'end_time_wed', 'start_time_thurs', 'end_time_thurs',
+        'start_time_fri', 'end_time_fri', 'start_time_sat', 'end_time_sat',
+        'start_time_sun', 'end_time_sun')
 
     def get_object(self):
         clinic_name = self.kwargs['clinicname']
@@ -184,7 +188,10 @@ class ClinicProfileCreateView(LoginRequiredMixin, CreateView):
     model = Clinic
     template_name = "medicalappointments/clinic_create.html"
     fields = ('name', 'phone', 'email', 'description', 'city', 'address', 'postal_code',
-        'start_time', 'end_time')
+        'start_time_mon', 'end_time_mon', 'start_time_tue', 'end_time_tue',
+        'start_time_wed', 'end_time_wed', 'start_time_thurs', 'end_time_thurs',
+        'start_time_fri', 'end_time_fri', 'start_time_sat', 'end_time_sat',
+        'start_time_sun', 'end_time_sun')
 
 
 class AddDoctorView(LoginRequiredMixin, StaffuserRequiredMixin, TemplateView):

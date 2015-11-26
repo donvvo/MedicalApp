@@ -5,6 +5,8 @@ from django.utils import timezone
 
 from .models import Doctor
 
+TZ_UTC = pytz.utc
+
 
 def get_clinics_by_specialty(specialty):
     doctors = Doctor.objects.filter(specialty__specialty=specialty)
@@ -32,41 +34,78 @@ def check_booking_in_timeslot(timeslot_start, interval, booking_time):
     # Return index of -1 if no booking exist in the time slot
     return index_array
 
-# TODO:// Make time table have different start and end time on different days
-def get_time_table(bookings, table_start, table_end, table_interval, num_doctor):
+
+def get_min_start_hour(start_end_hour):
+    start_hours = [hour[0] for hour in start_end_hour if hour[0] is not None]
+    return min(start_hours)
+
+
+def get_max_end_hour(start_end_hour):
+    start_hours = [hour[1] for hour in start_end_hour if hour[1] is not None]
+    return max(start_hours)
+
+
+def get_column_for_a_day(day, start_end_hour, min_hour, max_hour, interval, bookings, num_doctor):
     booking_time = [booking.time for booking in bookings]
 
-    TZ_UTC = pytz.utc
+    column = []
+    timeslot_start = datetime.datetime.combine(day, min_hour).astimezone(TZ_UTC)
+
+    time_row = timeslot_start
+
+    while time_row.timetz() < max_hour:
+        this_time = time_row.timetz()
+        if not start_end_hour[0] or not start_end_hour[1]:
+            column.append((time_row, -1))
+        elif this_time < start_end_hour[0] or this_time > start_end_hour[1]:
+            column.append((time_row, -1))
+        else:
+            index = check_booking_in_timeslot(time_row, interval, booking_time)
+            if index != [] and len(index) == num_doctor:
+                column.append((time_row, bookings[index[0]].patient.user))
+            else:
+                column.append((time_row, None))
+
+        time_row = time_row + interval
+
+    return column
+
+
+def get_time_table(bookings, clinic, table_interval, num_doctor):
     local_tz = timezone.get_default_timezone()
 
-    start_hour = datetime.time(hour=table_start, tzinfo=local_tz)
-    end_hour = datetime.time(hour=table_end, tzinfo=local_tz)
+    # start and end hour in tuple, starting Monday
+    start_end_hour_naive = [
+        (clinic.start_time_mon, clinic.end_time_mon),
+        (clinic.start_time_tue, clinic.end_time_tue),
+        (clinic.start_time_wed, clinic.end_time_wed),
+        (clinic.start_time_thurs, clinic.end_time_thurs),
+        (clinic.start_time_fri, clinic.end_time_fri),
+        (clinic.start_time_sat, clinic.end_time_sat),
+        (clinic.start_time_sun, clinic.end_time_sun)
+    ]
+    start_end_hour = []
+    for element in start_end_hour_naive:
+        if element[0] and element[1]:
+            start_end_hour.append(
+                (element[0].replace(tzinfo=local_tz), element[1].replace(tzinfo=local_tz))
+            )
+        else:
+            start_end_hour.append((None, None))
+    min_start_hour = get_min_start_hour(start_end_hour)
+    max_end_hour = get_max_end_hour(start_end_hour)
+
     interval = datetime.timedelta(minutes=table_interval)
-    time_table = []
     dates = get_dates_from_now()
 
-    first_row = []
-    for day in dates:
-        timeslot_start = datetime.datetime.combine(day, start_hour).astimezone(TZ_UTC)
-        index = check_booking_in_timeslot(timeslot_start, interval, booking_time)
-        if len(index) > 0:
-            print index
-        if index != [] and len(index) == num_doctor:
-            first_row.append((timeslot_start, bookings[index[0]].patient.user))
-        else:
-            first_row.append((timeslot_start, None))
+    columns = []
 
-    time_table.append(first_row)
+    for date in dates:
+        columns.append(get_column_for_a_day(date, start_end_hour[date.weekday()], min_start_hour,
+            max_end_hour, interval, bookings, num_doctor))
 
-    while time_table[-1][0][0].timetz() < end_hour:
-        table_row = []
-        for day in time_table[-1]:
-            timeslot_start = day[0] + interval
-            index = check_booking_in_timeslot(timeslot_start, interval, booking_time)
-            if index != [] and len(index) == num_doctor:
-                table_row.append((timeslot_start, bookings[index[0]].patient.user))
-            else:
-                table_row.append((timeslot_start, None))
-        time_table.append(table_row)
+    timetable = []
+    for index in range(len(columns[0])):
+        timetable.append([column[index] for column in columns])
 
-    return time_table
+    return timetable

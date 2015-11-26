@@ -30,8 +30,10 @@
                             <tr>
                                 <th>{{row.0.0|time:"h:i A"}}</th>
                                 {% for element in row %}
-                                    {% if element.1 %}
-                                        <td><a href="{% url 'users:patient_profile' username=element.1.username %}">{{element.1.first_name}} {{element.1.last_name}}</a></td>
+                                    {% if element.1 == -1 %}
+                                        <td><a class="ct-blue" href="#" title="Clinic is closed at this time."></a></td>
+                                    {% elif element.1 %}
+                                        <td><a href="{% url 'users:patient_profile' user_id=element.1.pk %}">{{element.1.first_name}} {{element.1.last_name}}</a></td>
                                     {% else %}
                                         <td><a class="ct-orange" href="#" title="You're off duty during this time."></a></td>
                                     {% endif %}

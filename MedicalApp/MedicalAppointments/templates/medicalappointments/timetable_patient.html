@@ -33,7 +33,9 @@
                             <tr>
                                 <th>{{row.0.0|time:"h:i A"}}</th>
                                 {% for element in row %}
-                                    {% if element.1 %}
+                                    {% if element.1 == -1 %}
+                                      <td><a class="ct-blue" href="#" title="Our clinic is closed at this hour."></a></td>
+                                    {% elif element.1 %}
                                         <td><a class="ct-orange" href="#" title="All of our doctors are busy at this time.  Please find another another time."></a></td>
                                     {% else %}
                                         <td><a class="booking-btn" type="button" data-toggle="modal" data-target="#myModal" data-year="{{element.0|date:'Y'}}" data-month="{{element.0|date:'m'}}" data-date="{{element.0|date:'j'}}" data-hour="{{element.0|time:'H'}}" data-minute="{{element.0|time:'i'}}" data-prettydate="{{element.0|date:'l M j, Y'}}" data-prettytime="{{element.0|date:'h:i A'}}">Book Now</a></td>

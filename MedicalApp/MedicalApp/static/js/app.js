@@ -30,4 +30,10 @@ $(function() {
         $rearEndCollision.animate({"left": "+=50"}, 1000, rearEndLoop);
     }
     rearEndLoop();
+
+    $('.time-input').timepicker({
+        'disableTextInput': true,
+        'minTime': '6:00am',
+        'maxTime': '9:00pm'
+    });
 });

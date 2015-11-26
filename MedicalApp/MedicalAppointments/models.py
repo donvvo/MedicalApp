@@ -6,7 +6,7 @@ from django.utils import timezone
 from MedicalApp.users import models as users_model
 from MedicalForms.utils import *
 
-# Create your models here.
+
 @python_2_unicode_compatible
 class Clinic(models.Model):
     name = MyCharField(max_length=100, primary_key=True, placeholder='Clinic Name')
@@ -16,8 +16,20 @@ class Clinic(models.Model):
     city = MyCharField(max_length=20, placeholder='City')
     address = MyCharField(max_length=200, placeholder='Address')
     postal_code = MyCharField(max_length=10, placeholder='Postal Code')
-    start_time = MyCharField(max_length=10, placeholder='Opening Hours')
-    end_time = MyCharField(max_length=10, placeholder='Closing Hours')
+    start_time_mon = MyTimeField(placeholder='Opening Hours')
+    end_time_mon = MyTimeField(placeholder='Closing Hours')
+    start_time_tue = MyTimeField(placeholder='Opening Hours')
+    end_time_tue = MyTimeField(placeholder='Closing Hours')
+    start_time_wed = MyTimeField(placeholder='Opening Hours')
+    end_time_wed = MyTimeField(placeholder='Closing Hours')
+    start_time_thurs = MyTimeField(placeholder='Opening Hours')
+    end_time_thurs = MyTimeField(placeholder='Closing Hours')
+    start_time_fri = MyTimeField(placeholder='Opening Hours')
+    end_time_fri = MyTimeField(placeholder='Closing Hours')
+    start_time_sat = MyTimeField(placeholder='Opening Hours')
+    end_time_sat = MyTimeField(placeholder='Closing Hours')
+    start_time_sun = MyTimeField(placeholder='Opening Hours')
+    end_time_sun = MyTimeField(placeholder='Closing Hours')
 
     def __str__(self):
         return self.name

@@ -125,7 +125,7 @@
                                                     {% for error in form.start_time.errors %}
                                                       <span class="errorlist">{{error}}</span>
                                                     {% endfor %}
-                                                    {{form.start_time}}
+                                                    {{form.start_time_mon}}
                                                 </div>
                                             </div>
                                             <div class="col-sm-5">
@@ -133,7 +133,7 @@
                                                       <span class="errorlist">{{error}}</span>
                                                     {% endfor %}
                                                 <div class="form-group">
-                                                    {{form.end_time}}
+                                                    {{form.end_time_mon}}
                                                 </div>
                                             </div>
                                         </div>
@@ -144,7 +144,7 @@
                                                     {% for error in form.start_time.errors %}
                                                       <span class="errorlist">{{error}}</span>
                                                     {% endfor %}
-                                                    {{form.start_time}}
+                                                    {{form.start_time_tue}}
                                                 </div>
                                             </div>
                                             <div class="col-sm-5">
@@ -152,7 +152,7 @@
                                                       <span class="errorlist">{{error}}</span>
                                                     {% endfor %}
                                                 <div class="form-group">
-                                                    {{form.end_time}}
+                                                    {{form.end_time_tue}}
                                                 </div>
                                             </div>
                                         </div>
@@ -163,7 +163,7 @@
                                                     {% for error in form.start_time.errors %}
                                                       <span class="errorlist">{{error}}</span>
                                                     {% endfor %}
-                                                    {{form.start_time}}
+                                                    {{form.start_time_wed}}
                                                 </div>
                                             </div>
                                             <div class="col-sm-5">
@@ -171,7 +171,7 @@
                                                       <span class="errorlist">{{error}}</span>
                                                     {% endfor %}
                                                 <div class="form-group">
-                                                    {{form.end_time}}
+                                                    {{form.end_time_wed}}
                                                 </div>
                                             </div>
                                         </div>
@@ -182,7 +182,7 @@
                                                     {% for error in form.start_time.errors %}
                                                       <span class="errorlist">{{error}}</span>
                                                     {% endfor %}
-                                                    {{form.start_time}}
+                                                    {{form.start_time_thurs}}
                                                 </div>
                                             </div>
                                             <div class="col-sm-5">
@@ -190,7 +190,7 @@
                                                       <span class="errorlist">{{error}}</span>
                                                     {% endfor %}
                                                 <div class="form-group">
-                                                    {{form.end_time}}
+                                                    {{form.end_time_thurs}}
                                                 </div>
                                             </div>
                                         </div>
@@ -201,7 +201,7 @@
                                                     {% for error in form.start_time.errors %}
                                                       <span class="errorlist">{{error}}</span>
                                                     {% endfor %}
-                                                    {{form.start_time}}
+                                                    {{form.start_time_fri}}
                                                 </div>
                                             </div>
                                             <div class="col-sm-5">
@@ -209,7 +209,7 @@
                                                       <span class="errorlist">{{error}}</span>
                                                     {% endfor %}
                                                 <div class="form-group">
-                                                    {{form.end_time}}
+                                                    {{form.end_time_fri}}
                                                 </div>
                                             </div>
                                         </div>
@@ -220,7 +220,7 @@
                                                     {% for error in form.start_time.errors %}
                                                       <span class="errorlist">{{error}}</span>
                                                     {% endfor %}
-                                                    {{form.start_time}}
+                                                    {{form.start_time_sat}}
                                                 </div>
                                             </div>
                                             <div class="col-sm-5">
@@ -228,7 +228,7 @@
                                                       <span class="errorlist">{{error}}</span>
                                                     {% endfor %}
                                                 <div class="form-group">
-                                                    {{form.end_time}}
+                                                    {{form.end_time_sat}}
                                                 </div>
                                             </div>
                                         </div>
@@ -239,7 +239,7 @@
                                                     {% for error in form.start_time.errors %}
                                                       <span class="errorlist">{{error}}</span>
                                                     {% endfor %}
-                                                    {{form.start_time}}
+                                                    {{form.start_time_sun}}
                                                 </div>
                                             </div>
                                             <div class="col-sm-5">
@@ -247,11 +247,12 @@
                                                       <span class="errorlist">{{error}}</span>
                                                     {% endfor %}
                                                 <div class="form-group">
-                                                    {{form.end_time}}
+                                                    {{form.end_time_sun}}
                                                 </div>
                                             </div>
                                         </div>
-                      
+                                        {{form.non_field_errors}}
+
                             <br><hr><br>
                             <input type="submit" class="btn btn-default btn-color-border-solid" value="Save">
                         </form>

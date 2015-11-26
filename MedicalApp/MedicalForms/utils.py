@@ -127,6 +127,32 @@ class MyDateTimeField(models.DateTimeField):
         return super(MyDateTimeField, self).formfield(**defaults)
 
 
+class MyTimeFieldForm(forms.TimeField):
+    input_formats = ['%H:%M:%S', '%H:%M', '%I:%M%p']
+
+
+class MyTimeField(models.TimeField):
+    def __init__(self, placeholder='', **kwargs):
+        kwargs['null'] = True
+        kwargs['blank'] = True
+        self.placeholder = placeholder
+        super(MyTimeField, self).__init__(**kwargs)
+
+    def formfield(self, **kwargs):
+        defaults = {
+            'form_class': MyTimeFieldForm,
+            'widget': forms.TimeInput(
+                    format='%I:%M%p',
+                    attrs={
+                        'class': 'form-control time-input',
+                        'placeholder': self.placeholder,
+                    })
+            }
+        defaults.update(kwargs)
+
+        return super(MyTimeField, self).formfield(**defaults)
+
+
 class MyEmailField(models.EmailField):
     def __init__(self, placeholder='', **kwargs):
         kwargs['blank'] = True

@@ -5,9 +5,11 @@ from test_plus.test import TestCase
 
 from django.utils import timezone
 
-from .models import Clinic, Doctor, DoctorSpecialty
-from .utils import get_clinics_by_specialty, get_dates_from_now, check_booking_in_timeslot,\
-get_time_table
+from .models import Clinic, Doctor, DoctorSpecialty, Booking, Patient
+from .utils import get_clinics_by_specialty, check_booking_in_timeslot,\
+    get_min_start_hour, get_max_end_hour, get_column_for_a_day
+
+local_tz = timezone.get_default_timezone()
 
 
 class TestUtils(TestCase):
@@ -40,6 +42,16 @@ class TestUtils(TestCase):
         self.clinics = clinics
         self.specialties = specialties
         self.doctors = doctors
+        self.patient = Patient(user=self.make_user('user5'))
+
+        self.start_end_hour = [
+            (datetime.time(hour=6, tzinfo=local_tz), datetime.time(hour=8, tzinfo=local_tz)),
+            (None, datetime.time(hour=8, tzinfo=local_tz)),
+            (datetime.time(hour=6, tzinfo=local_tz), None),
+            (None, None),
+            (datetime.time(hour=5, tzinfo=local_tz), datetime.time(hour=8, tzinfo=local_tz)),
+            (datetime.time(hour=6, tzinfo=local_tz), datetime.time(hour=9, tzinfo=local_tz)),
+        ]
 
     def test_get_clinics_by_specialty(self):
         self.assertEqual(
@@ -53,15 +65,6 @@ class TestUtils(TestCase):
         self.assertEqual(
             get_clinics_by_specialty('specialty3'),
             []
-        )
-
-    def test_get_dates_from_now(self):
-        today = timezone.now().date()
-        days = [today.day + day for day in range(7)]
-
-        self.assertEqual(
-            days,
-            [date.day for date in get_dates_from_now()]
         )
 
     def test_check_booking_in_timeslot(self):
@@ -83,4 +86,27 @@ class TestUtils(TestCase):
             check_booking_in_timeslot(booking_time[1], interval, booking_time),
             [1]
         )
+
+    def test_min_start_hour(self):
+        self.assertEqual(
+            get_min_start_hour(self.start_end_hour),
+            datetime.time(hour=5, tzinfo=local_tz)
+        )
+
+    def test_max_end_hour(self):
+        self.assertEqual(
+            get_max_end_hour(self.start_end_hour),
+            datetime.time(hour=9, tzinfo=local_tz)
+        )
+
+    def test_get_column_for_a_day(self):
+        min_start_hour = get_min_start_hour(self.start_end_hour)
+        max_end_hour = get_max_end_hour(self.start_end_hour)
+        day = timezone.now().date()
+
+        interval = datetime.timedelta(minutes=30)
+
+        print get_column_for_a_day(day, self.start_end_hour[1], min_start_hour, max_end_hour,
+            interval, [], 1)
+
 
