@@ -6,6 +6,7 @@ from django.utils import timezone
 from .models import Doctor
 
 TZ_UTC = pytz.utc
+local_tz = timezone.get_default_timezone()
 
 
 def get_clinics_by_specialty(specialty):
@@ -37,12 +38,12 @@ def check_booking_in_timeslot(timeslot_start, interval, booking_time):
 
 def get_min_start_hour(start_end_hour):
     start_hours = [hour[0] for hour in start_end_hour if hour[0] is not None]
-    return min(start_hours)
+    return min(start_hours) if start_hours else datetime.time(hour=9, tzinfo=local_tz) # default
 
 
 def get_max_end_hour(start_end_hour):
     start_hours = [hour[1] for hour in start_end_hour if hour[1] is not None]
-    return max(start_hours)
+    return max(start_hours) if start_hours else datetime.time(hour=18, tzinfo=local_tz) # default
 
 
 def get_column_for_a_day(day, start_end_hour, min_hour, max_hour, interval, bookings, num_doctor):
@@ -72,8 +73,6 @@ def get_column_for_a_day(day, start_end_hour, min_hour, max_hour, interval, book
 
 
 def get_time_table(bookings, clinic, table_interval, num_doctor):
-    local_tz = timezone.get_default_timezone()
-
     # start and end hour in tuple, starting Monday
     start_end_hour_naive = [
         (clinic.start_time_mon, clinic.end_time_mon),
