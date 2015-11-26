@@ -118,7 +118,7 @@ class MyDateTimeField(models.DateTimeField):
     def formfield(self, **kwargs):
         defaults = {'widget': forms.DateTimeInput(
                 attrs={
-                    'class': 'form-control',
+                    'class': 'form-control datepicker hasDatePicker',
                     'placeholder': self.placeholder
                 }
             )}

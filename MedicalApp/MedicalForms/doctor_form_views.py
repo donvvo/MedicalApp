@@ -26,7 +26,7 @@ class DoctorFormBaseView(DoctorOnlyMixin, UpdateView):
             return self.model(pk=self.user_id)
 
     def get_success_url(self):
-        return reverse_lazy('users:patient_profile', kwargs={'username': self.object.patient.user.username})
+        return reverse_lazy('users:patient_profile', kwargs={'user_id': self.user_id})
 
 
 # Doctor forms

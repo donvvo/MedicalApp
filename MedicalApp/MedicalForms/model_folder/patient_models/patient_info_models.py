@@ -35,7 +35,7 @@ MARITAL_STATUS_CHOICES = (
 @python_2_unicode_compatible
 class PatientInformation(models.Model):
     patient = models.OneToOneField(Patient, primary_key=True)
-    today_date = models.DateTimeField(auto_now_add=True)
+    last_modified = models.DateTimeField(auto_now=True)
     accident_date = MyDateTimeField()
     date_of_birth = MyDateTimeField()
     gender = MySelectField(GENDER_CHOICES, max_length=10)
@@ -52,7 +52,7 @@ class PatientInformation(models.Model):
     job_requirements = MySelectField(max_length=20, choices=JOB_REQUIREMENTS_CHOICES)
     marital_status = MySelectField(max_length=20, choices=MARITAL_STATUS_CHOICES)
     number_of_children = IntegerRangeField(min_value=0, placeholder='Number of Children')
-    ages = IntegerRangeField(min_value=1, placeholder='Ages')
+    ages = MyCharField(max_length=20, placeholder='Ages')
     emergency_contact_name = MyCharField(max_length=100, placeholder='Emergency Contact Name')
     emergency_contact_phone = MyCharField(max_length=20, placeholder='Emergency Contact Phone')
     emergency_contact_relationship = MyCharField(max_length=20, placeholder='Emergency Contact Relationship')

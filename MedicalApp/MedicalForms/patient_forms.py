@@ -6,7 +6,7 @@ from .models import *
 class PatientInformationForm(forms.ModelForm):
     class Meta:
         model = PatientInformation
-        exclude = ('patient', 'today_date')
+        exclude = ('patient', 'last_modified', 'today_date')
 
 
 class HealthHistoryForm(forms.ModelForm):

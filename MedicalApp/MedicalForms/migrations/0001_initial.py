@@ -644,7 +644,7 @@ class Migration(migrations.Migration):
             name='PatientInformation',
             fields=[
                 ('patient', models.OneToOneField(primary_key=True, serialize=False, to='MedicalAppointments.Patient')),
-                ('today_date', models.DateTimeField(auto_now_add=True)),
+                ('last_modified', models.DateTimeField(auto_now=True)),
                 ('accident_date', MedicalForms.utils.MyDateTimeField(null=True, blank=True)),
                 ('date_of_birth', MedicalForms.utils.MyDateTimeField(null=True, blank=True)),
                 ('gender', MedicalForms.utils.MySelectField(max_length=10, blank=True)),
@@ -661,7 +661,7 @@ class Migration(migrations.Migration):
                 ('job_requirements', MedicalForms.utils.MySelectField(max_length=20, blank=True)),
                 ('marital_status', MedicalForms.utils.MySelectField(max_length=20, blank=True)),
                 ('number_of_children', MedicalForms.utils.IntegerRangeField(null=True, blank=True)),
-                ('ages', MedicalForms.utils.IntegerRangeField(null=True, blank=True)),
+                ('ages', MedicalForms.utils.MyCharField(max_length=20, blank=True)),
                 ('emergency_contact_name', MedicalForms.utils.MyCharField(max_length=100, blank=True)),
                 ('emergency_contact_phone', MedicalForms.utils.MyCharField(max_length=20, blank=True)),
                 ('emergency_contact_relationship', MedicalForms.utils.MyCharField(max_length=20, blank=True)),

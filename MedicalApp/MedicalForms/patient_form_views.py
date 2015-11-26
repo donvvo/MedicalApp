@@ -1,3 +1,4 @@
+from django.core.exceptions import PermissionDenied
 from django.core.urlresolvers import reverse, reverse_lazy
 from django.shortcuts import redirect
 from django.views.generic import UpdateView
@@ -27,7 +28,12 @@ class PatientFormBaseView(LoginRequiredMixin, UpdateView):
         if self.assigned:
             return response
         else:
-            return redirect(reverse('users:patient_profile', kwargs={'user_id': self.user_id}))
+            # Only doctors or staff can assign forms
+            if request.user.groups.filter(name="Doctors").exists() or request.user.is_staff:
+                self.initial_form.save()
+                return redirect(reverse('users:patient_profile', kwargs={'user_id': self.user_id}))
+            else:
+                raise PermissionDenied
 
     def get_object(self):
         objects = self.model.objects.filter(pk=self.user_id)
@@ -36,7 +42,8 @@ class PatientFormBaseView(LoginRequiredMixin, UpdateView):
             return objects.get()
         else:
             self.assigned = False
-            return self.model(pk=self.user_id).save()
+            self.initial_form = self.model(pk=self.user_id)
+            return self.initial_form
 
     def get_success_url(self):
         return reverse_lazy('users:patient_profile', kwargs={'user_id': self.object.patient.user.pk})
