@@ -18,6 +18,7 @@ SCALE_CHOICES = (
 @python_2_unicode_compatible
 class NeckDisability(models.Model):
     patient = models.OneToOneField(Patient, primary_key=True)
+    last_modified = models.DateTimeField(auto_now=True)
 
     question_1 = MyRadioField(max_length=2, choices=SCALE_CHOICES)
     question_2 = MyRadioField(max_length=2, choices=SCALE_CHOICES)

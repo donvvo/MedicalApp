@@ -95,7 +95,7 @@ class Examinations(models.Model):
 @python_2_unicode_compatible
 class AccidentHistory(models.Model):
     patient = models.OneToOneField(Patient, primary_key=True)
-    today_date = models.DateTimeField(auto_now_add=True)
+    last_modified = models.DateTimeField(auto_now=True)
     description_and_location = MyTextField()
     road_condition = MySelectField(max_length=10,
                                       choices=ROAD_CONDITION_CHOICES)

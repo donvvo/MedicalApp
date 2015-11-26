@@ -6,13 +6,13 @@ from .models import *
 class PatientInformationForm(forms.ModelForm):
     class Meta:
         model = PatientInformation
-        exclude = ('patient', 'last_modified', 'today_date')
+        exclude = ('patient', 'last_modified')
 
 
 class HealthHistoryForm(forms.ModelForm):
     class Meta:
         model = HealthHistory
-        exclude = ('patient', 'today_date')
+        exclude = ('patient', 'last_modified')
         widgets = {
             'general': forms.CheckboxSelectMultiple(),
             'muscle_joint': forms.CheckboxSelectMultiple(),
@@ -29,7 +29,7 @@ class HealthHistoryForm(forms.ModelForm):
 class AccidentHistoryForm(forms.ModelForm):
     class Meta:
         model = AccidentHistory
-        exclude = ('patient', 'today_date')
+        exclude = ('patient', 'last_modified')
         widgets = {
             'passengers': forms.CheckboxSelectMultiple(),
             'body_part_collision': forms.CheckboxSelectMultiple(),
@@ -49,7 +49,7 @@ class AccidentHistoryForm(forms.ModelForm):
 class TMJScreeningForm(forms.ModelForm):
     class Meta:
         model = TMJScreening
-        exclude = ('patient', )
+        exclude = ('patient', 'last_modified')
         widgets = {
             'pain': forms.CheckboxSelectMultiple(),
             'symptom': forms.CheckboxSelectMultiple()
@@ -59,13 +59,13 @@ class TMJScreeningForm(forms.ModelForm):
 class LowerExtremityForm(forms.ModelForm):
     class Meta:
         model = LowerExtremity
-        exclude = ('patient', )
+        exclude = ('patient', 'last_modified')
 
 
 class UpperExtremityForm(forms.ModelForm):
     class Meta:
         model = UpperExtremity
-        exclude = ('patient', )
+        exclude = ('patient', 'last_modified')
 
 
 class NeckDisabilityForm(forms.ModelForm):

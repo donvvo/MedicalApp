@@ -89,7 +89,7 @@ class PreviousConditions(models.Model):
 @python_2_unicode_compatible
 class HealthHistory(models.Model):
     patient = models.OneToOneField(Patient, primary_key=True)
-    today_date = models.DateTimeField(auto_now_add=True, blank=True)
+    last_modified = models.DateTimeField(auto_now=True)
     general = models.ManyToManyField(General, blank=True)
     muscle_joint = models.ManyToManyField(MuscleJoint, blank=True)
     skin = models.ManyToManyField(Skin, blank=True)
