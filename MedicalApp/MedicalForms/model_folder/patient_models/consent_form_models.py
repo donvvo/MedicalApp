@@ -8,6 +8,7 @@ from MedicalAppointments.models import Patient
 @python_2_unicode_compatible
 class ChiropracticTreatment(models.Model):
     patient = models.OneToOneField(Patient, primary_key=True)
+    last_modified = models.DateTimeField(auto_now=True)
     signature = MyCharField(max_length=50)
     date = MyDateTimeField()
     name = MyCharField(max_length=50)
@@ -19,6 +20,7 @@ class ChiropracticTreatment(models.Model):
 @python_2_unicode_compatible
 class PhysiotherapyTreatment(models.Model):
     patient = models.OneToOneField(Patient, primary_key=True)
+    last_modified = models.DateTimeField(auto_now=True)
     signature = MyCharField(max_length=50)
     date = MyDateTimeField()
     name = MyCharField(max_length=50)
@@ -30,6 +32,7 @@ class PhysiotherapyTreatment(models.Model):
 @python_2_unicode_compatible
 class MassageTreatment(models.Model):
     patient = models.OneToOneField(Patient, primary_key=True)
+    last_modified = models.DateTimeField(auto_now=True)
     signature = MyCharField(max_length=50)
     date = MyDateTimeField()
     name = MyCharField(max_length=50)
@@ -41,6 +44,7 @@ class MassageTreatment(models.Model):
 @python_2_unicode_compatible
 class MedicalAuthorization(models.Model):
     patient = models.OneToOneField(Patient, primary_key=True)
+    last_modified = models.DateTimeField(auto_now=True)
     TO = MyCharField(max_length=100)
     RE = MyCharField(max_length=100)
     date = MyDateTimeField()
@@ -54,6 +58,7 @@ class MedicalAuthorization(models.Model):
 @python_2_unicode_compatible
 class ExchangeInformation(models.Model):
     patient = models.OneToOneField(Patient, primary_key=True)
+    last_modified = models.DateTimeField(auto_now=True)
     physician_name = MyCharField(max_length=50)
     physician_address = MyCharField(max_length=50)
     physician_phone = MyCharField(max_length=50)
@@ -85,6 +90,7 @@ class ExchangeInformation(models.Model):
 @python_2_unicode_compatible
 class AuthorizationAndDirection(models.Model):
     patient = models.OneToOneField(Patient, primary_key=True)
+    last_modified = models.DateTimeField(auto_now=True)
     TO = MyCharField(max_length=100)
     FROM = MyCharField(max_length=100)
     patient_name = MyCharField(max_length=100)
@@ -108,6 +114,7 @@ class AuthorizationAndDirection(models.Model):
 @python_2_unicode_compatible
 class Section47(models.Model):
     patient = models.OneToOneField(Patient, primary_key=True)
+    last_modified = models.DateTimeField(auto_now=True)
     date = MyDateTimeField()
     patient_name = MyCharField(max_length=100)
     patient_signature = MyCharField(max_length=100)
@@ -121,6 +128,7 @@ class Section47(models.Model):
 @python_2_unicode_compatible
 class StatutoryAccidentsBenefits(models.Model):
     patient = models.OneToOneField(Patient, primary_key=True)
+    last_modified = models.DateTimeField(auto_now=True)
     date = MyDateTimeField()
     patient_name = MyCharField(max_length=100)
     patient_signature = MyCharField(max_length=100)

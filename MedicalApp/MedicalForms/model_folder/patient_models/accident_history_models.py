@@ -100,7 +100,7 @@ class AccidentHistory(models.Model):
     road_condition = MySelectField(max_length=10,
                                       choices=ROAD_CONDITION_CHOICES)
     anticipation_of_accident = MyNullBooleanField()
-    time_of_the_day = MyDateTimeField()
+    time_of_the_day = MyTimeField()
     patient_vehicle = MyCharField(max_length=30)
     patient_vehicle_speed = MyIntegerField()
     other_vehicle = MyCharField(max_length=30)

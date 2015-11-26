@@ -282,11 +282,13 @@ Accident History
         <div class="form-group">
         <label class="control-label">Did any part of your body collide with any objects? (check all that apply): </label>
         {% for checkbox in form.body_part_collision %}
-            <div class="checkbox">
-                <label>
-                    {{checkbox.tag}}
-                    {{checkbox.choice_label}}
-                </label>
+            <div class="col-sm-6">
+                <div class="checkbox">
+                    <label>
+                        {{checkbox.tag}}
+                        {{checkbox.choice_label}}
+                    </label>
+                </div>
             </div>
         {% endfor %}
         </div>
@@ -468,7 +470,7 @@ Accident History
         <div class="form-group">
         {{form.examination_date.errors}}
         <label class="control-label">Date: </label>
-        {{form.examination_date}}
+        <i class="fa fa-calendar-o">{{form.examination_date}}</i>
         </div>
     </div>
 </div>
@@ -521,7 +523,7 @@ Accident History
         <div class="form-group">
         {{form.doctor_date.errors}}
         <label class="control-label">Date: </label>
-        {{form.doctor_date}}
+        <i class="fa fa-calendar-o">{{form.doctor_date}}</i>
         </div>
     </div>
 </div>

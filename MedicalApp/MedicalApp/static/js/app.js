@@ -32,9 +32,8 @@ $(function() {
     rearEndLoop();
 
     $('.time-input').timepicker({
-        'disableTextInput': true,
-        'minTime': '6:00am',
-        'maxTime': '9:00pm'
+        'minTime': '12:00am',
+        'maxTime': '11:30pm'
     });
 
     $(".datepicker").datepicker();

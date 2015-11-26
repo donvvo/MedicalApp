@@ -10,10 +10,10 @@ TMJ Screening
 <div class="row">
     <div class="col-sm-12">
         <div class="form-group">
-           <label class="control-label">DOI</label><br>
-        {{form.doi.error}}
+           <label class="control-label">DOI:</label><br>
+        {{form.doi.errors}}
 
-        {{form.doi}}
+        <i class="fa fa-calendar-o">{{form.doi}}</i>
         </div>
     </div>
 </div>
@@ -25,34 +25,36 @@ TMJ Screening
 
 <div class="row">
     <div class="col-sm-12">
-    <label class="control-label">Pain</label><br>
+    <label class="control-label">Pain:</label><br>
     {% for checkbox in form.pain %}
-    <div class="checkbox">
-	<label>
-    {{checkbox.tag}}
-    {{checkbox.choice_label}}
-	</label>
+    <div class="col-sm-6">
+      <div class="checkbox">
+        <label>
+          {{checkbox.tag}}
+          {{checkbox.choice_label}}
+        </label>
+      </div>
     </div>
     {% endfor %}
-
-        {{form.pain.error}}
+    {{form.pain.errors}}
 
     </div>
 </div>
-
+<br>
 <div class="row">
     <div class="col-sm-12">
-        <label class="control-label">Symptoms</label><br>
+        <label class="control-label">Symptoms:</label><br>
     {% for checkbox in form.symptom %}
-    <div class="checkbox">
-	<label>
-    {{checkbox.tag}}
-    {{checkbox.choice_label}}
-	</label>
+    <div class="col-sm-6">
+      <div class="checkbox">
+        <label>
+          {{checkbox.tag}}
+          {{checkbox.choice_label}}
+        </label>
+      </div>
     </div>
     {% endfor %}
-
-        {{form.symptom.error}}
+    {{form.symptom.errors}}
 
 
     </div>
@@ -60,111 +62,58 @@ TMJ Screening
 
 <br>
 <div class="row">
-                <div class="col-sm-2">
-                    <img class="img-responsive" src="{% static 'img/pain-pattern-1.png' %}" alt="//">
-                </div>
-                <div class="col-sm-2">
-                    <img class="img-responsive" src="{% static 'img/pain-pattern-2.png' %}" alt="//">
-                    <select class="form-control">
-                      <option>Mild</option>
-                      <option>Moderate</option>
-                      <option>Severe</option>
-                    </select>
-                    <select class="form-control">
-                      <option>B</option>
-                      <option>D</option>
-                      <option>N</option>
-                      <option>P</option>
-                      <option>S</option>
-                      <option>T</option>
-                      <option>R</option>
-                    </select>
-                </div>
-                <div class="col-sm-2">
-                    <img class="img-responsive" src="{% static 'img/pain-pattern-3.png' %}" alt="//">
-                    <select class="form-control">
-                      <option>Mild</option>
-                      <option>Moderate</option>
-                      <option>Severe</option>
-                    </select>
-                    <select class="form-control">
-                      <option>B</option>
-                      <option>D</option>
-                      <option>N</option>
-                      <option>P</option>
-                      <option>S</option>
-                      <option>T</option>
-                      <option>R</option>
-                    </select>
-                </div>
-                <div class="col-sm-2">
-                    <img class="img-responsive" src="{% static 'img/pain-pattern-4.png' %}" alt="//">
-                    <select class="form-control">
-                      <option>Mild</option>
-                      <option>Moderate</option>
-                      <option>Severe</option>
-                    </select>
-                    <select class="form-control">
-                      <option>B</option>
-                      <option>D</option>
-                      <option>N</option>
-                      <option>P</option>
-                      <option>S</option>
-                      <option>T</option>
-                      <option>R</option>
-                    </select>
-                </div>
-                <div class="col-sm-2">
-                    <img class="img-responsive" src="{% static 'img/pain-pattern-5.png' %}" alt="//">
-                    <select class="form-control">
-                      <option>Mild</option>
-                      <option>Moderate</option>
-                      <option>Severe</option>
-                    </select>
-                    <select class="form-control">
-                      <option>B</option>
-                      <option>D</option>
-                      <option>N</option>
-                      <option>P</option>
-                      <option>S</option>
-                      <option>T</option>
-                      <option>R</option>
-                    </select>
-                </div>
-            </div>
+  <div class="col-sm-2">
+      <img class="img-responsive" src="{% static 'img/pain-pattern-1.png' %}" alt="//">
+  </div>
+  <div class="col-sm-2">
+      <img class="img-responsive" src="{% static 'img/pain-pattern-2.png' %}" alt="//">
+  </div>
+  <div class="col-sm-2">
+      <img class="img-responsive" src="{% static 'img/pain-pattern-3.png' %}" alt="//">
+  </div>
+  <div class="col-sm-2">
+      <img class="img-responsive" src="{% static 'img/pain-pattern-4.png' %}" alt="//">
+  </div>
+  <div class="col-sm-2">
+      <img class="img-responsive" src="{% static 'img/pain-pattern-5.png' %}" alt="//">
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-2 col-sm-offset-2">
+      {{form.pain_level_1}}
+      {{form.pain_level_1.errors}}
+      {{form.pain_description_1}}
+      {{form.pain_description_1.errors}}
+  </div>
+  <div class="col-sm-2">
+      {{form.pain_level_2}}
+      {{form.pain_level_2.errors}}
+      {{form.pain_description_2}}
+      {{form.pain_description_2.errors}}
+  </div>
+  <div class="col-sm-2">
+      {{form.pain_level_3}}
+      {{form.pain_level_3.errors}}
+      {{form.pain_description_3}}
+      {{form.pain_description_3.errors}}
+  </div>
+  <div class="col-sm-2">
+      {{form.pain_level_4}}
+      {{form.pain_level_4.errors}}
+      {{form.pain_description_4}}
+      {{form.pain_description_4.errors}}
+  </div>
+</div>
+<br>
 <div class="row">
     <div class="col-sm-12">
-        <p>Rate your pain intensity (0 is NO PAIN and 10 is MOST SEVERE PAIN)</p>
+        <label for="">Rate your pain intensity (0 is NO PAIN and 10 is MOST SEVERE PAIN)</label><br>
+        {% for button in form.pain_intensity %}
         <label class="radio-inline">
-          <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 1
+          {{button}}
         </label>
-        <label class="radio-inline">
-          <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 2
-        </label>
-        <label class="radio-inline">
-          <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 3
-        </label>
-        <label class="radio-inline">
-          <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 4
-        </label>
-        <label class="radio-inline">
-          <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 5
-        </label>
-        <label class="radio-inline">
-          <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 6
-        </label>
-        <label class="radio-inline">
-          <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 7
-        </label>
-        <label class="radio-inline">
-          <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 8
-        </label>
-        <label class="radio-inline">
-          <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 9
-        </label>
-        <label class="radio-inline">
-          <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 10
-        </label>
+        {% endfor %}
+        {{form.pain_intensity.errors}}
     </div>
 </div>
 <br>
@@ -172,12 +121,14 @@ TMJ Screening
 <div class="row">
     <div class="col-sm-12">
         <div class="form-group">
-           <label class="control-label">Signature</label><br>
+           <label class="control-label">Signature:</label><br>
         {{form.signature.error}}
 
         {{form.signature}}
         </div>
     </div>
 </div>
+
+{{form.non_field_errors}}
 
 {% endblock form_content %}
