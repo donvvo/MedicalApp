@@ -16,16 +16,14 @@ Plan of Management
     </div>
 </div>
 <div class="row">
-    <div class="col-sm-12">
+    <div class="col-sm-6">
         <div class="form-group">
             {{form.start_date.errors}}
             <label class="control-label">Start Date: </label>
             {{form.start_date}}
         </div>
     </div>
-</div>
-<div class="row">
-    <div class="col-sm-12">
+    <div class="col-sm-6">
         <div class="form-group">
             {{form.end_date.errors}}
             <label class="control-label">End Date: </label>
@@ -34,15 +32,14 @@ Plan of Management
     </div>
 </div>
 <div class="row">
-    <div class="col-sm-12">
+    <div class="col-sm-6">
         <div class="form-group">
             {{form.ffs_poc.errors}}
+            <label class="control-label">FFS or POC? </label>
             {{form.ffs_poc}}
         </div>
     </div>
-</div>
-<div class="row">
-    <div class="col-sm-12">
+    <div class="col-sm-6">
         <div class="form-group">
             {{form.poc_detail.errors}}
             <label class="control-label">POC: </label>
@@ -51,49 +48,49 @@ Plan of Management
     </div>
 </div>
 <div class="row">
-    <div class="col-sm-12">
+    <div class="col-sm-6">
         <div class="form-group">
             {{form.duration_week.errors}}
-            <label class="control-label">Duration: </label>
+            <label class="control-label">Duration (/week): </label>
             {{form.duration_week}}
         </div>
     </div>
-</div>
-<div class="row">
-    <div class="col-sm-12">
+    <div class="col-sm-6">
         <div class="form-group">
             {{form.for_week.errors}}
-            <label class="control-label">for </label>
+            <label class="control-label">for (weeks) </label>
             {{form.for_week}}
         </div>
     </div>
 </div>
 <div class="row">
-    <div class="col-sm-12">
+    <div class="col-sm-4">
         <div class="form-group">
             {{form.acu_mass.errors}}
-            <label class="control-label">#ACU: </label>
+            <label class="control-label">#ACU.: </label>
             {{form.acu_mass}}
         </div>
     </div>
-</div>
-<div class="row">
-    <div class="col-sm-12">
+    <div class="col-sm-4">
         <div class="form-group">
             {{form.acu_week.errors}}
-            <label class="control-label">Week </label>
+            <label class="control-label">Mass.(/week): </label>
             {{form.acu_week}}
         </div>
     </div>
-</div>
-<div class="row">
-    <div class="col-sm-12">
+    <div class="col-sm-4">
         <div class="form-group">
             {{form.acu_for_week.errors}}
-            <label class="control-label">for </label>
+            <label class="control-label">for (weeks): </label>
             {{form.acu_for_week}}
         </div>
     </div>
+</div>
+<br>
+<br>
+<div class="row">
+    <h5>Diagnosis</h5>
+    <hr>
 </div>
 <div class="row">
     <div class="col-sm-12">
@@ -141,16 +138,14 @@ Plan of Management
     </div>
 </div>
 <div class="row">
-    <div class="col-sm-12">
+    <div class="col-sm-6">
         <div class="form-group">
             {{form.dob.errors}}
             <label class="control-label">DOB: </label>
             {{form.dob}}
         </div>
     </div>
-</div>
-<div class="row">
-    <div class="col-sm-12">
+    <div class="col-sm-6">
         <div class="form-group">
             {{form.claim_number.errors}}
             <label class="control-label">CLAIM #: </label>
@@ -158,16 +153,26 @@ Plan of Management
         </div>
     </div>
 </div>
+<br>
+<br>
 <div class="row">
-    <div class="col-sm-12">
+    <div class="col-sm-6">
+        <h5>Modalities</h5>
+    </div>
+    <div class="col-sm-6">
+        <h5>Region(s) &amp; Settings</h5>
+    </div>
+</div>
+<hr>
+<div class="row">
+    <div class="col-sm-6 form-inline">
         <div class="form-group">
             {{form.ice_heat.errors}}
+            <label class="control-label">ICE or HEAT: </label>
             {{form.ice_heat}}
         </div>
     </div>
-</div>
-<div class="row">
-    <div class="col-sm-12">
+    <div class="col-sm-6">
         <div class="form-group">
             {{form.ice_heat_region.errors}}
             {{form.ice_heat_region}}
@@ -175,16 +180,14 @@ Plan of Management
     </div>
 </div>
 <div class="row">
-    <div class="col-sm-12">
+    <div class="col-sm-6 form-inline">
         <div class="form-group">
             {{form.laser.errors}}
-            <label class="control-label">Laser: </label>
+            <label class="control-label">Laser (J): </label>
             {{form.laser}}
         </div>
     </div>
-</div>
-<div class="row">
-    <div class="col-sm-12">
+    <div class="col-sm-6">
         <div class="form-group">
             {{form.laser_region.errors}}
             {{form.laser_region}}
@@ -192,40 +195,21 @@ Plan of Management
     </div>
 </div>
 <div class="row">
-    <div class="col-sm-12">
+    <div class="col-sm-3 form-inline">
         <div class="form-group">
             {{form.ultrasound.errors}}
-            <label class="control-label">Laser: </label>
+            <label class="control-label">Ultrasound: </label>
             {{form.ultrasound}}
         </div>
     </div>
-</div>
-<div class="row">
-    <div class="col-sm-12">
+    <div class="col-sm-3 form-inline">
         <div class="form-group">
             {{form.ultrasound_percent.errors}}
             {{form.ultrasound_percent}}
+            <label class="control-label">%</label>
         </div>
     </div>
-</div>
-<div class="row">
-    <div class="col-sm-12">
-        <div class="form-group">
-            {{form.ultrasound_w.errors}}
-            {{form.ultrasound_w}}
-        </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-sm-12">
-        <div class="form-group">
-            {{form.ultrasound_min.errors}}
-            {{form.ultrasound_min}}
-        </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-sm-12">
+    <div class="col-sm-6">
         <div class="form-group">
             {{form.ultrasound_region.errors}}
             {{form.ultrasound_region}}
@@ -233,38 +217,60 @@ Plan of Management
     </div>
 </div>
 <div class="row">
-    <div class="col-sm-12">
+    <div class="col-sm-6 form-inline">
+        <div class="form-group">
+            {{form.ultrasound_w.errors}}
+            {{form.ultrasound_w}}
+            <label class="control-label">w / cm2</label>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-6 form-inline">
+        <div class="form-group">
+            {{form.ultrasound_min.errors}}
+            {{form.ultrasound_min}}
+            <label class="control-label">min</label>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-6">
         <div class="form-group">
             {{form.ifc.errors}}
             <label class="control-label">IFC: </label>
             {{form.ifc}}
         </div>
     </div>
-</div>
-<div class="row">
-    <div class="col-sm-12">
+    <div class="col-sm-6">
         <div class="form-group">
             {{form.ifc_region.errors}}
             {{form.ifc_region}}
         </div>
     </div>
 </div>
+<br>
+<br>
 <div class="row">
-    <div class="col-sm-12">
+    <div class="col-sm-6">
         <div class="form-group">
-            {{form.ems_russian.errors}}
             <label class="control-label">EMS/RUSSIAN: </label>
-            {{form.ems_russian}}
         </div>
+    </div>
+    <div class="col-sm-6">
+        {{form.ems_russian.errors}}
+        {{form.ems_russian}}
     </div>
 </div>
 <div class="row">
-    <div class="col-sm-12">
+    <div class="col-sm-6">
         <div class="form-group">
-            {{form.microcurrent.errors}}
             <label class="control-label">MICROCURRENT: </label>
-            {{form.microcurrent}}
         </div>
+    </div>
+     <div class="col-sm-6">
+        {{form.microcurrent.errors}}
+        {{form.microcurrent}}
     </div>
 </div>
 <div class="row">

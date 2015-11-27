@@ -1,7 +1,7 @@
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
 
-from .utils import *
+from ...utils import *
 from MedicalAppointments.models import Patient
 
 
@@ -31,7 +31,7 @@ IFC_CHOICES = (
 @python_2_unicode_compatible
 class PlanOfManagement(models.Model):
     patient = models.OneToOneField(Patient, primary_key=True)
-    today_date = models.DateTimeField(auto_now_add=True)
+    last_modified = models.DateTimeField(auto_now=True)
     name = MyCharField(max_length=50)
     start_date = MyDateTimeField()
     end_date = MyDateTimeField()
