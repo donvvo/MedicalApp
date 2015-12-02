@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% load static %}
+{% load has_group %}
 
 {% block content %}
 
@@ -9,7 +10,7 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-12 text-right">
-            {% if request.user.is_staff %}
+            {% if request.user.is_staff or request.user|has_group:"Clinics" %}
                 <a href="{% url 'medical_appointments:clinic_profile_edit' object.url_name %}" class="btn btn-default btn-hover-bg"><span>Edit Profile</span></a>
             {% endif %}
             </div>
@@ -36,7 +37,7 @@
                             <span>Specialty</span>
                             {% if object.description %}
                                 <p>{{object.description}}</p>
-                            {% elif request.user.is_staff %}
+                            {% elif request.user.is_staff or request.user. %}
                                 <p><a href="{% url 'medical_appointments:clinic_profile_edit' object.url_name %}">Please add description</a></p>
                             {% endif %}
                         </div>

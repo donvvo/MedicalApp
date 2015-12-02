@@ -30,3 +30,6 @@ class User(AbstractUser):
     def add_to_doctors_group(self):
         self.groups.add(Group.objects.get(name='Doctors'))
 
+    def add_to_clinics_group(self):
+        self.groups.add(Group.objects.get(name='Clinics'))
+

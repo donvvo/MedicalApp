@@ -11,9 +11,14 @@ from django.views.generic import DetailView, ListView, UpdateView, CreateView, T
 from django.utils import timezone
 
 from braces.views import LoginRequiredMixin, StaffuserRequiredMixin, GroupRequiredMixin
+from allauth.account.utils import complete_signup
+from allauth.account import app_settings
 
 from .models import Booking, DoctorSpecialty, Clinic, Doctor
 from .utils import get_clinics_by_specialty, get_time_table
+from .forms import ClinicUserSignupForm, ClinicForm
+from MedicalApp.utils import MultipleFormsView
+from MedicalApp.users.models import User
 
 
 class PatientOnlyMixin(LoginRequiredMixin, GroupRequiredMixin):
@@ -158,7 +163,7 @@ class ClinicProfileView(LoginRequiredMixin, DetailView):
 class ClinicProfileEditView(LoginRequiredMixin, UpdateView):
     model = Clinic
     template_name = "medicalappointments/clinic_edit.html"
-    fields = ('name', 'phone', 'email', 'description', 'city', 'address', 'postal_code',
+    fields = ('name', 'phone', 'description', 'city', 'address', 'postal_code',
         'start_time_mon', 'end_time_mon', 'start_time_tue', 'end_time_tue',
         'start_time_wed', 'end_time_wed', 'start_time_thurs', 'end_time_thurs',
         'start_time_fri', 'end_time_fri', 'start_time_sat', 'end_time_sat',
@@ -176,7 +181,6 @@ class ClinicProfileEditView(LoginRequiredMixin, UpdateView):
             return redirect(reverse('medical_appointments:clinic_list'))
         elif request.POST.get('DeleteDoctor'):
             doctor = get_object_or_404(Doctor, user_id=request.POST.get('doctor_id'))
-            print doctor
             doctor.clinic = None
             doctor.save()
 
@@ -184,14 +188,34 @@ class ClinicProfileEditView(LoginRequiredMixin, UpdateView):
         return super(ClinicProfileEditView, self).post(request, *args, **kwargs)
 
 
-class ClinicProfileCreateView(LoginRequiredMixin, CreateView):
-    model = Clinic
+class ClinicProfileCreateView(LoginRequiredMixin, MultipleFormsView):
     template_name = "medicalappointments/clinic_create.html"
-    fields = ('name', 'phone', 'email', 'description', 'city', 'address', 'postal_code',
-        'start_time_mon', 'end_time_mon', 'start_time_tue', 'end_time_tue',
-        'start_time_wed', 'end_time_wed', 'start_time_thurs', 'end_time_thurs',
-        'start_time_fri', 'end_time_fri', 'start_time_sat', 'end_time_sat',
-        'start_time_sun', 'end_time_sun')
+    form_classes = {
+        'user_signup': ClinicUserSignupForm,
+        'clinic_signup': ClinicForm
+    }
+
+    def get_form_initial(self):
+        user = User()
+        self.form_initial = {
+            'user': user,
+            'clinic': Clinic(user=user)
+        }
+
+    def forms_valid(self, forms):
+        user = forms['user_signup']
+        user = user.save(self.request)
+        clinic = self.form_classes['clinic_signup'](self.request.POST, instance=Clinic(user=user))
+        clinic = clinic.save()
+        user.first_name = 'Clinic Admin'
+        user.add_to_clinics_group()
+        user.save()
+        return complete_signup(self.request, user,
+                       app_settings.EMAIL_VERIFICATION,
+                       self.get_success_url())
+
+    def get_success_url(self):
+        return reverse("medical_appointments:clinic_list")
 
 
 class AddDoctorView(LoginRequiredMixin, StaffuserRequiredMixin, TemplateView):

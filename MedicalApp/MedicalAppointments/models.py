@@ -10,8 +10,8 @@ from MedicalForms.utils import *
 @python_2_unicode_compatible
 class Clinic(models.Model):
     name = MyCharField(max_length=100, primary_key=True, placeholder='Clinic Name')
+    user = models.ForeignKey(users_model.User)
     phone = MyCharField(max_length=20, placeholder='Phone Number')
-    email = MyEmailField(placeholder='Email Address')
     description = MyTextField(placeholder='Description')
     city = MyCharField(max_length=20, placeholder='City')
     address = MyCharField(max_length=200, placeholder='Address')

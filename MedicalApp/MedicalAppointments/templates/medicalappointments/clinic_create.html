@@ -37,25 +37,50 @@
                             <div class="row">
                                 <div class="col-sm-12">
                                     <div class="form-group">
-                                        {% for error in form.name.errors %}
+                                        {% for error in forms.user_signup.email.errors %}
+                                          <span class="errorlist">{{error}}</span>
+                                        {% endfor %}
+                                        <label for="" class="sr-only">Email</label>
+                                        {{forms.user_signup.email}}
+                                    </div>
+                                    <div class="form-group">
+                                        {% for error in forms.user_signup.password1.errors %}
+                                          <span class="errorlist">{{error}}</span>
+                                        {% endfor %}
+                                        <label for="" class="sr-only">Password</label>
+                                        {{forms.user_signup.password1}}
+                                    </div>
+                                    <div class="form-group">
+                                        {% for error in forms.user_signup.password2.errors %}
+                                          <span class="errorlist">{{error}}</span>
+                                        {% endfor %}
+                                        <label for="" class="sr-only">Confirm Password</label>
+                                        {{forms.user_signup.password2}}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        {% for error in forms.clinic_signup.name.errors %}
                                           <span class="errorlist">{{error}}</span>
                                         {% endfor %}
                                         <label for="name" class="sr-only">Name</label>
-                                        {{form.name}}
+                                        {{forms.clinic_signup.name}}
                                     </div>
                                     <div class="form-group">
-                                        {% for error in form.phone.errors %}
+                                        {% for error in forms.clinic_signup.phone.errors %}
                                           <span class="errorlist">{{error}}</span>
                                         {% endfor %}
                                         <label for="phone" class="sr-only">Phone number</label>
-                                        {{form.phone}}
+                                        {{forms.clinic_signup.phone}}
                                     </div>
                                     <div class="form-group">
-                                        {% for error in form.email.errors %}
+                                        {% for error in forms.clinic_signup.email.errors %}
                                           <span class="errorlist">{{error}}</span>
                                         {% endfor %}
                                         <label for="email" class="sr-only">Email</label>
-                                        {{form.email}}
+                                        {{forms.clinic_signup.email}}
                                     </div>
                                 </div>
                             </div>
@@ -63,11 +88,11 @@
                             <div class="row">
                                 <div class="col-sm-12">
                                     <div class="form-group">
-                                        {% for error in form.description.errors %}
+                                        {% for error in forms.clinic_signup.description.errors %}
                                           <span class="errorlist">{{error}}</span>
                                         {% endfor %}
                                         <label for="description" class="sr-only">Description</label>
-                                        <i class="glyphicon glyphicon-pencil">{{form.description}}</i>
+                                        <i class="glyphicon glyphicon-pencil">{{forms.clinic_signup.description}}</i>
                                     </div>
                                 </div>
                             </div>
@@ -83,28 +108,30 @@
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        {% for error in form.address.errors %}
+                                        {{forms.clinic_signup.address.error}}
+                                        {{forms.clinic_signup.address.errors}}
+                                        {% for error in forms.clinic_signup.address.errors %}
                                           <span class="errorlist">{{error}}</span>
                                         {% endfor %}
                                         <label for="address1" class="sr-only">Address 1</label>
-                                        {{form.address}}
+                                        {{forms.clinic_signup.address}}
                                     </div>
                                     <div class="form-group">
-                                        {% for error in form.city.errors %}
+                                        {% for error in forms.clinic_signup.city.errors %}
                                           <span class="errorlist">{{error}}</span>
                                         {% endfor %}
                                         <label for="postal" class="sr-only">City</label>
-                                        {{form.city}}
+                                        {{forms.clinic_signup.city}}
                                     </div>
 
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        {% for error in form.postal_code.errors %}
+                                        {% for error in forms.clinic_signup.postal_code.errors %}
                                           <span class="errorlist">{{error}}</span>
                                         {% endfor %}
                                         <label for="postal" class="sr-only">Postal Code</label>
-                                        {{form.postal_code}}
+                                        {{forms.clinic_signup.postal_code}}
                                     </div>
 
                                 </div>
@@ -122,18 +149,18 @@
                                             <div class="col-sm-2"><h6>Monday</h6></div>
                                             <div class="col-sm-5">
                                                 <div class="form-group">
-                                                    {% for error in form.start_time.errors %}
+                                                    {% for error in forms.clinic_signup.start_time.errors %}
                                                       <span class="errorlist">{{error}}</span>
                                                     {% endfor %}
-                                                    {{form.start_time_mon}}
+                                                    {{forms.clinic_signup.start_time_mon}}
                                                 </div>
                                             </div>
                                             <div class="col-sm-5">
-                                                {% for error in form.end_time.errors %}
+                                                {% for error in forms.clinic_signup.end_time.errors %}
                                                       <span class="errorlist">{{error}}</span>
                                                     {% endfor %}
                                                 <div class="form-group">
-                                                    {{form.end_time_mon}}
+                                                    {{forms.clinic_signup.end_time_mon}}
                                                 </div>
                                             </div>
                                         </div>
@@ -141,18 +168,18 @@
                                             <div class="col-sm-2"><h6>TUESDAY</h6></div>
                                             <div class="col-sm-5">
                                                 <div class="form-group">
-                                                    {% for error in form.start_time.errors %}
+                                                    {% for error in forms.clinic_signup.start_time.errors %}
                                                       <span class="errorlist">{{error}}</span>
                                                     {% endfor %}
-                                                    {{form.start_time_tue}}
+                                                    {{forms.clinic_signup.start_time_tue}}
                                                 </div>
                                             </div>
                                             <div class="col-sm-5">
-                                                {% for error in form.end_time.errors %}
+                                                {% for error in forms.clinic_signup.end_time.errors %}
                                                       <span class="errorlist">{{error}}</span>
                                                     {% endfor %}
                                                 <div class="form-group">
-                                                    {{form.end_time_tue}}
+                                                    {{forms.clinic_signup.end_time_tue}}
                                                 </div>
                                             </div>
                                         </div>
@@ -160,18 +187,18 @@
                                             <div class="col-sm-2"><h6>WEDNESDAY</h6></div>
                                             <div class="col-sm-5">
                                                 <div class="form-group">
-                                                    {% for error in form.start_time.errors %}
+                                                    {% for error in forms.clinic_signup.start_time.errors %}
                                                       <span class="errorlist">{{error}}</span>
                                                     {% endfor %}
-                                                    {{form.start_time_wed}}
+                                                    {{forms.clinic_signup.start_time_wed}}
                                                 </div>
                                             </div>
                                             <div class="col-sm-5">
-                                                {% for error in form.end_time.errors %}
+                                                {% for error in forms.clinic_signup.end_time.errors %}
                                                       <span class="errorlist">{{error}}</span>
                                                     {% endfor %}
                                                 <div class="form-group">
-                                                    {{form.end_time_wed}}
+                                                    {{forms.clinic_signup.end_time_wed}}
                                                 </div>
                                             </div>
                                         </div>
@@ -179,18 +206,18 @@
                                             <div class="col-sm-2"><h6>THURSDAY</h6></div>
                                             <div class="col-sm-5">
                                                 <div class="form-group">
-                                                    {% for error in form.start_time.errors %}
+                                                    {% for error in forms.clinic_signup.start_time.errors %}
                                                       <span class="errorlist">{{error}}</span>
                                                     {% endfor %}
-                                                    {{form.start_time_thurs}}
+                                                    {{forms.clinic_signup.start_time_thurs}}
                                                 </div>
                                             </div>
                                             <div class="col-sm-5">
-                                                {% for error in form.end_time.errors %}
+                                                {% for error in forms.clinic_signup.end_time.errors %}
                                                       <span class="errorlist">{{error}}</span>
                                                     {% endfor %}
                                                 <div class="form-group">
-                                                    {{form.end_time_thurs}}
+                                                    {{forms.clinic_signup.end_time_thurs}}
                                                 </div>
                                             </div>
                                         </div>
@@ -198,18 +225,18 @@
                                             <div class="col-sm-2"><h6>FRIDAY</h6></div>
                                             <div class="col-sm-5">
                                                 <div class="form-group">
-                                                    {% for error in form.start_time.errors %}
+                                                    {% for error in forms.clinic_signup.start_time.errors %}
                                                       <span class="errorlist">{{error}}</span>
                                                     {% endfor %}
-                                                    {{form.start_time_fri}}
+                                                    {{forms.clinic_signup.start_time_fri}}
                                                 </div>
                                             </div>
                                             <div class="col-sm-5">
-                                                {% for error in form.end_time.errors %}
+                                                {% for error in forms.clinic_signup.end_time.errors %}
                                                       <span class="errorlist">{{error}}</span>
                                                     {% endfor %}
                                                 <div class="form-group">
-                                                    {{form.end_time_fri}}
+                                                    {{forms.clinic_signup.end_time_fri}}
                                                 </div>
                                             </div>
                                         </div>
@@ -217,18 +244,18 @@
                                             <div class="col-sm-2"><h6>SATURDAY</h6></div>
                                             <div class="col-sm-5">
                                                 <div class="form-group">
-                                                    {% for error in form.start_time.errors %}
+                                                    {% for error in forms.clinic_signup.start_time.errors %}
                                                       <span class="errorlist">{{error}}</span>
                                                     {% endfor %}
-                                                    {{form.start_time_sat}}
+                                                    {{forms.clinic_signup.start_time_sat}}
                                                 </div>
                                             </div>
                                             <div class="col-sm-5">
-                                                {% for error in form.end_time.errors %}
+                                                {% for error in forms.clinic_signup.end_time.errors %}
                                                       <span class="errorlist">{{error}}</span>
                                                     {% endfor %}
                                                 <div class="form-group">
-                                                    {{form.end_time_sat}}
+                                                    {{forms.clinic_signup.end_time_sat}}
                                                 </div>
                                             </div>
                                         </div>
@@ -236,22 +263,22 @@
                                             <div class="col-sm-2"><h6>SUNDAY</h6></div>
                                             <div class="col-sm-5">
                                                 <div class="form-group">
-                                                    {% for error in form.start_time.errors %}
+                                                    {% for error in forms.clinic_signup.start_time.errors %}
                                                       <span class="errorlist">{{error}}</span>
                                                     {% endfor %}
-                                                    {{form.start_time_sun}}
+                                                    {{forms.clinic_signup.start_time_sun}}
                                                 </div>
                                             </div>
                                             <div class="col-sm-5">
-                                                {% for error in form.end_time.errors %}
+                                                {% for error in forms.clinic_signup.end_time.errors %}
                                                       <span class="errorlist">{{error}}</span>
                                                     {% endfor %}
                                                 <div class="form-group">
-                                                    {{form.end_time_sun}}
+                                                    {{forms.clinic_signup.end_time_sun}}
                                                 </div>
                                             </div>
                                         </div>
-                                        {{form.non_field_errors}}
+                                        {{forms.clinic_signup.non_field_errors}}
 
                             <br><hr><br>
                             <input type="submit" class="btn btn-default btn-color-border-solid" value="Save">
