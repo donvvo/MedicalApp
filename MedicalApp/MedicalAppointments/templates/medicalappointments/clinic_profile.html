@@ -63,9 +63,13 @@
                             </div>
                             <div id="hours" class="panel-collapse collapse" style="height: 0px;">
                                 <div class="panel-body">
-                                    <p>Monday</p>
-                                    <p>Tuesday</p>
-                                    <p>etc</p>
+                                    <p>Monday: {{object.start_time_mon}} - {{object.end_time_mon}}</p>
+                                    <p>Tuesday: {{object.start_time_tue}} - {{object.end_time_tue}}</p>
+                                    <p>Wednesday: {{object.start_time_wed}} - {{object.end_time_wed}}</p>
+                                    <p>Thursday: {{object.start_time_thurs}} - {{object.end_time_thurs}}</p>
+                                    <p>Friday: {{object.start_time_fri}} - {{object.end_time_fri}}</p>
+                                    <p>Saturday: {{object.start_time_sat}} - {{object.end_time_sat}}</p>
+                                    <p>Sunday: {{object.start_time_sun}} - {{object.end_time_sun}}</p>
                                 </div>
                             </div>
                         </div>
@@ -79,9 +83,9 @@
                             </div>
                             <div id="collapseService" class="panel-collapse collapse" style="height: 0px;">
                                 <div class="panel-body">
-                                    <p>{{object.address}},</p>
-                                    <p>{{object.city}}</p>
-                                    <p>{{object.postal_code}}</p>
+                                    <p>Address: {{object.address}},</p>
+                                    <p>City: {{object.city}}</p>
+                                    <p>Postal Code: {{object.postal_code}}</p>
                                 </div>
                             </div>
                         </div>
@@ -96,8 +100,8 @@
                             </div>
                             <div id="collapseBest" class="panel-collapse collapse">
                                 <div class="panel-body">
-                                    <p>{{object.phone}}</p>
-                                    <p>{{object.email}}</p>
+                                    <p>Phone: {{object.phone}}</p>
+                                    <p>Email: {{object.email}}</p>
                                 </div>
                             </div>
                         </div>

@@ -9,6 +9,8 @@ from django.http import HttpResponseBadRequest, HttpResponse, HttpResponseRedire
 from django.shortcuts import redirect, render_to_response, get_object_or_404
 from django.views.generic import DetailView, ListView, UpdateView, CreateView, TemplateView
 from django.utils import timezone
+from django.utils.decorators import method_decorator
+
 
 from braces.views import LoginRequiredMixin, StaffuserRequiredMixin, GroupRequiredMixin
 from allauth.account.utils import complete_signup
@@ -17,8 +19,15 @@ from allauth.account import app_settings
 from .models import Booking, DoctorSpecialty, Clinic, Doctor
 from .utils import get_clinics_by_specialty, get_time_table
 from .forms import ClinicUserSignupForm, ClinicForm
-from MedicalApp.utils import MultipleFormsView
+from MedicalApp.utils import MultipleFormsView, user_passes_test_with_kwargs
 from MedicalApp.users.models import User
+
+
+def clinic_or_staff(user, **kwargs):
+    clinicname = kwargs['clinicname']
+    clinic = get_object_or_404(Clinic, name=clinicname)
+    return user.is_staff or \
+        (user.groups.filter(name="Clinics").exists() and user == clinic.user)
 
 
 class PatientOnlyMixin(LoginRequiredMixin, GroupRequiredMixin):
@@ -145,7 +154,8 @@ class DoctorTimetableView(LoginRequiredMixin, ListView):
         return context
 
 
-class ClinicListView(LoginRequiredMixin, ListView):
+class ClinicListView(LoginRequiredMixin, StaffuserRequiredMixin, ListView):
+    raise_exception = True
     model = Clinic
     template_name = "medicalappointments/clinic_list.html"
 
@@ -153,6 +163,10 @@ class ClinicListView(LoginRequiredMixin, ListView):
 class ClinicProfileView(LoginRequiredMixin, DetailView):
     model = Clinic
     template_name = "medicalappointments/clinic_profile.html"
+
+    @method_decorator(user_passes_test_with_kwargs(clinic_or_staff))
+    def dispatch(self, request, *args, **kwargs):
+        return super(ClinicProfileView, self). dispatch(request, *args, **kwargs)
 
     def get_object(self):
         clinic_name = self.kwargs['clinicname']
@@ -168,6 +182,10 @@ class ClinicProfileEditView(LoginRequiredMixin, UpdateView):
         'start_time_wed', 'end_time_wed', 'start_time_thurs', 'end_time_thurs',
         'start_time_fri', 'end_time_fri', 'start_time_sat', 'end_time_sat',
         'start_time_sun', 'end_time_sun')
+
+    @method_decorator(user_passes_test_with_kwargs(clinic_or_staff))
+    def dispatch(self, request, *args, **kwargs):
+        return super(ClinicProfileEditView, self). dispatch(request, *args, **kwargs)
 
     def get_object(self):
         clinic_name = self.kwargs['clinicname']
@@ -188,7 +206,8 @@ class ClinicProfileEditView(LoginRequiredMixin, UpdateView):
         return super(ClinicProfileEditView, self).post(request, *args, **kwargs)
 
 
-class ClinicProfileCreateView(LoginRequiredMixin, MultipleFormsView):
+class ClinicProfileCreateView(LoginRequiredMixin, StaffuserRequiredMixin, MultipleFormsView):
+    raise_exception = True
     template_name = "medicalappointments/clinic_create.html"
     form_classes = {
         'user_signup': ClinicUserSignupForm,
@@ -218,9 +237,12 @@ class ClinicProfileCreateView(LoginRequiredMixin, MultipleFormsView):
         return reverse("medical_appointments:clinic_list")
 
 
-class AddDoctorView(LoginRequiredMixin, StaffuserRequiredMixin, TemplateView):
-    raise_exception = True
+class AddDoctorView(LoginRequiredMixin, TemplateView):
     template_name = "medicalappointments/add_doctor.html"
+
+    @method_decorator(user_passes_test_with_kwargs(clinic_or_staff))
+    def dispatch(self, request, *args, **kwargs):
+        return super(AddDoctorView, self). dispatch(request, *args, **kwargs)
 
     def get_context_data(self, **kwargs):
         context = super(AddDoctorView, self).get_context_data()
