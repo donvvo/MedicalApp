@@ -3,7 +3,8 @@
     "fields": {
         "city": "Toronto",
         "postal_code": "M5P 3H3",
-        "address": "1524 Bathurst St."
+        "address": "1524 Bathurst St.",
+        "user_id": 1
     },
     "model": "MedicalAppointments.clinic",
     "pk": "Test Clinic 1"
@@ -12,7 +13,8 @@
     "fields": {
         "city": "London",
         "postal_code": "N6G 5G8",
-        "address": "960 Western Rd."
+        "address": "960 Western Rd.",
+        "user_id": 1
     },
     "model": "MedicalAppointments.clinic",
     "pk": "Test Clinic 2"
@@ -21,7 +23,8 @@
     "fields": {
         "city": "Montreal",
         "postal_code": "4J6 3U4",
-        "address": "23 Centre St."
+        "address": "23 Centre St.",
+        "user_id": 1
     },
     "model": "MedicalAppointments.clinic",
     "pk": "Test Clinic 3"
@@ -30,7 +33,8 @@
     "fields": {
         "city": "Calgary",
         "postal_code": "E5P 4Y3",
-        "address": "250 Heath St."
+        "address": "250 Heath St.",
+        "user_id": 1
     },
     "model": "MedicalAppointments.clinic",
     "pk": "Test Clinic 4"
@@ -39,7 +43,8 @@
     "fields": {
         "city": "Mississauga",
         "postal_code": "M6J 3UG",
-        "address": "66 Toledo Rd."
+        "address": "66 Toledo Rd.",
+        "user_id": 1
     },
     "model": "MedicalAppointments.clinic",
     "pk": "Test Clinic 5"

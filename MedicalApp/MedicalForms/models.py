@@ -13,10 +13,10 @@ from .model_folder.patient_models.neck_disability_models import *
 from .model_folder.patient_models.consent_form_models import *
 
 from .model_folder.doctor_models.plan_of_management_models import *
-from .subjective_evaluation_models import *
+from .model_folder.doctor_models.subjective_evaluation_models import *
 from .assessment_models import *
 from .MVA_intake_models import *
-from .report_of_findings_models import ReportOfFindings
+from .model_folder.doctor_models.report_of_findings_models import *
 from .model_folder.doctor_models.acute_concussion_evaluation_models import *
 from .model_folder.patient_discharge_models import *
 from .model_folder.doctor_models.patient_specific_functional_scale_models import *

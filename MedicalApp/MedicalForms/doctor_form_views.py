@@ -5,8 +5,9 @@ from django.utils.decorators import method_decorator
 
 from braces.views import LoginRequiredMixin, GroupRequiredMixin
 
-from MedicalApp.utils import user_passes_test_with_kwargs
+from MedicalApp.utils import MultipleFormsView, user_passes_test_with_kwargs
 from MedicalApp.users.models import User
+from MedicalAppointments.models import Patient
 from .models import *
 from .forms import *
 
@@ -98,3 +99,56 @@ class DateSignatureAddView(DoctorFormBaseView):
 
     def get_success_url(self):
         return reverse_lazy('medical_forms:attendance-sheet', kwargs={'user_id': self.user_id})
+
+
+class SubjectiveEvaluationView(DoctorOnlyMixin, MultipleFormsView):
+    template_name = 'medicalforms/doctor_forms/subjective_evaluation.html'
+    form_classes = {
+        'headache': HeadacheQuestionForm,
+        'cervical': CervicalSpineQuestionForm,
+        'thoracic': ThoracicSpineQuestionForm,
+        'lumbar': LumbarSpineQuestionForm,
+        'joint1': PeripheralJointQuestion1Form,
+        'joint2': PeripheralJointQuestion2Form,
+        'joint3': PeripheralJointQuestion3Form,
+        'joint4': PeripheralJointQuestion4Form,
+        'others': OtherSubjectiveEvaluationQuestionForm
+    }
+
+    def get_form_initial(self):
+        model_list = [
+            ('headache', HeadacheQuestions),
+            ('cervical', CervicalSpineQuestions),
+            ('thoracic', ThoracicSpineQuestions),
+            ('lumbar', LumbarSpineQuestions),
+            ('joint1', PeripheralJointQuestions1),
+            ('joint2', PeripheralJointQuestions2),
+            ('joint3', PeripheralJointQuestions3),
+            ('joint4', PeripheralJointQuestions4),
+            ('others', OtherSubjectiveEvaluationQuestions)
+        ]
+
+        self.user_id = self.kwargs['user_id']
+        form_initial = {}
+
+        for key, model in model_list:
+            objects = model.objects.filter(pk=self.user_id)
+            if objects.exists():
+                form_initial[key] = objects.get()
+            else:
+                form_initial[key] = model(pk=self.user_id)
+
+        self.form_initial = form_initial
+
+    def get_context_data(self, **kwargs):
+        context = super(SubjectiveEvaluationView, self).get_context_data(**kwargs)
+
+        user_id = self.user_id
+        patient = get_object_or_404(Patient, user_id=user_id)
+
+        context['object'] = {'patient': patient}
+
+        return context
+
+    def get_success_url(self):
+        return reverse_lazy('users:patient_profile', kwargs={'user_id': self.user_id})

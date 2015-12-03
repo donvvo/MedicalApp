@@ -9,8 +9,8 @@ import MedicalForms.utils
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('MedicalAppointments', '0001_initial'),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
+        ('MedicalAppointments', '0003_remove_clinic_email'),
     ]
 
     operations = [
@@ -18,11 +18,11 @@ class Migration(migrations.Migration):
             name='AccidentHistory',
             fields=[
                 ('patient', models.OneToOneField(primary_key=True, serialize=False, to='MedicalAppointments.Patient')),
-                ('today_date', models.DateTimeField(auto_now_add=True)),
+                ('last_modified', models.DateTimeField(auto_now=True)),
                 ('description_and_location', MedicalForms.utils.MyTextField(blank=True)),
                 ('road_condition', MedicalForms.utils.MySelectField(max_length=10, blank=True)),
                 ('anticipation_of_accident', MedicalForms.utils.MyNullBooleanField()),
-                ('time_of_the_day', MedicalForms.utils.MyDateTimeField(null=True, blank=True)),
+                ('time_of_the_day', MedicalForms.utils.MyTimeField(null=True, blank=True)),
                 ('patient_vehicle', MedicalForms.utils.MyCharField(max_length=30, blank=True)),
                 ('patient_vehicle_speed', MedicalForms.utils.MyIntegerField(null=True, blank=True)),
                 ('other_vehicle', MedicalForms.utils.MyCharField(max_length=30, blank=True)),
@@ -64,8 +64,10 @@ class Migration(migrations.Migration):
             name='AcuteConcussionEvaluation',
             fields=[
                 ('patient', models.OneToOneField(primary_key=True, serialize=False, to='MedicalAppointments.Patient')),
-                ('dob', MedicalForms.utils.MyDateTimeField(null=True, blank=True)),
-                ('date_of_injury', MedicalForms.utils.MyDateTimeField(null=True, blank=True)),
+                ('last_modified', models.DateTimeField(auto_now=True)),
+                ('dob', MedicalForms.utils.MyDateField(null=True, blank=True)),
+                ('date_of_injury', MedicalForms.utils.MyDateField(null=True, blank=True)),
+                ('time_of_injury', MedicalForms.utils.MyTimeField(null=True, blank=True)),
                 ('reporter', MedicalForms.utils.MySelectField(max_length=10, blank=True)),
                 ('injury_description', MedicalForms.utils.MyCharField(max_length=100, blank=True)),
                 ('evidence_of_blow', MedicalForms.utils.MyNullBooleanField()),
@@ -129,7 +131,7 @@ class Migration(migrations.Migration):
                 ('list_other_disorders', MedicalForms.utils.MyCharField(max_length=200, blank=True)),
                 ('follow_up', MedicalForms.utils.MySelectField(max_length=30, blank=True)),
                 ('refferal_others', MedicalForms.utils.MyCharField(max_length=50, blank=True)),
-                ('completed_date', MedicalForms.utils.MyDateTimeField(auto_now_add=True, null=True)),
+                ('completed_date', MedicalForms.utils.MyDateField(null=True, blank=True)),
             ],
         ),
         migrations.CreateModel(
@@ -189,6 +191,7 @@ class Migration(migrations.Migration):
             name='AuthorizationAndDirection',
             fields=[
                 ('patient', models.OneToOneField(primary_key=True, serialize=False, to='MedicalAppointments.Patient')),
+                ('last_modified', models.DateTimeField(auto_now=True)),
                 ('TO', MedicalForms.utils.MyCharField(max_length=100, blank=True)),
                 ('FROM', MedicalForms.utils.MyCharField(max_length=100, blank=True)),
                 ('patient_name', MedicalForms.utils.MyCharField(max_length=100, blank=True)),
@@ -249,6 +252,7 @@ class Migration(migrations.Migration):
             name='ChiropracticTreatment',
             fields=[
                 ('patient', models.OneToOneField(primary_key=True, serialize=False, to='MedicalAppointments.Patient')),
+                ('last_modified', models.DateTimeField(auto_now=True)),
                 ('signature', MedicalForms.utils.MyCharField(max_length=50, blank=True)),
                 ('date', MedicalForms.utils.MyDateTimeField(null=True, blank=True)),
                 ('name', MedicalForms.utils.MyCharField(max_length=50, blank=True)),
@@ -327,6 +331,7 @@ class Migration(migrations.Migration):
             name='ExchangeInformation',
             fields=[
                 ('patient', models.OneToOneField(primary_key=True, serialize=False, to='MedicalAppointments.Patient')),
+                ('last_modified', models.DateTimeField(auto_now=True)),
                 ('physician_name', MedicalForms.utils.MyCharField(max_length=50, blank=True)),
                 ('physician_address', MedicalForms.utils.MyCharField(max_length=50, blank=True)),
                 ('physician_phone', MedicalForms.utils.MyCharField(max_length=50, blank=True)),
@@ -388,7 +393,7 @@ class Migration(migrations.Migration):
             name='HealthHistory',
             fields=[
                 ('patient', models.OneToOneField(primary_key=True, serialize=False, to='MedicalAppointments.Patient')),
-                ('today_date', models.DateTimeField(auto_now_add=True)),
+                ('last_modified', models.DateTimeField(auto_now=True)),
                 ('menstrual_flow', MedicalForms.utils.MySelectField(max_length=20, blank=True)),
                 ('pregnant', MedicalForms.utils.MyNullBooleanField()),
                 ('cnd_disorders', MedicalForms.utils.MyCharField(max_length=100, blank=True)),
@@ -458,6 +463,7 @@ class Migration(migrations.Migration):
             name='LowerExtremity',
             fields=[
                 ('patient', models.OneToOneField(primary_key=True, serialize=False, to='MedicalAppointments.Patient')),
+                ('last_modified', models.DateTimeField(auto_now=True)),
                 ('question_1', MedicalForms.utils.MyRadioField(max_length=2, blank=True)),
                 ('question_2', MedicalForms.utils.MyRadioField(max_length=2, blank=True)),
                 ('question_3', MedicalForms.utils.MyRadioField(max_length=2, blank=True)),
@@ -506,25 +512,10 @@ class Migration(migrations.Migration):
             ],
         ),
         migrations.CreateModel(
-            name='LumbarSpineQuestions',
-            fields=[
-                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('today_date', MedicalForms.utils.MyDateTimeField(auto_now_add=True, null=True)),
-                ('intensity', MedicalForms.utils.IntegerRangeField(null=True, blank=True)),
-                ('duration', MedicalForms.utils.MyCharField(max_length=20, blank=True)),
-                ('numbness', MedicalForms.utils.MyNullBooleanField()),
-                ('paraesthesia', MedicalForms.utils.MyNullBooleanField()),
-                ('aggravated_by_movements', MedicalForms.utils.MyCharField(max_length=100, blank=True)),
-                ('relieved_by', MedicalForms.utils.MyNullBooleanField()),
-            ],
-            options={
-                'abstract': False,
-            },
-        ),
-        migrations.CreateModel(
             name='MassageTreatment',
             fields=[
                 ('patient', models.OneToOneField(primary_key=True, serialize=False, to='MedicalAppointments.Patient')),
+                ('last_modified', models.DateTimeField(auto_now=True)),
                 ('signature', MedicalForms.utils.MyCharField(max_length=50, blank=True)),
                 ('date', MedicalForms.utils.MyDateTimeField(null=True, blank=True)),
                 ('name', MedicalForms.utils.MyCharField(max_length=50, blank=True)),
@@ -534,6 +525,7 @@ class Migration(migrations.Migration):
             name='MedicalAuthorization',
             fields=[
                 ('patient', models.OneToOneField(primary_key=True, serialize=False, to='MedicalAppointments.Patient')),
+                ('last_modified', models.DateTimeField(auto_now=True)),
                 ('TO', MedicalForms.utils.MyCharField(max_length=100, blank=True)),
                 ('RE', MedicalForms.utils.MyCharField(max_length=100, blank=True)),
                 ('date', MedicalForms.utils.MyDateTimeField(null=True, blank=True)),
@@ -763,6 +755,7 @@ class Migration(migrations.Migration):
             name='PhysiotherapyTreatment',
             fields=[
                 ('patient', models.OneToOneField(primary_key=True, serialize=False, to='MedicalAppointments.Patient')),
+                ('last_modified', models.DateTimeField(auto_now=True)),
                 ('signature', MedicalForms.utils.MyCharField(max_length=50, blank=True)),
                 ('date', MedicalForms.utils.MyDateTimeField(null=True, blank=True)),
                 ('name', MedicalForms.utils.MyCharField(max_length=50, blank=True)),
@@ -772,7 +765,7 @@ class Migration(migrations.Migration):
             name='PlanOfManagement',
             fields=[
                 ('patient', models.OneToOneField(primary_key=True, serialize=False, to='MedicalAppointments.Patient')),
-                ('today_date', models.DateTimeField(auto_now_add=True)),
+                ('last_modified', models.DateTimeField(auto_now=True)),
                 ('name', MedicalForms.utils.MyCharField(max_length=50, blank=True)),
                 ('start_date', MedicalForms.utils.MyDateTimeField(null=True, blank=True)),
                 ('end_date', MedicalForms.utils.MyDateTimeField(null=True, blank=True)),
@@ -867,7 +860,8 @@ class Migration(migrations.Migration):
             name='ReportOfFindings',
             fields=[
                 ('patient', models.OneToOneField(primary_key=True, serialize=False, to='MedicalAppointments.Patient')),
-                ('date_of_assessment', MedicalForms.utils.MyDateTimeField(null=True, blank=True)),
+                ('last_modified', models.DateTimeField(auto_now=True)),
+                ('date_of_assessment', MedicalForms.utils.MyDateField(null=True, blank=True)),
                 ('presenting_complaint', MedicalForms.utils.MyTextField(blank=True)),
                 ('examination_findings', MedicalForms.utils.MyTextField(blank=True)),
                 ('diagnosis', MedicalForms.utils.MyTextField(blank=True)),
@@ -878,10 +872,9 @@ class Migration(migrations.Migration):
                 ('prognosis', MedicalForms.utils.MyTextField(blank=True)),
                 ('estimated_time_for_recovery', MedicalForms.utils.MyCharField(max_length=20, blank=True)),
                 ('patient_questions', MedicalForms.utils.MyTextField(blank=True)),
-                ('signature_date', MedicalForms.utils.MyDateTimeField(null=True, blank=True)),
+                ('signature_date', MedicalForms.utils.MyDateField(null=True, blank=True)),
                 ('patient_signature', MedicalForms.utils.MyCharField(max_length=50, blank=True)),
                 ('clinician_signature', MedicalForms.utils.MyCharField(max_length=50, blank=True)),
-                ('doctor', models.OneToOneField(to='MedicalAppointments.Doctor')),
             ],
         ),
         migrations.CreateModel(
@@ -895,6 +888,7 @@ class Migration(migrations.Migration):
             name='Section47',
             fields=[
                 ('patient', models.OneToOneField(primary_key=True, serialize=False, to='MedicalAppointments.Patient')),
+                ('last_modified', models.DateTimeField(auto_now=True)),
                 ('date', MedicalForms.utils.MyDateTimeField(null=True, blank=True)),
                 ('patient_name', MedicalForms.utils.MyCharField(max_length=100, blank=True)),
                 ('patient_signature', MedicalForms.utils.MyCharField(max_length=100, blank=True)),
@@ -963,6 +957,7 @@ class Migration(migrations.Migration):
             name='StatutoryAccidentsBenefits',
             fields=[
                 ('patient', models.OneToOneField(primary_key=True, serialize=False, to='MedicalAppointments.Patient')),
+                ('last_modified', models.DateTimeField(auto_now=True)),
                 ('date', MedicalForms.utils.MyDateTimeField(null=True, blank=True)),
                 ('patient_name', MedicalForms.utils.MyCharField(max_length=100, blank=True)),
                 ('patient_signature', MedicalForms.utils.MyCharField(max_length=100, blank=True)),
@@ -978,32 +973,23 @@ class Migration(migrations.Migration):
             ],
         ),
         migrations.CreateModel(
-            name='ThoracicSpineQuestions',
-            fields=[
-                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('today_date', MedicalForms.utils.MyDateTimeField(auto_now_add=True, null=True)),
-                ('intensity', MedicalForms.utils.IntegerRangeField(null=True, blank=True)),
-                ('duration', MedicalForms.utils.MyCharField(max_length=20, blank=True)),
-                ('numbness', MedicalForms.utils.MyNullBooleanField()),
-                ('paraesthesia', MedicalForms.utils.MyNullBooleanField()),
-                ('aggravated_by_movements', MedicalForms.utils.MyCharField(max_length=100, blank=True)),
-                ('relieved_by', MedicalForms.utils.MyNullBooleanField()),
-                ('present_pain', models.ManyToManyField(to='MedicalForms.PresentPain', blank=True)),
-                ('user', models.ForeignKey(to=settings.AUTH_USER_MODEL)),
-            ],
-            options={
-                'abstract': False,
-            },
-        ),
-        migrations.CreateModel(
             name='TMJScreening',
             fields=[
                 ('patient', models.OneToOneField(primary_key=True, serialize=False, to='MedicalAppointments.Patient')),
-                ('today_date', MedicalForms.utils.MyDateTimeField(auto_now_add=True, null=True)),
+                ('last_modified', models.DateTimeField(auto_now=True)),
                 ('doi', MedicalForms.utils.MyDateTimeField(null=True, blank=True)),
                 ('signature', MedicalForms.utils.MyCharField(max_length=50, blank=True)),
-                ('pain', models.ManyToManyField(to='MedicalForms.Pain')),
-                ('symptom', models.ManyToManyField(to='MedicalForms.Symptom')),
+                ('pain_level_1', MedicalForms.utils.MySelectField(max_length=20, blank=True)),
+                ('pain_level_2', MedicalForms.utils.MySelectField(max_length=20, blank=True)),
+                ('pain_level_3', MedicalForms.utils.MySelectField(max_length=20, blank=True)),
+                ('pain_level_4', MedicalForms.utils.MySelectField(max_length=20, blank=True)),
+                ('pain_description_1', MedicalForms.utils.MySelectField(max_length=20, blank=True)),
+                ('pain_description_2', MedicalForms.utils.MySelectField(max_length=20, blank=True)),
+                ('pain_description_3', MedicalForms.utils.MySelectField(max_length=20, blank=True)),
+                ('pain_description_4', MedicalForms.utils.MySelectField(max_length=20, blank=True)),
+                ('pain_intensity', MedicalForms.utils.MyRadioField(max_length=2, blank=True)),
+                ('pain', models.ManyToManyField(to='MedicalForms.Pain', blank=True)),
+                ('symptom', models.ManyToManyField(to='MedicalForms.Symptom', blank=True)),
             ],
         ),
         migrations.CreateModel(
@@ -1033,6 +1019,7 @@ class Migration(migrations.Migration):
             name='UpperExtremity',
             fields=[
                 ('patient', models.OneToOneField(primary_key=True, serialize=False, to='MedicalAppointments.Patient')),
+                ('last_modified', models.DateTimeField(auto_now=True)),
                 ('question_1', MedicalForms.utils.MyRadioField(max_length=2, blank=True)),
                 ('question_2', MedicalForms.utils.MyRadioField(max_length=2, blank=True)),
                 ('question_3', MedicalForms.utils.MyRadioField(max_length=2, blank=True)),
@@ -1064,6 +1051,16 @@ class Migration(migrations.Migration):
         ),
         migrations.CreateModel(
             name='CervicalSpineQuestions',
+            fields=[
+                ('otherquestions_ptr', models.OneToOneField(parent_link=True, auto_created=True, primary_key=True, serialize=False, to='MedicalForms.OtherQuestions')),
+            ],
+            options={
+                'abstract': False,
+            },
+            bases=('MedicalForms.otherquestions',),
+        ),
+        migrations.CreateModel(
+            name='LumbarSpineQuestions',
             fields=[
                 ('otherquestions_ptr', models.OneToOneField(parent_link=True, auto_created=True, primary_key=True, serialize=False, to='MedicalForms.OtherQuestions')),
             ],
@@ -1112,6 +1109,16 @@ class Migration(migrations.Migration):
             },
             bases=('MedicalForms.peripheraljointbasequestions',),
         ),
+        migrations.CreateModel(
+            name='ThoracicSpineQuestions',
+            fields=[
+                ('otherquestions_ptr', models.OneToOneField(parent_link=True, auto_created=True, primary_key=True, serialize=False, to='MedicalForms.OtherQuestions')),
+            ],
+            options={
+                'abstract': False,
+            },
+            bases=('MedicalForms.otherquestions',),
+        ),
         migrations.AddField(
             model_name='treatmentplan',
             name='patient',
@@ -1154,16 +1161,6 @@ class Migration(migrations.Migration):
         ),
         migrations.AddField(
             model_name='otherquestions',
-            name='user',
-            field=models.ForeignKey(to=settings.AUTH_USER_MODEL),
-        ),
-        migrations.AddField(
-            model_name='lumbarspinequestions',
-            name='present_pain',
-            field=models.ManyToManyField(to='MedicalForms.PresentPain', blank=True),
-        ),
-        migrations.AddField(
-            model_name='lumbarspinequestions',
             name='user',
             field=models.ForeignKey(to=settings.AUTH_USER_MODEL),
         ),
@@ -1234,7 +1231,7 @@ class Migration(migrations.Migration):
         ),
         migrations.AddField(
             model_name='acuteconcussionevaluation',
-            name='dignosis',
+            name='diagnosis',
             field=models.ManyToManyField(to='MedicalForms.Diagnosis', blank=True),
         ),
         migrations.AddField(

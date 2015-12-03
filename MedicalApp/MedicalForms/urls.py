@@ -55,7 +55,7 @@ urlpatterns = [
         name="acute-concussion-eval"),
     url(r'^assessment/(?P<user_id>[\d]+)/$', views.AssessmentView.as_view(),
         name="assessment"),
-    url(r'^subjective-evaluation/$', views.SubjectiveEvaluationView.as_view(), name="subjective_eval"),
+    url(r'^subjective-evaluation/(?P<user_id>[\d]+)/$', views.SubjectiveEvaluationView.as_view(), name="subjective_eval"),
     url(r'^MVA-intake/$', views.MVAIntakeView.as_view(), name="MVA_intake"),
     url(r'^report-of-findings/(?P<user_id>[\d]+)/$', views.ReportOfFindingsView.as_view(),
         name="report-of-findings"),

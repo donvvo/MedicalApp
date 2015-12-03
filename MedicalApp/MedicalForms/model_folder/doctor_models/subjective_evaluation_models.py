@@ -1,9 +1,8 @@
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
-from django.core.validators import MaxValueValidator, MinValueValidator
 
-from .utils import *
-from MedicalApp.users.models import User
+from ...utils import *
+from MedicalAppointments.models import Patient
 
 
 # Subjective evaluation question choices
@@ -65,8 +64,8 @@ class OtherConditions(models.Model):
 
 # Subjective evaluation questions
 class BaseQuestions(models.Model):
-    user = models.ForeignKey(User)
-    today_date = MyDateTimeField(auto_now_add=True, blank=True)
+    patient = models.OneToOneField(Patient)
+    last_modified = models.DateTimeField(auto_now=True)
     present_pain = models.ManyToManyField(PresentPain, blank=True)
     intensity = IntegerRangeField(min_value=0, max_value=0)
     duration = MyCharField(max_length=20)
@@ -104,14 +103,14 @@ class CervicalSpineQuestions(OtherQuestions):
 
 
 @python_2_unicode_compatible
-class ThoracicSpineQuestions(BaseQuestions):
+class ThoracicSpineQuestions(OtherQuestions):
     def __str__(self):
         return 'Thoracic spine questions for ' + self.user.first_name
         + ' ' + self.user.last_name
 
 
 @python_2_unicode_compatible
-class LumbarSpineQuestions(BaseQuestions):
+class LumbarSpineQuestions(OtherQuestions):
     def __str__(self):
         return 'Lumbar spine questions for ' + self.user.first_name
         + ' ' + self.user.last_name
@@ -119,8 +118,8 @@ class LumbarSpineQuestions(BaseQuestions):
 
 class PeripheralJointBaseQuestions(BaseQuestions):
     type_of_pain = models.ManyToManyField(TypeOfPainOthers, blank=True)
-    radiation = models.NullBooleanField()
-    pain_location = models.CharField(max_length=100)
+    radiation = MyNullBooleanField()
+    pain_location = MyCharField(max_length=100)
     aggravated_by = models.ManyToManyField(AggravatedByPeripheralJoint,
                                            blank=True)
 
@@ -155,8 +154,8 @@ class PeripheralJointQuestions4(PeripheralJointBaseQuestions):
 
 @python_2_unicode_compatible
 class OtherSubjectiveEvaluationQuestions(models.Model):
-    users = models.ForeignKey(User)
-    today_date = models.DateTimeField(auto_now_add=True, blank=True)
+    patient = models.OneToOneField(Patient)
+    last_modified = models.DateTimeField(auto_now=True)
     conditions = models.ManyToManyField(OtherConditions, blank=True)
 
     def __str__(self):

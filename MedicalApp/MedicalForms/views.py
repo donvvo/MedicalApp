@@ -120,17 +120,3 @@ class MultipleFormsView(TemplateResponseMixin, BaseMultipleFormsView):
     A view for displaing several forms, and rendering a template response.
     """
 
-
-class SubjectiveEvaluationView(MultipleFormsView):
-    template_name = 'medicalforms/subjective_evaluation.html'
-    form_classes = {
-        'headache': HeadacheQuestionForm,
-        'cervical': CervicalSpineQuestionForm,
-        'thoracic': ThoracicSpineQuestionForm,
-        'lumbar': LumbarSpineQuestionForm,
-        'joint1': PeripheralJointQuestion1Form,
-        'joint2': PeripheralJointQuestion2Form,
-        'joint3': PeripheralJointQuestion3Form,
-        'joint4': PeripheralJointQuestion4Form,
-        'others': OtherSubjectiveEvaluationQuestionForm
-    }
