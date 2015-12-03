@@ -55,13 +55,14 @@ class MultipleFormsMixin(FormMixin):
         return dict([(key, klass(form_initial.get(key))) \
             for key, klass in form_classes.items()])
 
-    def get_forms_with_request(self, post_request, form_classes):
-        return dict([(key, klass(post_request)) \
+    def get_forms_with_request(self, post_request, file_request, form_classes):
+        return dict([(key, klass(post_request, file_request)) \
             for key, klass in form_classes.items()])
 
     def forms_valid(self, forms):
         for key, klass in self.form_classes.items():
-            obj = klass(self.request.POST, instance=self.form_initial.get(key))
+            print self.request.POST
+            obj = klass(self.request.POST, self.request.FILES, instance=self.form_initial.get(key))
             obj.save()
         return super(MultipleFormsMixin, self).form_valid(forms)
 
@@ -82,7 +83,7 @@ class ProcessMultipleFormsView(ProcessFormView):
     def post(self, request, *args, **kwargs):
         form_classes = self.get_form_classes()
         self.get_initial()
-        forms = self.get_forms_with_request(request.POST, form_classes)
+        forms = self.get_forms_with_request(request.POST, request.FILES, form_classes)
         if all([form.is_valid() for form in forms.values()]):
             return self.forms_valid(forms)
         else:

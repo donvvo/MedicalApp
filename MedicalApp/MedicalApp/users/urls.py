@@ -17,12 +17,6 @@ urlpatterns = [
         name='account_login'
     ),
 
-    url(
-        regex=r'^settings/$',
-        view=TemplateView.as_view(template_name="users/settings.html"),
-        name='settings'
-    ),
-
     # URL pattern for the DoctorSignupView
     url(
         regex=r'^signup/doctors/$',
@@ -77,6 +71,12 @@ urlpatterns = [
         name='patient_doctor_redirect'
     ),
 
+    url(
+        regex=r'^(?P<user_id>[\w.@+-]+)/settings$',
+        view=TemplateView.as_view(template_name="users/settings.html"),
+        name='settings'
+    ),
+
     # URL pattern for the UserDetailView
     url(
         regex=r'^patient/(?P<user_id>[\w.@+-]+)/$',
@@ -101,5 +101,11 @@ urlpatterns = [
         regex=r'^doctor/(?P<user_id>[\d]+)/edit/$',
         view=views.DoctorProfileEditView.as_view(),
         name='doctor_profile_edit'
+    ),
+
+    url(
+        regex=r'^password/change/$',
+        view=views.UserPasswordChangeView.as_view(),
+        name='password_change'
     ),
 ]

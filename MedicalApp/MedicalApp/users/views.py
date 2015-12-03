@@ -7,7 +7,7 @@ from django.views.generic import DetailView, ListView, RedirectView, UpdateView,
 from django.shortcuts import redirect, get_object_or_404
 
 from braces.views import LoginRequiredMixin, StaffuserRequiredMixin
-from allauth.account.views import LoginView, SignupView, FormView
+from allauth.account.views import LoginView, SignupView, FormView, PasswordChangeView
 from allauth.account.utils import complete_signup
 from allauth.account import app_settings
 
@@ -119,6 +119,12 @@ class DoctorProfileEditView(LoginRequiredMixin, MultipleFormsView):
             'doctor_settings': get_object_or_404(Doctor, pk=self.user_id)
         }
 
+    def get_context_data(self, **kwargs):
+        context = super(DoctorProfileEditView, self).get_context_data(**kwargs)
+        context['doctor_user'] = get_object_or_404(User, pk=self.user_id)
+        print context['doctor_user']
+        return context
+
     def post(self, request, *args, **kwargs):
         self.user_id = kwargs['user_id']
         if request.POST.get('Delete'):
@@ -226,3 +232,7 @@ class EmailDoctorView(LoginRequiredMixin, FormView):
         form.send_email(self.request.user.email, signin_uri)
         messages.add_message(self.request, messages.SUCCESS, 'Signup email sent to a doctor.')
         return super(EmailDoctorView, self).form_valid(form)
+
+
+class UserPasswordChangeView(PasswordChangeView):
+    success_url = reverse_lazy("users:account_logout")

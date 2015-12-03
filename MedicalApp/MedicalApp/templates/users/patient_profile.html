@@ -34,7 +34,11 @@
                 <div class="row">
                     <div class="col-sm-5 hidden-xs">
                         <figure>
+                            {% if object.image %}
+                            <img src="{{object.image.url}}" class="img-responsive" alt="">
+                            {% else %}
                             <img src="{% static 'img/profile-img.png' %}" class="img-responsive" alt="">
+                            {% endif %}
                         </figure>
                     </div>
                     <div class="col-sm-7">

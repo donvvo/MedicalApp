@@ -22,6 +22,7 @@
   <!-- Custom CSS -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.8.7/jquery.timepicker.min.css">
+    <link href="{% static 'css/fileinput.min.css' %}" media="all" rel="stylesheet" type="text/css" />
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
   <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -84,7 +85,7 @@
                 {% if not request.user.is_staff %}
                 <li><a href="{% url 'users:account_redirect' %}">Profile</a></li>
                 {% endif %}
-                <li><a href="{% url 'users:settings' %}">Settings</a></li>
+                <li><a href="{% url 'users:settings' request.user.pk %}">Settings</a></li>
                 <li><a href="{% url 'users:account_logout' %}">Logout</a></li>
               </ul>
             </li>
@@ -266,6 +267,11 @@
 
   <!-- Range Slider -->
   <script src="{% static 'js/vendors/bootstrap-slider.js' %}" ></script>
+
+  <script src="{% static 'js/plugins/canvas-to-blob.min.js' %}" type="text/javascript"></script>
+  <script src="{% static 'js/fileinput.min.js' %}" type="text/javascript"></script>
+  <!-- bootstrap.js below is only needed if you wish to use the feature of viewing details
+       of text file preview via modal dialog -->
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.8.7/jquery.timepicker.min.js" ></script>
 

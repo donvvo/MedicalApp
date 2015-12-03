@@ -16,17 +16,19 @@
         <div class="row">
             <div class="col-sm-10">
                 <div class="row">
+                    <form id="request" action="{{request.path}}" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
                     <div class="col-sm-3 text-center">
                         <figure>
-                            <img src="{% static 'img/doctor-profile-img.png' %}" class="img-responsive" alt="">
+                            {% if doctor_user.image %}
+                            <img id="preview" src="{{doctor_user.image.url}}" class="img-responsive" alt="">
+                            {% else %}
+                            <img id="preview" src="{% static 'img/profile-img.png' %}" class="img-responsive" alt="">
+                            {% endif %}
                         </figure>
-                        <a href="#" class="btn btn-default btn-color-bg btn-no-radius"><span>Change Photo</span></a>
+                        {{forms.user_settings.image}}
                     </div>
                     <div class="col-sm-8">
-
-
-                        <form id="request" action="{{request.path}}" method="post" accept-charset="utf-8">
-                        {% csrf_token %}
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="form-group">
@@ -121,3 +123,28 @@
 
 
 {% endblock content %}
+
+{% block javascript %}
+
+{{block.super}}
+
+<script>
+    $("#id_image").addClass('file-loading');
+    $("#id_image").fileinput({
+        browseClass: "btn btn-default btn-color-bg btn-no-radius",
+        browseLabel: "Change Photo",
+        showPreview: false,
+        showCaption: false,
+        showUpload: false,
+        showUploadedThumbs: false
+    });
+    $('#id_image').on('fileloaded', function(event, file, previewId, index, reader) {
+        $('#preview').attr('src', URL.createObjectURL(file));
+    });
+    $('#id_image').on('fileclear', function(event) {
+        console.log('remove');
+        $('#preview').attr('src', "{% static 'img/profile-img.png' %}");
+    });
+</script>
+
+{% endblock javascript %}
