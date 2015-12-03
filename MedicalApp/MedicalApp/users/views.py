@@ -138,8 +138,12 @@ class UserRedirectView(LoginRequiredMixin, RedirectView):
     permanent = False
 
     def get_redirect_url(self):
-        if self.request.user.is_staff or self.request.user.groups.filter(name="Clinics").exists():
+        if self.request.user.is_staff:
             return reverse('users:manage_main')
+        elif self.request.user.groups.filter(name="Clinics").exists():
+            clinic = get_object_or_404(Clinic, user=self.request.user)
+            return reverse("medical_appointments:clinic_profile",
+                       kwargs={"clinicname": clinic.name})
         else:
             return reverse("users:patient_doctor_redirect",
                            kwargs={"user_id": self.request.user.pk})
