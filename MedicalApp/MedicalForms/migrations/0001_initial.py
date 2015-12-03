@@ -249,6 +249,25 @@ class Migration(migrations.Migration):
             ],
         ),
         migrations.CreateModel(
+            name='CervicalSpineQuestions',
+            fields=[
+                ('patient', models.OneToOneField(primary_key=True, serialize=False, to='MedicalAppointments.Patient')),
+                ('last_modified', models.DateTimeField(auto_now=True)),
+                ('intensity', MedicalForms.utils.IntegerRangeField(null=True, blank=True)),
+                ('duration', MedicalForms.utils.MyCharField(max_length=20, blank=True)),
+                ('numbness', MedicalForms.utils.MyNullBooleanField()),
+                ('paraesthesia', MedicalForms.utils.MyNullBooleanField()),
+                ('aggravated_by_movements', MedicalForms.utils.MyCharField(max_length=100, blank=True)),
+                ('relieved_by', MedicalForms.utils.MyNullBooleanField()),
+                ('radiation', MedicalForms.utils.MyNullBooleanField()),
+                ('pain_location', MedicalForms.utils.MyCharField(max_length=100, blank=True)),
+                ('aggravated_by', models.ManyToManyField(to='MedicalForms.AggravatedByOthers', blank=True)),
+            ],
+            options={
+                'abstract': False,
+            },
+        ),
+        migrations.CreateModel(
             name='ChiropracticTreatment',
             fields=[
                 ('patient', models.OneToOneField(primary_key=True, serialize=False, to='MedicalAppointments.Patient')),
@@ -375,8 +394,8 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='HeadacheQuestions',
             fields=[
-                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('today_date', MedicalForms.utils.MyDateTimeField(auto_now_add=True, null=True)),
+                ('patient', models.OneToOneField(primary_key=True, serialize=False, to='MedicalAppointments.Patient')),
+                ('last_modified', models.DateTimeField(auto_now=True)),
                 ('intensity', MedicalForms.utils.IntegerRangeField(null=True, blank=True)),
                 ('duration', MedicalForms.utils.MyCharField(max_length=20, blank=True)),
                 ('numbness', MedicalForms.utils.MyNullBooleanField()),
@@ -512,6 +531,25 @@ class Migration(migrations.Migration):
             ],
         ),
         migrations.CreateModel(
+            name='LumbarSpineQuestions',
+            fields=[
+                ('patient', models.OneToOneField(primary_key=True, serialize=False, to='MedicalAppointments.Patient')),
+                ('last_modified', models.DateTimeField(auto_now=True)),
+                ('intensity', MedicalForms.utils.IntegerRangeField(null=True, blank=True)),
+                ('duration', MedicalForms.utils.MyCharField(max_length=20, blank=True)),
+                ('numbness', MedicalForms.utils.MyNullBooleanField()),
+                ('paraesthesia', MedicalForms.utils.MyNullBooleanField()),
+                ('aggravated_by_movements', MedicalForms.utils.MyCharField(max_length=100, blank=True)),
+                ('relieved_by', MedicalForms.utils.MyNullBooleanField()),
+                ('radiation', MedicalForms.utils.MyNullBooleanField()),
+                ('pain_location', MedicalForms.utils.MyCharField(max_length=100, blank=True)),
+                ('aggravated_by', models.ManyToManyField(to='MedicalForms.AggravatedByOthers', blank=True)),
+            ],
+            options={
+                'abstract': False,
+            },
+        ),
+        migrations.CreateModel(
             name='MassageTreatment',
             fields=[
                 ('patient', models.OneToOneField(primary_key=True, serialize=False, to='MedicalAppointments.Patient')),
@@ -575,30 +613,11 @@ class Migration(migrations.Migration):
             ],
         ),
         migrations.CreateModel(
-            name='OtherQuestions',
-            fields=[
-                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('today_date', MedicalForms.utils.MyDateTimeField(auto_now_add=True, null=True)),
-                ('intensity', MedicalForms.utils.IntegerRangeField(null=True, blank=True)),
-                ('duration', MedicalForms.utils.MyCharField(max_length=20, blank=True)),
-                ('numbness', MedicalForms.utils.MyNullBooleanField()),
-                ('paraesthesia', MedicalForms.utils.MyNullBooleanField()),
-                ('aggravated_by_movements', MedicalForms.utils.MyCharField(max_length=100, blank=True)),
-                ('relieved_by', MedicalForms.utils.MyNullBooleanField()),
-                ('radiation', MedicalForms.utils.MyNullBooleanField()),
-                ('pain_location', MedicalForms.utils.MyCharField(max_length=100, blank=True)),
-            ],
-            options={
-                'abstract': False,
-            },
-        ),
-        migrations.CreateModel(
             name='OtherSubjectiveEvaluationQuestions',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('today_date', models.DateTimeField(auto_now_add=True)),
+                ('last_modified', models.DateTimeField(auto_now=True)),
                 ('conditions', models.ManyToManyField(to='MedicalForms.OtherConditions', blank=True)),
-                ('users', models.ForeignKey(to=settings.AUTH_USER_MODEL)),
             ],
         ),
         migrations.CreateModel(
@@ -734,18 +753,48 @@ class Migration(migrations.Migration):
             ],
         ),
         migrations.CreateModel(
-            name='PeripheralJointBaseQuestions',
+            name='PeripheralJointQuestions1',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('today_date', MedicalForms.utils.MyDateTimeField(auto_now_add=True, null=True)),
-                ('intensity', MedicalForms.utils.IntegerRangeField(null=True, blank=True)),
-                ('duration', MedicalForms.utils.MyCharField(max_length=20, blank=True)),
-                ('numbness', MedicalForms.utils.MyNullBooleanField()),
-                ('paraesthesia', MedicalForms.utils.MyNullBooleanField()),
-                ('aggravated_by_movements', MedicalForms.utils.MyCharField(max_length=100, blank=True)),
-                ('relieved_by', MedicalForms.utils.MyNullBooleanField()),
-                ('radiation', models.NullBooleanField()),
-                ('pain_location', models.CharField(max_length=100)),
+                ('radiation', MedicalForms.utils.MyNullBooleanField()),
+                ('pain_location', MedicalForms.utils.MyCharField(max_length=100, blank=True)),
+                ('aggravated_by', models.ManyToManyField(to='MedicalForms.AggravatedByPeripheralJoint', blank=True)),
+            ],
+            options={
+                'abstract': False,
+            },
+        ),
+        migrations.CreateModel(
+            name='PeripheralJointQuestions2',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('radiation', MedicalForms.utils.MyNullBooleanField()),
+                ('pain_location', MedicalForms.utils.MyCharField(max_length=100, blank=True)),
+                ('aggravated_by', models.ManyToManyField(to='MedicalForms.AggravatedByPeripheralJoint', blank=True)),
+            ],
+            options={
+                'abstract': False,
+            },
+        ),
+        migrations.CreateModel(
+            name='PeripheralJointQuestions3',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('radiation', MedicalForms.utils.MyNullBooleanField()),
+                ('pain_location', MedicalForms.utils.MyCharField(max_length=100, blank=True)),
+                ('aggravated_by', models.ManyToManyField(to='MedicalForms.AggravatedByPeripheralJoint', blank=True)),
+            ],
+            options={
+                'abstract': False,
+            },
+        ),
+        migrations.CreateModel(
+            name='PeripheralJointQuestions4',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('radiation', MedicalForms.utils.MyNullBooleanField()),
+                ('pain_location', MedicalForms.utils.MyCharField(max_length=100, blank=True)),
+                ('aggravated_by', models.ManyToManyField(to='MedicalForms.AggravatedByPeripheralJoint', blank=True)),
             ],
             options={
                 'abstract': False,
@@ -973,6 +1022,26 @@ class Migration(migrations.Migration):
             ],
         ),
         migrations.CreateModel(
+            name='ThoracicSpineQuestions',
+            fields=[
+                ('patient', models.OneToOneField(primary_key=True, serialize=False, to='MedicalAppointments.Patient')),
+                ('last_modified', models.DateTimeField(auto_now=True)),
+                ('intensity', MedicalForms.utils.IntegerRangeField(null=True, blank=True)),
+                ('duration', MedicalForms.utils.MyCharField(max_length=20, blank=True)),
+                ('numbness', MedicalForms.utils.MyNullBooleanField()),
+                ('paraesthesia', MedicalForms.utils.MyNullBooleanField()),
+                ('aggravated_by_movements', MedicalForms.utils.MyCharField(max_length=100, blank=True)),
+                ('relieved_by', MedicalForms.utils.MyNullBooleanField()),
+                ('radiation', MedicalForms.utils.MyNullBooleanField()),
+                ('pain_location', MedicalForms.utils.MyCharField(max_length=100, blank=True)),
+                ('aggravated_by', models.ManyToManyField(to='MedicalForms.AggravatedByOthers', blank=True)),
+                ('present_pain', models.ManyToManyField(to='MedicalForms.PresentPain', blank=True)),
+            ],
+            options={
+                'abstract': False,
+            },
+        ),
+        migrations.CreateModel(
             name='TMJScreening',
             fields=[
                 ('patient', models.OneToOneField(primary_key=True, serialize=False, to='MedicalAppointments.Patient')),
@@ -1049,120 +1118,50 @@ class Migration(migrations.Migration):
                 ('choice', models.CharField(max_length=50)),
             ],
         ),
-        migrations.CreateModel(
-            name='CervicalSpineQuestions',
-            fields=[
-                ('otherquestions_ptr', models.OneToOneField(parent_link=True, auto_created=True, primary_key=True, serialize=False, to='MedicalForms.OtherQuestions')),
-            ],
-            options={
-                'abstract': False,
-            },
-            bases=('MedicalForms.otherquestions',),
-        ),
-        migrations.CreateModel(
-            name='LumbarSpineQuestions',
-            fields=[
-                ('otherquestions_ptr', models.OneToOneField(parent_link=True, auto_created=True, primary_key=True, serialize=False, to='MedicalForms.OtherQuestions')),
-            ],
-            options={
-                'abstract': False,
-            },
-            bases=('MedicalForms.otherquestions',),
-        ),
-        migrations.CreateModel(
-            name='PeripheralJointQuestions1',
-            fields=[
-                ('peripheraljointbasequestions_ptr', models.OneToOneField(parent_link=True, auto_created=True, primary_key=True, serialize=False, to='MedicalForms.PeripheralJointBaseQuestions')),
-            ],
-            options={
-                'abstract': False,
-            },
-            bases=('MedicalForms.peripheraljointbasequestions',),
-        ),
-        migrations.CreateModel(
-            name='PeripheralJointQuestions2',
-            fields=[
-                ('peripheraljointbasequestions_ptr', models.OneToOneField(parent_link=True, auto_created=True, primary_key=True, serialize=False, to='MedicalForms.PeripheralJointBaseQuestions')),
-            ],
-            options={
-                'abstract': False,
-            },
-            bases=('MedicalForms.peripheraljointbasequestions',),
-        ),
-        migrations.CreateModel(
-            name='PeripheralJointQuestions3',
-            fields=[
-                ('peripheraljointbasequestions_ptr', models.OneToOneField(parent_link=True, auto_created=True, primary_key=True, serialize=False, to='MedicalForms.PeripheralJointBaseQuestions')),
-            ],
-            options={
-                'abstract': False,
-            },
-            bases=('MedicalForms.peripheraljointbasequestions',),
-        ),
-        migrations.CreateModel(
-            name='PeripheralJointQuestions4',
-            fields=[
-                ('peripheraljointbasequestions_ptr', models.OneToOneField(parent_link=True, auto_created=True, primary_key=True, serialize=False, to='MedicalForms.PeripheralJointBaseQuestions')),
-            ],
-            options={
-                'abstract': False,
-            },
-            bases=('MedicalForms.peripheraljointbasequestions',),
-        ),
-        migrations.CreateModel(
-            name='ThoracicSpineQuestions',
-            fields=[
-                ('otherquestions_ptr', models.OneToOneField(parent_link=True, auto_created=True, primary_key=True, serialize=False, to='MedicalForms.OtherQuestions')),
-            ],
-            options={
-                'abstract': False,
-            },
-            bases=('MedicalForms.otherquestions',),
-        ),
         migrations.AddField(
             model_name='treatmentplan',
             name='patient',
             field=models.ForeignKey(to='MedicalAppointments.Patient'),
         ),
         migrations.AddField(
-            model_name='peripheraljointbasequestions',
-            name='aggravated_by',
-            field=models.ManyToManyField(to='MedicalForms.AggravatedByPeripheralJoint', blank=True),
-        ),
-        migrations.AddField(
-            model_name='peripheraljointbasequestions',
-            name='present_pain',
-            field=models.ManyToManyField(to='MedicalForms.PresentPain', blank=True),
-        ),
-        migrations.AddField(
-            model_name='peripheraljointbasequestions',
+            model_name='thoracicspinequestions',
             name='type_of_pain',
             field=models.ManyToManyField(to='MedicalForms.TypeOfPainOthers', blank=True),
         ),
         migrations.AddField(
-            model_name='peripheraljointbasequestions',
-            name='user',
-            field=models.ForeignKey(to=settings.AUTH_USER_MODEL),
-        ),
-        migrations.AddField(
-            model_name='otherquestions',
-            name='aggravated_by',
-            field=models.ManyToManyField(to='MedicalForms.AggravatedByOthers', blank=True),
-        ),
-        migrations.AddField(
-            model_name='otherquestions',
-            name='present_pain',
-            field=models.ManyToManyField(to='MedicalForms.PresentPain', blank=True),
-        ),
-        migrations.AddField(
-            model_name='otherquestions',
+            model_name='peripheraljointquestions4',
             name='type_of_pain',
             field=models.ManyToManyField(to='MedicalForms.TypeOfPainOthers', blank=True),
         ),
         migrations.AddField(
-            model_name='otherquestions',
-            name='user',
-            field=models.ForeignKey(to=settings.AUTH_USER_MODEL),
+            model_name='peripheraljointquestions3',
+            name='type_of_pain',
+            field=models.ManyToManyField(to='MedicalForms.TypeOfPainOthers', blank=True),
+        ),
+        migrations.AddField(
+            model_name='peripheraljointquestions2',
+            name='type_of_pain',
+            field=models.ManyToManyField(to='MedicalForms.TypeOfPainOthers', blank=True),
+        ),
+        migrations.AddField(
+            model_name='peripheraljointquestions1',
+            name='type_of_pain',
+            field=models.ManyToManyField(to='MedicalForms.TypeOfPainOthers', blank=True),
+        ),
+        migrations.AddField(
+            model_name='othersubjectiveevaluationquestions',
+            name='patient',
+            field=models.OneToOneField(to='MedicalAppointments.Patient'),
+        ),
+        migrations.AddField(
+            model_name='lumbarspinequestions',
+            name='present_pain',
+            field=models.ManyToManyField(to='MedicalForms.PresentPain', blank=True),
+        ),
+        migrations.AddField(
+            model_name='lumbarspinequestions',
+            name='type_of_pain',
+            field=models.ManyToManyField(to='MedicalForms.TypeOfPainOthers', blank=True),
         ),
         migrations.AddField(
             model_name='lumbar',
@@ -1210,11 +1209,6 @@ class Migration(migrations.Migration):
             field=models.ManyToManyField(to='MedicalForms.TypeOfPainHeadache', blank=True),
         ),
         migrations.AddField(
-            model_name='headachequestions',
-            name='user',
-            field=models.ForeignKey(to=settings.AUTH_USER_MODEL),
-        ),
-        migrations.AddField(
             model_name='elbow',
             name='main_form',
             field=models.OneToOneField(to='MedicalForms.MVAIntake'),
@@ -1223,6 +1217,16 @@ class Migration(migrations.Migration):
             model_name='datesignature',
             name='patient',
             field=models.ForeignKey(to='MedicalAppointments.Patient'),
+        ),
+        migrations.AddField(
+            model_name='cervicalspinequestions',
+            name='present_pain',
+            field=models.ManyToManyField(to='MedicalForms.PresentPain', blank=True),
+        ),
+        migrations.AddField(
+            model_name='cervicalspinequestions',
+            name='type_of_pain',
+            field=models.ManyToManyField(to='MedicalForms.TypeOfPainOthers', blank=True),
         ),
         migrations.AddField(
             model_name='cervical',

@@ -64,7 +64,7 @@ class OtherConditions(models.Model):
 
 # Subjective evaluation questions
 class BaseQuestions(models.Model):
-    patient = models.OneToOneField(Patient)
+    patient = models.OneToOneField(Patient, primary_key=True)
     last_modified = models.DateTimeField(auto_now=True)
     present_pain = models.ManyToManyField(PresentPain, blank=True)
     intensity = IntegerRangeField(min_value=0, max_value=0)
@@ -84,8 +84,7 @@ class HeadacheQuestions(BaseQuestions):
     aggravated_by = models.ManyToManyField(AggravatedByHeadache, blank=True)
 
     def __str__(self):
-        return 'Headache questions for ' + self.user.first_name
-        + ' ' + self.user.last_name
+        return 'Headache questions for ' + str(self.patient)
 
 
 class OtherQuestions(BaseQuestions):
@@ -94,26 +93,26 @@ class OtherQuestions(BaseQuestions):
     pain_location = MyCharField(max_length=100)
     aggravated_by = models.ManyToManyField(AggravatedByOthers, blank=True)
 
+    class Meta:
+        abstract = True
+
 
 @python_2_unicode_compatible
 class CervicalSpineQuestions(OtherQuestions):
     def __str__(self):
-        return 'Cervical spine questions for ' + self.user.first_name
-        + ' ' + self.user.last_name
+        return 'Cervical spine questions for ' + str(self.patient)
 
 
 @python_2_unicode_compatible
 class ThoracicSpineQuestions(OtherQuestions):
     def __str__(self):
-        return 'Thoracic spine questions for ' + self.user.first_name
-        + ' ' + self.user.last_name
+        return 'Thoracic spine questions for ' + str(self.patient)
 
 
 @python_2_unicode_compatible
 class LumbarSpineQuestions(OtherQuestions):
     def __str__(self):
-        return 'Lumbar spine questions for ' + self.user.first_name
-        + ' ' + self.user.last_name
+        return 'Lumbar spine questions for ' + str(self.patient)
 
 
 class PeripheralJointBaseQuestions(BaseQuestions):
@@ -123,33 +122,32 @@ class PeripheralJointBaseQuestions(BaseQuestions):
     aggravated_by = models.ManyToManyField(AggravatedByPeripheralJoint,
                                            blank=True)
 
+    class Meta:
+        abstract = True
+
 
 @python_2_unicode_compatible
 class PeripheralJointQuestions1(PeripheralJointBaseQuestions):
     def __str__(self):
-        return 'Peripheral joint 1 questions for ' + self.user.first_name
-        + ' ' + self.user.last_name
+        return 'Peripheral joint 1 questions for ' + str(self.patient)
 
 
 @python_2_unicode_compatible
 class PeripheralJointQuestions2(PeripheralJointBaseQuestions):
     def __str__(self):
-        return 'Peripheral joint 2 questions for ' + self.user.first_name
-        + ' ' + self.user.last_name
+        return 'Peripheral joint 2 questions for ' + str(self.patient)
 
 
 @python_2_unicode_compatible
 class PeripheralJointQuestions3(PeripheralJointBaseQuestions):
     def __str__(self):
-        return 'Peripheral joint 3 questions for ' + self.user.first_name
-        + ' ' + self.user.last_name
+        return 'Peripheral joint 3 questions for ' + str(self.patient)
 
 
 @python_2_unicode_compatible
 class PeripheralJointQuestions4(PeripheralJointBaseQuestions):
     def __str__(self):
-        return 'Peripheral joint 4 questions for ' + self.user.first_name
-        + ' ' + self.user.last_name
+        return 'Peripheral joint 4 questions for ' + str(self.patient)
 
 
 @python_2_unicode_compatible
@@ -159,8 +157,7 @@ class OtherSubjectiveEvaluationQuestions(models.Model):
     conditions = models.ManyToManyField(OtherConditions, blank=True)
 
     def __str__(self):
-        return 'Other subjective evaluation questions for ' + self.user.first_name
-        + ' ' + self.user.last_name
+        return 'Other subjective evaluation questions for ' + str(self.patient)
 
 
 

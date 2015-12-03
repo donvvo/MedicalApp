@@ -259,12 +259,9 @@ class ClinicProfileCreateView(LoginRequiredMixin, StaffuserRequiredMixin, Multip
         return reverse("home")
 
 
-class AddDoctorView(LoginRequiredMixin, TemplateView):
+class AddDoctorView(LoginRequiredMixin, GroupRequiredMixin, TemplateView):
     template_name = "medicalappointments/add_doctor.html"
-
-    @method_decorator(user_passes_test_with_kwargs(clinic_or_staff))
-    def dispatch(self, request, *args, **kwargs):
-        return super(AddDoctorView, self). dispatch(request, *args, **kwargs)
+    group_required = "Clinics"
 
     def get_context_data(self, **kwargs):
         context = super(AddDoctorView, self).get_context_data()

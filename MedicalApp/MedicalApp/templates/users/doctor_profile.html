@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load has_group %}
 
 {% block content %}
 
@@ -17,7 +18,7 @@
     <div class="container">
       <div class="row">
 	      <div class="col-sm-12 text-right">
-            {% if object.pk == request.user.pk or request.user.is_staff %}
+            {% if object.pk == request.user.pk or request.user.is_staff or request.user|has_group:"Clinics" %}
                 <a href="{% url 'users:doctor_profile_edit' object.pk %}" class="btn btn-default btn-hover-bg"><span>Edit Profile</span></a>
             {% endif %}
 	      </div>

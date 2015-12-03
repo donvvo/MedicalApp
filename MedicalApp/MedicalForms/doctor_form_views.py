@@ -138,6 +138,8 @@ class SubjectiveEvaluationView(DoctorOnlyMixin, MultipleFormsView):
             else:
                 form_initial[key] = model(pk=self.user_id)
 
+        print form_initial
+
         self.form_initial = form_initial
 
     def get_context_data(self, **kwargs):

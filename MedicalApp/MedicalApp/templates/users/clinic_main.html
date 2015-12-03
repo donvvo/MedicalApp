@@ -7,9 +7,9 @@
 <!-- Page Titles -->
 <div class="page-title">
     <div class="container">
-	    <div class="section-title">
+        <div class="section-title">
         <h1>Welcome</h1>
-	    </div>
+        </div>
 
     </div>
 </div>
@@ -34,23 +34,6 @@
 
                 </a>
             </div>
-            {% if request.user.is_staff %}
-            <div class="col-sm-6 col-md-4">
-                <a href="{% url 'medical_appointments:clinic_list' %}" class="featured-item ct-icon">
-                    <figure>
-                        <img class="img-responsive" src="{% static 'img/features/featured-2.jpg' %}" alt="//">
-                        <div class="icon-image"><span class="glyphicon glyphicon-picture"></span></div>
-                    </figure>
-                    <div class="content text-center">
-                        <h4>Manage Clinics</h4>
-
-                    </div>
-
-                </a>
-            </div>
-            {% endif %}
-
-
            <div class="col-sm-6 col-md-4">
                 <a href="{% url 'users:patient_list' %}" class="featured-item ct-icon">
                     <figure>

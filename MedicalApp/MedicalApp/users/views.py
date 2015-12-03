@@ -6,7 +6,7 @@ from django.core.urlresolvers import reverse, reverse_lazy
 from django.views.generic import DetailView, ListView, RedirectView, UpdateView, TemplateView
 from django.shortcuts import redirect, get_object_or_404
 
-from braces.views import LoginRequiredMixin, StaffuserRequiredMixin
+from braces.views import LoginRequiredMixin, StaffuserRequiredMixin, GroupRequiredMixin
 from allauth.account.views import LoginView, SignupView, FormView, PasswordChangeView
 from allauth.account.utils import complete_signup
 from allauth.account import app_settings
@@ -21,16 +21,12 @@ class HomeView(LoginRequiredMixin, RedirectView):
     permanent = False
 
     def get_redirect_url(self):
-        if self.request.user.is_staff:
-            return reverse("users:manage_main")
-        elif self.request.user.groups.filter(name="Clinics").exists():
-            clinic = get_object_or_404(Clinic, user=self.request.user)
-            return reverse("medical_appointments:clinic_profile",
-                       kwargs={"clinicname": clinic.name})
-        elif self.request.user.groups.filter(name="Doctors").exists():
+        if self.request.user.groups.filter(name="Doctors").exists():
             return reverse("medical_appointments:timetable_doctor")
-        else:
+        elif self.request.user.groups.filter(name="Patients").exists():
             return reverse("medical_appointments:appointments")
+        else:
+            return reverse("users:manage_main")
 
 
 class UserLoginView(LoginView):
@@ -72,7 +68,8 @@ class PatientProfileView(LoginRequiredMixin, DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(PatientProfileView, self).get_context_data(**kwargs)
-        if self.request.user.groups.filter(name="Doctors").exists() or self.request.user.is_staff:
+        if self.request.user.groups.filter(name="Doctors").exists() or self.request.user.is_staff or\
+        self.request.user.groups.filter(name="Clinics").exists():
             context['form_access'] = True
         return context
 
@@ -141,12 +138,8 @@ class UserRedirectView(LoginRequiredMixin, RedirectView):
     permanent = False
 
     def get_redirect_url(self):
-        if self.request.user.is_staff:
+        if self.request.user.is_staff or self.request.user.groups.filter(name="Clinics").exists():
             return reverse('users:manage_main')
-        elif self.request.user.groups.filter(name="Clinics").exists():
-            clinic = get_object_or_404(Clinic, user=self.request.user)
-            return reverse("medical_appointments:clinic_profile",
-                       kwargs={"clinicname": clinic.name})
         else:
             return reverse("users:patient_doctor_redirect",
                            kwargs={"user_id": self.request.user.pk})
@@ -164,9 +157,10 @@ class PatientDoctorRedirectView(LoginRequiredMixin, RedirectView):
                            kwargs={"user_id": user_id})
 
 
-class PatientsListView(LoginRequiredMixin, StaffuserRequiredMixin, ListView):
+class PatientsListView(LoginRequiredMixin, GroupRequiredMixin, ListView):
     model = Patient
     template_name = "users/patient_list.html"
+    group_required = "Clinics"
     raise_exception = True
 
     def get_queryset(self):
@@ -178,23 +172,17 @@ class PatientsListView(LoginRequiredMixin, StaffuserRequiredMixin, ListView):
             return queryset.order_by('user__last_name')
 
 
-class ManageMainView(LoginRequiredMixin, TemplateView):
+class ManageMainView(LoginRequiredMixin, GroupRequiredMixin, TemplateView):
     template_name = "users/manage_main.html"
-
-    def dispatch(self, request, *args, **kwargs):
-        self.request.user.is_staff
-        if self.request.user.is_staff:
-            return super(ManageMainView, self).dispatch(request,
-                                                         *args, **kwargs)
-        else:
-            redirect_url = reverse("users:account_redirect")
-            return redirect(redirect_url)
+    group_required = "Clinics"
+    raise_exception = True
 
 
-class DoctorsListView(LoginRequiredMixin, StaffuserRequiredMixin, ListView):
+class DoctorsListView(LoginRequiredMixin, GroupRequiredMixin, ListView):
     model = Doctor
     template_name = "users/doctors_list.html"
     raise_exception = True
+    group_required = "Clinics"
 
     def get_context_data(self, **kwargs):
         context = super(DoctorsListView, self).get_context_data(**kwargs)
@@ -213,19 +201,11 @@ class DoctorsListView(LoginRequiredMixin, StaffuserRequiredMixin, ListView):
             return queryset.order_by('user__last_name')
 
 
-class EmailDoctorView(LoginRequiredMixin, FormView):
+class EmailDoctorView(LoginRequiredMixin, GroupRequiredMixin, FormView):
     template_name = "users/email_doctor.html"
     form_class = EmailDoctorForm
     success_url = reverse_lazy('users:doctors_list')
-
-    def dispatch(self, request, *args, **kwargs):
-        self.request.user.is_staff
-        if self.request.user.is_staff:
-            return super(EmailDoctorView, self).dispatch(request,
-                                                         *args, **kwargs)
-        else:
-            redirect_url = reverse("users:account_redirect")
-            return redirect(redirect_url)
+    group_required = "Clinics"
 
     def form_valid(self, form):
         signin_uri = self.request.build_absolute_uri(reverse("users:account_signup_doctors"))
