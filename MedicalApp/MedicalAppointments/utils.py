@@ -5,7 +5,6 @@ from django.utils import timezone
 
 from .models import Doctor
 
-TZ_UTC = pytz.utc
 local_tz = timezone.get_default_timezone()
 
 
@@ -50,7 +49,7 @@ def get_column_for_a_day(day, start_end_hour, min_hour, max_hour, interval, book
     booking_time = [booking.time for booking in bookings]
 
     column = []
-    timeslot_start = datetime.datetime.combine(day, min_hour).astimezone(TZ_UTC)
+    timeslot_start = datetime.datetime.combine(day, min_hour).astimezone(local_tz)
 
     time_row = timeslot_start
 
