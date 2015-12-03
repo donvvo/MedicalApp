@@ -54,6 +54,12 @@ class PatientSpecificView(DoctorFormBaseView):
     form_class = PatientSpecificForm
 
 
+class AcuteConcussionEvaluationView(DoctorFormBaseView):
+    template_name = 'medicalforms/doctor_forms/accute_concussion_eval.html'
+    model = AcuteConcussionEvaluation
+    form_class = AcuteConcussionEvaluationForm
+
+
 class AttendanceSheetView(DoctorOnlyMixin, TemplateView):
     template_name = 'medicalforms/doctor_forms/attendance_sheet.html'
 

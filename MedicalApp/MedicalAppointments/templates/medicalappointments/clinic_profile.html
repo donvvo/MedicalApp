@@ -126,7 +126,7 @@
                                                 <img class="media-object img-circle" src="{% static 'img/news/news-thumbnail-144x144-01.jpg' %}" alt="//">
                                             </a>
                                             <div class="media-body">
-                                                <h5 class="media-heading"><a href="blog-left-sidebar.html">{{doctor.user.first_name}} {{doctor.user.last_name}}</a></h5>
+                                                <h5 class="media-heading"><a href="{% url 'users:doctor_profile' doctor.user.pk %}">{{doctor.user.first_name}} {{doctor.user.last_name}}</a></h5>
                                                 <p class="media-meta">{{doctor.specialty}}</p>
                                             </div>
                                         </li>

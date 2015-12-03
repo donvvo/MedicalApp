@@ -1,7 +1,7 @@
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
 
-from .utils import *
+from ...utils import *
 from MedicalAppointments.models import Patient, Doctor
 
 
@@ -77,9 +77,12 @@ class Refferal(models.Model):
 @python_2_unicode_compatible
 class AcuteConcussionEvaluation(models.Model):
     patient = models.OneToOneField(Patient, primary_key=True)
-    dob = MyDateTimeField()
+    last_modified = models.DateTimeField(auto_now=True)
 
-    date_of_injury = MyDateTimeField()
+    dob = MyDateField()
+
+    date_of_injury = MyDateField()
+    time_of_injury = MyTimeField()
     reporter = MySelectField(max_length=10, choices=REPORTER_CHOICES)
     injury_description = MyCharField(max_length=100)
     evidence_of_blow = MyNullBooleanField()
@@ -156,13 +159,13 @@ class AcuteConcussionEvaluation(models.Model):
 
     list_other_disorders = MyCharField(max_length=200)
     red_flags = models.ManyToManyField(RedFlags, blank=True)
-    dignosis = models.ManyToManyField(Diagnosis, blank=True)
+    diagnosis = models.ManyToManyField(Diagnosis, blank=True)
     follow_up = MySelectField(max_length=30, choices=FOLLOW_UP_CHOICES)
     refferal = models.ManyToManyField(Refferal, blank=True)
     refferal_others = MyCharField(max_length=50)
 
     doctor = models.ForeignKey(Doctor, blank=True, null=True)
-    completed_date = MyDateTimeField(auto_now_add=True)
+    completed_date = MyDateField()
 
     def __str__(self):
         return 'Accute Concussion Evaluation for ' + str(self.patient) + ' by ' + str(self.doctor)

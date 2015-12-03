@@ -80,16 +80,3 @@ class MVAIntakeForm(forms.ModelForm):
     class Meta:
         model = MVAIntake
         exclude = ('user', 'today_date')
-
-
-class AcuteConcussionEvaluationForm(forms.ModelForm):
-    class Meta:
-        model = AcuteConcussionEvaluation
-        exclude = ('patient', 'doctor', 'completed_date')
-        widgets = {
-            'location_of_impact': forms.CheckboxSelectMultiple(),
-            'early_signs': forms.CheckboxSelectMultiple(),
-            'red_flags': forms.CheckboxSelectMultiple(),
-            'dignosis': forms.CheckboxSelectMultiple(),
-            'refferal': forms.CheckboxSelectMultiple(),
-        }

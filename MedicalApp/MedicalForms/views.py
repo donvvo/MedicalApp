@@ -68,15 +68,6 @@ class MVAIntakeView(FormView):
     form_class = MVAIntakeForm
 
 
-class AcuteConcussionEvaluationView(DoctorFormBaseView):
-    template_name = 'medicalforms/accute_concussion_eval.html'
-    model = AcuteConcussionEvaluation
-    form_class = AcuteConcussionEvaluationForm
-
-    def get_success_url(self):
-        return reverse_lazy('medical_forms:acute-concussion-eval', kwargs={'user_id': self.user_id})
-
-
 # From https://gist.github.com/michelts/1029336#file-gistfile1-py-L6
 class MultipleFormsMixin(FormMixin):
     """

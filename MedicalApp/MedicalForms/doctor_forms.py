@@ -41,3 +41,16 @@ class DateSignatureAddForm(forms.ModelForm):
         model = DateSignature
         exclude = ('patient', )
 
+
+class AcuteConcussionEvaluationForm(forms.ModelForm):
+    class Meta:
+        model = AcuteConcussionEvaluation
+        exclude = ('patient', 'last_modified')
+        widgets = {
+            'location_of_impact': forms.CheckboxSelectMultiple(),
+            'early_signs': forms.CheckboxSelectMultiple(),
+            'red_flags': forms.CheckboxSelectMultiple(),
+            'diagnosis': forms.CheckboxSelectMultiple(),
+            'refferal': forms.CheckboxSelectMultiple(),
+        }
+

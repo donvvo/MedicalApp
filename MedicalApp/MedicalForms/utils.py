@@ -127,6 +127,25 @@ class MyDateTimeField(models.DateTimeField):
         return super(MyDateTimeField, self).formfield(**defaults)
 
 
+class MyDateField(models.DateField):
+    def __init__(self, placeholder='', **kwargs):
+        kwargs['null'] = True
+        kwargs['blank'] = True
+        self.placeholder = placeholder
+        super(MyDateField, self).__init__(**kwargs)
+
+    def formfield(self, **kwargs):
+        defaults = {'widget': forms.DateInput(
+                attrs={
+                    'class': 'form-control datepicker hasDatePicker',
+                    'placeholder': self.placeholder
+                }
+            )}
+        defaults.update(kwargs)
+
+        return super(MyDateField, self).formfield(**defaults)
+
+
 class MyTimeFieldForm(forms.TimeField):
     input_formats = ['%H:%M:%S', '%H:%M', '%I:%M%p']
 

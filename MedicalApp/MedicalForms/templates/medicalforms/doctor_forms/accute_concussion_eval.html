@@ -1,0 +1,758 @@
+{% extends "medicalforms/form_base.html" %}
+
+{% block title %}
+Accute Concussion Evaluation
+{% endblock title %}
+
+{% block form_content %}
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.dob.errors}}
+        <label class="control-label">DOB: </label>
+        {{form.dob}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <h5>A. Injury Characteristics</h5>
+        <hr>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-4">
+        <div class="form-group">
+        {{form.date_of_injury.errors}}
+        <label class="control-label">Date of Injury: </label>
+        {{form.date_of_injury}}
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="form-group">
+        {{form.time_of_injury.errors}}
+        <label class="control-label">Time of Injury: </label>
+        {{form.time_of_injury}}
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="form-group">
+        {{form.reporter.errors}}
+        <label class="control-label">Reporter: </label>
+        {{form.reporter}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.injury_description.errors}}
+        <label class="control-label">Injury Description: </label>
+        {{form.injury_description}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.evidence_of_blow.errors}}
+        <label class="control-label">1a.  Is there evidence of a forcible blow to the head (direct or indirect)?: </label>
+        {{form.evidence_of_blow}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.evidence_of_cranial_injury.errors}}
+        <label class="control-label">1b. is there evidence of intracranial injury or skull fracture?: </label>
+        {{form.evidence_of_cranial_injury}}
+        </div>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-sm-12">
+        <label class="control-label">1c. Location of Impact: </label>
+        <br>
+        {% for checkbox in form.location_of_impact %}
+        <div class="col-sm-6">
+            <div class="checkbox">
+                <label>
+                {{checkbox.tag}}
+                {{checkbox.choice_label}}
+                </label>
+            </div>
+        </div>
+        {% endfor %}
+        {{form.location_of_impact.errors}}
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.cause.errors}}
+        <label class="control-label">2.  Cause: </label>
+        {{form.cause}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.sports_specify.errors}}
+        {{form.sports_specify.label}}
+        {{form.sports_specify}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.others_specify.errors}}
+        {{form.others_specify.label}}
+        {{form.others_specify}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-9">
+        <div class="form-group">
+        {{form.amnesia_before.errors}}
+        <label class="control-label">3.  Amnesia Before (Retrograde)  Are there any events just BEFORE the injury that you/ person has no memory of (even brief)?: </label>
+        {{form.amnesia_before}}
+        </div>
+    </div>
+    <div class="col-sm-3">
+        <div class="form-group">
+        {{form.amnesia_before_duration.errors}}
+        <label class="control-label">Duration: </label>
+        {{form.amnesia_before_duration}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-9">
+        <div class="form-group">
+        {{form.amnesia_after.errors}}
+        <label class="control-label">4.  Amnesia After (Anterograde)  Are there any events just AFTER the injury that you/ person has no memory of (even brief)?: </label>
+        {{form.amnesia_after}}
+        </div>
+    </div>
+    <div class="col-sm-3">
+        <div class="form-group">
+        {{form.amnesia_after_duration.errors}}
+        <label class="control-label">Duration: </label>
+        {{form.amnesia_after_duration}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-9">
+        <div class="form-group">
+        {{form.lost_of_consciousness.errors}}
+        <label class="control-label">5.  Loss of Consciousness:  Did you/ person lose consciousness?: </label>
+        {{form.lost_of_consciousness}}
+        </div>
+    </div>
+    <div class="col-sm-3">
+        <div class="form-group">
+        {{form.lost_of_consciousness_duration.errors}}
+        <label class="control-label">Duration: </label>
+        {{form.lost_of_consciousness_duration}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        <label class="control-label">6.  EARLY SIGNS: </label><br>
+        {% for checkbox in form.early_signs %}
+        <div class="col-sm-6">
+            <div class="checkbox">
+                <label>
+                {{checkbox.tag}}
+                {{checkbox.choice_label}}
+                </label>
+            </div>
+        </div>
+        {% endfor %}
+        {{form.early_signs.errors}}
+        </div>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-sm-9">
+        <div class="form-group">
+        {{form.seizure.errors}}
+        <label class="control-label">7  Seizures  Were seizures observed?: </label><br>
+        {{form.seizure}}
+        </div>
+    </div>
+    <div class="col-sm-3">
+        <div class="form-group">
+        {{form.seizure_detail.errors}}
+        <label class="control-label">Duration: </label>
+        {{form.seizure_detail}}
+        </div>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-sm-12">
+        <h5>B. Symptom Check List: </h5>
+        <p>Since the injury, has the person experienced any of these symptoms any more than usual today or in the past day? <br>Indicate presence of each symptom (0=No, 1-Yes)</p>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-sm-12">
+        <h6>PHYSICAL (10)</h6>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-3">
+        <div class="form-group">
+        {{form.headache.errors}}
+        <label class="control-label">Headache: </label>
+        {{form.headache}}
+        </div>
+    </div>
+    <div class="col-sm-3">
+        <div class="form-group">
+        {{form.nausea.errors}}
+        <label class="control-label">Nausea: </label>
+        {{form.nausea}}
+        </div>
+    </div>
+    <div class="col-sm-3">
+        <div class="form-group">
+        {{form.vomiting.errors}}
+        <label class="control-label">Vomiting: </label>
+        {{form.vomiting}}
+        </div>
+    </div>
+    <div class="col-sm-3">
+        <div class="form-group">
+        {{form.balance_problems.errors}}
+        <label class="control-label">Balance Problems: </label>
+        {{form.balance_problems}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-3">
+        <div class="form-group">
+        {{form.dizziness.errors}}
+        <label class="control-label">Dizziness: </label>
+        {{form.dizziness}}
+        </div>
+    </div>
+    <div class="col-sm-3">
+        <div class="form-group">
+        {{form.visual_problems.errors}}
+        <label class="control-label">Visual Problems: </label>
+        {{form.visual_problems}}
+        </div>
+    </div>
+    <div class="col-sm-3">
+        <div class="form-group">
+        {{form.fatigue.errors}}
+        <label class="control-label">Fatigue: </label>
+        {{form.fatigue}}
+        </div>
+    </div>
+    <div class="col-sm-3">
+        <div class="form-group">
+        {{form.sensitivity_to_light.errors}}
+        <label class="control-label">Sensitivity to light: </label>
+        {{form.sensitivity_to_light}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-3">
+        <div class="form-group">
+        {{form.sensitivity_to_noise.errors}}
+        <label class="control-label">Sensitivity to noise: </label>
+        {{form.sensitivity_to_noise}}
+        </div>
+    </div>
+    <div class="col-sm-5">
+        <div class="form-group">
+        {{form.numbness_and_tingling.errors}}
+        <label class="control-label">Sensitivity to Numbness/Tingling: </label>
+        {{form.numbness_and_tingling}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.physical_total.errors}}
+        <label class="control-label">PHYSICAL Total (0 - 10): </label>
+        {{form.physical_total}}
+        </div>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-sm-12">
+        <h6>COGNITIVE (4)</h6>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-6">
+        <div class="form-group">
+        {{form.foggy.errors}}
+        <label class="control-label">Feeling mentally foggy: </label>
+        {{form.foggy}}
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="form-group">
+        {{form.slow_down.errors}}
+        <label class="control-label">Feeling slowed down: </label>
+        {{form.slow_down}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-6">
+        <div class="form-group">
+        {{form.difficulty_concentrating.errors}}
+        <label class="control-label">Difficulty concentrating: </label>
+        {{form.difficulty_concentrating}}
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="form-group">
+        {{form.difficulty_remembering.errors}}
+        <label class="control-label">Difficulty remembering: </label>
+        {{form.difficulty_remembering}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.cognitive_total.errors}}
+        <label class="control-label">COGNITIVE Total (0 - 4): </label>
+        {{form.cognitive_total}}
+        </div>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-sm-12">
+        <h6>EMOTIONAL (4)</h6>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-3">
+        <div class="form-group">
+        {{form.irritability.errors}}
+        <label class="control-label">Irritability: </label>
+        {{form.irritability}}
+        </div>
+    </div>
+    <div class="col-sm-3">
+        <div class="form-group">
+        {{form.sadness.errors}}
+        <label class="control-label">Sadness: </label>
+        {{form.sadness}}
+        </div>
+    </div>
+    <div class="col-sm-3">
+        <div class="form-group">
+        {{form.more_emotional.errors}}
+        <label class="control-label">More emotional: </label>
+        {{form.more_emotional}}
+        </div>
+    </div>
+    <div class="col-sm-3">
+        <div class="form-group">
+        {{form.nervousness.errors}}
+        <label class="control-label">Nervousness: </label>
+        {{form.nervousness}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.emotional_total.errors}}
+        <label class="control-label">EMOTIONAL Total (0 - 4): </label>
+        {{form.emotional_total}}
+        </div>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-sm-12">
+        <h6>SLEEP (4)</h6>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-6">
+        <div class="form-group">
+        {{form.drowsiness.errors}}
+        <label class="control-label">Drowsiness: </label>
+        {{form.drowsiness}}
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="form-group">
+        {{form.sleeping_less.errors}}
+        <label class="control-label">Sleeping less than usual: </label>
+        {{form.sleeping_less}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-6">
+        <div class="form-group">
+        {{form.sleeping_more.errors}}
+        <label class="control-label">Sleeping more than usual: </label>
+        {{form.sleeping_more}}
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="form-group">
+        {{form.trouble_falling_asleep.errors}}
+        <label class="control-label">Trouble falling sleep: </label>
+        {{form.trouble_falling_asleep}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.sleep_total.errors}}
+        <label class="control-label">SLEEP Total (0 - 4): </label>
+        {{form.sleep_total}}
+        </div>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.all_total.errors}}
+        <label class="control-label">(Add Physical, Cognitive, Emotion, Sleep Totals) <br>
+        Total Symptom Score (0-22): </label>
+        {{form.all_total}}
+        </div>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-sm-12">
+        <h6>Exertion:</h6> <p>Do these symptoms worsen with:</p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-6">
+        <div class="form-group">
+        {{form.excertion_physical.errors}}
+        <label class="control-label">Physical Activity: </label>
+        {{form.excertion_physical}}
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="form-group">
+        {{form.excertion_cognitive.errors}}
+        <label class="control-label">Cognitive Activity: </label>
+        {{form.excertion_cognitive}}
+        </div>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-sm-12">
+        <h6>Overall Rating:</h6>
+        <p>How different is the person acting compared to his/her usual self?
+        (Rate between 0 to 6. Higher number means more different):</p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.overall_rating.errors}}
+        {{form.overall_rating}}
+        </div>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-sm-12">
+        <h5>C. Risk Factors for Protracted Recovery:   (Check all that apply):</h5>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.concussion_history.errors}}
+        <label class="control-label">Concussion History: </label>
+        {{form.concussion_history}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.previous_number.errors}}
+        <label class="control-label">Previous Number: </label>
+        {{form.previous_number}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.longest_duration.errors}}
+        <label class="control-label">Longest symptom duration: </label>
+        {{form.longest_duration}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.less_force_caused_reinjury.errors}}
+        <label class="control-label">If multiple concussion, less force caused reinjury?: </label>
+        {{form.less_force_caused_reinjury}}
+        </div>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.headache_history.errors}}
+        <label class="control-label">Headache History: </label>
+        {{form.headache_history}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.prior_treatment.errors}}
+        <label class="control-label">Prior treatment for headache: </label>
+        {{form.prior_treatment}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.history_of_migraine.errors}}
+        <label class="control-label">History of migraine headache: </label>
+        {{form.history_of_migraine}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.personal_family.errors}}
+        <label class="control-label">Personal Family: </label>
+        {{form.personal_family}}
+        </div>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-sm-12">
+        <label class="control-label">Developmental History: </label>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.learning_disabilities.errors}}
+        <label class="control-label">Learning Disabilities: </label>
+        {{form.learning_disabilities}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.attention_deficit.errors}}
+        <label class="control-label">Attention-Deficit / Hyperactivity Disorder: </label>
+        {{form.attention_deficit}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.other_developmental.errors}}
+        <label class="control-label">Other Developmental Disorder: </label>
+        {{form.other_developmental}}
+        </div>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-sm-12">
+        <label class="control-label">Psychiatric History: </label>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.anxiety.errors}}
+        <label class="control-label">Anxiety: </label>
+        {{form.anxiety}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.depression.errors}}
+        <label class="control-label">Depression: </label>
+        {{form.depression}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.sleep_disorder.errors}}
+        <label class="control-label">Sleep Disorder: </label>
+        {{form.sleep_disorder}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.other_psychiatric.errors}}
+        <label class="control-label">Other psychiatric disorder: </label>
+        {{form.other_psychiatric}}
+        </div>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.list_other_disorders.errors}}
+        <label class="control-label">List other comorbid medical disorders or medication usage (e.g,. hypothyroid, seizures): </label>
+        {{form.list_other_disorders}}
+        </div>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-sm-12">
+        <h5>D. RED FLAGS for acute emergency management: </h5>
+        <p>Refer to the emergency department with sudden onset of any of the following:</p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.red_flags.errors}}
+        {% for checkbox in form.red_flags %}
+        <div class="col-sm-6">
+            <div class="checkbox">
+                <label>
+                {{checkbox.tag}}
+                {{checkbox.choice_label}}
+                </label>
+            </div>
+        </div>
+        {% endfor %}
+        </div>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-sm-12">
+        <h5>E. Diagnosis: </h5>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.diagnosis.errors}}
+        {% for checkbox in form.diagnosis %}
+        <div class="col-sm-6">
+            <div class="checkbox">
+                <label>
+                {{checkbox.tag}}
+                {{checkbox.choice_label}}
+                </label>
+            </div>
+        </div>
+        {% endfor %}
+        </div>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-sm-12">
+        <h5>F. Follow-Up Action Plan: </h5>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.follow_up.errors}}
+        {{form.follow_up}}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.refferal.errors}}
+        <label class="control-label">Referral: </label><br>
+        {% for checkbox in form.refferal %}
+        <div class="col-sm-6">
+            <div class="checkbox">
+                <label>
+                {{checkbox.tag}}
+                {{checkbox.choice_label}}
+                </label>
+            </div>
+        </div>
+        {% endfor %}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.refferal_others.errors}}
+        <label class="control-label">Other Referral: </label>
+        {{form.refferal_others}}
+        </div>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.doctor.errors}}
+        <label class="control-label">ACE Completed by: </label>
+        {{form.doctor}}
+        </div>
+    </div>
+    <div class="col-sm-12">
+        <div class="form-group">
+        {{form.completed_date.errors}}
+        <label class="control-label">Date: </label>
+        {{form.completed_date}}
+        </div>
+    </div>
+</div>
+
+{% endblock form_content %}
