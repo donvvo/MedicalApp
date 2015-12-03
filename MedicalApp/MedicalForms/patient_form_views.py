@@ -13,7 +13,8 @@ from .forms import *
 
 def owner_or_doctors(user, **kwargs):
     user_id = int(kwargs['user_id'])
-    return user.pk == user_id or user.groups.filter(name="Doctors").exists() or user.is_staff
+    return user.pk == user_id or user.groups.filter(name="Doctors").exists() or user.is_staff or \
+    user.groups.filter(name="Clinics").exists()
 
 
 class PatientFormBaseView(LoginRequiredMixin, UpdateView):
@@ -29,7 +30,8 @@ class PatientFormBaseView(LoginRequiredMixin, UpdateView):
             return response
         else:
             # Only doctors or staff can assign forms
-            if request.user.groups.filter(name="Doctors").exists() or request.user.is_staff:
+            if request.user.groups.filter(name="Doctors").exists() or request.user.is_staff or \
+            request.user.groups.filter(name="Clinics").exists():
                 self.initial_form.save()
                 return redirect(reverse('users:patient_profile', kwargs={'user_id': self.user_id}))
             else:
