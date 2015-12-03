@@ -1,52 +1,132 @@
 [
 {
     "fields": {
-        "city": "Toronto",
-        "postal_code": "M5P 3H3",
-        "address": "1524 Bathurst St.",
-        "user_id": 1
-    },
-    "model": "MedicalAppointments.clinic",
-    "pk": "Test Clinic 1"
-},
-{
-    "fields": {
         "city": "London",
-        "postal_code": "N6G 5G8",
-        "address": "960 Western Rd.",
-        "user_id": 1
+        "start_time_sat": null,
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec non purus ac mauris bibendum consectetur. Quisque velit nisl, feugiat in odio vel, elementum gravida eros. Interdum et malesuada fames ac ante ipsum primis in faucibus. Praesent convallis ante vestibulum orci porttitor condimentum. Proin viverra ex eu condimentum venenatis. Fusce quis dapibus nunc. Pellentesque auctor enim est, vel blandit metus facilisis in. Integer aliquam dolor a odio venenatis varius. Vestibulum tincidunt bibendum accumsan. Interdum et malesuada fames ac ante ipsum primis in faucibus. Morbi mauris tortor, molestie eu condimentum ac, blandit vehicula mi. Suspendisse quis erat lobortis, laoreet massa nec, commodo magna.",
+        "start_time_tue": "07:00:00",
+        "start_time_thurs": "09:00:00",
+        "start_time_fri": "08:30:00",
+        "end_time_fri": "17:30:00",
+        "end_time_wed": "05:30:00",
+        "phone": "222-234-2342",
+        "end_time_mon": "17:00:00",
+        "postal_code": "N6G 1G4",
+        "user": 24,
+        "start_time_sun": null,
+        "address": "960 Western Rd",
+        "end_time_sat": null,
+        "end_time_tue": "18:00:00",
+        "start_time_wed": "08:00:00",
+        "end_time_sun": null,
+        "start_time_mon": "08:00:00",
+        "end_time_thurs": "17:00:00"
     },
     "model": "MedicalAppointments.clinic",
-    "pk": "Test Clinic 2"
+    "pk": "Clinic111"
 },
 {
     "fields": {
-        "city": "Montreal",
-        "postal_code": "4J6 3U4",
-        "address": "23 Centre St.",
-        "user_id": 1
+        "city": "Toronto",
+        "start_time_sat": null,
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec non purus ac mauris bibendum consectetur. Quisque velit nisl, feugiat in odio vel, elementum gravida eros. Interdum et malesuada fames ac ante ipsum primis in faucibus. Praesent convallis ante vestibulum orci porttitor condimentum. Proin viverra ex eu condimentum venenatis. Fusce quis dapibus nunc. Pellentesque auctor enim est, vel blandit metus facilisis in. Integer aliquam dolor a odio venenatis varius. Vestibulum tincidunt bibendum accumsan. Interdum et malesuada fames ac ante ipsum primis in faucibus. Morbi mauris tortor, molestie eu condimentum ac, blandit vehicula mi. Suspendisse quis erat lobortis, laoreet massa nec, commodo magna.",
+        "start_time_tue": null,
+        "start_time_thurs": null,
+        "start_time_fri": "07:00:00",
+        "end_time_fri": "20:00:00",
+        "end_time_wed": "19:00:00",
+        "phone": "222-345-3453",
+        "end_time_mon": "20:00:00",
+        "postal_code": "M2G 3Y5",
+        "user": 25,
+        "start_time_sun": null,
+        "address": "89 Toledo Rd",
+        "end_time_sat": null,
+        "end_time_tue": null,
+        "start_time_wed": "08:30:00",
+        "end_time_sun": null,
+        "start_time_mon": "07:00:00",
+        "end_time_thurs": null
     },
     "model": "MedicalAppointments.clinic",
-    "pk": "Test Clinic 3"
+    "pk": "Clinic222"
 },
 {
     "fields": {
-        "city": "Calgary",
-        "postal_code": "E5P 4Y3",
-        "address": "250 Heath St.",
-        "user_id": 1
+        "city": "Toronto",
+        "start_time_sat": "08:00:00",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec non purus ac mauris bibendum consectetur. Quisque velit nisl, feugiat in odio vel, elementum gravida eros. Interdum et malesuada fames ac ante ipsum primis in faucibus. Praesent convallis ante vestibulum orci porttitor condimentum. Proin viverra ex eu condimentum venenatis. Fusce quis dapibus nunc. Pellentesque auctor enim est, vel blandit metus facilisis in. Integer aliquam dolor a odio venenatis varius. Vestibulum tincidunt bibendum accumsan. Interdum et malesuada fames ac ante ipsum primis in faucibus. Morbi mauris tortor, molestie eu condimentum ac, blandit vehicula mi. Suspendisse quis erat lobortis, laoreet massa nec, commodo magna.",
+        "start_time_tue": "08:00:00",
+        "start_time_thurs": "08:00:00",
+        "start_time_fri": "08:00:00",
+        "end_time_fri": "17:00:00",
+        "end_time_wed": "17:00:00",
+        "phone": "333-456-3434",
+        "end_time_mon": "17:00:00",
+        "postal_code": "M3J 2H4",
+        "user": 26,
+        "start_time_sun": null,
+        "address": "1234 Bloor St.",
+        "end_time_sat": "17:00:00",
+        "end_time_tue": "17:00:00",
+        "start_time_wed": "08:00:00",
+        "end_time_sun": null,
+        "start_time_mon": "08:00:00",
+        "end_time_thurs": "17:00:00"
     },
     "model": "MedicalAppointments.clinic",
-    "pk": "Test Clinic 4"
+    "pk": "Clinic333"
 },
 {
     "fields": {
-        "city": "Mississauga",
-        "postal_code": "M6J 3UG",
-        "address": "66 Toledo Rd.",
-        "user_id": 1
+        "city": "",
+        "start_time_sat": null,
+        "description": "",
+        "start_time_tue": null,
+        "start_time_thurs": null,
+        "start_time_fri": null,
+        "end_time_fri": null,
+        "end_time_wed": null,
+        "phone": "",
+        "end_time_mon": null,
+        "postal_code": "",
+        "user": 27,
+        "start_time_sun": null,
+        "address": "",
+        "end_time_sat": null,
+        "end_time_tue": null,
+        "start_time_wed": null,
+        "end_time_sun": null,
+        "start_time_mon": null,
+        "end_time_thurs": null
     },
     "model": "MedicalAppointments.clinic",
-    "pk": "Test Clinic 5"
+    "pk": "Clinic444"
+},
+{
+    "fields": {
+        "city": "",
+        "start_time_sat": null,
+        "description": "asdfasdf",
+        "start_time_tue": null,
+        "start_time_thurs": null,
+        "start_time_fri": null,
+        "end_time_fri": null,
+        "end_time_wed": null,
+        "phone": "",
+        "end_time_mon": null,
+        "postal_code": "",
+        "user": 28,
+        "start_time_sun": null,
+        "address": "",
+        "end_time_sat": null,
+        "end_time_tue": null,
+        "start_time_wed": null,
+        "end_time_sun": null,
+        "start_time_mon": null,
+        "end_time_thurs": null
+    },
+    "model": "MedicalAppointments.clinic",
+    "pk": "Clinic555"
 }
 ]

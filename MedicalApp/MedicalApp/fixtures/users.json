@@ -9,12 +9,11 @@
         "summary": "qwefq",
         "is_superuser": true,
         "is_staff": true,
-        "last_login": "2015-11-08T03:00:24.859Z",
+        "last_login": "2015-12-03T14:07:15.097Z",
         "contact": "666-333-4444",
-        "groups": [
-        ],
+        "groups": [],
         "user_permissions": [],
-        "password": "pbkdf2_sha256$20000$huyRBtWgbMtR$FrIT5UqD4S9OmVWK8sVw4VkQNsY6p7djWv/lAj8DZ3o=",
+        "password": "pbkdf2_sha256$20000$bPtrUe8NfQRS$rbPPOfmvuYeAK03Kd7GWCJ9T7/tDZWt835ylEXvUcAc=",
         "email": "andrewjjung47@gmail.com",
         "date_joined": "2015-11-07T05:43:08Z"
     },
@@ -54,7 +53,7 @@
         "summary": "",
         "is_superuser": false,
         "is_staff": false,
-        "last_login": "2015-11-07T21:31:32.941Z",
+        "last_login": "2015-12-03T08:50:15.713Z",
         "contact": "",
         "groups": [
             1
@@ -371,9 +370,9 @@
         "username": "test15",
         "first_name": "Test",
         "last_name": "Doctor10",
-        "image": "",
+        "image": "images/1.jpg",
         "is_active": true,
-        "summary": "",
+        "summary": "asdfasdf",
         "is_superuser": false,
         "is_staff": false,
         "last_login": "2015-11-08T03:00:06.861Z",
@@ -388,5 +387,120 @@
     },
     "model": "users.user",
     "pk": 22
+},
+{
+    "fields": {
+        "username": "clinic111",
+        "first_name": "Clinic Admin",
+        "last_name": "",
+        "image": "",
+        "is_active": true,
+        "summary": "",
+        "is_superuser": false,
+        "is_staff": false,
+        "last_login": "2015-12-03T12:49:37.695Z",
+        "contact": "",
+        "groups": [
+            3
+        ],
+        "user_permissions": [],
+        "password": "pbkdf2_sha256$20000$QZ7RKMOBxQAn$cpEJ/6gHy1e043KeM3spdhAsyk4AY+IJfGOklvWbuCw=",
+        "email": "clinic111@gmail.com",
+        "date_joined": "2015-12-03T12:49:37.341Z"
+    },
+    "model": "users.user",
+    "pk": 24
+},
+{
+    "fields": {
+        "username": "clinic222",
+        "first_name": "Clinic Admin",
+        "last_name": "",
+        "image": "",
+        "is_active": true,
+        "summary": "",
+        "is_superuser": false,
+        "is_staff": false,
+        "last_login": "2015-12-03T12:59:19.540Z",
+        "contact": "",
+        "groups": [
+            3
+        ],
+        "user_permissions": [],
+        "password": "pbkdf2_sha256$20000$8sPpqfDwuZWm$4BHoxZ5gk386m/nnMJbTnaKP9zUGRPIvWPbTOJB/I3A=",
+        "email": "clinic222@gmail.com",
+        "date_joined": "2015-12-03T12:59:19.166Z"
+    },
+    "model": "users.user",
+    "pk": 25
+},
+{
+    "fields": {
+        "username": "clinic333",
+        "first_name": "Clinic Admin",
+        "last_name": "",
+        "image": "",
+        "is_active": true,
+        "summary": "",
+        "is_superuser": false,
+        "is_staff": false,
+        "last_login": "2015-12-03T13:15:45.918Z",
+        "contact": "",
+        "groups": [
+            3
+        ],
+        "user_permissions": [],
+        "password": "pbkdf2_sha256$20000$5hpaRFX1IHq4$Pfu3cadQcECLO3kCRPXEiSeDcTKa4HLMGWq/phrYogU=",
+        "email": "clinic333@gmail.com",
+        "date_joined": "2015-12-03T13:15:45.490Z"
+    },
+    "model": "users.user",
+    "pk": 26
+},
+{
+    "fields": {
+        "username": "clinic444",
+        "first_name": "Clinic Admin",
+        "last_name": "",
+        "image": "",
+        "is_active": true,
+        "summary": "",
+        "is_superuser": false,
+        "is_staff": false,
+        "last_login": "2015-12-03T13:36:40.260Z",
+        "contact": "",
+        "groups": [
+            3
+        ],
+        "user_permissions": [],
+        "password": "pbkdf2_sha256$20000$jNYcgfHLhS0L$g9t+1xW7f7CBoOb6Vg2S5Sakx6ohknilOb0Qe7s6lKo=",
+        "email": "clinic444@gmail.com",
+        "date_joined": "2015-12-03T13:36:39.893Z"
+    },
+    "model": "users.user",
+    "pk": 27
+},
+{
+    "fields": {
+        "username": "clinic555",
+        "first_name": "Clinic Admin",
+        "last_name": "",
+        "image": "images/2.jpg",
+        "is_active": true,
+        "summary": "",
+        "is_superuser": false,
+        "is_staff": false,
+        "last_login": "2015-12-03T13:39:33.649Z",
+        "contact": "",
+        "groups": [
+            3
+        ],
+        "user_permissions": [],
+        "password": "pbkdf2_sha256$20000$gxvYzxxPRSNW$mVDJMS7aR4VUTAcUJNQirjBrnLze2XHpSE0QHDGd5iY=",
+        "email": "clinic555@gmail.com",
+        "date_joined": "2015-12-03T13:39:33.390Z"
+    },
+    "model": "users.user",
+    "pk": 28
 }
 ]
