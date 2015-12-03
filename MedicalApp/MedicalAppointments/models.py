@@ -56,8 +56,7 @@ class Doctor(models.Model):
     clinic = models.ForeignKey(Clinic, blank=True, null=True, on_delete=models.SET_NULL)
 
     def __str__(self):
-        return str(self.user) + ' -- ' + 'Specialty: '
-        + str(self.specialty) + ', Clinic: ' + str(self.clinic)
+        return str(self.user) + ' -- ' + 'Specialty: ' + str(self.specialty)
 
 
 @python_2_unicode_compatible

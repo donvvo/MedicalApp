@@ -25,21 +25,25 @@
         </div>
         <div class="row">
             <div class="col-sm-12">
+                <form id="request" action="{{request.path}}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
                 <div class="row">
                     <div class="col-sm-3 text-center">
                         <figure>
-                            <img src="{% static 'img/clinic.png' %}" class="img-responsive" alt="">
+                            {% if initial_image %}
+                            <img id="preview" src="{{initial_image.url}}" class="img-responsive" alt="">
+                            {% else %}
+                            <img id="preview" src="{% static 'img/profile-img.png' %}" class="img-responsive" alt="">
+                            {% endif %}
                         </figure>
-
-                        <a href="#" class="btn btn-default btn-color-bg btn-no-radius"><span>Change Photo</span></a>
+                        {{user_form.image}}
 
                     </div>
                     <div class="col-sm-7">
-                        <form id="request" action="{{request.path}}" method="post" accept-charset="utf-8">
+
 
         <div class="row">
             <div class="col-sm-12">
-                    {% csrf_token %}
                         <div class="row">
                             <div class="col-sm-12">
                                 <div class="form-group">
@@ -52,7 +56,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="email" class="sr-only">Email</label>
-                                    {{form.email}}
+                                    {{user_form.email}}
                                 </div>
                             </div>
                         </div>
@@ -334,6 +338,22 @@ $(function() {
     $('.remove-doctor-btn').click(function() {
         var doctor = $(this).attr('data-doctor');
         $('#doctor-id').val(doctor);
+    });
+    $("#id_image").addClass('file-loading');
+    $("#id_image").fileinput({
+        browseClass: "btn btn-default btn-color-bg btn-no-radius",
+        browseLabel: "Change Photo",
+        showPreview: false,
+        showCaption: false,
+        showUpload: false,
+        showUploadedThumbs: false
+    });
+    $('#id_image').on('fileloaded', function(event, file, previewId, index, reader) {
+        $('#preview').attr('src', URL.createObjectURL(file));
+    });
+    $('#id_image').on('fileclear', function(event) {
+        console.log('remove');
+        $('#preview').attr('src', "{% static 'img/profile-img.png' %}");
     });
 });
 </script>

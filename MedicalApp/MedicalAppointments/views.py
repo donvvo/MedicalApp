@@ -6,6 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.core import serializers
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseBadRequest, HttpResponse, HttpResponseRedirect
+from django.forms.models import model_to_dict
 from django.shortcuts import redirect, render_to_response, get_object_or_404
 from django.views.generic import DetailView, ListView, UpdateView, CreateView, TemplateView
 from django.utils import timezone
@@ -18,7 +19,7 @@ from allauth.account import app_settings
 
 from .models import Booking, DoctorSpecialty, Clinic, Doctor
 from .utils import get_clinics_by_specialty, get_time_table
-from .forms import ClinicUserSignupForm, ClinicForm
+from .forms import ClinicUserSignupForm, ClinicForm, ClinicUserSettingsForm
 from MedicalApp.utils import MultipleFormsView, user_passes_test_with_kwargs
 from MedicalApp.users.models import User
 
@@ -187,10 +188,29 @@ class ClinicProfileEditView(LoginRequiredMixin, UpdateView):
     def dispatch(self, request, *args, **kwargs):
         return super(ClinicProfileEditView, self). dispatch(request, *args, **kwargs)
 
+    def get_context_data(self, **kwargs):
+        context = super(ClinicProfileEditView, self).get_context_data(**kwargs)
+
+        clinic = self.get_object()
+        initial = clinic.user
+        context['user_form'] = ClinicUserSettingsForm(model_to_dict(initial))
+        context['initial_image'] = clinic.user.image
+        print context['user_form']
+        return context
+
     def get_object(self):
         clinic_name = self.kwargs['clinicname']
         clinic_name = clinic_name.replace('+', ' ')
         return get_object_or_404(self.model, name=clinic_name)
+
+    def form_valid(self, form):
+        clinic = self.get_object()
+        initial = clinic.user
+        print initial
+        user_form = ClinicUserSettingsForm(self.request.POST, self.request.FILES, instance=initial)
+        if user_form.is_valid():
+            user_form.save()
+        return super(ClinicProfileEditView, self).form_valid(form)
 
     def post(self, request, *args, **kwargs):
         if request.POST.get('Delete'):
@@ -222,19 +242,21 @@ class ClinicProfileCreateView(LoginRequiredMixin, StaffuserRequiredMixin, Multip
         }
 
     def forms_valid(self, forms):
-        user = forms['user_signup']
-        user = user.save(self.request)
+        user_form = forms['user_signup']
+        user = user_form.save(self.request)
         clinic = self.form_classes['clinic_signup'](self.request.POST, instance=Clinic(user=user))
         clinic = clinic.save()
         user.first_name = 'Clinic Admin'
         user.add_to_clinics_group()
+        user.image = user_form.cleaned_data['image']
         user.save()
+
         return complete_signup(self.request, user,
                        app_settings.EMAIL_VERIFICATION,
                        self.get_success_url())
 
     def get_success_url(self):
-        return reverse("medical_appointments:clinic_list")
+        return reverse("home")
 
 
 class AddDoctorView(LoginRequiredMixin, TemplateView):
@@ -249,7 +271,6 @@ class AddDoctorView(LoginRequiredMixin, TemplateView):
         clinic_name = kwargs['clinicname']
         context['clinic_name'] = clinic_name
         doctors = Doctor.objects.exclude(clinic=clinic_name.replace('+', ' '))
-        print doctors
         context['doctors'] = doctors
 
         return context

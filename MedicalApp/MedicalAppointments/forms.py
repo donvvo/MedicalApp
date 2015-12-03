@@ -2,10 +2,14 @@ from django import forms
 
 from allauth.account.forms import SignupForm
 
+from MedicalApp.users.models import User
 from .models import Clinic
 
 
 class ClinicUserSignupForm(SignupForm):
+    image = forms.ImageField(required=False, widget=forms.ClearableFileInput(
+                                        attrs={'id': 'id_image'}))
+
     def __init__(self, *args, **kwargs):
         super(ClinicUserSignupForm, self).__init__(*args, **kwargs)
         self.fields['email'].widget = \
@@ -30,6 +34,18 @@ class ClinicUserSignupForm(SignupForm):
                             'placeholder': 'Confirm Password'})
         self.fields['password2'].error_messages['required'] = \
             "Password confirmation is required."
+
+
+class ClinicUserSettingsForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ("email", "image")
+        widgets = {
+            'email': forms.TextInput(attrs={
+                'type': 'email',
+                'class': 'form-control',
+                'placeholder': 'Email'})
+        }
 
 
 class ClinicForm(forms.ModelForm):

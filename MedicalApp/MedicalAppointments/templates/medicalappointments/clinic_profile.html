@@ -28,7 +28,11 @@
                 <div class="row">
                     <div class="col-sm-5 hidden-xs">
                         <figure>
-                            <img src="{% static 'img/clinic.png' %}" class="img-responsive" alt="">
+                            {% if object.user.image %}
+                            <img src="{{object.user.image.url}}" class="img-responsive" alt="">
+                            {% else %}
+                            <img src="{% static 'img/profile-img.png' %}" class="img-responsive" alt="">
+                            {% endif %}
                         </figure>
                     </div>
                     <div class="col-sm-7">
@@ -101,7 +105,7 @@
                             <div id="collapseBest" class="panel-collapse collapse">
                                 <div class="panel-body">
                                     <p>Phone: {{object.phone}}</p>
-                                    <p>Email: {{object.email}}</p>
+                                    <p>Email: {{object.user.email}}</p>
                                 </div>
                             </div>
                         </div>
