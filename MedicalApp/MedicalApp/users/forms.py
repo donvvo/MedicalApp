@@ -73,6 +73,14 @@ class UserSignupForm(SignupForm):
             "Password confirmation is required."
 
 
+class DoctorSignupForm(UserSignupForm):
+    HCAI = forms.CharField(max_length=30, required=False,
+                                 widget=forms.TextInput(
+                                        attrs={'type': 'text',
+                                               'class': 'form-control',
+                                               'placeholder': 'HCAI code'}))
+
+
 class UserSettingsForm(forms.ModelForm):
     def clean_remove_photo(self):
         remove = self.cleaned_data["remove_photo"]
@@ -108,14 +116,19 @@ class UserSettingsForm(forms.ModelForm):
 class DoctorSettingsForm(forms.ModelForm):
     class Meta:
         model = Doctor
-        fields = ("specialty", "clinic")
+        fields = ("specialty", "clinic", "HCAI")
         widgets = {
             'specialty': forms.Select(attrs={
                                     'class': 'form-control'
                                     }),
             'clinic': forms.Select(attrs={
                                     'class': 'form-control'
-                                    })
+                                    }),
+            'HCAI': forms.TextInput(attrs={
+                    'type': 'text',
+                    'class': 'form-control',
+                    'placeholder': 'HCAI code'
+                })
         }
 
 

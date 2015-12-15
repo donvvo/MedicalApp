@@ -65,7 +65,7 @@
                         {% if object.patient.healthhistory or form_access %}
                             <h5 class="alternative-title">Health History</h5>
                             <a href="{% url 'medical_forms:health_history' object.pk %}" class="btn btn-default btn-hover-bg">
-                            {% if object.patient.patientinformation %}
+                            {% if object.patient.healthhistory %}
                                 <span>View</span></a>
                             {% else %}
                                 <span>Assign</span></a>

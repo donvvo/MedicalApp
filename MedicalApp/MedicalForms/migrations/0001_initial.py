@@ -9,8 +9,8 @@ import MedicalForms.utils
 class Migration(migrations.Migration):
 
     dependencies = [
+        ('MedicalAppointments', '0004_doctor_hcai'),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('MedicalAppointments', '0003_remove_clinic_email'),
     ]
 
     operations = [
@@ -755,7 +755,14 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='PeripheralJointQuestions1',
             fields=[
-                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('patient', models.OneToOneField(primary_key=True, serialize=False, to='MedicalAppointments.Patient')),
+                ('last_modified', models.DateTimeField(auto_now=True)),
+                ('intensity', MedicalForms.utils.IntegerRangeField(null=True, blank=True)),
+                ('duration', MedicalForms.utils.MyCharField(max_length=20, blank=True)),
+                ('numbness', MedicalForms.utils.MyNullBooleanField()),
+                ('paraesthesia', MedicalForms.utils.MyNullBooleanField()),
+                ('aggravated_by_movements', MedicalForms.utils.MyCharField(max_length=100, blank=True)),
+                ('relieved_by', MedicalForms.utils.MyNullBooleanField()),
                 ('radiation', MedicalForms.utils.MyNullBooleanField()),
                 ('pain_location', MedicalForms.utils.MyCharField(max_length=100, blank=True)),
                 ('aggravated_by', models.ManyToManyField(to='MedicalForms.AggravatedByPeripheralJoint', blank=True)),
@@ -767,7 +774,14 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='PeripheralJointQuestions2',
             fields=[
-                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('patient', models.OneToOneField(primary_key=True, serialize=False, to='MedicalAppointments.Patient')),
+                ('last_modified', models.DateTimeField(auto_now=True)),
+                ('intensity', MedicalForms.utils.IntegerRangeField(null=True, blank=True)),
+                ('duration', MedicalForms.utils.MyCharField(max_length=20, blank=True)),
+                ('numbness', MedicalForms.utils.MyNullBooleanField()),
+                ('paraesthesia', MedicalForms.utils.MyNullBooleanField()),
+                ('aggravated_by_movements', MedicalForms.utils.MyCharField(max_length=100, blank=True)),
+                ('relieved_by', MedicalForms.utils.MyNullBooleanField()),
                 ('radiation', MedicalForms.utils.MyNullBooleanField()),
                 ('pain_location', MedicalForms.utils.MyCharField(max_length=100, blank=True)),
                 ('aggravated_by', models.ManyToManyField(to='MedicalForms.AggravatedByPeripheralJoint', blank=True)),
@@ -779,7 +793,14 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='PeripheralJointQuestions3',
             fields=[
-                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('patient', models.OneToOneField(primary_key=True, serialize=False, to='MedicalAppointments.Patient')),
+                ('last_modified', models.DateTimeField(auto_now=True)),
+                ('intensity', MedicalForms.utils.IntegerRangeField(null=True, blank=True)),
+                ('duration', MedicalForms.utils.MyCharField(max_length=20, blank=True)),
+                ('numbness', MedicalForms.utils.MyNullBooleanField()),
+                ('paraesthesia', MedicalForms.utils.MyNullBooleanField()),
+                ('aggravated_by_movements', MedicalForms.utils.MyCharField(max_length=100, blank=True)),
+                ('relieved_by', MedicalForms.utils.MyNullBooleanField()),
                 ('radiation', MedicalForms.utils.MyNullBooleanField()),
                 ('pain_location', MedicalForms.utils.MyCharField(max_length=100, blank=True)),
                 ('aggravated_by', models.ManyToManyField(to='MedicalForms.AggravatedByPeripheralJoint', blank=True)),
@@ -791,7 +812,14 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='PeripheralJointQuestions4',
             fields=[
-                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('patient', models.OneToOneField(primary_key=True, serialize=False, to='MedicalAppointments.Patient')),
+                ('last_modified', models.DateTimeField(auto_now=True)),
+                ('intensity', MedicalForms.utils.IntegerRangeField(null=True, blank=True)),
+                ('duration', MedicalForms.utils.MyCharField(max_length=20, blank=True)),
+                ('numbness', MedicalForms.utils.MyNullBooleanField()),
+                ('paraesthesia', MedicalForms.utils.MyNullBooleanField()),
+                ('aggravated_by_movements', MedicalForms.utils.MyCharField(max_length=100, blank=True)),
+                ('relieved_by', MedicalForms.utils.MyNullBooleanField()),
                 ('radiation', MedicalForms.utils.MyNullBooleanField()),
                 ('pain_location', MedicalForms.utils.MyCharField(max_length=100, blank=True)),
                 ('aggravated_by', models.ManyToManyField(to='MedicalForms.AggravatedByPeripheralJoint', blank=True)),
@@ -1130,8 +1158,18 @@ class Migration(migrations.Migration):
         ),
         migrations.AddField(
             model_name='peripheraljointquestions4',
+            name='present_pain',
+            field=models.ManyToManyField(to='MedicalForms.PresentPain', blank=True),
+        ),
+        migrations.AddField(
+            model_name='peripheraljointquestions4',
             name='type_of_pain',
             field=models.ManyToManyField(to='MedicalForms.TypeOfPainOthers', blank=True),
+        ),
+        migrations.AddField(
+            model_name='peripheraljointquestions3',
+            name='present_pain',
+            field=models.ManyToManyField(to='MedicalForms.PresentPain', blank=True),
         ),
         migrations.AddField(
             model_name='peripheraljointquestions3',
@@ -1140,8 +1178,18 @@ class Migration(migrations.Migration):
         ),
         migrations.AddField(
             model_name='peripheraljointquestions2',
+            name='present_pain',
+            field=models.ManyToManyField(to='MedicalForms.PresentPain', blank=True),
+        ),
+        migrations.AddField(
+            model_name='peripheraljointquestions2',
             name='type_of_pain',
             field=models.ManyToManyField(to='MedicalForms.TypeOfPainOthers', blank=True),
+        ),
+        migrations.AddField(
+            model_name='peripheraljointquestions1',
+            name='present_pain',
+            field=models.ManyToManyField(to='MedicalForms.PresentPain', blank=True),
         ),
         migrations.AddField(
             model_name='peripheraljointquestions1',

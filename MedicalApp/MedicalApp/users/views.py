@@ -13,7 +13,7 @@ from allauth.account import app_settings
 
 from .models import User
 from MedicalAppointments.models import Patient, Doctor, Clinic
-from .forms import UserSettingsForm, EmailDoctorForm, DoctorSettingsForm
+from .forms import UserSettingsForm, EmailDoctorForm, DoctorSettingsForm, DoctorSignupForm
 from MedicalApp.utils import MultipleFormsView
 
 
@@ -45,10 +45,18 @@ class UserSignupView(SignupView):
 
 
 class DoctorSignupView(SignupView):
+    template_name = "users/doctor_signup.html"
+
+    def get_form_class(self):
+        return DoctorSignupForm
+
     def form_valid(self, form):
         user = form.save(self.request)
         user.add_to_doctors_group()
+        HCAI = form.cleaned_data.get('HCAI')
         doctor = Doctor(user=user)
+        if HCAI:
+            doctor.HCAI = HCAI
         doctor.save()
         return complete_signup(self.request, user,
                                app_settings.EMAIL_VERIFICATION,
@@ -166,14 +174,6 @@ class PatientsListView(LoginRequiredMixin, GroupRequiredMixin, ListView):
     template_name = "users/patient_list.html"
     group_required = "Clinics"
     raise_exception = True
-
-    def get_queryset(self):
-        queryset = super(PatientsListView, self).get_queryset()
-        sortby = self.request.GET.get('sortby', '')
-        if sortby == 'desc':
-            return queryset.order_by('-user__last_name')
-        else:
-            return queryset.order_by('user__last_name')
 
 
 class ManageMainView(LoginRequiredMixin, GroupRequiredMixin, TemplateView):

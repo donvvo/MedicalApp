@@ -16,24 +16,26 @@
             </div>
             <div class="row">
                 <div class="col-sm-10 col-sm-offset-1 col-xs-10 col-xs-offset-1">
-                    <form class="form-inline" action="{{request.path}}" method="get">
+                    <div class="form-inline" style="float:left;">
+                        <input id="search-txt" type="text" placeholder="Search Patients">
+                        <button id="search-btn">Search</button>
+                    </div>
+                    <div class="form-inline" style="float:right;">
                         <label for="sortby">Sort by Last Name:
-                            <select class="form-control filter" name="sortby" id="id_sortby">
+                            <select class="form-control filter sort-patient" name="sortby" id="id_sortby">
                                 <option value="asc">A - Z</option>
-                                <option value="desc" {% if request.GET.sortby == 'desc' %}
-                                    selected
-                                {% endif %}>Z - A</option>
+                                <option value="desc">Z - A</option>
                             </select>
                         </label>
-                    </form>
+                    </div>
                 </div>
             </div>
             <br>
             <div class="row">
                 <div class="col-md-12 text-center">
-                    <ul class="boxes-content">
+                    <ul id="patient-list-container" class="boxes-content">
                         {% for patient in object_list %}
-                        <li><a href="{% url 'users:patient_profile' patient.user.pk %}">
+                        <li class="patient-list" data-name="{{patient}}" data-email="{{patient.user.email}}" data-phone="{{patient.phone}}"><a href="{% url 'users:patient_profile' patient.user.pk %}">
                             <div class="name">
                                 <h6>{{patient}}</h6>
                                 <figure><img src="{% static 'img/doctors/doc01.jpg' %}" alt="//"></figure>
@@ -62,8 +64,46 @@
 
 <script>
 $(function() {
-    $('select').change(function() {
-        $('form').submit();
+    var $patientList = $('.patient-list');
+    var $listContainer = $('#patient-list-container');
+
+    $('select.sort-patient').change(function() {
+        var sortedList;
+
+        var selectVal = $('select.sort-patient option:selected').val();
+        if (selectVal === 'asc') {
+            sortedList = $patientList.sort(acsSort);
+        }
+        else {
+            sortedList = $patientList.sort(descSort);
+        }
+
+        $listContainer.children().remove();
+        $listContainer.append(sortedList);
+    });
+
+    $('#search-txt').keypress(function (e) {
+        if (e.which == 13) {
+            $('#search-btn').click();
+            return false;    //<---- Add this line
+        }
+    });
+    $('#search-btn').click(function() {
+        var searchTxt = $('#search-txt').val();
+
+        var name;
+        $patientList.toArray().forEach(function(patient) {
+            name = patient.getAttribute('data-name');
+            email = patient.getAttribute('data-email');
+            phone = patient.getAttribute('data-phone');
+            if (name.search(searchTxt) === -1 && email.search(searchTxt) === -1 &&
+                phone.search(searchTxt) === -1) {
+                patient.style.display = "none";
+            }
+            else {
+                patient.style.display = "inline-block";
+            }
+        });
     });
 });
 </script>

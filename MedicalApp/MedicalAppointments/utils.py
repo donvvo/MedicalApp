@@ -73,15 +73,26 @@ def get_column_for_a_day(day, start_end_hour, min_hour, max_hour, interval, book
 
 def get_time_table(bookings, clinic, table_interval, num_doctor):
     # start and end hour in tuple, starting Monday
-    start_end_hour_naive = [
-        (clinic.start_time_mon, clinic.end_time_mon),
-        (clinic.start_time_tue, clinic.end_time_tue),
-        (clinic.start_time_wed, clinic.end_time_wed),
-        (clinic.start_time_thurs, clinic.end_time_thurs),
-        (clinic.start_time_fri, clinic.end_time_fri),
-        (clinic.start_time_sat, clinic.end_time_sat),
-        (clinic.start_time_sun, clinic.end_time_sun)
-    ]
+    if clinic:
+        start_end_hour_naive = [
+            (clinic.start_time_mon, clinic.end_time_mon),
+            (clinic.start_time_tue, clinic.end_time_tue),
+            (clinic.start_time_wed, clinic.end_time_wed),
+            (clinic.start_time_thurs, clinic.end_time_thurs),
+            (clinic.start_time_fri, clinic.end_time_fri),
+            (clinic.start_time_sat, clinic.end_time_sat),
+            (clinic.start_time_sun, clinic.end_time_sun)
+        ]
+    else:
+        start_end_hour_naive = [
+            (None, None),
+            (None, None),
+            (None, None),
+            (None, None),
+            (None, None),
+            (None, None),
+            (None, None)
+        ]
     start_end_hour = []
     for element in start_end_hour_naive:
         if element[0] and element[1]:

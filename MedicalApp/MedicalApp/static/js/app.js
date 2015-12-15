@@ -1,3 +1,18 @@
+function acsSort (a, b) {
+        if (a.getAttribute('data-name') < b.getAttribute('data-name')) {
+            return -1;
+        }
+        else if (a.getAttribute('data-name') > b.getAttribute('data-name')) {
+            return 1;
+        }
+        else {
+            return 0;
+        }
+    }
+function descSort (a, b) {
+    return -1 * acsSort(a, b);
+}
+
 $(function() {
     var $successBtn = $('#success-btn');
     var $doctorSignupSuccess = $('#doctor-signup-success');
