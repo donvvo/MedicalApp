@@ -1,0 +1,187 @@
+{% extends "medicalforms/table_summary/summary_base.html" %}
+
+{% block title %}
+Lower Extremity Functional Scale (LEFS)
+{% endblock title %}
+
+{% block form_content %}
+
+<h3>Instructions</h3>
+
+<p>We are interested in knowing whether you are having any difficulty at all with the activities listed below <b>because of your lower limb problem</b> for which you are currently seeking attention. Please provide an answer for <b>each</b> activity.</p>
+
+<p><b>Today, do you or would you have any difficulty at all with: </b></p>
+
+<table class="table table-condensed">
+    <tr>
+        <th><b>Activities</b></th>
+        <th><b>Extreme difficulty or unable to perform activity</b></th>
+        <th><b>Quite a bit of difficulty</b></th>
+        <th><b>Moderate difficulty</b></th>
+        <th><b>A little bit of difficulty</b></th>
+        <th><b>No difficulty</b></th>
+    </tr>
+    <tr>
+        <th>1. Any of your usual work, housework, or school activities</th>
+        <th>{{summary.question_1.0}}</th>
+        <th>{{summary.question_1.1}}</th>
+        <th>{{summary.question_1.2}}</th>
+        <th>{{summary.question_1.3}}</th>
+        <th>{{summary.question_1.4}}</th>
+    </tr>
+    <tr>
+        <th>2. Your usual hobbies, recreational, or sporting activities</th>
+        <th>{{summary.question_2.0}}</th>
+        <th>{{summary.question_2.1}}</th>
+        <th>{{summary.question_2.2}}</th>
+        <th>{{summary.question_2.3}}</th>
+        <th>{{summary.question_2.4}}</th>
+    </tr>
+    <tr>
+        <th>3. Getting into or out of the bath</th>
+        <th>{{summary.question_3.0}}</th>
+        <th>{{summary.question_3.1}}</th>
+        <th>{{summary.question_3.2}}</th>
+        <th>{{summary.question_3.3}}</th>
+        <th>{{summary.question_3.4}}</th>
+    </tr>
+    <tr>
+        <th>4. Walking between rooms</th>
+        <th>{{summary.question_4.0}}</th>
+        <th>{{summary.question_4.1}}</th>
+        <th>{{summary.question_4.2}}</th>
+        <th>{{summary.question_4.3}}</th>
+        <th>{{summary.question_4.4}}</th>
+    </tr>
+    <tr>
+        <th>5. Putting on your shoes or socks</th>
+        <th>{{summary.question_5.0}}</th>
+        <th>{{summary.question_5.1}}</th>
+        <th>{{summary.question_5.2}}</th>
+        <th>{{summary.question_5.3}}</th>
+        <th>{{summary.question_5.4}}</th>
+    </tr>
+    <tr>
+        <th>6. Squatting</th>
+        <th>{{summary.question_6.0}}</th>
+        <th>{{summary.question_6.1}}</th>
+        <th>{{summary.question_6.2}}</th>
+        <th>{{summary.question_6.3}}</th>
+        <th>{{summary.question_6.4}}</th>
+    </tr>
+    <tr>
+        <th>7. Lifting an object, like a bag of groceries from the floor</th>
+        <th>{{summary.question_7.0}}</th>
+        <th>{{summary.question_7.1}}</th>
+        <th>{{summary.question_7.2}}</th>
+        <th>{{summary.question_7.3}}</th>
+        <th>{{summary.question_7.4}}</th>
+    </tr>
+    <tr>
+        <th>8. Performing light activites around your home</th>
+        <th>{{summary.question_8.0}}</th>
+        <th>{{summary.question_8.1}}</th>
+        <th>{{summary.question_8.2}}</th>
+        <th>{{summary.question_8.3}}</th>
+        <th>{{summary.question_8.4}}</th>
+    </tr>
+    <tr>
+        <th>9. Performing heavy activities around your home</th>
+        <th>{{summary.question_9.0}}</th>
+        <th>{{summary.question_9.1}}</th>
+        <th>{{summary.question_9.2}}</th>
+        <th>{{summary.question_9.3}}</th>
+        <th>{{summary.question_9.4}}</th>
+    </tr>
+    <tr>
+        <th>10. Getting into or out of a car</th>
+        <th>{{summary.question_10.0}}</th>
+        <th>{{summary.question_10.1}}</th>
+        <th>{{summary.question_10.2}}</th>
+        <th>{{summary.question_10.3}}</th>
+        <th>{{summary.question_10.4}}</th>
+    </tr>
+    <tr>
+        <th>11. Walking 2 blocks</th>
+        <th>{{summary.question_11.0}}</th>
+        <th>{{summary.question_11.1}}</th>
+        <th>{{summary.question_11.2}}</th>
+        <th>{{summary.question_11.3}}</th>
+        <th>{{summary.question_11.4}}</th>
+    </tr>
+    <tr>
+        <th>12. Walking a mile</th>
+        <th>{{summary.question_12.0}}</th>
+        <th>{{summary.question_12.1}}</th>
+        <th>{{summary.question_12.2}}</th>
+        <th>{{summary.question_12.3}}</th>
+        <th>{{summary.question_12.4}}</th>
+    </tr>
+    <tr>
+        <th>13. Going up or down 10 stairs (about 1 flight of stairs)</th>
+        <th>{{summary.question_13.0}}</th>
+        <th>{{summary.question_13.1}}</th>
+        <th>{{summary.question_13.2}}</th>
+        <th>{{summary.question_13.3}}</th>
+        <th>{{summary.question_13.4}}</th>
+    </tr>
+    <tr>
+        <th>14. Standing for 1 hour</th>
+        <th>{{summary.question_14.0}}</th>
+        <th>{{summary.question_14.1}}</th>
+        <th>{{summary.question_14.2}}</th>
+        <th>{{summary.question_14.3}}</th>
+        <th>{{summary.question_14.4}}</th>
+    </tr>
+    <tr>
+        <th>15. Sitting for 1 hour</th>
+        <th>{{summary.question_15.0}}</th>
+        <th>{{summary.question_15.1}}</th>
+        <th>{{summary.question_15.2}}</th>
+        <th>{{summary.question_15.3}}</th>
+        <th>{{summary.question_15.4}}</th>
+    </tr>
+    <tr>
+        <th>16. Running on even ground</th>
+        <th>{{summary.question_16.0}}</th>
+        <th>{{summary.question_16.1}}</th>
+        <th>{{summary.question_16.2}}</th>
+        <th>{{summary.question_16.3}}</th>
+        <th>{{summary.question_16.4}}</th>
+    </tr>
+    <tr>
+        <th>17. Running on uneven ground</th>
+        <th>{{summary.question_17.0}}</th>
+        <th>{{summary.question_17.1}}</th>
+        <th>{{summary.question_17.2}}</th>
+        <th>{{summary.question_17.3}}</th>
+        <th>{{summary.question_17.4}}</th>
+    </tr>
+    <tr>
+        <th>18. Making sharp turns while running fast</th>
+        <th>{{summary.question_18.0}}</th>
+        <th>{{summary.question_18.1}}</th>
+        <th>{{summary.question_18.2}}</th>
+        <th>{{summary.question_18.3}}</th>
+        <th>{{summary.question_18.4}}</th>
+    </tr>
+    <tr>
+        <th>19. Hopping</th>
+        <th>{{summary.question_19.0}}</th>
+        <th>{{summary.question_19.1}}</th>
+        <th>{{summary.question_19.2}}</th>
+        <th>{{summary.question_19.3}}</th>
+        <th>{{summary.question_19.4}}</th>
+    </tr>
+    <tr>
+        <th>20. Rolling over in bed</th>
+        <th>{{summary.question_20.0}}</th>
+        <th>{{summary.question_20.1}}</th>
+        <th>{{summary.question_20.2}}</th>
+        <th>{{summary.question_20.3}}</th>
+        <th>{{summary.question_20.4}}</th>
+    </tr>
+</table>
+
+
+{% endblock form_content%}

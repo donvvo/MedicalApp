@@ -15,6 +15,7 @@ from braces.views import LoginRequiredMixin, GroupRequiredMixin
 from MedicalApp.utils import user_passes_test_with_kwargs
 from .patient_form_views import *
 from .doctor_form_views import *
+from .summary_views import *
 from .models import *
 from .forms import *
 

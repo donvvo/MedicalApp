@@ -68,6 +68,10 @@ urlpatterns = [
     url(r'^attendance-sheet/(?P<user_id>[\d]+)/datesignature/add$', views.DateSignatureAddView.as_view(),
         name="datesignature-add"),
 
+    # Summary forms
+    url(r'^summary/lower-extremity/$', views.LowerExtremitySummaryView.as_view(),
+        name="summary-lower-extremity"),
+
 
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
