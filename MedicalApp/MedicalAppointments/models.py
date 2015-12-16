@@ -63,9 +63,10 @@ class Doctor(models.Model):
 @python_2_unicode_compatible
 class Patient(models.Model):
     user = models.OneToOneField(users_model.User, primary_key=True)
+    clinic = models.ForeignKey(Clinic, blank=True, null=True, on_delete=models.SET_NULL)
 
     def __str__(self):
-        return self.user.first_name + ' ' + self.user.last_name
+        return str(self.user)
 
 
 @python_2_unicode_compatible

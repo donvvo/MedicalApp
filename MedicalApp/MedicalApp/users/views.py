@@ -13,7 +13,8 @@ from allauth.account import app_settings
 
 from .models import User
 from MedicalAppointments.models import Patient, Doctor, Clinic
-from .forms import UserSettingsForm, EmailDoctorForm, DoctorSettingsForm, DoctorSignupForm
+from .forms import UserSettingsForm, EmailDoctorForm, DoctorSettingsForm,\
+    DoctorSignupForm, PatientSignupForm, PatientSettingsForm
 from MedicalApp.utils import MultipleFormsView
 
 
@@ -33,11 +34,19 @@ class UserLoginView(LoginView):
     pass
 
 
-class UserSignupView(SignupView):
+class PatientSignupView(SignupView):
+    template_name = "users/patient_signup.html"
+
+    def get_form_class(self):
+        return PatientSignupForm
+
     def form_valid(self, form):
         user = form.save(self.request)
         user.add_to_patients_group()
         patient = Patient(user=user)
+        clinic = form.cleaned_data.get('clinic')
+        if clinic:
+            patient.clinic = clinic
         patient.save()
         return complete_signup(self.request, user,
                                app_settings.EMAIL_VERIFICATION,
@@ -82,15 +91,25 @@ class PatientProfileView(LoginRequiredMixin, DetailView):
         return context
 
 
-class UserSettingsView(LoginRequiredMixin, UpdateView):
-    form_class = UserSettingsForm
+class PatientProfileEditView(LoginRequiredMixin, MultipleFormsView):
+    form_classes = {
+        'user_settings': UserSettingsForm,
+        'patient_settings': PatientSettingsForm
+    }
     template_name = 'users/user_settings.html'
-    slug_field = "pk"
-    slug_url_kwarg = "user_id"
 
-    model = User
+    def get_form_initial(self):
+        self.user_id = self.kwargs['user_id']
+        self.form_initial = {
+            'user_settings': get_object_or_404(User, pk=self.user_id),
+            'patient_settings': get_object_or_404(Patient, pk=self.user_id)
+        }
 
-    # send the user back to their own page after a successful update
+    def get_context_data(self, **kwargs):
+        context = super(PatientProfileEditView, self).get_context_data(**kwargs)
+        context['patient_user'] = get_object_or_404(User, pk=self.user_id)
+        return context
+
     def get_success_url(self):
         return reverse("users:patient_profile", kwargs={'user_id': self.kwargs['user_id']})
 
@@ -99,7 +118,7 @@ class UserSettingsView(LoginRequiredMixin, UpdateView):
             user = self.get_object()
             user.delete()
             return redirect(reverse('users:patient_list'))
-        return super(UserSettingsView, self).post(request, *args, **kwargs)
+        return super(PatientProfileEditView, self).post(request, *args, **kwargs)
 
 
 class DoctorProfileView(LoginRequiredMixin, DetailView):

@@ -7,7 +7,7 @@ from django.core.mail import EmailMessage
 from allauth.account.forms import LoginForm, SignupForm
 
 from .models import User
-from MedicalAppointments.models import Doctor
+from MedicalAppointments.models import Doctor, Clinic, Patient
 
 logger = logging.getLogger(__name__)
 
@@ -73,6 +73,14 @@ class UserSignupForm(SignupForm):
             "Password confirmation is required."
 
 
+class PatientSignupForm(UserSignupForm):
+    clinic = forms.ModelChoiceField(queryset=Clinic.objects.all(),
+            required=False,
+            widget=forms.Select(attrs={
+                            'class': 'form-control'
+                            }))
+
+
 class DoctorSignupForm(UserSignupForm):
     HCAI = forms.CharField(max_length=30, required=False,
                                  widget=forms.TextInput(
@@ -110,6 +118,17 @@ class UserSettingsForm(forms.ModelForm):
                                     'class': 'form-control',
                                     'placeholder': 'Contact Number'
                                     }),
+        }
+
+
+class PatientSettingsForm(forms.ModelForm):
+    class Meta:
+        model = Patient
+        fields = ("clinic", )
+        widgets = {
+            'clinic': forms.Select(attrs={
+                    'class': 'form-control'
+                })
         }
 
 

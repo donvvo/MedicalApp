@@ -27,7 +27,7 @@ urlpatterns = [
     # URL pattern for the UserSignupView
     url(
         regex=r'^signup/$',
-        view=views.UserSignupView.as_view(),
+        view=views.PatientSignupView.as_view(),
         name='account_signup'
     ),
 
@@ -86,7 +86,7 @@ urlpatterns = [
 
     url(
         regex=r'^patient/(?P<user_id>[\d]+)/edit/$',
-        view=views.UserSettingsView.as_view(),
+        view=views.PatientProfileEditView.as_view(),
         name='patient_profile_edit'
     ),
 
