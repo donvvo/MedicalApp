@@ -1,0 +1,703 @@
+{% extends "medicalforms/table_summary/summary_base.html" %}
+
+{% block title %}
+Neck Disability Index
+{% endblock title %}
+
+{% block form_content %}
+
+<p>This questionnaire is designed to help us better understand how your <b>neck pain</b> affects your ability to manage everyday life activities. Please mark in each section the <b>one box</b> that applies to  you. <br>
+Although you may consider that two of the statements in any one section relate to you, please mark the box that <b>most closely</b> describes your present day situation.</p>
+<br>
+
+<div class="row">
+    <div class="col-sm-11">
+        <label class="control-label">Section 1 - Pain Intensity</label><br>
+        <div class="checkbox">
+            <label>
+            I have no neck pain at the moment.
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            The pain is very mild at the moment.
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            The pain is moderate at the moment.
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            The pain is fairly severe at the moment.
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            The pain is very severe at the moment.
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            The pain is the worst imaginable at the moment.
+            </label>
+        </div>
+    </div>
+    <div class="col-sm-1">
+        <label class="control-label">#</label><br>
+        <div class="checkbox">
+            <label>
+            {{summary.question_1.0}}
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{summary.question_1.1}}
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{summary.question_1.2}}
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{summary.question_1.3}}
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{summary.question_1.4}}
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{summary.question_1.5}}
+            </label>
+        </div>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-sm-11">
+        <label class="control-label">Section 2 - Personal Care</label><br>
+        <div class="checkbox">
+            <label>
+            I can look after myself normally without causing extra neck pain.
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            I can look after myself normally, but it causes extra neck pain.
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            It is painful to look after myself, and I am slow and careful.
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            I need some help but manage most of my personal care.
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            I need help every day in most aspects of self care.
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            I do not get dressed. I wash with difficulty and stay in bed.
+            </label>
+        </div>
+    </div>
+    <div class="col-sm-1">
+        <label class="control-label">#</label><br>
+        <div class="checkbox">
+            <label>
+            {{summary.question_2.0}}
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{summary.question_2.1}}
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{summary.question_2.2}}
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{summary.question_2.3}}
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{summary.question_2.4}}
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{summary.question_2.5}}
+            </label>
+        </div>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-sm-11">
+        <label class="control-label">Section 3 - Lifting</label><br>
+        <div class="checkbox">
+            <label>
+            I can lift heavy weights without causing extra neck pain.
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            I can lift heavy weights, but it gives me extra neck pain.
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            Neck pain prevents me from lifting heavy weights off the floor, but I can manage if items are conveniently positioned, ie. on a table.
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            Neck pain prevents me from lifting heavy weights, but I can manage light weights if they are conveniently positioned.
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            I can lift only very light weights.
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            I cannot lift or carry anything at all.
+            </label>
+        </div>
+    </div>
+    <div class="col-sm-1">
+        <label class="control-label">#</label><br>
+        <div class="checkbox">
+            <label>
+            {{summary.question_3.0}}
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{summary.question_3.1}}
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{summary.question_3.2}}
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{summary.question_3.3}}
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{summary.question_3.4}}
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{summary.question_3.5}}
+            </label>
+        </div>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-sm-11">
+        <label class="control-label">Section 4 - Reading</label><br>
+        <div class="checkbox">
+            <label>
+            I can read as much as I want with no neck pain.
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            I can read as much as I want with slight neck pain.
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            I can read as much as I want with moderate neck pain.
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            I can't read as much as I want because of moderate neck pain.
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            I can't read as much as I want because of severe neck pain.
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            I can't read at all.
+            </label>
+        </div>
+    </div>
+    <div class="col-sm-1">
+        <label class="control-label">#</label><br>
+        <div class="checkbox">
+            <label>
+            {{summary.question_4.0}}
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{summary.question_4.1}}
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{summary.question_4.2}}
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{summary.question_4.3}}
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{summary.question_4.4}}
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{summary.question_4.5}}
+            </label>
+        </div>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-sm-11">
+        <label class="control-label">Section 5 - Headaches</label><br>
+        <div class="checkbox">
+            <label>
+            I have no headaches at all.
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            I have slight headaches that come infrequently.
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            I have moderate headaches that come infrequently.
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            I have moderate headaches that come frequently.
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            I have severe headaches that come frequently.
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            I have headaches almost all the time.
+            </label>
+        </div>
+    </div>
+    <div class="col-sm-1">
+        <label class="control-label">#</label><br>
+        <div class="checkbox">
+            <label>
+            {{summary.question_5.0}}
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{summary.question_5.1}}
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{summary.question_5.2}}
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{summary.question_5.3}}
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{summary.question_5.4}}
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{summary.question_5.5}}
+            </label>
+        </div>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-sm-11">
+        <label class="control-label">Section 6 - Concentration</label><br>
+        <div class="checkbox">
+            <label>
+            I can concentrate fully without difficulty.
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            I can concentrate fully with slight difficulty.
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            I have a fair degree of difficulty concentrating.
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            I have a lot of difficulty concentrating.
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            I have a great deal of difficulty concentrating.
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            I can't concentrate at all.
+            </label>
+        </div>
+    </div>
+    <div class="col-sm-1">
+        <label class="control-label">#</label><br>
+        <div class="checkbox">
+            <label>
+            {{summary.question_6.0}}
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{summary.question_6.1}}
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{summary.question_6.2}}
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{summary.question_6.3}}
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{summary.question_6.4}}
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{summary.question_6.5}}
+            </label>
+        </div>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-sm-11">
+        <label class="control-label">Section 7 - Work</label><br>
+        <div class="checkbox">
+            <label>
+            I can do as much work as I want.
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            I can only do my usual work, but no more.
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            I can do most of my usual work, but no more.
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            I can't do my usual work.
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            I can hardly do any work at all.
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            I can't do any work at all.
+            </label>
+        </div>
+    </div>
+    <div class="col-sm-1">
+        <label class="control-label">#</label><br>
+        <div class="checkbox">
+            <label>
+            {{summary.question_7.0}}
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{summary.question_7.1}}
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{summary.question_7.2}}
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{summary.question_7.3}}
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{summary.question_7.4}}
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{summary.question_7.5}}
+            </label>
+        </div>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-sm-11">
+        <label class="control-label">Section 8 - Driving</label><br>
+        <div class="checkbox">
+            <label>
+            I can drive my car without neck pain.
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            I can drive my car with only slight neck pain.
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            I can drive as long as I want with moderate neck pain.
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            I can't drive as long as I want because of moderate neck pain.
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            I can hardly drive at all because of severe neck pain.
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            I can't drive my car at all because of neck pain.
+            </label>
+        </div>
+    </div>
+    <div class="col-sm-1">
+        <label class="control-label">#</label><br>
+        <div class="checkbox">
+            <label>
+            {{summary.question_8.0}}
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{summary.question_8.1}}
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{summary.question_8.2}}
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{summary.question_8.3}}
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{summary.question_8.4}}
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{summary.question_8.5}}
+            </label>
+        </div>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-sm-11">
+        <label class="control-label">Section 9 - Sleeping</label><br>
+        <div class="checkbox">
+            <label>
+            I have no trouble sleeping.
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            My sleep is slightly disturbed for less than 1 hour.
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            My sleep is mildly disturbed for up to 1 - 2 hours.
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            My sleep is moderately disturbed for up to 2 - 3 hours.
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            My sleep is greatly disturbed for up to 3 - 5 hours.
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            My sleep is completely disturbed for up to 5 - 7 hours.
+            </label>
+        </div>
+    </div>
+    <div class="col-sm-1">
+        <label class="control-label">#</label><br>
+        <div class="checkbox">
+            <label>
+            {{summary.question_9.0}}
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{summary.question_9.1}}
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{summary.question_9.2}}
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{summary.question_9.3}}
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{summary.question_9.4}}
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{summary.question_9.5}}
+            </label>
+        </div>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-sm-11">
+        <label class="control-label">Section 10 - Recreation</label><br>
+        <div class="checkbox">
+            <label>
+            I am able to engage in all my recreational activities with no neck pain at all.
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            I am able to engage in all my recreational activities with some neck pain.
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            I am able to engage in most, but not all of my recreational activities because of my neck pain.
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            I am able to engage in a few of my recreational activities because of neck pain.
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            I can hardly do recreational activities due to neck pain.
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            I can't do any recreational activities due to neck pain.
+            </label>
+        </div>
+    </div>
+    <div class="col-sm-1">
+        <label class="control-label">#</label><br>
+        <div class="checkbox">
+            <label>
+            {{summary.question_10.0}}
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{summary.question_10.1}}
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{summary.question_10.2}}
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{summary.question_10.3}}
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{summary.question_10.4}}
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{summary.question_10.5}}
+            </label>
+        </div>
+    </div>
+</div>
+
+{% endblock form_content %}

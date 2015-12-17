@@ -15,6 +15,33 @@ SCALE_CHOICES = (
 )
 
 
+class NeckDisabilityManager(models.Manager):
+    def table_summary(self):
+        question_list = [
+            'question_1',
+            'question_2',
+            'question_3',
+            'question_4',
+            'question_5',
+            'question_6',
+            'question_7',
+            'question_8',
+            'question_9',
+            'question_10'
+        ]
+
+        summary = {}
+        choices = ['0', '1', '2', '3', '4', '5']
+        for question in question_list:
+            row_summary = []
+            for choice in choices:
+                query = {question: choice}
+                row_summary.append(super(NeckDisabilityManager, self).get_queryset().filter(**query).count())
+            summary[question] = row_summary
+
+        return summary
+
+
 @python_2_unicode_compatible
 class NeckDisability(models.Model):
     patient = models.OneToOneField(Patient, primary_key=True)
@@ -32,6 +59,8 @@ class NeckDisability(models.Model):
     question_10 = MyRadioField(max_length=2, choices=SCALE_CHOICES)
 
     last_modified = models.DateTimeField(auto_now=True)
+
+    objects = NeckDisabilityManager()
 
     def __str__(self):
         return 'Neck Disability Index for ' + str(self.patient)

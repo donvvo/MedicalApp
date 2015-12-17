@@ -75,6 +75,8 @@ urlpatterns = [
         name="summary-lower-extremity"),
     url(r'^summary/upper-extremity/$', views.UpperExtremitySummaryView.as_view(),
         name="summary-upper-extremity"),
+    url(r'^summary/neck-disability/$', views.NeckDisabilitySummaryView.as_view(),
+        name="summary-neck-disability"),
 
 
 

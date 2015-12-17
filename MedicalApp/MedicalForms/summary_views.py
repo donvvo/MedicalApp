@@ -6,7 +6,7 @@ from django.views.generic import TemplateView
 from braces.views import LoginRequiredMixin, StaffuserRequiredMixin
 
 from MedicalAppointments.models import Clinic, Patient
-from .models import LowerExtremity, UpperExtremity
+from .models import LowerExtremity, UpperExtremity, NeckDisability
 
 
 class LowerExtremitySummaryView(LoginRequiredMixin, StaffuserRequiredMixin, TemplateView):
@@ -29,6 +29,19 @@ class UpperExtremitySummaryView(LoginRequiredMixin, StaffuserRequiredMixin, Temp
     def get_context_data(self, **kwargs):
         context = super(UpperExtremitySummaryView, self).get_context_data(**kwargs)
         context['summary'] = UpperExtremity.objects.table_summary()
+        context['clinics_num'] = Clinic.objects.all().count()
+        context['patients_num'] = Patient.objects.all().count()
+
+        return context
+
+
+class NeckDisabilitySummaryView(LoginRequiredMixin, StaffuserRequiredMixin, TemplateView):
+    template_name = 'medicalforms/table_summary/neck_disability_summary.html'
+    raise_exception = True
+
+    def get_context_data(self, **kwargs):
+        context = super(NeckDisabilitySummaryView, self).get_context_data(**kwargs)
+        context['summary'] = NeckDisability.objects.table_summary()
         context['clinics_num'] = Clinic.objects.all().count()
         context['patients_num'] = Patient.objects.all().count()
 
