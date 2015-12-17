@@ -69,8 +69,12 @@ urlpatterns = [
         name="datesignature-add"),
 
     # Summary forms
+    url(r'^summary/$', views.TemplateView.as_view(template_name='medicalforms/table_summary/summary_list.html'),
+        name="summary-of-questionnaire"),
     url(r'^summary/lower-extremity/$', views.LowerExtremitySummaryView.as_view(),
         name="summary-lower-extremity"),
+    url(r'^summary/upper-extremity/$', views.UpperExtremitySummaryView.as_view(),
+        name="summary-upper-extremity"),
 
 
 

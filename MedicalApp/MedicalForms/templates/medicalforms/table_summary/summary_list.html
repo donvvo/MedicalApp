@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% load static %}
+{% load has_group %}
+
+{% block content %}
+<!-- Page Titles -->
+<div class="page-title">
+    <div class="container">
+        <h1>Questionnaire Summary</h1>
+        <div class="pagenation"><a href="{% url 'home' %}">Home</a> <i>></i> Questionnaire Summary</div>
+    </div>
+</div>
+<!-- End Page Titles -->
+
+<!-- Single Patient-->
+<section class="profile-doctor generic animated fadeInUp">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="section-title">
+                    <h3>Questionnaire Summary</h3>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-8 col-sm-offset-2">
+                <h5 class="alternative-title">Lower Extremity Functional Scale (LEFS)</h5>
+                <a href="{% url 'medical_forms:summary-lower-extremity' %}" class="btn btn-default btn-hover-bg">
+                <span>View</span></a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-8 col-sm-offset-2">
+                <h5 class="alternative-title">Upper Extremity Functional Index (UEFI)</h5>
+                <a href="{% url 'medical_forms:summary-upper-extremity' %}" class="btn btn-default btn-hover-bg">
+                <span>View</span></a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-8 col-sm-offset-2">
+                <h5 class="alternative-title">Neck Disability Index</h5>
+                <a href="{% url 'medical_forms:summary-lower-extremity' %}" class="btn btn-default btn-hover-bg">
+                <span>View</span></a>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End News -->
+
+{% endblock content %}
