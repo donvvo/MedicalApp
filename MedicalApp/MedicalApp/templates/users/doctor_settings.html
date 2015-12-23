@@ -23,7 +23,7 @@
                             {% if doctor_user.image %}
                             <img id="preview" src="{{doctor_user.image.url}}" class="img-responsive" alt="">
                             {% else %}
-                            <img id="preview" src="{% static 'img/profile-img.png' %}" class="img-responsive" alt="">
+                            <img id="preview" src="{% static 'img/doctor-profile-img.png' %}" class="img-responsive" alt="">
                             {% endif %}
                         </figure>
                         {{forms.user_settings.image}}
@@ -146,8 +146,7 @@
         $('#preview').attr('src', URL.createObjectURL(file));
     });
     $('#id_image').on('fileclear', function(event) {
-        console.log('remove');
-        $('#preview').attr('src', "{% static 'img/profile-img.png' %}");
+        $('#preview').attr('src', "{% static 'img/doctor-profile-img.png' %}");
     });
 </script>
 
