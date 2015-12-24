@@ -16599,7 +16599,7 @@ nav.navbar-collapse.navbar-collapse.navbar-right.collapse {
   padding: 0 0 10px 0;
 }
 .timetable-responsive table {
-  min-width: 940px;
+  min-width: 800px;
 }
 /********************************* Tooltip *********************************/
 .tooltip-inner {

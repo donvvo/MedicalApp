@@ -126,7 +126,7 @@
                                     {% for doctor in object.doctor_set.all %}
 
                                         <li class="media">
-                                            <a class="pull-left" href="blog-left-sidebar.html">
+                                            <a class="pull-left" href="{% url 'users:doctor_profile' doctor.user.pk %}">
                                                 {% if doctor.user.image %}
                                                     <img class="media-object img-circle" src="{{doctor.user.image.url}}" alt="//">
                                                 {% else %}

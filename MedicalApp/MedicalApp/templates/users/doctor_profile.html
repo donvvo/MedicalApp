@@ -18,9 +18,7 @@
     <div class="container">
       <div class="row">
 	      <div class="col-sm-12 text-right">
-            {% if object.pk == request.user.pk or request.user.is_staff or request.user|has_group:"Clinics" %}
-                <a href="{% url 'users:doctor_profile_edit' object.pk %}" class="btn btn-default btn-hover-bg"><span>Edit Profile</span></a>
-            {% endif %}
+
 	      </div>
       </div>
         <div class="row">
@@ -30,90 +28,141 @@
                 </div>
             </div>
         </div>
+
         <div class="row">
-            <div class="col-sm-9">
-                <div class="row">
-                    <div class="col-sm-5 hidden-xs">
-                        <figure>
-                            {% if object.image %}
-                            <img src="{{object.image.url}}" class="img-responsive" alt="">
-                            {% else %}
-                            <img src="{% static 'img/doctor-profile-img.png' %}" class="img-responsive" alt="">
-                            {% endif %}
-                        </figure>
+            <div class="col-sm-12">
+                <ul class="nav nav-tabs" role="tablist">
+                    {% if authorized %}
+                    <li class="active"><a href="#upcoming" role="tab" data-toggle="tab">Upcoming</a></li>
+                    <li><a href="#profile" role="tab" data-toggle="tab">Profile</a></li>
+                    {% else %}
+                    <li class="active"><a href="#profile" role="tab" data-toggle="tab">Profile</a></li>
+                    {% endif %}
+                    {% if authorized %}
+                    <li><a href="#schedule" role="tab" data-toggle="tab">Schedule</a></li>
+                    <li><a href="#patients" role="tab" data-toggle="tab">Patients</a></li>
+                    {% endif %}
+                </ul>
+
+                <div class="tab-content">
+                    {% if authorized %}
+                    <!-- Upcoming appointments -->
+                    <div class="tab-pane fade in active" id="upcoming">
+                        <ul class="media-list">
+                            {% for booking in bookings %}
+                            <li class="media">
+                                <a class="pull-left" href="{% url 'users:patient_profile' booking.patient.user_id %}">
+                                {% if booking.patient.user.image %}
+                                <img class="media-object img-circle" src="{{booking.patient.user.image.url}}" alt="//">
+                                {% else %}
+                                <img class="media-object img-circle" src="{% static 'img/news/news-thumbnail-144x144-01.jpg' %}" alt="//">
+                                {% endif %}
+                                </a>
+                                <div class="media-body">
+                                    <h5 class="media-heading"><a href="{% url 'users:patient_profile' booking.patient.user_id %}">{{booking.patient}}</a></h5>
+                                    <p class="media-meta">{{booking.time|time:"h:i A"}} -- {{booking.time|date:"M j"}} {{booking.time|date:"D"}}</p>
+                                </div>
+                            </li>
+                            {% endfor %}
+                        </ul>
                     </div>
-                    <div class="col-sm-7">
-                        <div class="tag-text">
-                            <h4>{{object.first_name}} {{object.last_name}}</h4>
-                            <span></span>
-                            <p>{{object.summary}}</p>
-                        </div>
+                    <!-- Upcoming appointments end -->
+                    {% endif %}
 
-                    </div>
-                </div>
-
-
-
-
-            </div>
-
-            <div class="col-md-3">
-                <div class="sidebar sidebar-right">
-
-
-                    <h5 class="sidebar-title">Our Mission</h5>
-                    <div class="panel-group" id="accordion-work2">
-                        <div class="panel">
-                            <div class="panel-heading">
-                                <h4 class="panel-title">
-                                    <a data-toggle="collapse" data-parent="#accordion-work2" href="#collapseService" class="collapsed">
-                                        <i class="fa fa-plus-square"></i>The Health Center Mission
-                                    </a>
-                                </h4>
+                    <!-- Doctor profile -->
+                    <div class={% if authorized %}
+                    "tab-pane fade"
+                    {% else %}
+                    "tab-pane fade in active"
+                    {% endif %} id="profile">
+                        <div class="row">
+                            <div class="col-sm-5">
+                                <figure>
+                                    {% if object.image %}
+                                    <img src="{{object.image.url}}" class="img-responsive" alt="">
+                                    {% else %}
+                                    <img src="{% static 'img/doctor-profile-img.png' %}" class="img-responsive" alt="">
+                                    {% endif %}
+                                </figure>
                             </div>
-                            <div id="collapseService" class="panel-collapse collapse" style="height: 0px;">
-                                <div class="panel-body">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis, dignissimos, possimus officiis eos dolorum aperiam temporibus est aut similique vitae hic qui.</p>
+                            <div class="col-sm-7">
+                                <div class="tag-text">
+                                    <h4>{{object.first_name}} {{object.last_name}}</h4>
+                                    <span></span>
+                                    {% if object.summary %}
+                                        <p>{{object.summary}}</p>
+                                    {% elif authorized %}
+                                        <p><a href="{% url 'users:doctor_profile_edit' object.pk %}">Please add summary</a></p>
+                                    {% endif %}
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="panel">
-                            <div class="panel-heading">
-                                <h4 class="panel-title">
-                                    <a data-toggle="collapse" data-parent="#accordion-work" href="#collapseIntegrity" class="">
-                                        <i class="fa fa-plus-square"></i>The Doctor Values
-                                    </a>
-                                </h4>
-                            </div>
-                            <div id="collapseIntegrity" class="panel-collapse in" style="height: auto;">
-                                <div class="panel-body">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia, nihil quaerat numquam reprehenderit consequuntur quasi architecto enim. Quos, natus, sunt, debitis.</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="panel">
-                            <div class="panel-heading">
-                                <h4 class="panel-title">
-                                    <a data-toggle="collapse" data-parent="#accordion-work" href="#collapseBest" class="collapsed">
-                                        <i class="fa fa-plus-square"></i>Company History
-                                    </a>
-                                </h4>
-                            </div>
-                            <div id="collapseBest" class="panel-collapse collapse">
-                                <div class="panel-body">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia, nihil quaerat numquam reprehenderit consequuntur quasi architecto enim. Quos, natus, sunt, debitis.</p>
-                                </div>
+                            <div class="text-right">
+                                {% if authorized %}
+                                    <a href="{% url 'users:doctor_profile_edit' object.pk %}" class="btn btn-default btn-hover-bg"><span>Edit Profile</span></a>
+                                {% endif %}
                             </div>
                         </div>
                     </div>
+                    <!-- Doctor profile end -->
 
+                    {% if authorized %}
+                    <!-- Doctor's schedule -->
+                    <div class="tab-pane fade timetable" id="schedule">
+                        <div class="timetable-responsive">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th class="blue-extralight">Time</th>
+                                        {% for day in table.0 %}
+                                            <th class="blue-light">{{day.0|date:"M j"}}<br>{{day.0|date:"D"}}</th>
+                                        {% endfor %}
+                                    </tr>
+                                </thead>
+                                {% for row in table %}
+                                    <tr>
+                                        <th>{{row.0.0|time:"h:i A"}}</th>
+                                        {% for element in row %}
+                                            {% if element.1 == -1 %}
+                                                <td><a class="ct-blue" href="#" title="Clinic is closed at this time."></a></td>
+                                            {% elif element.1 %}
+                                                <td><a href="{% url 'users:patient_profile' user_id=element.1.pk %}">{{element.1.first_name}} {{element.1.last_name}}</a></td>
+                                            {% else %}
+                                                <td><a class="ct-orange" href="#" title="You're off duty during this time."></a></td>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </tr>
+                                {% endfor %}
+                            </table>
+                        </div>
+                    </div>
+                    <!-- Doctor's schedule end -->
 
+                    <!-- Patients -->
+                    <div class="tab-pane fade" id="patients">
+                        <div class="panel-body">
+                            <ul class="media-list">
+                            {% for patient in patients %}
+                                <li class="media">
+                                    <a class="pull-left" href="{% url 'users:patient_profile' patient.user.pk %}">
+                                        {% if patient.user.image %}
+                                            <img class="media-object img-circle" src="{{patient.user.image.url}}" alt="//">
+                                        {% else %}
+                                            <img class="media-object img-circle" src="{% static 'img/news/news-thumbnail-144x144-01.jpg' %}" alt="//">
+                                        {% endif %}
+                                    </a>
+                                    <div class="media-body">
+                                        <h5 class="media-heading"><a href="{% url 'users:patient_profile' patient.user.pk %}">{{patient.user.first_name}} {{patient.user.last_name}}</a></h5>
+                                    </div>
+                                </li>
+                            {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Patients end -->
+                    {% endif %}
                 </div>
             </div>
         </div>
-
     </div>
 </section>
 <!-- End News -->

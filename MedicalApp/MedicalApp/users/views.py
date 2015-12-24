@@ -5,6 +5,7 @@ from django.contrib import messages
 from django.core.urlresolvers import reverse, reverse_lazy
 from django.views.generic import DetailView, ListView, RedirectView, UpdateView, TemplateView
 from django.shortcuts import redirect, get_object_or_404
+from django.utils import timezone
 
 from braces.views import LoginRequiredMixin, StaffuserRequiredMixin, GroupRequiredMixin
 from allauth.account.views import LoginView, SignupView, FormView, PasswordChangeView
@@ -12,7 +13,8 @@ from allauth.account.utils import complete_signup
 from allauth.account import app_settings
 
 from .models import User
-from MedicalAppointments.models import Patient, Doctor, Clinic
+from MedicalAppointments.models import Patient, Doctor, Clinic, Booking
+from MedicalAppointments.utils import get_time_table
 from .forms import UserSettingsForm, EmailDoctorForm, DoctorSettingsForm,\
     DoctorSignupForm, PatientSignupForm, PatientSettingsForm
 from MedicalApp.utils import MultipleFormsView
@@ -23,7 +25,7 @@ class HomeView(LoginRequiredMixin, RedirectView):
 
     def get_redirect_url(self):
         if self.request.user.groups.filter(name="Doctors").exists():
-            return reverse("medical_appointments:timetable_doctor")
+            return reverse("users:doctor_profile", kwargs={'user_id': self.request.user.id})
         elif self.request.user.groups.filter(name="Patients").exists():
             return reverse("medical_appointments:appointments")
         else:
@@ -126,6 +128,26 @@ class DoctorProfileView(LoginRequiredMixin, DetailView):
     slug_field = "pk"
     slug_url_kwarg = "user_id"
     template_name = "users/doctor_profile.html"
+
+    def get_context_data(self, **kwargs):
+        context = super(DoctorProfileView, self).get_context_data(**kwargs)
+
+        user = self.get_object()
+
+        context['authorized'] = user == self.request.user or\
+            self.request.user.is_staff or\
+            self.request.user.groups.filter(name="Clinics").exists()
+
+        doctor = get_object_or_404(Doctor, user=user)
+        context['patients'] = Patient.objects.filter(booking__doctor=doctor).all()
+
+        bookings = Booking.objects.filter(doctor=doctor).all()
+        context['bookings'] = bookings.filter(time__gte=timezone.now()).all()
+
+        context['table'] = get_time_table(
+            bookings, clinic=doctor.clinic, table_interval=30, num_doctor=1)
+
+        return context
 
 
 class DoctorProfileEditView(LoginRequiredMixin, MultipleFormsView):

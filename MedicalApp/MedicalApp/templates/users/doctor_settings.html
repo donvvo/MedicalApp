@@ -56,10 +56,12 @@
                                 {% for error in forms.user_settings.summary.errors %}
                                   <span class="errorlist">{{error}}</span>
                                 {% endfor %}
+                                {{forms.user_settings.summary}}
                             </div>
                         </div>
+                        <br>
                         <div class="row">
-                            <div class="col-sm-12">
+                            <div class="col-sm-6">
                                 <div class="form-group">
                                     <div class="col-sm-12">
                                         {% for error in forms.doctor_settings.HCAI.errors %}
@@ -69,12 +71,10 @@
                                     {{forms.doctor_settings.HCAI}}
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
                             <div class="col-sm-6">
 
                                 <div class="form-group">
-                                    <div class="col-sm-6">
+                                    <div class="col-sm-12">
                                         {% for error in forms.user_settings.contact.errors %}
                                           <span class="errorlist">{{error}}</span>
                                         {% endfor %}
