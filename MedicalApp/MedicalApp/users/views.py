@@ -20,16 +20,42 @@ from .forms import UserSettingsForm, EmailDoctorForm, DoctorSettingsForm,\
 from MedicalApp.utils import MultipleFormsView
 
 
-class HomeView(LoginRequiredMixin, RedirectView):
-    permanent = False
+class HomeView(LoginRequiredMixin, DetailView):
+    model = User
+    template_name = "users/doctor_main.html"
 
-    def get_redirect_url(self):
+    def dispatch(self, request, *args, **kwargs):
         if self.request.user.groups.filter(name="Doctors").exists():
-            return reverse("users:doctor_profile", kwargs={'user_id': self.request.user.id})
+            return super(HomeView, self).dispatch(request, *args, **kwargs)
         elif self.request.user.groups.filter(name="Patients").exists():
-            return reverse("medical_appointments:appointments")
+            return redirect(reverse("medical_appointments:appointments"))
+        elif self.request.user.is_staff:
+            return redirect(reverse("users:manage_main"))
         else:
-            return reverse("users:manage_main")
+            return redirect(reverse("users:account_login"))
+
+    def get_object(self):
+        return self.request.user
+
+    def get_context_data(self, **kwargs):
+        context = super(HomeView, self).get_context_data(**kwargs)
+
+        user = self.get_object()
+
+        context['authorized'] = user == self.request.user
+
+        doctor = get_object_or_404(Doctor, user=user)
+        context['doctor'] = doctor
+
+        context['patients'] = Patient.objects.filter(booking__doctor=doctor).all()
+
+        bookings = Booking.objects.filter(doctor=doctor).all()
+        context['bookings'] = bookings.filter(time__gte=timezone.now()).all()
+
+        context['table'] = get_time_table(
+            bookings, clinic=doctor.clinic, table_interval=30, num_doctor=1)
+
+        return context
 
 
 class UserLoginView(LoginView):
@@ -139,6 +165,8 @@ class DoctorProfileView(LoginRequiredMixin, DetailView):
             self.request.user.groups.filter(name="Clinics").exists()
 
         doctor = get_object_or_404(Doctor, user=user)
+        context['doctor'] = doctor
+
         context['patients'] = Patient.objects.filter(booking__doctor=doctor).all()
 
         bookings = Booking.objects.filter(doctor=doctor).all()

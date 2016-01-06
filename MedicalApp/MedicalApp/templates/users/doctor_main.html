@@ -7,7 +7,7 @@
 <!-- Page Titles -->
 <div class="page-title">
     <div class="container">
-        <h1>Profile</h1>
+        <h1>Home</h1>
     </div>
 </div>
 <!-- End Page Titles -->
@@ -16,63 +16,7 @@
 <section class="profile-doctor generic animated fadeInUp">
     <div class="container">
         <div class="row">
-            <div class="col-sm-12">
-                <div class="section-title">
-                    <h3>Doctor Profile</h3>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
             <div class="col-sm-10 col-sm-offset-1">
-                <!-- Doctor profile -->
-                <div class="row">
-                    <div class="col-sm-4">
-                        <figure>
-                            {% if object.image %}
-                            <img src="{{object.image.url}}" class="img-responsive" alt="">
-                            {% else %}
-                            <img src="{% static 'img/doctor-profile-img.png' %}" class="img-responsive" alt="">
-                            {% endif %}
-                        </figure>
-                        <br>
-                    </div>
-                    <div class="col-sm-8">
-                        <div class="tag-text">
-                            <h4>{{object.first_name}} {{object.last_name}}</h4>
-                            <span>{% if doctor.specialty %}
-                            {{doctor.specialty}}
-                            {% else %}
-                                <a href="{% url 'users:doctor_profile_edit' object.pk %}">Please add specialty</a>
-                            {% endif %}</span>
-                            {% if object.summary %}
-                                <p>{{object.summary}}</p>
-                            {% elif authorized %}
-                                <p><a href="{% url 'users:doctor_profile_edit' object.pk %}">Please add summary</a></p>
-                            {% endif %}
-                            Contact: <p style="display:inline;">{{object.contact}} {% if not object.contact %}
-                            <a href="{% url 'users:doctor_profile_edit' object.pk %}">Please add contact</a>
-                            {% endif %}</p>
-                            <br><br>
-                            HCAI: <p style="display:inline;">{{doctor.HCAI}} {% if not doctor.HCAI %}
-                            <a href="{% url 'users:doctor_profile_edit' object.pk %}">Please add HCAI</a>
-                            {% endif %}</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-8 col-sm-offset-4 text-right">
-                        {% if authorized %}
-                            <a href="{% url 'users:doctor_profile_edit' object.pk %}" class="btn btn-default btn-hover-bg"><span>Edit Profile</span></a>
-                        {% endif %}
-                    </div>
-                </div>
-                <!-- Doctor profile end -->
-
-                {% if not request.user|has_group:"Doctor" %}
-                <br>
-                <br>
-
                 <ul class="nav nav-tabs" role="tablist">
                     {% if authorized %}
                     <li class="active"><a href="#upcoming" role="tab" data-toggle="tab">Upcoming</a></li>
@@ -163,7 +107,6 @@
                     <!-- Patients end -->
                     {% endif %}
                 </div>
-                {% endif %}
             </div>
         </div>
     </div>

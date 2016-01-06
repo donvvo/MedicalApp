@@ -26,34 +26,31 @@
                 <div class="list-group">
                 {% if object_list %}
                     {% for appointment in object_list %}
-                        <a href="#" class="list-group-item">
-                            <div class="row">
-                                <div class="col-md-2">
-                                    {% if appointment.clinic.user.image %}
-                                        <img src="{{appointment.clinic.user.image.url}}" alt="//" class="img-responsive">
-                                    {% else %}
-                                        <img src="{% static 'img/news/news-thumbnail-144x144-02.jpg' %}" alt="//" class="img-responsive">
-                                    {% endif %}
-                                 </div>
-                                <div class="col-md-5">
-                                    <p>{{appointment.clinic.address}}, {{appointment.clinic.city}}
-                                    <br>{{appointment.clinic.postal_code}}</p>
-                                </div>
-                                <div class="col-md-3">
-                                    {{appointment.time|time:"h:i A"}} -- {{appointment.time|date:"M j"}} {{appointment.time|date:"D"}}
-                                </div>
-                                <div class="col-md-2">
-                                    <p>Your doctor</p>
-                                    {% if appointment.doctor.user.image %}
-                                        <img src="{{appointment.doctor.user.image.url}}" alt="//" class="img-responsive img-circle" style="max-width:50px;height:auto;">
-                                    {% else %}
-                                        <img src="{% static 'img/news/news-thumbnail-144x144-02.jpg' %}" alt="//" class="img-responsive img-circle" style="max-width:50px;height:auto;">
-                                    {% endif %}
-                                    <p>{{appointment.doctor}}</p>
-                                </div>
-
-                            </div><!-- ./row -->
-                          </a><!-- ./list-group-item -->
+                        <div class="row list-group-item">
+                            <div class="col-md-2">
+                                {% if appointment.clinic.user.image %}
+                                    <img src="{{appointment.clinic.user.image.url}}" alt="//" class="img-responsive">
+                                {% else %}
+                                    <img src="{% static 'img/news/news-thumbnail-144x144-02.jpg' %}" alt="//" class="img-responsive">
+                                {% endif %}
+                             </div>
+                            <div class="col-md-5">
+                                <p>{{appointment.clinic.address}}, {{appointment.clinic.city}}
+                                <br>{{appointment.clinic.postal_code}}</p>
+                            </div>
+                            <div class="col-md-3">
+                                {{appointment.time|time:"h:i A"}} -- {{appointment.time|date:"M j"}} {{appointment.time|date:"D"}}
+                            </div>
+                            <div class="col-md-2">
+                                <p>Your doctor</p>
+                                {% if appointment.doctor.user.image %}
+                                    <img src="{{appointment.doctor.user.image.url}}" alt="//" class="img-responsive img-circle" style="max-width:50px;height:auto;">
+                                {% else %}
+                                    <img src="{% static 'img/news/news-thumbnail-144x144-02.jpg' %}" alt="//" class="img-responsive img-circle" style="max-width:50px;height:auto;">
+                                {% endif %}
+                                <p>{{appointment.doctor}}</p>
+                            </div>
+                        </div>
                     {% endfor %}
                 {% else %}
                     <a href="{% url 'medical_appointments:new_appointments' %}" class="list-group-item">

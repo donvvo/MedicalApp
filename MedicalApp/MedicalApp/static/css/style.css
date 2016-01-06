@@ -16720,3 +16720,33 @@ a.tweet_avatar img {
 table.table-bordered input {
   border: none;
 }
+
+/* For admin panels */
+.row.panel-row {
+  text-align: center;
+}
+
+.panel-row .panel-col-center {
+  float: none;
+  display: inline-block;
+}
+
+/* For profile edit */
+.delete-btn {
+  color: #fff;
+  background-color: #858288;
+  border-color: #858288;
+}
+.delete-btn:hover {
+  background-color: #d9534f;
+  border-color: #d43f3a;
+}
+/* Patient appointment */
+div.list-group-item {
+  color: #555555;
+}
+div.list-group-item:hover,
+div.list-group-item:focus {
+  color: #555555;
+  background-color: #f5f5f5;
+}

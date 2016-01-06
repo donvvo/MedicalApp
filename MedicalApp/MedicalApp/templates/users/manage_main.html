@@ -18,10 +18,8 @@
 <!-- Admin main -->
 <section class="generic">
     <div class="container">
-
-        <div class="row">
-
-            <div class="col-sm-6 col-md-4">
+        <div class="row {% if not request.user.is_staff %}panel-row{% endif %}">
+            <div class="col-sm-4 panel-col-center">
                 <a href="{% url 'users:doctors_list' %}" class="featured-item ct-icon">
                     <figure>
                         <img class="img-responsive" src="{% static 'img/doctor.jpg' %}" alt="//">
@@ -35,7 +33,7 @@
                 </a>
             </div>
             {% if request.user.is_staff %}
-            <div class="col-sm-6 col-md-4">
+            <div class="col-sm-4 panel-col-center">
                 <a href="{% url 'medical_appointments:clinic_list' %}" class="featured-item ct-icon">
                     <figure>
                         <img class="img-responsive" src="{% static 'img/clinic.jpg' %}" alt="//">
@@ -51,7 +49,7 @@
             {% endif %}
 
 
-           <div class="col-sm-6 col-md-4">
+           <div class="col-sm-4 panel-col-center">
                 <a href="{% url 'users:patient_list' %}" class="featured-item ct-icon">
                     <figure>
                         <img class="img-responsive" src="{% static 'img/patient.jpg' %}" alt="//">
@@ -64,7 +62,6 @@
 
                 </a>
             </div>
-
         </div>
     </div>
 </section>

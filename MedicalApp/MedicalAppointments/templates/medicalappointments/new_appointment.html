@@ -30,6 +30,9 @@
 <section id="location-section" class="gallery generic animated fadeInUp">
     <div class="container">
         <div class="row">
+            <div class="col-sm-4">
+                <a href="#" class="btn btn-default btn-hover-bg back-btn"><span>Back</span></a>
+            </div>
             <div class="col-sm-12">
                 <div class="section-title">
                     <h3>Choose the location you want</h3>
@@ -162,6 +165,13 @@ $(function() {
         });
     });
 
+    /* $('.back-btn').click(function() {
+        $('#clinics').empty();
+        $('.gallery-grid').isotope('reLayout');
+
+        $('#specialty-section').show();
+        $('#location-section').hide();
+    }); */
 });
 </script>
 
