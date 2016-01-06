@@ -92,7 +92,7 @@ $(function() {
         }
     });
 
-    var filterHTML = '<li><a href="#" class="btn btn-color-border-solid-3" data-filter=""></a></li>';
+    var filterHTML = '<li><a href="#" class="btn btn-color-border-solid-3 added-filter" data-filter=""></a></li>';
     var addFilterItem = function(city) {
         var $filterItem = $(filterHTML);
         var $filterLink = $filterItem.find('a');
@@ -123,6 +123,8 @@ $(function() {
         $('#clinics').isotope('insert', $clinicItem);
     };
 
+    var $container = $('.gallery-grid');
+
     $('.specialty-btn').click(function() {
         var specialty = $(this).text();
         $.ajax({
@@ -145,7 +147,6 @@ $(function() {
                 });
 
                 // cache container
-                var $container = $('.gallery-grid');
                 $container.isotope({ });
                 // filter items when filter link is clicked
                 $('.filters a').click(function(){
@@ -165,13 +166,14 @@ $(function() {
         });
     });
 
-    /* $('.back-btn').click(function() {
+    $('.back-btn').click(function() {
         $('#clinics').empty();
-        $('.gallery-grid').isotope('reLayout');
+        $container.isotope('destroy');
+        $('.added-filter').remove();
 
         $('#specialty-section').show();
         $('#location-section').hide();
-    }); */
+    });
 });
 </script>
 
