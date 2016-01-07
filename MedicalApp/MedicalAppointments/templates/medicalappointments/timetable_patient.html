@@ -25,7 +25,7 @@
                             <tr>
                                 <th class="blue-extralight">Time</th>
                                 {% for day in table.0 %}
-                                    <th class="blue-light">{{day.0|date:"M j"}}<br>{{day.0|date:"D"}}</th>
+                                    <th class="green-light">{{day.0|date:"M j"}}<br>{{day.0|date:"D"}}</th>
                                 {% endfor %}
                             </tr>
                         </thead>
@@ -34,11 +34,11 @@
                                 <th>{{row.0.0|time:"h:i A"}}</th>
                                 {% for element in row %}
                                     {% if element.1 == -1 %}
-                                      <td><a class="ct-blue" href="#" title="Our clinic is closed at this hour."></a></td>
+                                      <td><a class="green-light timeslot-closed" href="#" title="Our clinic is closed at this hour."></a></td>
                                     {% elif element.1 %}
-                                        <td><a class="ct-orange" href="#" title="All of our doctors are busy at this time.  Please find another another time."></a></td>
+                                        <td><a class="ct-orange timeslot-closed" href="#" title="All of our doctors are busy at this time.  Please find another another time."></a></td>
                                     {% else %}
-                                        <td><a class="booking-btn" type="button" data-toggle="modal" data-target="#myModal" data-year="{{element.0|date:'Y'}}" data-month="{{element.0|date:'m'}}" data-date="{{element.0|date:'j'}}" data-hour="{{element.0|time:'H'}}" data-minute="{{element.0|time:'i'}}" data-prettydate="{{element.0|date:'l M j, Y'}}" data-prettytime="{{element.0|date:'h:i A'}}">Book Now</a></td>
+                                        <td><a class="booking-btn timeslot-opened" type="button" data-toggle="modal" data-target="#myModal" data-year="{{element.0|date:'Y'}}" data-month="{{element.0|date:'m'}}" data-date="{{element.0|date:'j'}}" data-hour="{{element.0|time:'H'}}" data-minute="{{element.0|time:'i'}}" data-prettydate="{{element.0|date:'l M j, Y'}}" data-prettytime="{{element.0|date:'h:i A'}}">Book Now</a></td>
                                     {% endif %}
                                 {% endfor %}
                             </tr>
@@ -66,7 +66,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" id="save-booking" class="btn btn-primary">Save changes</button>
+        <button type="button" id="save-booking" class="btn btn-color-bg">Accept</button>
       </div>
     </div>
   </div>

@@ -16772,3 +16772,18 @@ div.list-group-item h6 {
 .back-btn {
   margin-bottom: 0;
 }
+
+.timeslot-closed {
+  cursor: default;
+}
+.timeslot-opened {
+  cursor: pointer;
+}
+
+.green-light {
+  color: #fff;
+  background: #359940;
+}
+.timetable tbody .green-light {
+  opacity: 0.3;
+}
