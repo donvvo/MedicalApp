@@ -15,42 +15,19 @@
 <section class="profile-doctor generic animated fadeInUp">
     <div class="container">
         <div class="row">
-          <div class="col-sm-12 text-right">
-            {% if object.pk == request.user.pk or request.user.is_staff or request.user|has_group:"Clinics" %}
-                <a href="{% url 'users:patient_profile_edit' object.pk %}" class="btn btn-default btn-hover-bg"><span>Edit Profile</span></a>
-            {% endif %}
-          </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-10 col-sm-offset-1">
+            <div class="col-sm-12">
                 <div class="section-title">
                     <h3>Patient Profile</h3>
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="row">
-                    <div class="col-sm-3">
-                        <figure>
-                            {% if object.image %}
-                            <img src="{{object.image.url}}" class="img-responsive" alt="">
-                            {% else %}
-                            <img src="{% static 'img/profile-img.png' %}" class="img-responsive" alt="">
-                            {% endif %}
-                        </figure>
-                    </div>
-                    <div class="col-sm-9">
-                        <div class="tag-text">
-                            <h4>{{object.first_name}} {{object.last_name}}</h4>
-                            <span></span>
-                            {% if object.summary %}
-                                <p>{{object.summary}}</p>
-                            {% elif object.username == request.user.username %}
-                                <p><a href="{% url 'users:patient_profile_edit' object.pk %}">Please add summary</a></p>
-                            {% endif %}
-                        </div>
 
+        <div class="row">
+            <div class="col-sm-10 col-sm-offset-1">
+                {% include "users/profile_base.html" with object=object %}
+
+                <div class="row">
+                    <div class="col-sm-12">
                         <br>
                         <br>
 

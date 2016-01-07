@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+
+{% block content %}
+
+<!-- Timetable -->
+<section class="timetable generic animated fadeInUp">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="section-title">
+                    <h3>Your Schedule</h3>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="timetable-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th class="blue-extralight">Time</th>
+                                {% for day in table.0 %}
+                                    <th class="green-light">{{day.0|date:"M j"}}<br>{{day.0|date:"D"}}</th>
+                                {% endfor %}
+                            </tr>
+                        </thead>
+                        {% for row in table %}
+                            <tr>
+                                <th>{{row.0.0|time:"h:i A"}}</th>
+                                {% for element in row %}
+                                    {% if element.1 == -1 %}
+                                        <td><a class="green-light" href="#" title="Clinic is closed at this time."></a></td>
+                                    {% elif element.1 %}
+                                        <td><a href="{% url 'users:patient_profile' user_id=element.1.pk %}">{{element.1.first_name}} {{element.1.last_name}}</a></td>
+                                    {% else %}
+                                        <td><a class="ct-orange" href="#" title="You're off duty during this time."></a></td>
+                                    {% endif %}
+                                {% endfor %}
+                            </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+<!-- End Timetable -->
+
+{% endblock content %}

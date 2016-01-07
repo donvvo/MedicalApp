@@ -132,7 +132,7 @@ class PatientTimetableView(LoginRequiredMixin, ListView):
 
 class DoctorTimetableView(LoginRequiredMixin, ListView):
     model = Booking
-    template_name = "medicalappointments/timetable_doctor.html"
+    template_name = "medicalappointments/timetable_doctor_old.html"
 
     def dispatch(self, request, *args, **kwargs):
         # Only patients can view

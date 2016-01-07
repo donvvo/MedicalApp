@@ -1,0 +1,54 @@
+{% load static %}
+{% load has_group %}
+
+<!-- Need variable object and authorized -->
+
+<div class="row">
+    <div class="col-sm-3">
+        <figure>
+            {% if object.image %}
+            <img src="{{object.image.url}}" class="img-responsive" alt="">
+            {% elif object|has_group:"Doctors" %}
+            <img src="{% static 'img/doctor-profile-img.png' %}" class="img-responsive" alt="">
+            {% elif object|has_group:"Patients" %}
+            <img src="{% static 'img/profile-img.png' %}" class="img-responsive" alt="">
+            {% endif %}
+        </figure>
+        <br>
+    </div>
+    <div class="col-sm-9">
+        <div class="row">
+            <div class="col-xs-12 col-sm-8 tag-text add-margin-bottom">
+                <h4>{{object.first_name}} {{object.last_name}}</h4>
+                <span>{% if doctor.specialty %}
+                {{doctor.specialty}}
+                {% endif %}</span>
+            </div>
+            <div class="col-xs-10 col-xs-offset-1 col-sm-4 col-sm-offset-0 col-no-padding">
+                {% if authorized %}
+                    <a href="{% url 'users:profile_edit' object.pk %}" class="btn btn-default btn-hover-bg edit-btn"><span>Edit Profile</span></a>
+                    <a href="{% url 'users:settings' object.pk %}" class="btn btn-default btn-hover-bg edit-btn"><span>Edit Settings</span></a>
+                {% endif %}
+            </div>
+        </div>
+        <div class="tag-text">
+            <h5 class="alternative-title">Summary</h5>
+            <p>
+            {% if object.summary %}
+                {{object.summary}}
+            {% elif authorized %}
+                <a href="{% url 'users:profile_edit' object.pk %}">Please add summary</a>
+            {% endif %}
+            </p>
+
+            <h5 class="alternative-title">Contact</h5>
+            <p>
+            {% if object.contact %}
+                {{object.contact}}
+            {% elif authorized %}
+                <a href="{% url 'users:profile_edit' object.pk %}">Please add contact</a>
+            {% endif %}
+            </p>
+        </div>
+    </div>
+</div>

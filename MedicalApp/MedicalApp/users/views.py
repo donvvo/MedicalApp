@@ -115,8 +115,14 @@ class PatientProfileView(LoginRequiredMixin, DetailView):
     def get_context_data(self, **kwargs):
         context = super(PatientProfileView, self).get_context_data(**kwargs)
         if self.request.user.groups.filter(name="Doctors").exists() or self.request.user.is_staff or\
-        self.request.user.groups.filter(name="Clinics").exists():
+                self.request.user.groups.filter(name="Clinics").exists():
             context['form_access'] = True
+
+        user = self.get_object()
+        context['authorized'] = user == self.request.user or\
+            self.request.user.is_staff or\
+            self.request.user.groups.filter(name="Clinics").exists()
+
         return context
 
 
@@ -139,6 +145,34 @@ class PatientProfileEditView(LoginRequiredMixin, MultipleFormsView):
 
     def get_success_url(self):
         return reverse("users:patient_profile", kwargs={'user_id': self.kwargs['user_id']})
+
+
+class UserProfileEditView(LoginRequiredMixin, MultipleFormsView):
+    form_classes = {
+        'user_settings': UserSettingsForm,
+    }
+    template_name = 'users/user_profile_edit.html'
+
+    def get_form_initial(self):
+        self.user_id = self.kwargs['user_id']
+        self.form_initial = {
+            'user_settings': get_object_or_404(User, pk=self.user_id),
+        }
+
+    def get_context_data(self, **kwargs):
+        context = super(UserProfileEditView, self).get_context_data(**kwargs)
+        self.user = get_object_or_404(User, pk=self.user_id)
+        context['user'] = self.user
+        return context
+
+    def get_success_url(self):
+        self.user_id = self.kwargs['user_id']
+        user = get_object_or_404(User, pk=self.user_id)
+
+        if user.groups.filter(name="Patients").exists():
+            return reverse("users:patient_profile", kwargs={'user_id': self.kwargs['user_id']})
+        elif user.groups.filter(name="Doctors").exists():
+            return reverse("users:doctor_profile", kwargs={"user_id": self.user_id})
 
 
 class DoctorProfileView(LoginRequiredMixin, DetailView):
@@ -261,6 +295,7 @@ class SettingsView(LoginRequiredMixin, UpdateView):
 
     def get_object(self):
         user = get_object_or_404(User, id=self.kwargs['user_id'])
+        self.user = user
 
         if user.groups.filter(name="Doctors").exists():
             self.form_class = DoctorSettingsForm
@@ -274,8 +309,12 @@ class SettingsView(LoginRequiredMixin, UpdateView):
             self.form_class = UserSettingsForm
             return user
 
-    def get_success_url(self):
-        return reverse("users:doctor_profile", kwargs={'user_id': self.kwargs['user_id']})
+    def get_context_data(self, **kwargs):
+        context = super(SettingsView, self).get_context_data(**kwargs)
+
+        context['user'] = self.user
+
+        return context
 
     def post(self, request, *args, **kwargs):
         self.user_id = kwargs['user_id']

@@ -85,22 +85,15 @@ urlpatterns = [
     ),
 
     url(
-        regex=r'^patient/(?P<user_id>[\d]+)/edit/$',
-        view=views.PatientProfileEditView.as_view(),
-        name='patient_profile_edit'
+        regex=r'^(?P<user_id>[\d]+)/edit/$',
+        view=views.UserProfileEditView.as_view(),
+        name='profile_edit'
     ),
 
     url(
         regex=r'^doctor/(?P<user_id>[\d]+)/$',
         view=views.DoctorProfileView.as_view(),
         name='doctor_profile'
-    ),
-
-    # URL pattern for the UserUpdateView
-    url(
-        regex=r'^doctor/(?P<user_id>[\d]+)/edit/$',
-        view=views.DoctorProfileEditView.as_view(),
-        name='doctor_profile_edit'
     ),
 
     url(
