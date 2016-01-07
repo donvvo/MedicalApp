@@ -15,9 +15,17 @@
         </div>
         <div class="row">
             <div class="col-md-12">
-                <ul class="filters">
+                <ul class="filters specialty-filters">
                     {% for specialty in object_list %}
-                        <li><a href="#" class="btn btn-color-border-solid-3 specialty-btn">{{specialty}}</a></li>
+                        <li><a href="#" class="featured-item ct-icon specialty-btn">
+                            <figure>
+                                <img class="img-responsive" src="{% static 'img/features/featured-2.jpg' %}" alt="//">
+                                <div class="icon-image"><span class="glyphicon glyphicon-picture"></span></div>
+                            </figure>
+                            <div class="content text-center">
+                                <h4>{{specialty}}</h4>
+                            </div>
+                        </a></li>
                     {% endfor %}
                 </ul>
             </div>
@@ -30,8 +38,8 @@
 <section id="location-section" class="gallery generic animated fadeInUp">
     <div class="container">
         <div class="row">
-            <div class="col-sm-4">
-                <a href="#" class="btn btn-default btn-hover-bg back-btn"><span>Back</span></a>
+            <div class="col-sm-12">
+                <a href="#" class="btn btn-default btn-color-bg back-btn"><span>Back</span></a>
             </div>
             <div class="col-sm-12">
                 <div class="section-title">
@@ -126,7 +134,7 @@ $(function() {
     var $container = $('.gallery-grid');
 
     $('.specialty-btn').click(function() {
-        var specialty = $(this).text();
+        var specialty = $(this).find('h4').text();
         $.ajax({
             type:"GET",
             url:"{% url 'medical_appointments:get_clinics' %}",

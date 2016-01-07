@@ -34,21 +34,23 @@
                                     <img src="{% static 'img/news/news-thumbnail-144x144-02.jpg' %}" alt="//" class="img-responsive">
                                 {% endif %}
                              </div>
-                            <div class="col-md-5">
+                            <div class="col-md-4">
+                                <h6>Clinic</h6>
                                 <p>{{appointment.clinic.address}}, {{appointment.clinic.city}}
                                 <br>{{appointment.clinic.postal_code}}</p>
                             </div>
                             <div class="col-md-3">
+                                <h6>Time -- Date</h6>
                                 {{appointment.time|time:"h:i A"}} -- {{appointment.time|date:"M j"}} {{appointment.time|date:"D"}}
                             </div>
-                            <div class="col-md-2">
-                                <p>Your doctor</p>
+                            <div class="col-md-3">
+                                <h6>Your doctor</h6>
                                 {% if appointment.doctor.user.image %}
                                     <img src="{{appointment.doctor.user.image.url}}" alt="//" class="img-responsive img-circle" style="max-width:50px;height:auto;">
                                 {% else %}
                                     <img src="{% static 'img/doctor-profile-img.png' %}" alt="//" class="img-responsive img-circle" style="max-width:50px;height:auto;">
                                 {% endif %}
-                                <p>{{appointment.doctor}}</p>
+                                <p>{{appointment.doctor.user}}<br>Specialty: {{appointment.doctor.specialty}}</p>
                             </div>
                         </div>
                     {% endfor %}
