@@ -1,0 +1,128 @@
+{% extends "base.html" %}
+{% load static %}
+{% load has_group %}
+
+{% block content %}
+
+<!-- Single Doctor-->
+<section class="profile-doctor generic animated fadeInUp">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="section-title">
+                    <h3>Edit Profile</h3>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-10 col-sm-offset-1">
+                <div class="row">
+                    <form id="request" action="{{request.path}}" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                        <div class="col-sm-3 text-center">
+                            <figure>
+                                {% if user.image %}
+                                <img id="preview" src="{{user.image.url}}" class="img-responsive" alt="">
+                                {% else %}
+                                    {% if user|has_group:"Patients" %}
+                                        <img id="preview" src="{% static 'img/profile-img.png' %}" class="img-responsive" alt="">
+                                    {% elif user|has_group:"Doctors" %}
+                                        <img id="preview" src="{% static 'img/doctor-profile-img.png' %}" class="img-responsive profile-img" alt="">
+                                    {% endif %}
+                                {% endif %}
+                            </figure>
+                            {{forms.user_settings.image}}
+                        </div>
+                        <div class="col-sm-9">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <div class="col-sm-6">
+                                            {% for error in forms.user_settings.first_name.errors %}
+                                              <span class="errorlist">{{error}}</span>
+                                            {% endfor %}
+                                        </div>
+                                        {{forms.user_settings.first_name}}
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <div class="col-sm-6">
+                                            {% for error in forms.user_settings.last_name.errors %}
+                                              <span class="errorlist">{{error}}</span>
+                                            {% endfor %}
+                                        </div>
+                                        {{forms.user_settings.last_name}}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <div class="col-sm-12">
+                                            {% for error in forms.user_settings.summary.errors %}
+                                              <span class="errorlist">{{error}}</span>
+                                            {% endfor %}
+                                        </div>
+                                        {{forms.user_settings.summary}}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <div class="col-sm-12">
+                                            {% for error in forms.user_settings.contact.errors %}
+                                              <span class="errorlist">{{error}}</span>
+                                            {% endfor %}
+                                        </div>
+                                        {{forms.user_settings.contact}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 text-right">
+                            <input type="submit" class="btn btn-default btn-color-bg btn-no-radius" value="Save">
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</section>
+<!-- End News -->
+
+
+{% endblock content %}
+
+{% block javascript %}
+
+{{block.super}}
+
+<script>
+    $("#id_image").addClass('file-loading');
+    $("#id_image").fileinput({
+        browseClass: "btn btn-default btn-color-bg btn-no-radius",
+        browseLabel: "Change Photo",
+        buttonLabelClass: "",
+        showPreview: false,
+        showCaption: false,
+        showUpload: false,
+        showUploadedThumbs: false
+    });
+    $('#id_image').on('fileloaded', function(event, file, previewId, index, reader) {
+        $('#preview').attr('src', URL.createObjectURL(file));
+    });
+    $('#id_image').on('fileclear', function(event) {
+        {% if user|has_group:"Patients" %}
+            $('#preview').attr('src', "{% static 'img/profile-img.png' %}");
+        {% elif user|has_group:"Doctors" %}
+            $('#preview').attr('src', "{% static 'img/doctor-profile-img.png' %}");
+        {% endif %}
+    });
+</script>
+
+{% endblock javascript %}

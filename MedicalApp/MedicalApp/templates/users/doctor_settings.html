@@ -20,8 +20,8 @@
                     {% csrf_token %}
                     <div class="col-sm-3 text-center">
                         <figure>
-                            {% if doctor_user.image %}
-                            <img id="preview" src="{{doctor_user.image.url}}" class="img-responsive profile-img" alt="">
+                            {% if user.image %}
+                            <img id="preview" src="{{user.image.url}}" class="img-responsive profile-img" alt="">
                             {% else %}
                             <img id="preview" src="{% static 'img/doctor-profile-img.png' %}" class="img-responsive profile-img" alt="">
                             {% endif %}
