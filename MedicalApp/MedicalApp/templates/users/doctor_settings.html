@@ -21,9 +21,9 @@
                     <div class="col-sm-3 text-center">
                         <figure>
                             {% if doctor_user.image %}
-                            <img id="preview" src="{{doctor_user.image.url}}" class="img-responsive" alt="">
+                            <img id="preview" src="{{doctor_user.image.url}}" class="img-responsive profile-img" alt="">
                             {% else %}
-                            <img id="preview" src="{% static 'img/doctor-profile-img.png' %}" class="img-responsive" alt="">
+                            <img id="preview" src="{% static 'img/doctor-profile-img.png' %}" class="img-responsive profile-img" alt="">
                             {% endif %}
                         </figure>
                         {{forms.user_settings.image}}
@@ -136,6 +136,7 @@
     $("#id_image").fileinput({
         browseClass: "btn btn-default btn-color-bg btn-no-radius",
         browseLabel: "Change Photo",
+        buttonLabelClass: "",
         showPreview: false,
         showCaption: false,
         showUpload: false,

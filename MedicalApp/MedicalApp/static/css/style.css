@@ -11585,7 +11585,7 @@ blockquote h4 {
   margin-top: 0;
 }
 .widget-title:after {
-  background-color: #6DAE06;
+  background-color: #359940;
   top: 43px;
   content: " ";
   display: block;
@@ -16786,4 +16786,29 @@ div.list-group-item h6 {
 }
 .timetable tbody .green-light {
   opacity: 0.3;
+}
+
+/* Doctor profile */
+.edit-btn {
+  margin-top: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.add-margin-bottom {
+  margin-bottom: 1em;
+}
+
+.btn-file {
+  padding: 0;
+  min-width: 100%;
+}
+
+.profile-img {
+  margin: auto;
+}
+
+.fileinput-remove-button {
+  padding: 0;
+  min-width: 100%;
 }
