@@ -28,6 +28,8 @@
                                         <img id="preview" src="{% static 'img/profile-img.png' %}" class="img-responsive" alt="">
                                     {% elif user|has_group:"Doctors" %}
                                         <img id="preview" src="{% static 'img/doctor-profile-img.png' %}" class="img-responsive profile-img" alt="">
+                                    {% elif user|has_group:"Clinics" %}
+                                        <img id="preview" src="{% static 'img/profile-img.png' %}" class="img-responsive profile-img" alt="">
                                     {% endif %}
                                 {% endif %}
                             </figure>

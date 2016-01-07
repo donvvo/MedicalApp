@@ -173,6 +173,8 @@ class UserProfileEditView(LoginRequiredMixin, MultipleFormsView):
             return reverse("users:patient_profile", kwargs={'user_id': self.kwargs['user_id']})
         elif user.groups.filter(name="Doctors").exists():
             return reverse("users:doctor_profile", kwargs={"user_id": self.user_id})
+        elif user.groups.filter(name="Clinics").exists():
+            return reverse("medical_appointments:clinic_profile", kwargs={"user_id": self.user_id})
 
 
 class DoctorProfileView(LoginRequiredMixin, DetailView):

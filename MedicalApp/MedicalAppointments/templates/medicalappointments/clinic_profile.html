@@ -9,13 +9,6 @@
 <section class="profile-doctor generic animated fadeInUp">
     <div class="container">
         <div class="row">
-            <div class="col-sm-12 text-right">
-            {% if request.user.is_staff or request.user|has_group:"Clinics" %}
-                <a href="{% url 'medical_appointments:clinic_profile_edit' object.url_name %}" class="btn btn-default btn-hover-bg"><span>Edit Profile</span></a>
-            {% endif %}
-            </div>
-        </div>
-        <div class="row">
             <div class="col-sm-12">
                 <div class="section-title">
                     <h3>Clinic Profile</h3>
@@ -24,35 +17,57 @@
         </div>
 
         <div class="row">
-            <div class="col-sm-9">
-                <div class="row">
-                    <div class="col-sm-5 hidden-xs">
-                        <figure>
-                            {% if object.user.image %}
-                            <img src="{{object.user.image.url}}" class="img-responsive" alt="">
-                            {% else %}
-                            <img src="{% static 'img/profile-img.png' %}" class="img-responsive" alt="">
-                            {% endif %}
-                        </figure>
-                    </div>
-                    <div class="col-sm-7">
-                        <div class="tag-text">
-                            <h4>{{object.name}}</h4>
-                            <span>Specialty</span>
-                            {% if object.description %}
-                                <p>{{object.description}}</p>
-                            {% elif request.user.is_staff or request.user. %}
-                                <p><a href="{% url 'medical_appointments:clinic_profile_edit' object.url_name %}">Please add description</a></p>
-                            {% endif %}
-                        </div>
+            <div class="col-sm-12">
+                {% include "users/profile_base.html" with object=object %}
 
+                <div class="row">
+                    <div class="col-sm-9">
+                        <br>
+                        <br>
+
+                        <!-- Clinic tabs -->
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li><a href="#doctors" role="tab" data-toggle="tab">Doctors</a></li>
+                            <li><a href="#patients" role="tab" data-toggle="tab">Current Patients</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                            <!-- Doctors -->
+                            <div class="tab-pane fade in active" id="doctors">
+                                <ul class="media-list">
+                                    {% for doctor in object.clinic_set.get.doctor_set.all %}
+
+                                        <li class="media">
+                                            <a class="pull-left" href="{% url 'users:doctor_profile' doctor.user.pk %}">
+                                                {% if doctor.user.image %}
+                                                    <img class="media-object img-circle" src="{{doctor.user.image.url}}" alt="//">
+                                                {% else %}
+                                                    <img class="media-object img-circle" src="{% static 'img/doctor-profile-img.png' %}" alt="//">
+                                                {% endif %}
+                                            </a>
+                                            <div class="media-body">
+                                                <h5 class="media-heading"><a href="{% url 'users:doctor_profile' doctor.user.pk %}">{{doctor.user.first_name}} {{doctor.user.last_name}}</a></h5>
+                                                <p class="media-meta">{{doctor.specialty}}</p>
+                                            </div>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+
+                                <center><a href="{% url 'medical_appointments:add_doctor' object.pk %}" class="btn btn-default btn-color-bg-dark-icon"><span>Add Doctor</span></a></center>
+                            </div>
+                            <!-- Doctors ends -->
+
+                            <!-- Patients -->
+                            <div class="tab-pane fade" id="patients">
+
+                            </div>
+                            <!-- Patients end -->
+                        </div>
+                        <!-- Clinic tab end -->
                     </div>
                 </div>
-
-
             </div>
-
-            <div class="col-md-3">
+            <div class="col-sm-3">
                 <div class="sidebar sidebar-right">
                     <h5 class="sidebar-title">About</h5>
 
@@ -109,46 +124,7 @@
                                 </div>
                             </div>
                         </div>
-
-
-                        <div class="panel">
-                            <div class="panel-heading">
-                                <h4 class="panel-title">
-                                    <a data-toggle="collapse" data-parent="#accordion-work" href="#doctors" class="collapsed">
-                                        <i class="fa fa-plus-square"></i>Doctors
-                                    </a>
-                                </h4>
-                            </div>
-
-                            <div id="doctors" class="panel-collapse collapse">
-                                <div class="panel-body">
-                                    <ul class="media-list">
-                                    {% for doctor in object.doctor_set.all %}
-
-                                        <li class="media">
-                                            <a class="pull-left" href="{% url 'users:doctor_profile' doctor.user.pk %}">
-                                                {% if doctor.user.image %}
-                                                    <img class="media-object img-circle" src="{{doctor.user.image.url}}" alt="//">
-                                                {% else %}
-                                                    <img class="media-object img-circle" src="{% static 'img/news/news-thumbnail-144x144-01.jpg' %}" alt="//">
-                                                {% endif %}
-                                            </a>
-                                            <div class="media-body">
-                                                <h5 class="media-heading"><a href="{% url 'users:doctor_profile' doctor.user.pk %}">{{doctor.user.first_name}} {{doctor.user.last_name}}</a></h5>
-                                                <p class="media-meta">{{doctor.specialty}}</p>
-                                            </div>
-                                        </li>
-                                    {% endfor %}
-                                    </ul>
-                                </div>
-
-                                <center><a href="{% url 'medical_appointments:add_doctor' object.url_name %}" class="btn btn-default btn-color-bg-dark-icon"><span>Add Doctor</span></a></center>
-
-
-                            </div>
-                        </div>
                     </div>
-
                 </div>
             </div>
         </div>

@@ -12,6 +12,8 @@
             <img src="{% static 'img/doctor-profile-img.png' %}" class="img-responsive" alt="">
             {% elif object|has_group:"Patients" %}
             <img src="{% static 'img/profile-img.png' %}" class="img-responsive" alt="">
+            {% elif object|has_group:"Clinics" %}
+            <img src="{% static 'img/profile-img.png' %}" class="img-responsive" alt="">
             {% endif %}
         </figure>
         <br>

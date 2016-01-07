@@ -16818,3 +16818,7 @@ div.list-group-item h6 {
   padding: 0;
   width: 100%;
 }
+
+p.inline-p {
+  display: inline-block;
+}

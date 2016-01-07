@@ -25,10 +25,9 @@ from MedicalApp.users.models import User
 
 
 def clinic_or_staff(user, **kwargs):
-    clinicname = kwargs['clinicname']
-    clinic = get_object_or_404(Clinic, name=clinicname)
+    clinic_user = get_object_or_404(Clinic, user_id=kwargs['user_id'])
     return user.is_staff or \
-        (user.groups.filter(name="Clinics").exists() and user == clinic.user)
+        (user.groups.filter(name="Clinics").exists() and user == clinic_user)
 
 
 class PatientOnlyMixin(LoginRequiredMixin, GroupRequiredMixin):
@@ -162,17 +161,24 @@ class ClinicListView(LoginRequiredMixin, StaffuserRequiredMixin, ListView):
 
 
 class ClinicProfileView(LoginRequiredMixin, DetailView):
-    model = Clinic
+    model = User
+    slug_field = "pk"
+    slug_url_kwarg = "user_id"
     template_name = "medicalappointments/clinic_profile.html"
 
     @method_decorator(user_passes_test_with_kwargs(clinic_or_staff))
     def dispatch(self, request, *args, **kwargs):
-        return super(ClinicProfileView, self). dispatch(request, *args, **kwargs)
+        return super(ClinicProfileView, self).dispatch(request, *args, **kwargs)
 
-    def get_object(self):
-        clinic_name = self.kwargs['clinicname']
-        clinic_name = clinic_name.replace('+', ' ')
-        return get_object_or_404(self.model, name=clinic_name)
+    def get_context_data(self, **kwargs):
+        context = super(ClinicProfileView, self).get_context_data(**kwargs)
+
+        user = self.get_object()
+
+        context['authorized'] = user == self.request.user or\
+            self.request.user.is_staff
+
+        return context
 
 
 class ClinicProfileEditView(LoginRequiredMixin, UpdateView):
@@ -265,19 +271,20 @@ class AddDoctorView(LoginRequiredMixin, GroupRequiredMixin, TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(AddDoctorView, self).get_context_data()
-        clinic_name = kwargs['clinicname']
-        context['clinic_name'] = clinic_name
-        doctors = Doctor.objects.exclude(clinic=clinic_name.replace('+', ' '))
+        clinic_user = get_object_or_404(User, id=kwargs['user_id'])
+        clinic = clinic_user.clinic_set.get()
+        context['clinic_name'] = clinic.name
+        doctors = Doctor.objects.exclude(clinic=clinic)
         context['doctors'] = doctors
 
         return context
 
     def post(self, request, *args, **kwargs):
         doctor = get_object_or_404(Doctor, user=request.POST.get('doctor'))
-        clinic_name = kwargs['clinicname']
-        clinic = get_object_or_404(Clinic, name=clinic_name.replace('+', ' '))
+        clinic_user = get_object_or_404(User, id=kwargs['user_id'])
+        clinic = clinic_user.clinic_set.get()
         doctor.clinic = clinic
         doctor.save()
 
-        return redirect(reverse('medical_appointments:clinic_profile', kwargs={'clinicname': clinic_name}))
+        return redirect(reverse('medical_appointments:clinic_profile', kwargs={'user_id': kwargs['user_id']}))
 
