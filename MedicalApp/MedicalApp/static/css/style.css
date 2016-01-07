@@ -16812,3 +16812,9 @@ div.list-group-item h6 {
   padding: 0;
   min-width: 100%;
 }
+
+/* Doctor settings */
+.max-width-btn {
+  padding: 0;
+  width: 100%;
+}

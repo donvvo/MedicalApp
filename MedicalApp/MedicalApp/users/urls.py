@@ -73,7 +73,7 @@ urlpatterns = [
 
     url(
         regex=r'^(?P<user_id>[\w.@+-]+)/settings$',
-        view=TemplateView.as_view(template_name="users/settings.html"),
+        view=views.SettingsView.as_view(),
         name='settings'
     ),
 

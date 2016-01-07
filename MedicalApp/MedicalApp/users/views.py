@@ -29,7 +29,8 @@ class HomeView(LoginRequiredMixin, DetailView):
             return super(HomeView, self).dispatch(request, *args, **kwargs)
         elif self.request.user.groups.filter(name="Patients").exists():
             return redirect(reverse("medical_appointments:appointments"))
-        elif self.request.user.is_staff:
+        elif self.request.user.groups.filter(name="Clinics").exists()\
+                or self.request.user.is_staff:
             return redirect(reverse("users:manage_main"))
         else:
             return redirect(reverse("users:account_login"))
@@ -196,16 +197,7 @@ class DoctorProfileEditView(LoginRequiredMixin, MultipleFormsView):
     def get_context_data(self, **kwargs):
         context = super(DoctorProfileEditView, self).get_context_data(**kwargs)
         context['doctor_user'] = get_object_or_404(User, pk=self.user_id)
-        print context['doctor_user']
         return context
-
-    def post(self, request, *args, **kwargs):
-        self.user_id = kwargs['user_id']
-        if request.POST.get('Delete'):
-            user = get_object_or_404(User, pk=self.user_id)
-            user.delete()
-            return redirect(reverse('users:doctors_list'))
-        return super(DoctorProfileEditView, self).post(request, *args, **kwargs)
 
     def get_success_url(self):
         return reverse("users:doctor_profile", kwargs={"user_id": self.user_id})
@@ -274,6 +266,37 @@ class DoctorsListView(LoginRequiredMixin, GroupRequiredMixin, ListView):
             return queryset.order_by('user__last_name')
 
 
+class SettingsView(LoginRequiredMixin, UpdateView):
+    template_name = "users/settings.html"
+    form_class = EmailDoctorForm
+
+    def get_object(self):
+        user = get_object_or_404(User, id=self.kwargs['user_id'])
+
+        if user.groups.filter(name="Doctors").exists():
+            self.form_class = DoctorSettingsForm
+            return user.doctor
+        else:
+            self.form_class = UserSettingsForm
+            return user
+
+    def get_context_data(self, **kwargs):
+        context = super(SettingsView, self).get_context_data(**kwargs)
+
+        return context
+
+    def get_success_url(self):
+        return reverse("users:doctor_profile", kwargs={'user_id': self.kwargs['user_id']})
+
+    def post(self, request, *args, **kwargs):
+        self.user_id = kwargs['user_id']
+        if request.POST.get('Delete'):
+            user = get_object_or_404(User, pk=self.user_id)
+            user.delete()
+            return redirect(reverse("home"))
+        return super(SettingsView, self).post(request, *args, **kwargs)
+
+
 class EmailDoctorView(LoginRequiredMixin, GroupRequiredMixin, FormView):
     template_name = "users/email_doctor.html"
     form_class = EmailDoctorForm
@@ -287,5 +310,5 @@ class EmailDoctorView(LoginRequiredMixin, GroupRequiredMixin, FormView):
         return super(EmailDoctorView, self).form_valid(form)
 
 
-class UserPasswordChangeView(PasswordChangeView):
+class UserPasswordChangeView(LoginRequiredMixin, PasswordChangeView):
     success_url = reverse_lazy("users:account_logout")
