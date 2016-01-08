@@ -75,8 +75,21 @@ class Booking(models.Model):
     patient = models.ForeignKey(Patient)
     doctor = models.ForeignKey(Doctor)
     time = models.DateTimeField()
+    check_in = models.BooleanField(default=False)
+    reasons = MyTextField(placeholder="Please write reasons for this appointment")
+    symptoms = MyTextField(placeholder="Please write current symptoms")
+    doctors_note = MyTextField(placeholder="Doctor's note")
 
     def __str__(self):
         return "Booking at " + self.clinic.pk + " at " + \
         timezone.localtime(self.time).strftime('%H:%M -- %m/%d/%y') + \
         " for " + str(self.patient) + " with " + str(self.doctor)
+
+
+@python_2_unicode_compatible
+class NewForms(models.Model):
+    booking = models.ForeignKey(Booking)
+    new_form = models.FileField(upload_to='forms')
+
+    def __str__(self):
+        return self.new_form.url

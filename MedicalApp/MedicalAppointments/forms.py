@@ -3,7 +3,7 @@ from django import forms
 from allauth.account.forms import SignupForm
 
 from MedicalApp.users.models import User
-from .models import Clinic
+from .models import Clinic, NewForms
 
 
 class ClinicUserSignupForm(SignupForm):
@@ -66,3 +66,9 @@ class ClinicSettingsForm(forms.ModelForm):
         'start_time_wed', 'end_time_wed', 'start_time_thurs', 'end_time_thurs',
         'start_time_fri', 'end_time_fri', 'start_time_sat', 'end_time_sat',
         'start_time_sun', 'end_time_sun')
+
+
+class NewFormsForm(forms.ModelForm):
+    class Meta:
+        model = NewForms
+        fields = ('new_form', )

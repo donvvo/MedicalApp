@@ -196,7 +196,7 @@ class DoctorProfileView(LoginRequiredMixin, DetailView):
         doctor = get_object_or_404(Doctor, user=user)
         context['doctor'] = doctor
 
-        context['patients'] = Patient.objects.filter(booking__doctor=doctor).all()
+        context['patients'] = Patient.objects.filter(booking__doctor=doctor).distinct()
 
         bookings = Booking.objects.filter(doctor=doctor).all()
         context['bookings'] = bookings.filter(time__gte=timezone.now()).all()

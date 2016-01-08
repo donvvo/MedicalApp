@@ -17,9 +17,9 @@ from braces.views import LoginRequiredMixin, StaffuserRequiredMixin, GroupRequir
 from allauth.account.utils import complete_signup
 from allauth.account import app_settings
 
-from .models import Booking, DoctorSpecialty, Clinic, Doctor, Patient
+from .models import Booking, DoctorSpecialty, Clinic, Doctor, Patient, NewForms
 from .utils import get_clinics_by_specialty, get_time_table
-from .forms import ClinicUserSignupForm, ClinicForm, ClinicUserSettingsForm
+from .forms import ClinicUserSignupForm, ClinicForm, ClinicUserSettingsForm, NewFormsForm
 from MedicalApp.utils import MultipleFormsView, user_passes_test_with_kwargs
 from MedicalApp.users.models import User
 
@@ -215,7 +215,6 @@ class ClinicProfileEditView(LoginRequiredMixin, UpdateView):
     def form_valid(self, form):
         clinic = self.get_object()
         initial = clinic.user
-        print initial
         user_form = ClinicUserSettingsForm(self.request.POST, self.request.FILES, instance=initial)
         if user_form.is_valid():
             user_form.save()
@@ -291,4 +290,43 @@ class AddDoctorView(LoginRequiredMixin, GroupRequiredMixin, TemplateView):
         doctor.save()
 
         return redirect(reverse('medical_appointments:clinic_profile', kwargs={'user_id': kwargs['user_id']}))
+
+
+class AppointmentInfoView(LoginRequiredMixin, UpdateView):
+    template_name = "medicalappointments/appointment_info.html"
+    model = Booking
+    slug_field = "pk"
+    slug_url_kwarg = "booking_id"
+    fields = ('check_in', 'reasons', 'symptoms', 'doctors_note')
+
+    def get_context_data(self, **kwargs):
+        context = super(AppointmentInfoView, self).get_context_data(**kwargs)
+        if self.request.user.groups.filter(name="Doctors").exists() or self.request.user.is_staff or\
+                self.request.user.groups.filter(name="Clinics").exists():
+            context['form_access'] = True
+
+        context['booking'] = context['object']
+        context['object'] = self.get_object().patient.user
+        context['new_forms'] = NewForms.objects.filter(booking=context['booking']).all()
+
+        context['new_forms_form'] = NewFormsForm
+
+        return context
+
+    def get_success_url(self):
+        if self.request.user.groups.filter(name="Patients").exists():
+            return reverse('medical_appointments:appointments')
+        else:
+            return reverse('users:doctor_profile', kwargs={'user_id': self.get_object().doctor.user_id})
+
+    def form_valid(self, form):
+        new_forms_form = NewFormsForm(self.request.POST, self.request.FILES)
+        print new_forms_form
+        if new_forms_form.is_valid():
+            print 'vallid'
+            new_forms = new_forms_form.save(commit=False)
+            new_forms.booking = self.get_object()
+            new_forms.save()
+            print new_forms
+        return super(AppointmentInfoView, self).form_valid(form)
 

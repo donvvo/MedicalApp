@@ -16789,7 +16789,8 @@ div.list-group-item h6 {
 }
 
 /* Doctor profile */
-.edit-btn {
+.edit-btn,
+.check-in-btn {
   margin-top: 0;
   padding: 0;
   width: 100%;
@@ -16836,4 +16837,12 @@ figure.effect-chico:hover img {
 .edit-icon {
   position: relative;
   top: -5px;
+}
+
+figure.pull-left {
+  margin-right: 15px;
+}
+
+.appointment_info div.form-control {
+  border: none;
 }

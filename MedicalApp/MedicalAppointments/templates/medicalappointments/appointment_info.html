@@ -1,0 +1,346 @@
+{% extends "base.html" %}
+{% load static %}
+{% load has_group %}
+
+{% block content %}
+<!-- Page Titles -->
+<div class="page-title">
+    <div class="container">
+        <h1>Appointment</h1>
+    </div>
+</div>
+<!-- End Page Titles -->
+
+<!-- Single Patient-->
+<section class="profile-doctor generic animated fadeInUp">
+    <div class="container">
+        <form action="{{request.path}}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+            <div class="row">
+                <div class="col-sm-2 col-sm-offset-1">
+                    <input type="submit" class="btn btn-default btn-color-bg max-width-btn" value="Save">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="section-title">
+                        <h3>Appointment Details</h3>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-10 col-sm-offset-1">
+                    <div class="row">
+                        <div class="col-sm-3">
+                            {% if object.image %}
+                            <img src="{{object.image.url}}" class="img-responsive" alt="">
+                            {% elif object|has_group:"Patients" %}
+                            <img src="{% static 'img/profile-img.png' %}" class="img-responsive" alt="">
+                            {% endif %}
+                        </div>
+                        <div class="col-sm-9 appointment_info">
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-8 tag-text">
+                                    <h4 style="display: inline-block; margin-right: 5px">{{object.first_name}} {{object.last_name}}</h4>
+                                </div>
+                                <div class="col-xs-12 col-sm-4 btn-group" data-toggle="buttons">
+                                    <label class="btn btn-default btn-color-shadow check-in-btn">{{form.check_in}}
+                                    <span>Check in</span></label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <h5 class="alternative-title">
+                                        Time -- Date
+                                    </h5>
+                                    {{booking.time}}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <h5 class="alternative-title">
+                                        Doctor
+                                    </h5>
+                                    {{booking.doctor.user}}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <h5 class="alternative-title">
+                                        Clinic
+                                    </h5>
+                                    {{booking.Clinic}}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="form-control">
+                                        {{form.reasons}}
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="form-control">
+                                        {{form.symptoms}}
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="form-control">
+                                        {{form.doctors_note}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <br>
+                            <br>
+
+                            <!-- Patient tabs -->
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li class="active"><a href="#assessment-forms" role="tab" data-toggle="tab">Assessment Forms</a></li>
+                                <li><a href="#consent-forms" role="tab" data-toggle="tab">Consent Forms</a></li>
+                                <li><a href="#doctor-forms" role="tab" data-toggle="tab">Doctor Forms</a></li>
+                                <li><a href="#new-forms" role="tab" data-toggle="tab">New Forms</a></li>
+                            </ul>
+
+                            <div class="tab-content">
+                                <!-- Assessment Forms -->
+                                <div class="tab-pane fade in active" id="forms">
+                                    {% if object.patient.patientinformation or form_access %}
+                                        <h5 class="alternative-title">Patient Information</h5>
+                                        <a href="{% url 'medical_forms:patient_info' object.pk %}" class="btn btn-default btn-hover-bg">
+                                        {% if object.patient.patientinformation %}
+                                            <span>View</span></a>
+                                        {% else %}
+                                            <span>Assign</span></a>
+                                        {% endif %}
+                                    {% endif %}
+
+                                    {% if object.patient.healthhistory or form_access %}
+                                        <h5 class="alternative-title">Health History</h5>
+                                        <a href="{% url 'medical_forms:health_history' object.pk %}" class="btn btn-default btn-hover-bg">
+                                        {% if object.patient.healthhistory %}
+                                            <span>View</span></a>
+                                        {% else %}
+                                            <span>Assign</span></a>
+                                        {% endif %}
+                                    {% endif %}
+
+                                    {% if object.patient.accidenthistory or form_access %}
+                                        <h5 class="alternative-title">Accident History</h5>
+                                        <a href="{% url 'medical_forms:accident_history' object.pk %}" class="btn btn-default btn-hover-bg">
+                                        {% if object.patient.accidenthistory %}
+                                            <span>View</span></a>
+                                        {% else %}
+                                            <span>Assign</span></a>
+                                        {% endif %}
+                                    {% endif %}
+
+                                    {% if object.patient.tmjscreening or form_access %}
+                                        <h5 class="alternative-title">TMJ Screening</h5>
+                                        <a href="{% url 'medical_forms:tmj-screening' object.pk %}" class="btn btn-default btn-hover-bg">
+                                        {% if object.patient.tmjscreening %}
+                                            <span>View</span></a>
+                                        {% else %}
+                                            <span>Assign</span></a>
+                                        {% endif %}
+                                    {% endif %}
+
+                                    {% if object.patient.lowerextremity or form_access %}
+                                        <h5 class="alternative-title">Lower Extremity Functional Scale (LEFS)</h5>
+                                        <a href="{% url 'medical_forms:lower-extremity' object.pk %}" class="btn btn-default btn-hover-bg">
+                                        {% if object.patient.lowerextremity %}
+                                            <span>View</span></a>
+                                        {% else %}
+                                            <span>Assign</span></a>
+                                        {% endif %}
+                                    {% endif %}
+
+                                    {% if object.patient.upperextremity or form_access %}
+                                        <h5 class="alternative-title">Upper Extremity Functional Index (UEFI)</h5>
+                                        <a href="{% url 'medical_forms:upper-extremity' object.pk %}" class="btn btn-default btn-hover-bg">
+                                        {% if object.patient.upperextremity %}
+                                            <span>View</span></a>
+                                        {% else %}
+                                            <span>Assign</span></a>
+                                        {% endif %}
+                                    {% endif %}
+
+                                    {% if object.patient.neckdisability or form_access %}
+                                        <h5 class="alternative-title">Neck Disability Index</h5>
+                                        <a href="{% url 'medical_forms:neck-disability' object.pk %}" class="btn btn-default btn-hover-bg">
+                                        {% if object.patient.neckdisability %}
+                                            <span>View</span></a>
+                                        {% else %}
+                                            <span>Assign</span></a>
+                                        {% endif %}
+                                    {% endif %}
+                                </div>
+                                <!-- Assessment Forms ends -->
+
+                                <!-- Consent Forms -->
+                                <div class="tab-pane fade" id="consent-forms">
+                                    {% if object.patient.chiropractictreatment or form_access %}
+                                        <h5 class="alternative-title">Informed Consent to Chiropractic Treatment</h5>
+                                        <a href="{% url 'medical_forms:chiropractic-treatment' object.pk %}" class="btn btn-default btn-hover-bg">
+                                        {% if object.patient.chiropractictreatment %}
+                                            <span>View</span></a>
+                                        {% else %}
+                                            <span>Assign</span></a>
+                                        {% endif %}
+                                    {% endif %}
+
+                                    {% if object.patient.physiotherapytreatment or form_access %}
+                                        <h5 class="alternative-title">Informed Consent to Physiotherapy Treatment</h5>
+                                        <a href="{% url 'medical_forms:physiotherapy-treatment' object.pk %}" class="btn btn-default btn-hover-bg">
+                                        {% if object.patient.physiotherapytreatment %}
+                                            <span>View</span></a>
+                                        {% else %}
+                                            <span>Assign</span></a>
+                                        {% endif %}
+                                    {% endif %}
+
+                                    {% if object.patient.massagetreatment or form_access %}
+                                        <h5 class="alternative-title">Informed Consent to Massage Treatment</h5>
+                                        <a href="{% url 'medical_forms:massage-treatment' object.pk %}" class="btn btn-default btn-hover-bg">
+                                        {% if object.patient.massagetreatment %}
+                                            <span>View</span></a>
+                                        {% else %}
+                                            <span>Assign</span></a>
+                                        {% endif %}
+                                    {% endif %}
+
+                                    {% if object.patient.medicalauthorization or form_access %}
+                                        <h5 class="alternative-title">Medical Authorization</h5>
+                                        <a href="{% url 'medical_forms:medical-authorization' object.pk %}" class="btn btn-default btn-hover-bg">
+                                        {% if object.patient.medicalauthorization %}
+                                            <span>View</span></a>
+                                        {% else %}
+                                            <span>Assign</span></a>
+                                        {% endif %}
+                                    {% endif %}
+
+                                    {% if object.patient.exchangeinformation or form_access %}
+                                        <h5 class="alternative-title">Exchange of Medical Information</h5>
+                                        <a href="{% url 'medical_forms:exchange-information' object.pk %}" class="btn btn-default btn-hover-bg">
+                                        {% if object.patient.exchangeinformation %}
+                                            <span>View</span></a>
+                                        {% else %}
+                                            <span>Assign</span></a>
+                                        {% endif %}
+                                    {% endif %}
+
+                                    {% if object.patient.authorizationanddirection or form_access %}
+                                        <h5 class="alternative-title">Authorization and Direction</h5>
+                                        <a href="{% url 'medical_forms:authorization-and-direction' object.pk %}" class="btn btn-default btn-hover-bg">
+                                        {% if object.patient.authorizationanddirection %}
+                                            <span>View</span></a>
+                                        {% else %}
+                                            <span>Assign</span></a>
+                                        {% endif %}
+                                    {% endif %}
+
+                                    {% if object.patient.section47 or form_access %}
+                                        <h5 class="alternative-title">Section 47</h5>
+                                        <a href="{% url 'medical_forms:section47' object.pk %}" class="btn btn-default btn-hover-bg">
+                                        {% if object.patient.section47 %}
+                                            <span>View</span></a>
+                                        {% else %}
+                                            <span>Assign</span></a>
+                                        {% endif %}
+                                    {% endif %}
+
+                                    {% if object.patient.statutoryaccidentsbenefits or form_access %}
+                                        <h5 class="alternative-title">Statutory Accidents Benefits Schedule</h5>
+                                        <a href="{% url 'medical_forms:statutory-accidents-benefits' object.pk %}" class="btn btn-default btn-hover-bg">
+                                        {% if object.patient.statutoryaccidentsbenefits %}
+                                            <span>View</span></a>
+                                        {% else %}
+                                            <span>Assign</span></a>
+                                        {% endif %}
+                                    {% endif %}
+                                </div>
+                                <!-- Consent Forms end -->
+
+
+                                {% if form_access %}
+                                <!-- Doctor Forms -->
+                                <div class="tab-pane fade" id="doctor-forms">
+                                    <h5 class="alternative-title">Plan of Management</h5>
+                                    <a href="{% url 'medical_forms:plan-of-management' object.pk %}" class="btn btn-default btn-hover-bg"><span>View</span></a>
+                                    <h5 class="alternative-title">Patient Discharge</h5>
+                                    <a href="{% url 'medical_forms:patient-discharge' object.pk %}" class="btn btn-default btn-hover-bg"><span>View</span></a>
+                                    <h5 class="alternative-title">Accute Concussion Evaluation</h5>
+                                    <a href="{% url 'medical_forms:acute-concussion-eval' object.pk %}" class="btn btn-default btn-hover-bg"><span>View</span></a>
+                                    <h5 class="alternative-title">Assessment</h5>
+                                    <a href="{% url 'medical_forms:assessment' object.pk %}" class="btn btn-default btn-hover-bg"><span>View</span></a>
+                                    <h5 class="alternative-title">Subjective Evaluation</h5>
+                                    <a href="{% url 'medical_forms:subjective_eval' object.pk %}" class="btn btn-default btn-hover-bg"><span>View</span></a>
+                                    <h5 class="alternative-title">Report of Findings</h5>
+                                    <a href="{% url 'medical_forms:report-of-findings' object.pk %}" class="btn btn-default btn-hover-bg"><span>View</span></a>
+                                    <h5 class="alternative-title">Patient-Specific Funtional Scale</h5>
+                                    <a href="{% url 'medical_forms:patient-specific-funtional-scale' object.pk %}" class="btn btn-default btn-hover-bg"><span>View</span></a>
+                                    <h5 class="alternative-title">AttendanceSheet</h5>
+                                    <a href="{% url 'medical_forms:attendance-sheet' object.pk %}" class="btn btn-default btn-hover-bg"><span>View</span></a>
+                                </div>
+                                <!-- Doctor Forms end -->
+                                {% endif %}
+
+                                <div class="tab-pane fade" id="new-forms">
+                                    <ul class="media-list">
+                                        {% for new_form in new_forms %}
+                                            <li class="media"><a href="{{new_form.new_form.url}}">{{new_form.new_form.url}}</a></li>
+                                        {% endfor %}
+                                    </ul>
+
+                                    {{new_forms_form.new_form}}
+                                </div>
+                            </div>
+                            <!-- Patient tab end -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-2 col-sm-offset-1">
+                    <input type="submit" class="btn btn-default btn-color-bg max-width-btn" value="Save">
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
+<!-- End News -->
+
+{% endblock content %}
+
+{% block javascript %}
+
+{{block.super}}
+
+<script>
+
+$(document).ready(function() {
+    var $checkInBtn = $('.check-in-btn');
+    var $checkInInput = $checkInBtn.children('input');
+    var $checkInText = $checkInBtn.children('span');
+    if ($checkInInput.prop('checked')) {
+        $checkInBtn.addClass('active');
+        $checkInText.text('Cancel Check in');
+    }
+
+    $checkInBtn.click(function() {
+        if ($checkInInput.prop('checked')) {
+            $checkInText.text('Check in');
+        }
+        else {
+            $checkInText.text('Cancel Check in');
+        }
+    });
+});
+
+</script>
+
+{% endblock javascript %}
