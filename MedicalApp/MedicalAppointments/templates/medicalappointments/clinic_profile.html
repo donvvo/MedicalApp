@@ -37,18 +37,28 @@
                                 <ul class="media-list">
                                     {% for doctor in clinic.doctor_set.all %}
 
-                                        <li class="media">
-                                            <a class="pull-left" href="{% url 'users:doctor_profile' doctor.user.pk %}">
-                                                {% if doctor.user.image %}
-                                                    <img class="media-object img-circle" src="{{doctor.user.image.url}}" alt="//">
-                                                {% else %}
-                                                    <img class="media-object img-circle" src="{% static 'img/doctor-profile-img.png' %}" alt="//">
-                                                {% endif %}
+                                        <li class="media list-group-item">
+                                            <a href="{% url 'users:doctor_profile' doctor.user.pk %}">
+                                                <div class="row">
+                                                    <div class="col-sm-2">
+                                                        <figure class="pull-left">
+                                                            {% if doctor.user.image %}
+                                                                <img class="media-object img-circle" src="{{doctor.user.image.url}}" alt="//">
+                                                            {% else %}
+                                                                <img class="media-object img-circle" src="{% static 'img/doctor-profile-img.png' %}" alt="//">
+                                                            {% endif %}
+                                                        </figure>
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <h6>Name</h6>
+                                                        <p>{{doctor.user}}</p>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <h6>Specialty</h6>
+                                                        <p>{{doctor.specialty}}</p>
+                                                    </div>
+                                                </div>
                                             </a>
-                                            <div class="media-body">
-                                                <h5 class="media-heading"><a href="{% url 'users:doctor_profile' doctor.user.pk %}">{{doctor.user.first_name}} {{doctor.user.last_name}}</a></h5>
-                                                <p class="media-meta">{{doctor.specialty}}</p>
-                                            </div>
                                         </li>
                                     {% endfor %}
                                 </ul>
@@ -62,17 +72,26 @@
                                 <ul class="media-list">
                                     {% if patients %}
                                         {% for patient in patients %}
-                                            <li class="media">
-                                                <a class="pull-left" href="{% url 'users:patient_profile' patient.user.pk %}">
-                                                    {% if patient.user.image %}
-                                                        <img class="media-object img-circle" src="{{patient.user.image.url}}" alt="//">
-                                                    {% else %}
-                                                        <img class="media-object img-circle" src="{% static 'img/profile-img.png' %}" alt="//">
-                                                    {% endif %}
+                                            <li class="media list-group-item">
+                                                <a href="{% url 'users:patient_profile' patient.user.pk %}">
+                                                    <div class="col-sm-2">
+                                                        <figure class="pull-left">
+                                                            {% if patient.user.image %}
+                                                                <img class="media-object img-circle" src="{{patient.user.image.url}}" alt="//">
+                                                            {% else %}
+                                                                <img class="media-object img-circle" src="{% static 'img/profile-img.png' %}" alt="//">
+                                                            {% endif %}
+                                                        </figure>
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <h6>Name</h6>
+                                                        <p>{{patient.user}}</p>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <h6>Phone</h6>
+                                                        <p>{{patient.user.contact}}</p>
+                                                    </div>
                                                 </a>
-                                                <div class="media-body">
-                                                    <a href="{% url 'users:patient_profile' patient.user.pk %}"><p>{{patient.user.first_name}} {{patient.user.last_name}}</p></a>
-                                                </div>
                                             </li>
                                         {% endfor %}
                                     {% else %}
