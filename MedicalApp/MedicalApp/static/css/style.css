@@ -16822,3 +16822,18 @@ div.list-group-item h6 {
 p.inline-p {
   display: inline-block;
 }
+
+.boxes-content li .name figure img {
+  left: 0;
+  bottom: 0;
+  width: 84px;
+}
+
+figure.effect-chico:hover img {
+  opacity: 0.1;
+}
+
+.edit-icon {
+  position: relative;
+  top: -5px;
+}

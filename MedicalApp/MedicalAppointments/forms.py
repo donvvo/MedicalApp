@@ -56,3 +56,13 @@ class ClinicForm(forms.ModelForm):
         'start_time_wed', 'end_time_wed', 'start_time_thurs', 'end_time_thurs',
         'start_time_fri', 'end_time_fri', 'start_time_sat', 'end_time_sat',
         'start_time_sun', 'end_time_sun')
+
+
+class ClinicSettingsForm(forms.ModelForm):
+    class Meta:
+        model = Clinic
+        fields = ('city', 'address', 'postal_code',
+        'start_time_mon', 'end_time_mon', 'start_time_tue', 'end_time_tue',
+        'start_time_wed', 'end_time_wed', 'start_time_thurs', 'end_time_thurs',
+        'start_time_fri', 'end_time_fri', 'start_time_sat', 'end_time_sat',
+        'start_time_sun', 'end_time_sun')

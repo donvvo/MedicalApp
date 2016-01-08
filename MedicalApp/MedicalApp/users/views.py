@@ -18,6 +18,7 @@ from MedicalAppointments.utils import get_time_table
 from .forms import UserSettingsForm, EmailDoctorForm, DoctorSettingsForm,\
     DoctorSignupForm, PatientSignupForm, PatientSettingsForm
 from MedicalApp.utils import MultipleFormsView
+from MedicalAppointments.forms import ClinicSettingsForm
 
 
 class HomeView(LoginRequiredMixin, DetailView):
@@ -307,6 +308,11 @@ class SettingsView(LoginRequiredMixin, UpdateView):
             self.form_class = PatientSettingsForm
             self.success_url = reverse("users:patient_profile", kwargs={'user_id': self.kwargs['user_id']})
             return user.patient
+        elif user.groups.filter(name="Clinics").exists():
+            self.form_class = ClinicSettingsForm
+            self.success_url = reverse("medical_appointments:clinic_profile",
+                kwargs={'user_id': self.kwargs['user_id']})
+            return user.clinic_set.get()
         else:
             self.form_class = UserSettingsForm
             return user

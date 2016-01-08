@@ -21,16 +21,20 @@
     <div class="col-sm-9">
         <div class="row">
             <div class="col-xs-12 col-sm-8 tag-text add-margin-bottom">
-                <h4>{{object.first_name}} {{object.last_name}}</h4>
+                <h4 style="display: inline-block; margin-right: 5px">{{object.first_name}} {{object.last_name}}</h4>
+                {% if authorized %}
+                <span class="edit-icon">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><i class="glyphicon glyphicon-pencil"></i></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="{% url 'users:profile_edit' object.pk %}">Edit Profile</a></li>
+                        <li><a href="{% url 'users:settings' object.pk %}">EditSettings</a></li>
+                    </ul>
+                </span>
+                {% endif %}
+                <br>
                 <span>{% if doctor.specialty %}
                 {{doctor.specialty}}
                 {% endif %}</span>
-            </div>
-            <div class="col-xs-10 col-xs-offset-1 col-sm-4 col-sm-offset-0 col-no-padding">
-                {% if authorized %}
-                    <a href="{% url 'users:profile_edit' object.pk %}" class="btn btn-default btn-hover-bg edit-btn"><span>Edit Profile</span></a>
-                    <a href="{% url 'users:settings' object.pk %}" class="btn btn-default btn-hover-bg edit-btn"><span>Edit Settings</span></a>
-                {% endif %}
             </div>
         </div>
         <div class="tag-text">

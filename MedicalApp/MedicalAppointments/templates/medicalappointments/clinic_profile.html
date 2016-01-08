@@ -17,11 +17,11 @@
         </div>
 
         <div class="row">
-            <div class="col-sm-12">
+            <div class="col-sm-10 col-sm-offset-1">
                 {% include "users/profile_base.html" with object=object %}
 
                 <div class="row">
-                    <div class="col-sm-9">
+                    <div class="col-sm-12">
                         <br>
                         <br>
 
@@ -59,7 +59,26 @@
 
                             <!-- Patients -->
                             <div class="tab-pane fade" id="patients">
-
+                                <ul class="media-list">
+                                    {% if patients %}
+                                        {% for patient in patients %}
+                                            <li class="media">
+                                                <a class="pull-left" href="{% url 'users:patient_profile' patient.user.pk %}">
+                                                    {% if patient.user.image %}
+                                                        <img class="media-object img-circle" src="{{patient.user.image.url}}" alt="//">
+                                                    {% else %}
+                                                        <img class="media-object img-circle" src="{% static 'img/profile-img.png' %}" alt="//">
+                                                    {% endif %}
+                                                </a>
+                                                <div class="media-body">
+                                                    <a href="{% url 'users:patient_profile' patient.user.pk %}"><p>{{patient.user.first_name}} {{patient.user.last_name}}</p></a>
+                                                </div>
+                                            </li>
+                                        {% endfor %}
+                                    {% else %}
+                                        <p>Currently there is no patient assigned.</p>
+                                    {% endif %}
+                                </ul>
                             </div>
                             <!-- Patients end -->
                         </div>

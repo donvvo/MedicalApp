@@ -38,7 +38,11 @@
                         <li class="patient-list" data-name="{{patient}}" data-email="{{patient.user.email}}" data-phone="{{patient.phone}}"><a href="{% url 'users:patient_profile' patient.user.pk %}">
                             <div class="name">
                                 <h6>{{patient}}</h6>
-                                <figure><img src="{% static 'img/doctors/doc01.jpg' %}" alt="//"></figure>
+                                <figure>{% if patient.user.image %}
+                                    <img src="{{patient.user.image.url}}" alt="doctor profile picture">
+                                {% else %}
+                                    <img src="{% static 'img/profile-img.png' %}" alt="//">
+                                {% endif %}</figure>
                             </div>
                             <div class="icon-content">
                                 <ul class="icon-item">

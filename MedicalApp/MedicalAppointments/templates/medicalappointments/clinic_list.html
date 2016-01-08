@@ -19,21 +19,17 @@
                 <a href="{% url 'medical_appointments:clinic_profile_create' %}" class="btn btn-default btn-hover-bg"><span>Add Clinic</span></a>
             </div>
         </div>
-        <div class="row" style="display:none">
-            <div class="col-md-12">
-                <ul id="city_filter" class="filters">
-                    <li><a href="#" id="show_all" class="btn btn-color-border-solid-3 active" data-filter="*">Show All</a></li>
-                    <li><a href="#" class="btn btn-color-border-solid-3" data-filter=".plan1">Toronto</a></li>
-                </ul>
-            </div>
-        </div>
         <div class="row">
             <div class="col-sm-12">
                 <div id="clinics" class="gallery-grid">
                 {% for clinic in object_list %}
                     <div class="gallery-grid-item plan1">
                         <figure class="effect-chico">
-                            <img src="{% static 'img/gallery/gallery-1.jpg' %}" alt="">
+                            {% if clinic.imgage %}
+                                <img src="{{clinic.imgage.url}}" alt="">
+                            {% else %}
+                                <img src="{% static 'img/clinic.png' %}" alt="">
+                            {% endif %}
                             <figcaption>
                                 <h4>{{clinic.name}}</h4>
                                 <p>Health Care</p>
@@ -43,8 +39,6 @@
                     </div>
                 {% endfor %}
                 </div>
-                <br>
-                <a href="{% url 'users:manage_main' %}" class="btn btn-default btn-color-border-solid">Back</a>
             </div>
         </div>
 

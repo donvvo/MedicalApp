@@ -17,7 +17,7 @@ from braces.views import LoginRequiredMixin, StaffuserRequiredMixin, GroupRequir
 from allauth.account.utils import complete_signup
 from allauth.account import app_settings
 
-from .models import Booking, DoctorSpecialty, Clinic, Doctor
+from .models import Booking, DoctorSpecialty, Clinic, Doctor, Patient
 from .utils import get_clinics_by_specialty, get_time_table
 from .forms import ClinicUserSignupForm, ClinicForm, ClinicUserSettingsForm
 from MedicalApp.utils import MultipleFormsView, user_passes_test_with_kwargs
@@ -178,6 +178,9 @@ class ClinicProfileView(LoginRequiredMixin, DetailView):
         context['authorized'] = user == self.request.user or\
             self.request.user.is_staff
 
+        clinic = get_object_or_404(Clinic, user=user)
+        context['patients'] = Patient.objects.filter(clinic=clinic).all()
+
         return context
 
 
@@ -274,6 +277,7 @@ class AddDoctorView(LoginRequiredMixin, GroupRequiredMixin, TemplateView):
         clinic_user = get_object_or_404(User, id=kwargs['user_id'])
         clinic = clinic_user.clinic_set.get()
         context['clinic_name'] = clinic.name
+        context['user_id'] = kwargs['user_id']
         doctors = Doctor.objects.exclude(clinic=clinic)
         context['doctors'] = doctors
 
