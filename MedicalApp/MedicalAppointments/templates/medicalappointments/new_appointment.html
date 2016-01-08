@@ -126,6 +126,7 @@ $(function() {
         $clinicItem.find('h4').text(clinic.pk);
         var url = Urls['medical_appointments:timetable_patient'](encodeURIComponent(clinic.pk).replace(/%20/g, '+'));
         url = url + '/' + encodeURIComponent(specialty).replace(/%20/g, '+') + '/';
+        url = url + '{{user_id}}'
         var $a = $clinicItem.find('a');
         $a.attr('href', url);
         $('#clinics').isotope('insert', $clinicItem);

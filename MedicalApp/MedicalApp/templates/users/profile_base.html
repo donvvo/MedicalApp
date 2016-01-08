@@ -27,7 +27,7 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><i class="glyphicon glyphicon-pencil"></i></a>
                     <ul class="dropdown-menu" role="menu">
                         <li><a href="{% url 'users:profile_edit' object.pk %}">Edit Profile</a></li>
-                        <li><a href="{% url 'users:settings' object.pk %}">EditSettings</a></li>
+                        <li><a href="{% url 'users:settings' object.pk %}">Edit Settings</a></li>
                     </ul>
                 </span>
                 {% endif %}
@@ -47,13 +47,18 @@
             {% endif %}
             </p>
 
-            <h5 class="alternative-title">Contact</h5>
+            <h5 class="alternative-title">Phone</h5>
             <p>
             {% if object.contact %}
                 {{object.contact}}
             {% elif authorized %}
-                <a href="{% url 'users:profile_edit' object.pk %}">Please add contact</a>
+                <a href="{% url 'users:profile_edit' object.pk %}">Please add phone number</a>
             {% endif %}
+            </p>
+
+            <h5 class="alternative-title">Email</h5>
+            <p>
+            {{object.email}}
             </p>
         </div>
     </div>

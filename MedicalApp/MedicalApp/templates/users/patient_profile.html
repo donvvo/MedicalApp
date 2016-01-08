@@ -21,6 +21,13 @@
                 </div>
             </div>
         </div>
+        {% if request.user|has_group:"Clinics" or request.user.is_staff %}
+            <div class="row">
+                <div class="col-sm-2 col-sm-offset-9">
+                    <a class="btn btn-default btn-color-bg max-width-btn" href="{% url 'medical_appointments:new_appointments' object.pk %}">New Appointment</a>
+                </div>
+            </div>
+        {% endif %}
 
         <div class="row">
             <div class="col-sm-10 col-sm-offset-1">

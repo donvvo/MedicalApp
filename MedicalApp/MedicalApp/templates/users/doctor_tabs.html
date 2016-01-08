@@ -13,19 +13,24 @@
     <div class="tab-pane fade in active" id="upcoming">
         <ul class="media-list">
             {% for booking in bookings %}
-            <li class="media">
+            <li class="media list-group-item">
                 <a href="{% url 'medical_appointments:appointment_info' booking.pk %}">
-                    <figure class="pull-left">
-                        {% if booking.patient.user.image %}
-                        <img class="media-object img-circle" src="{{booking.patient.user.image.url}}" alt="//">
-                        {% else %}
-                        <img class="media-object img-circle" src="{% static 'img/profile-img.png' %}" alt="//">
-                        {% endif %}
-                    </figure>
-
-                    <div class="media-body">
-                        <h5 class="media-heading">{{booking.patient}}</h5>
-                        <p class="media-meta">{{booking.time|time:"h:i A"}} -- {{booking.time|date:"M j"}} {{booking.time|date:"D"}}</p>
+                    <div class="col-sm-2">
+                        <figure class="pull-left">
+                            {% if booking.patient.user.image %}
+                            <img class="media-object img-circle" src="{{booking.patient.user.image.url}}" alt="//">
+                            {% else %}
+                            <img class="media-object img-circle" src="{% static 'img/profile-img.png' %}" alt="//">
+                            {% endif %}
+                        </figure>
+                    </div>
+                    <div class="col-sm-4">
+                        <h6>Patient</h6>
+                        <p>{{booking.patient}}</p>
+                    </div>
+                    <div class="col-sm-6">
+                        <h6>Time -- Date</h6>
+                        <p>{{booking.time|time:"h:i A"}} -- {{booking.time|date:"M j"}} {{booking.time|date:"D"}}</p>
                     </div>
                 </a>
             </li>
@@ -48,17 +53,26 @@
         <ul class="media-list">
         {% if patients %}
             {% for patient in patients %}
-                <li class="media">
-                    <a class="pull-left" href="{% url 'users:patient_profile' patient.user.pk %}">
-                        {% if patient.user.image %}
-                            <img class="media-object img-circle" src="{{patient.user.image.url}}" alt="//">
-                        {% else %}
-                            <img class="media-object img-circle" src="{% static 'img/profile-img.png' %}" alt="//">
-                        {% endif %}
+                <li class="media list-group-item">
+                    <a href="{% url 'users:patient_profile' patient.user.pk %}">
+                        <div class="col-sm-2">
+                            <figure class="pull-left">
+                                {% if patient.user.image %}
+                                    <img class="media-object img-circle" src="{{patient.user.image.url}}" alt="//">
+                                {% else %}
+                                    <img class="media-object img-circle" src="{% static 'img/profile-img.png' %}" alt="//">
+                                {% endif %}
+                            </figure>
+                        </div>
+                        <div class="col-sm-4">
+                            <h6>Patient</h6>
+                            <p>{{patient}}</p>
+                        </div>
+                        <div class="col-sm-6">
+                            <h6>Phone</h6>
+                            <p>{{patient.user.contact}}</p>
+                        </div>
                     </a>
-                    <div class="media-body">
-                        <h5 class="media-heading"><a href="{% url 'users:patient_profile' patient.user.pk %}">{{patient.user.first_name}} {{patient.user.last_name}}</a></h5>
-                    </div>
                 </li>
             {% endfor %}
         {% else %}

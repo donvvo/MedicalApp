@@ -45,9 +45,22 @@ class AppointmentView(PatientOnlyMixin, ListView):
         return bookings
 
 
-class NewAppointmentView(PatientOnlyMixin, ListView):
+class NewAppointmentView(LoginRequiredMixin, ListView):
     model = DoctorSpecialty
+    group_required = ['Patients', 'Clinics']
+    raise_exception = True
     template_name = "medicalappointments/new_appointment.html"
+
+    def dispatch(self, request, *args, **kwargs):
+        self.user_id = kwargs['user_id']
+        return super(NewAppointmentView, self).dispatch(request, *args, **kwargs)
+
+    def get_context_data(self, **kwargs):
+        context = super(NewAppointmentView, self).get_context_data(**kwargs)
+
+        context['user_id'] = self.user_id
+
+        return context
 
 
 @login_required
@@ -65,7 +78,9 @@ class PatientTimetableView(LoginRequiredMixin, ListView):
 
     def dispatch(self, request, *args, **kwargs):
         # Only patients can view
-        if self.request.user.groups.filter(name="Patients").exists():
+        if self.request.user.groups.filter(name="Patients").exists() or\
+                self.request.user.groups.filter(name="Clinics").exists() or\
+                self.request.user.is_staff:
             self.clinic_name = kwargs.get('clinic', '').replace('+', ' ')
             if not Clinic.objects.filter(name=self.clinic_name).exists():
                 redirect_url = reverse("medical_appointments:new_appointments")
@@ -92,6 +107,7 @@ class PatientTimetableView(LoginRequiredMixin, ListView):
             context['object_list'], clinic=clinic, table_interval=30, num_doctor=len(self.doctors))
         context['clinic'] = self.kwargs.get('clinic', None).replace('+', ' ')
         context['specialty'] = self.kwargs.get('specialty', None)
+        context['user_id'] = self.kwargs.get('user_id')
 
         return context
 
@@ -119,14 +135,21 @@ class PatientTimetableView(LoginRequiredMixin, ListView):
                 if not (booking_time in [a.time for a in doctor.booking_set.all()]):
                     free_doctors.append(doctor)
 
+            print 'free_doctors'
             print free_doctors
 
             doctor = random.choice(free_doctors)
+            print 'Chosen doctor'
             print doctor
-            booking = Booking(clinic=clinic, patient=request.user.patient, doctor=doctor, time=booking_time)
+
+            patient = get_object_or_404(Patient, user_id=kwargs['user_id'])
+            booking = Booking(clinic=clinic, patient=patient, doctor=doctor, time=booking_time)
             booking.save()
 
-            return HttpResponseRedirect(reverse("medical_appointments:appointments"))
+            if request.user.groups.filter(name='Patients').exists():
+                return HttpResponseRedirect(reverse("medical_appointments:appointments"))
+            else:
+                return HttpResponseRedirect(reverse("users:patient_profile", kwargs={'user_id': kwargs['user_id']}))
 
 
 class DoctorTimetableView(LoginRequiredMixin, ListView):
@@ -180,6 +203,8 @@ class ClinicProfileView(LoginRequiredMixin, DetailView):
 
         clinic = get_object_or_404(Clinic, user=user)
         context['patients'] = Patient.objects.filter(clinic=clinic).all()
+
+        context['clinic'] = clinic
 
         return context
 

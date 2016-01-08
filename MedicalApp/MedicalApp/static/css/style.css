@@ -16750,7 +16750,8 @@ div.list-group-item:focus {
   color: #555555;
   background-color: #f5f5f5;
 }
-div.list-group-item h6 {
+.list-group-item h6,
+.list-info h6 {
   font-size: 16px;
   margin-bottom: 0;
 }
@@ -16845,4 +16846,8 @@ figure.pull-left {
 
 .appointment_info div.form-control {
   border: none;
+}
+
+.list-info-row {
+  height: 3em;
 }

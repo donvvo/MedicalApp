@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% load staticfiles %}
+{% load has_group %}
 
 {% block content %}
 
@@ -138,7 +139,12 @@ $(function() {
                     specialty: $specialty
                 },
                 success: function(data){
+                  {% if request.user|has_group:"Patients" %}
                     window.location.replace(Urls['medical_appointments:appointments']());
+                  {% else %}
+                    window.location.replace("{% url 'users:patient_profile' user_id %}");
+                  {% endif %}
+
                 }
             });
         });

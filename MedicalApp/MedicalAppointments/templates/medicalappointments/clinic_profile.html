@@ -17,7 +17,7 @@
         </div>
 
         <div class="row">
-            <div class="col-sm-10 col-sm-offset-1">
+            <div class="col-sm-9">
                 {% include "users/profile_base.html" with object=object %}
 
                 <div class="row">
@@ -35,7 +35,7 @@
                             <!-- Doctors -->
                             <div class="tab-pane fade in active" id="doctors">
                                 <ul class="media-list">
-                                    {% for doctor in object.clinic_set.get.doctor_set.all %}
+                                    {% for doctor in clinic.doctor_set.all %}
 
                                         <li class="media">
                                             <a class="pull-left" href="{% url 'users:doctor_profile' doctor.user.pk %}">
@@ -101,13 +101,13 @@
                             </div>
                             <div id="hours" class="panel-collapse collapse" style="height: 0px;">
                                 <div class="panel-body">
-                                    <p>Monday: {{object.start_time_mon}} - {{object.end_time_mon}}</p>
-                                    <p>Tuesday: {{object.start_time_tue}} - {{object.end_time_tue}}</p>
-                                    <p>Wednesday: {{object.start_time_wed}} - {{object.end_time_wed}}</p>
-                                    <p>Thursday: {{object.start_time_thurs}} - {{object.end_time_thurs}}</p>
-                                    <p>Friday: {{object.start_time_fri}} - {{object.end_time_fri}}</p>
-                                    <p>Saturday: {{object.start_time_sat}} - {{object.end_time_sat}}</p>
-                                    <p>Sunday: {{object.start_time_sun}} - {{object.end_time_sun}}</p>
+                                    <p>Monday: {{clinic.start_time_mon}} - {{clinic.end_time_mon}}</p>
+                                    <p>Tuesday: {{clinic.start_time_tue}} - {{clinic.end_time_tue}}</p>
+                                    <p>Wednesday: {{clinic.start_time_wed}} - {{clinic.end_time_wed}}</p>
+                                    <p>Thursday: {{clinic.start_time_thurs}} - {{clinic.end_time_thurs}}</p>
+                                    <p>Friday: {{clinic.start_time_fri}} - {{clinic.end_time_fri}}</p>
+                                    <p>Saturday: {{clinic.start_time_sat}} - {{clinic.end_time_sat}}</p>
+                                    <p>Sunday: {{clinic.start_time_sun}} - {{clinic.end_time_sun}}</p>
                                 </div>
                             </div>
                         </div>
@@ -121,25 +121,9 @@
                             </div>
                             <div id="collapseService" class="panel-collapse collapse" style="height: 0px;">
                                 <div class="panel-body">
-                                    <p>Address: {{object.address}},</p>
-                                    <p>City: {{object.city}}</p>
-                                    <p>Postal Code: {{object.postal_code}}</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="panel">
-                            <div class="panel-heading">
-                                <h4 class="panel-title">
-                                    <a data-toggle="collapse" data-parent="#accordion-work" href="#collapseBest" class="collapsed">
-                                        <i class="fa fa-plus-square"></i>Contact
-                                    </a>
-                                </h4>
-                            </div>
-                            <div id="collapseBest" class="panel-collapse collapse">
-                                <div class="panel-body">
-                                    <p>Phone: {{object.phone}}</p>
-                                    <p>Email: {{object.user.email}}</p>
+                                    <p>Address: {{clinic.address}},</p>
+                                    <p>City: {{clinic.city}}</p>
+                                    <p>Postal Code: {{clinic.postal_code}}</p>
                                 </div>
                             </div>
                         </div>
