@@ -65,7 +65,14 @@
                                     <h5 class="alternative-title">
                                         Doctor
                                     </h5>
-                                    {{booking.doctor.user}}
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            {{booking.doctor.user}}
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <a href="{% url 'users:doctor_profile' booking.doctor.user.pk %}">View profile</a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="row">
@@ -73,7 +80,14 @@
                                     <h5 class="alternative-title">
                                         Clinic
                                     </h5>
-                                    {{booking.clinic}}
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            {{booking.clinic}}
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <a href="{% url 'medical_appointments:clinic_profile' booking.clinic.user.pk %}">View profile</a>
+                                        </div>
+                                    </div>
                                     <br>
                                     <br>
                                 </div>

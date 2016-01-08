@@ -41,7 +41,7 @@ class AppointmentView(PatientOnlyMixin, ListView):
     template_name = "medicalappointments/appointment.html"
 
     def get_queryset(self):
-        bookings = self.model.objects.filter(patient=self.request.user.patient, time__gte=timezone.now()).all()
+        bookings = self.model.objects.filter(patient=self.request.user.patient, time__gte=timezone.now()).order_by('time')
         return bookings
 
 
@@ -188,10 +188,6 @@ class ClinicProfileView(LoginRequiredMixin, DetailView):
     slug_field = "pk"
     slug_url_kwarg = "user_id"
     template_name = "medicalappointments/clinic_profile.html"
-
-    @method_decorator(user_passes_test_with_kwargs(clinic_or_staff))
-    def dispatch(self, request, *args, **kwargs):
-        return super(ClinicProfileView, self).dispatch(request, *args, **kwargs)
 
     def get_context_data(self, **kwargs):
         context = super(ClinicProfileView, self).get_context_data(**kwargs)

@@ -17,7 +17,7 @@
     <div class="col-md-10 col-md-offset-1">
         <div class="row">
             <div class="col-md-12 text-right">
-                <a href="{% url 'medical_appointments:new_appointments' %}" class="btn btn-default btn-color-shadow"><span>Make a New Appointment</span></a>
+                <a href="{% url 'medical_appointments:new_appointments' request.user.pk %}" class="btn btn-default btn-color-shadow"><span>Make a New Appointment</span></a>
             </div>
         </div>
 
@@ -32,7 +32,7 @@
                                     {% if appointment.clinic.user.image %}
                                         <img src="{{appointment.clinic.user.image.url}}" alt="//" class="img-responsive">
                                     {% else %}
-                                        <img src="{% static 'img/news/news-thumbnail-144x144-02.jpg' %}" alt="//" class="img-responsive">
+                                        <img src="{% static 'img/clinic.png' %}" alt="//" class="img-responsive">
                                     {% endif %}
                                  </div>
                                 <div class="col-md-4">
@@ -59,7 +59,7 @@
                         </div>
                     {% endfor %}
                 {% else %}
-                    <a href="{% url 'medical_appointments:new_appointments' %}" class="list-group-item">
+                    <a href="{% url 'medical_appointments:new_appointments' request.user.pk %}" class="list-group-item">
                         <div class="row">
                             <div class="col-md-12 text-center">
                                 <p>You have no appointments.</p>

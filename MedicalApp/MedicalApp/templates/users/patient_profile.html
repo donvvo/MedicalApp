@@ -40,14 +40,73 @@
 
                         <!-- Patient tabs -->
                         <ul class="nav nav-tabs" role="tablist">
-                            <li class="active"><a href="#assessment-forms" role="tab" data-toggle="tab">Assessment Forms</a></li>
+                            {% if not request.user|has_group:"Patients" %}
+                            <li><a href="#upcoming-appointments" role="tab" data-toggle="tab">Upcoming Appointments</a></li>
+                            {% endif %}
+                            <li><a href="#assessment-forms" role="tab" data-toggle="tab">Assessment Forms</a></li>
                             <li><a href="#consent-forms" role="tab" data-toggle="tab">Consent Forms</a></li>
                             <li><a href="#doctor-forms" role="tab" data-toggle="tab">Doctor Forms</a></li>
                         </ul>
 
                         <div class="tab-content">
+                            <!-- Upcoming Appointments -->
+                            {% if not request.user|has_group:"Patients" %}
+                            <div class="tab-pane fade in active" id="upcoming-appointment">
+                                <div class="list-group">
+                                {% if appointments %}
+                                    {% for appointment in appointments %}
+                                        <div class="row list-group-item">
+                                            <a href="{% url 'medical_appointments:appointment_info' appointment.pk %}">
+                                                <div class="col-md-2">
+                                                    {% if appointment.clinic.user.image %}
+                                                        <img src="{{appointment.clinic.user.image.url}}" alt="//" class="img-responsive">
+                                                    {% else %}
+                                                        <img src="{% static 'img/clinic.png' %}" alt="//" class="img-responsive">
+                                                    {% endif %}
+                                                 </div>
+                                                <div class="col-md-4">
+                                                    <h6>Clinic</h6>
+                                                    <br>
+                                                    <p>{{appointment.clinic}}
+                                                    <br>{{appointment.clinic.address}}, {{appointment.clinic.city}}
+                                                     {{appointment.clinic.postal_code}}</p>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <h6>Time -- Date</h6>
+                                                    {{appointment.time|time:"h:i A"}} -- {{appointment.time|date:"M j"}} {{appointment.time|date:"D"}}
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <h6>Your doctor</h6>
+                                                    {% if appointment.doctor.user.image %}
+                                                        <img src="{{appointment.doctor.user.image.url}}" alt="//" class="img-responsive img-circle" style="max-width:50px;height:auto;">
+                                                    {% else %}
+                                                        <img src="{% static 'img/doctor-profile-img.png' %}" alt="//" class="img-responsive img-circle" style="max-width:50px;height:auto;">
+                                                    {% endif %}
+                                                    <p>{{appointment.doctor.user}}<br>Specialty: {{appointment.doctor.specialty}}</p>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    {% endfor %}
+                                {% else %}
+                                    <a href="{% url 'medical_appointments:new_appointments' object.pk %}" class="list-group-item">
+                                        <div class="row">
+                                            <div class="col-md-12 text-center">
+                                                <p>This patient have no appointments.</p>
+                                                <p>Click here to make an appointment!</p>
+                                            </div>
+
+                                        </div><!-- ./row -->
+                                    </a><!-- ./list-group-item -->
+                                {% endif %}
+                                </div>
+                            </div>
+                            {% endif %}
+                            <!-- Upcoming Appointments end-->
+
                             <!-- Assessment Forms -->
-                            <div class="tab-pane fade in active" id="forms">
+                            <div class="tab-pane fade in {% if request.user|has_group:"Patients" %}
+                            active
+                            {% endif %}" id="forms">
                                 {% if object.patient.patientinformation or form_access %}
                                     <h5 class="alternative-title">Patient Information</h5>
                                     <a href="{% url 'medical_forms:patient_info' object.pk %}" class="btn btn-default btn-hover-bg">

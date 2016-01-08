@@ -124,6 +124,9 @@ class PatientProfileView(LoginRequiredMixin, DetailView):
             self.request.user.is_staff or\
             self.request.user.groups.filter(name="Clinics").exists()
 
+        context['appointments'] = Booking.objects.filter(patient=self.get_object().patient,
+                                                        time__gte=timezone.now()).order_by('time')
+
         return context
 
 
