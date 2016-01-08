@@ -25,7 +25,7 @@ from MedicalApp.users.models import User
 
 
 def clinic_or_staff(user, **kwargs):
-    clinic_user = get_object_or_404(Clinic, user_id=kwargs['user_id'])
+    clinic_user = get_object_or_404(User, id=kwargs['user_id'])
     return user.is_staff or \
         (user.groups.filter(name="Clinics").exists() and user == clinic_user)
 
