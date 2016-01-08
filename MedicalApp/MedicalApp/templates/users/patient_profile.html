@@ -106,7 +106,7 @@
                             <!-- Assessment Forms -->
                             <div class="tab-pane fade in {% if request.user|has_group:"Patients" %}
                             active
-                            {% endif %}" id="forms">
+                            {% endif %}" id="assessment-forms">
                                 {% if object.patient.patientinformation or form_access %}
                                     <h5 class="alternative-title">Patient Information</h5>
                                     <a href="{% url 'medical_forms:patient_info' object.pk %}" class="btn btn-default btn-hover-bg">
