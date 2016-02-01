@@ -47,18 +47,16 @@
             {% endif %}
             </p>
 
-            <h5 class="alternative-title">Phone</h5>
+            <h5 class="alternative-title">Contact</h5>
             <p>
             {% if object.contact %}
-                {{object.contact}}
+                Phone: {{object.contact}}
             {% elif authorized %}
                 <a href="{% url 'users:profile_edit' object.pk %}">Please add phone number</a>
             {% endif %}
             </p>
-
-            <h5 class="alternative-title">Email</h5>
             <p>
-            {{object.email}}
+            Email: {{object.email}}
             </p>
         </div>
     </div>

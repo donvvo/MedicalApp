@@ -90,6 +90,7 @@ class Booking(models.Model):
 class NewForms(models.Model):
     booking = models.ForeignKey(Booking)
     new_form = models.FileField(upload_to='forms')
+    date_added = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.new_form.url

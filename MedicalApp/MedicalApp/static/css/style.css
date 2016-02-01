@@ -16897,3 +16897,8 @@ input.cropit-image-zoom-input {
 .slider-wrapper .glyphicon-picture.large {
   font-size: 24px;
 }
+
+.day {
+  float: left;
+  width: 40px;
+}
