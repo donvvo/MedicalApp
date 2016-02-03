@@ -91,7 +91,11 @@
                                                     </div>
                                                     <div class="col-sm-4 col-xs-12">
                                                         <h6>Phone</h6>
-                                                        <p>{{patient.user.contact}}</p>
+                                                        <p>{% if patient.user.contact %}
+                                                            {{patient.user.contact}}
+                                                        {% else %}
+                                                            N/A
+                                                        {% endif %}</p>
                                                     </div>
                                                 </a>
                                             </li>
