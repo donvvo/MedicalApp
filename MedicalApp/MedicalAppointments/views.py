@@ -328,7 +328,7 @@ class AppointmentInfoView(LoginRequiredMixin, UpdateView):
 
         context['booking'] = context['object']
         context['object'] = self.get_object().patient.user
-        context['new_forms'] = NewForms.objects.filter(booking=context['booking']).all()
+        context['new_forms'] = NewForms.objects.filter(patient=self.get_object().patient).all()
 
         context['new_forms_form'] = NewFormsForm
 
@@ -342,12 +342,9 @@ class AppointmentInfoView(LoginRequiredMixin, UpdateView):
 
     def form_valid(self, form):
         new_forms_form = NewFormsForm(self.request.POST, self.request.FILES)
-        print new_forms_form
         if new_forms_form.is_valid():
-            print 'vallid'
             new_forms = new_forms_form.save(commit=False)
-            new_forms.booking = self.get_object()
+            new_forms.patient = self.get_object().patient
             new_forms.save()
-            print new_forms
         return super(AppointmentInfoView, self).form_valid(form)
 

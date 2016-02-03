@@ -88,7 +88,7 @@ class Booking(models.Model):
 
 @python_2_unicode_compatible
 class NewForms(models.Model):
-    booking = models.ForeignKey(Booking)
+    patient = models.ForeignKey(Patient)
     new_form = models.FileField(upload_to='forms')
     date_added = models.DateTimeField(auto_now_add=True)
 

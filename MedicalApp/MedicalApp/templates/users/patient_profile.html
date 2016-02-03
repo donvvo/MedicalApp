@@ -46,12 +46,13 @@
                             <li><a href="#assessment-forms" role="tab" data-toggle="tab">Assessment Forms</a></li>
                             <li><a href="#consent-forms" role="tab" data-toggle="tab">Consent Forms</a></li>
                             <li><a href="#doctor-forms" role="tab" data-toggle="tab">Doctor Forms</a></li>
+                            <li><a href="#new-forms" role="tab" data-toggle="tab">New Forms</a></li>
                         </ul>
 
                         <div class="tab-content">
                             <!-- Upcoming Appointments -->
                             {% if not request.user|has_group:"Patients" %}
-                            <div class="tab-pane fade in active" id="upcoming-appointment">
+                            <div class="tab-pane fade in active" id="upcoming-appointments">
                                 <div class="list-group">
                                 {% if appointments %}
                                     {% for appointment in appointments %}
@@ -286,6 +287,45 @@
                             </div>
                             <!-- Doctor Forms end -->
                             {% endif %}
+
+                            <div class="tab-pane fade" id="new-forms">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <h5 class="alternative-title">Uploaded Forms</h5>
+                                        <div class="table-responsive">
+                                            <table class="table table-hover table-bordered">
+                                                <tr>
+                                                    <th>Uploaded Form</th>
+                                                    <th>Date Uploaded</th>
+                                                </tr>
+                                                {% for new_form in new_forms %}
+                                                <tr>
+                                                    <td>
+                                                        <a href="{{new_form.new_form.url}}" target="_blank">{{new_form.new_form.url}}</a>
+                                                    </td>
+                                                    <td>
+                                                        {{new_form.date_added}}
+                                                    </td>
+                                                </tr>
+                                                {% endfor %}
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <h5 class="alternative-title">Upload New Form</h5>
+
+                                        <form action="{{request.path}}" method="post" enctype="multipart/form-data">
+                                            {% csrf_token %}
+                                            {{form.new_form}}
+
+                                            <input type="submit" class="btn btn-default btn-color-bg max-width-btn" value="Upload">
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <!-- Patient tab end -->
                     </div>

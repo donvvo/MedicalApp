@@ -4,21 +4,22 @@ from __future__ import absolute_import, unicode_literals
 from django.contrib import messages
 from django.core.urlresolvers import reverse, reverse_lazy
 from django.views.generic import DetailView, ListView, RedirectView, UpdateView, TemplateView
+from django.views.generic.edit import FormView
 from django.shortcuts import redirect, get_object_or_404
 from django.utils import timezone
 
 from braces.views import LoginRequiredMixin, StaffuserRequiredMixin, GroupRequiredMixin
-from allauth.account.views import LoginView, SignupView, FormView, PasswordChangeView
+from allauth.account.views import LoginView, SignupView, PasswordChangeView
 from allauth.account.utils import complete_signup
 from allauth.account import app_settings
 
 from .models import User
-from MedicalAppointments.models import Patient, Doctor, Clinic, Booking
+from MedicalAppointments.models import Patient, Doctor, Clinic, Booking, NewForms
 from MedicalAppointments.utils import get_time_table
 from .forms import UserSettingsForm, EmailDoctorForm, DoctorSettingsForm,\
     DoctorSignupForm, PatientSignupForm, PatientSettingsForm
 from MedicalApp.utils import MultipleFormsView
-from MedicalAppointments.forms import ClinicSettingsForm
+from MedicalAppointments.forms import ClinicSettingsForm, NewFormsForm
 
 
 class HomeView(LoginRequiredMixin, DetailView):
@@ -107,27 +108,47 @@ class DoctorSignupView(SignupView):
         return context
 
 
-class PatientProfileView(LoginRequiredMixin, DetailView):
+class PatientProfileView(LoginRequiredMixin, FormView):
     model = User
-    slug_field = "pk"
-    slug_url_kwarg = "user_id"
+    form_class = NewFormsForm
     template_name = "users/patient_profile.html"
+
+    def dispatch(self, request, *args, **kwargs):
+        self.user = get_object_or_404(User, pk=kwargs['user_id'])
+
+        return super(PatientProfileView, self).dispatch(request, *args, **kwargs)
+
+    def form_valid(self, form):
+        new_forms = form.save(commit=False)
+        new_forms.patient = self.user.patient
+        new_forms.save()
+
+        return super(PatientProfileView, self).form_valid(form)
 
     def get_context_data(self, **kwargs):
         context = super(PatientProfileView, self).get_context_data(**kwargs)
+
+        context['object'] = self.user
+
         if self.request.user.groups.filter(name="Doctors").exists() or self.request.user.is_staff or\
                 self.request.user.groups.filter(name="Clinics").exists():
             context['form_access'] = True
 
-        user = self.get_object()
-        context['authorized'] = user == self.request.user or\
+        context['authorized'] = self.user == self.request.user or\
             self.request.user.is_staff or\
             self.request.user.groups.filter(name="Clinics").exists()
 
-        context['appointments'] = Booking.objects.filter(patient=self.get_object().patient,
+        patient = self.user.patient
+
+        context['appointments'] = Booking.objects.filter(patient=patient,
                                                         time__gte=timezone.now()).order_by('time')
 
+        context['new_forms'] = NewForms.objects.filter(patient=patient).all()
+
         return context
+
+    def get_success_url(self):
+        return reverse('users:patient_profile', kwargs={'user_id': self.user.pk})
 
 
 class PatientProfileEditView(LoginRequiredMixin, MultipleFormsView):
