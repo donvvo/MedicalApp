@@ -22,7 +22,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-10">
+            <div class="col-sm-10 col-sm-offset-1">
                 <form id="request" action="{{request.path}}" method="post" enctype="multipart/form-data">
                         {% csrf_token %}
                 <div class="row">
@@ -34,7 +34,7 @@
                     </div>
                     <div class="col-sm-9">
                             <div class="row">
-                                <div class="col-sm-12">
+                                <div class="col-sm-6">
                                     <div class="form-group">
                                         {% for error in forms.user_signup.email.errors %}
                                           <span class="errorlist">{{error}}</span>
@@ -42,6 +42,19 @@
                                         <label for="" class="sr-only">Email</label>
                                         {{forms.user_signup.email}}
                                     </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        {% for error in forms.clinic_signup.name.errors %}
+                                          <span class="errorlist">{{error}}</span>
+                                        {% endfor %}
+                                        <label for="name" class="sr-only">Name</label>
+                                        {{forms.clinic_signup.name}}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
                                     <div class="form-group">
                                         {% for error in forms.user_signup.password1.errors %}
                                           <span class="errorlist">{{error}}</span>
@@ -49,6 +62,10 @@
                                         <label for="" class="sr-only">Password</label>
                                         {{forms.user_signup.password1}}
                                     </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
                                     <div class="form-group">
                                         {% for error in forms.user_signup.password2.errors %}
                                           <span class="errorlist">{{error}}</span>
@@ -61,25 +78,11 @@
                             <div class="row">
                                 <div class="col-sm-12">
                                     <div class="form-group">
-                                        {% for error in forms.clinic_signup.name.errors %}
-                                          <span class="errorlist">{{error}}</span>
-                                        {% endfor %}
-                                        <label for="name" class="sr-only">Name</label>
-                                        {{forms.clinic_signup.name}}
-                                    </div>
-                                    <div class="form-group">
                                         {% for error in forms.clinic_signup.phone.errors %}
                                           <span class="errorlist">{{error}}</span>
                                         {% endfor %}
                                         <label for="phone" class="sr-only">Phone number</label>
                                         {{forms.clinic_signup.phone}}
-                                    </div>
-                                    <div class="form-group">
-                                        {% for error in forms.clinic_signup.email.errors %}
-                                          <span class="errorlist">{{error}}</span>
-                                        {% endfor %}
-                                        <label for="email" class="sr-only">Email</label>
-                                        {{forms.clinic_signup.email}}
                                     </div>
                                 </div>
                             </div>
