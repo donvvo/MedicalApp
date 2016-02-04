@@ -78,7 +78,9 @@
                 <li><a href="{% url 'users:account_redirect' %}">Profile</a></li>
                 {% endif %}
                 <li><a href="{% url 'users:settings' request.user.pk %}">Settings</a></li>
-                <li><a href="{% url 'notifications:notification' %}">Notifications <span class="badge">{{request.user.notification_numbers}}</span></a></li>
+                <li><a href="{% url 'notifications:notification' %}">Notifications {% if request.user.notification_numbers %}
+                  <span class="badge">{{request.user.notification_numbers}}</span>
+                {% endif %}</a></li>
                 <li><a href="{% url 'users:account_logout' %}">Logout</a></li>
               </ul>
             </li>

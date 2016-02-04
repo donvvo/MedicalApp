@@ -8,7 +8,7 @@ from django.core.urlresolvers import reverse
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
 
-from Notifications.utils import get_notifications
+from Notifications.utils import get_unread_notifications
 
 logger = logging.getLogger(__name__)
 
@@ -36,7 +36,7 @@ class User(AbstractUser):
         self.groups.add(Group.objects.get(name='Clinics'))
 
     def notification_numbers(self):
-        notifications = get_notifications(self)
+        notifications = get_unread_notifications(self)
 
         return len(notifications)
 

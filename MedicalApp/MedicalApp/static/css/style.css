@@ -16902,3 +16902,11 @@ input.cropit-image-zoom-input {
   float: left;
   width: 40px;
 }
+
+.unread {
+  background-color: #f5f5f5;
+}
+
+.notification.media {
+  margin-top: 2px;
+}

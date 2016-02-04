@@ -9,6 +9,7 @@ class Notification(models.Model):
     action = models.CharField(max_length=200)
     target = models.ForeignKey('users.User', related_name='target')
     timestamp = models.DateTimeField(auto_now_add=True)
+    read = models.BooleanField(default=False)
 
     def __str__(self):
         return 'Subject: ' + str(self.subject) + ', action: ' + str(self.action) + ', target: ' + str(self.target)

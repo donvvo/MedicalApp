@@ -19,7 +19,9 @@
             <div class="col-sm-8 col-sm-offset-2">
                 <ul class="media-list">
                     {% for notification in object_list %}
-                        <li class="media list-group-item">
+                        <li class="notification media list-group-item {% if not notification.read %}
+                            unread
+                        {% endif %}">
                             <div class="row">
                                 <div class="col-sm-9 col-xs-12">
                                     <b>{{notification.subject}}</b> {{notification.action}}
