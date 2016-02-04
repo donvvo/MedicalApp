@@ -1,6 +1,6 @@
 from django.core.exceptions import PermissionDenied
 from django.core.urlresolvers import reverse, reverse_lazy
-from django.shortcuts import redirect
+from django.shortcuts import get_object_or_404, redirect
 from django.views.generic import UpdateView
 from django.utils.decorators import method_decorator
 
@@ -9,6 +9,8 @@ from braces.views import LoginRequiredMixin
 from MedicalApp.utils import user_passes_test_with_kwargs
 from .models import *
 from .forms import *
+from MedicalAppointments.models import Booking
+from Notifications.models import Notification
 
 
 def owner_or_doctors(user, **kwargs):
@@ -33,6 +35,21 @@ class PatientFormBaseView(LoginRequiredMixin, UpdateView):
             if request.user.groups.filter(name="Doctors").exists() or request.user.is_staff or \
             request.user.groups.filter(name="Clinics").exists():
                 self.initial_form.save()
+
+                # Send notification to patient
+                action_type = 'Assign patient form'
+
+                patient_user = get_object_or_404(User, pk=self.user_id)
+                subject = self.request.user
+                action = 'assigned ' + str(self.initial_form)
+                notification = Notification(
+                    subject=subject,
+                    action_type=action_type,
+                    action=action,
+                    target=patient_user
+                )
+                notification.save()
+
                 return redirect(reverse('users:patient_profile', kwargs={'user_id': self.user_id}))
             else:
                 raise PermissionDenied
@@ -49,6 +66,36 @@ class PatientFormBaseView(LoginRequiredMixin, UpdateView):
 
     def get_success_url(self):
         return reverse_lazy('users:patient_profile', kwargs={'user_id': self.object.patient.user.pk})
+
+    def form_valid(self, form):
+        response = super(PatientFormBaseView, self).form_valid(form)
+
+        # Send notification to doctors and clinics
+        action_type = 'Save patient form'
+
+        patient_user = get_object_or_404(User, pk=self.user_id)
+        clinic_user = patient_user.patient.clinic.user
+        bookings = Booking.objects.filter(patient_id=patient_user.pk).all()
+        doctor_users = [booking.doctor.user for booking in bookings]
+
+        doctor_users.append(clinic_user)
+        targets = doctor_users or [clinic_user, ]
+        print targets
+
+        if targets:
+            for target in targets:
+                subject = self.request.user
+                if target and not subject == target:
+                    action = 'saved ' + str(self.object)
+                    notification = Notification(
+                        subject=subject,
+                        action_type=action_type,
+                        action=action,
+                        target=target
+                    )
+                    notification.save()
+
+        return response
 
 
 # Patient forms

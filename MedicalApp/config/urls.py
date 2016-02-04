@@ -24,6 +24,8 @@ urlpatterns = [
     # Your stuff: custom urls includes go here
     url(r'^medicalforms/', include('MedicalForms.urls', namespace="medical_forms")),
     url(r'^appointments/', include('MedicalAppointments.urls', namespace="medical_appointments")),
+    url(r'^notifications/', include('Notifications.urls', namespace="notifications")),
+
 
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

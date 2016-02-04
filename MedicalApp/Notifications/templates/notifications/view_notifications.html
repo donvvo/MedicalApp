@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% load humanize %}
+
+{% block content %}
+
+<!-- Page Titles -->
+<div class="page-title">
+    <div class="container">
+        <h1>Notifications</h1>
+    </div>
+</div>
+<!-- End Page Titles -->
+
+<!-- Single Doctor-->
+<section class="profile-doctor generic animated fadeInUp">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8 col-sm-offset-2">
+                <ul class="media-list">
+                    {% for notification in object_list %}
+                        <li class="media list-group-item">
+                            <div class="row">
+                                <div class="col-sm-9 col-xs-12">
+                                    <b>{{notification.subject}}</b> {{notification.action}}
+                                </div>
+                                <div class="col-sm-3 col-xs-12">
+                                    <p>{{notification.timestamp|naturaltime}}</p>
+                                </div>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End News -->
+
+
+{% endblock content %}
