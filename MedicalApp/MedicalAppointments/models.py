@@ -44,6 +44,7 @@ class Clinic(models.Model):
 @python_2_unicode_compatible
 class DoctorSpecialty(models.Model):
     specialty = models.CharField(max_length=20, primary_key=True)
+    image_url = models.CharField(max_length=50, default='img/features/featured-2.jpg')
 
     def __str__(self):
         return self.specialty
