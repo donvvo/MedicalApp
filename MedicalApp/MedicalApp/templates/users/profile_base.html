@@ -44,6 +44,8 @@
                 {{object.summary}}
             {% elif authorized %}
                 <a href="{% url 'users:profile_edit' object.pk %}">Please add summary</a>
+            {% else %}
+                This user has not provided a summary
             {% endif %}
             </p>
 
@@ -53,6 +55,8 @@
                 Phone: {{object.contact}}
             {% elif authorized %}
                 <a href="{% url 'users:profile_edit' object.pk %}">Please add phone number</a>
+            {% else %}
+                This user has not provided a phone number
             {% endif %}
             </p>
             <p>

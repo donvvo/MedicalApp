@@ -74,45 +74,36 @@ RE:
 <p>Comments: for the purpose of determining appropriate treatment planning
 <br>
 Please forward any imaging reports including x-ray, ultrasound, MRI, CT scan from {{form.forward_from_name}}. Thank you.
-<br>
-{{form.include_notes}}Please include any specialist consultation/operative notes.
+<br><br>
+Please include any specialist consultation/operative notes.
+{{form.include_notes}}
 </p>
 
 <div class="row">
-    <div class="col-sm-6">
-        <div class="form-group">
-        {{form.signature.error}}
-        {{form.signature}}
-        <label class="control-label">Signature of patient or patient’s Representative/Guardian (Form MUST be completed before signing)</label>
-        </div>
-    </div>
-    <div class="col-sm-6">
-        <div class="form-group">
+    <div class="col-sm-12">
+      <div class="form-group">
+        <label class="control-label">Date</label>
         {{form.date.error}}
         {{form.date}}
-        <label class="control-label">Date</label>
-        </div>
+      </div>
     </div>
 </div>
 
 <p>If a patient’s representative signs this authorization, please complete the following:</p>
 
 <div class="row">
-    <div class="col-sm-12">
-        <div class="form-group">
+    <div class="col-sm-6">
+      <div class="form-group">
+        <label class="control-label">Print name of representative</label>
         {{form.representative_name2.error}}
         {{form.representative_name2}}
-        <label class="control-label">Print name of representative</label>
-        </div>
+      </div>
     </div>
-</div>
-
-<div class="row">
-    <div class="col-sm-12">
+    <div class="col-sm-6">
         <div class="form-group">
-        {{form.representative_relationship.error}}
-        {{form.representative_relationship}}
-        <label class="control-label">Relationship to patient</label>
+          <label class="control-label">Relationship to patient</label>
+          {{form.representative_relationship.error}}
+          {{form.representative_relationship}}
         </div>
     </div>
 </div>

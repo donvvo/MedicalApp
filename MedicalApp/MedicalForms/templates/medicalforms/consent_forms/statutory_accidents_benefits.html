@@ -1,6 +1,7 @@
 {% extends "medicalforms/form_base.html" %}
 
 {% block title %}
+Statutory Accidents Benefits
 {% endblock title %}
 
 {% block form_content %}
@@ -23,26 +24,14 @@ Subject to the Statutory Accidents Benefits Schedule, in those circumstances whe
     </div>
 </div>
 <div class="row">
-    <div class="col-sm-12">
+    <div class="col-sm-6">
         <div class="form-group">
         {{form.patient_name.error}}
         <label class="control-label">Patient's Name: </label>
         {{form.patient_name}}
         </div>
     </div>
-</div>
-<br>
-<div class="row">
-    <div class="col-sm-12">
-        <div class="form-group">
-        {{form.patient_signature.error}}
-        <label class="control-label">Patient's Signature: </label>
-        {{form.patient_signature}}
-        </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-sm-12">
+    <div class="col-sm-6">
         <div class="form-group">
         {{form.witness_name.error}}
         <label class="control-label">Witness' Name: </label>
@@ -50,14 +39,6 @@ Subject to the Statutory Accidents Benefits Schedule, in those circumstances whe
         </div>
     </div>
 </div>
-<div class="row">
-    <div class="col-sm-12">
-        <div class="form-group">
-        {{form.witness_signature.error}}
-        <label class="control-label">Witness' Signature: </label>
-        {{form.witness_signature}}
-        </div>
-    </div>
-</div>
+<br>
 
 {% endblock form_content %}

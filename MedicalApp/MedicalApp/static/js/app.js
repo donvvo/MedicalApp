@@ -52,4 +52,7 @@ $(function() {
     });
 
     $(".datepicker").datepicker();
+
+    $('.validator-form .form-group input,select').attr('required', 'true')
+    $('.validator-form').validate();
 });
