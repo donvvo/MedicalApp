@@ -7,6 +7,11 @@ from MedicalApp.users import models as users_model
 from MedicalForms.utils import *
 
 
+TRANSPORTATION_CHOICES = (
+    ('Regular', 'Regular'),
+    ('Wheelchair Accessible', 'Wheelchair Accessible')
+)
+
 @python_2_unicode_compatible
 class Clinic(models.Model):
     name = MyCharField(max_length=100, primary_key=True, placeholder='Clinic Name')
@@ -65,6 +70,7 @@ class Doctor(models.Model):
 class Patient(models.Model):
     user = models.OneToOneField(users_model.User, primary_key=True)
     clinic = models.ForeignKey(Clinic, blank=True, null=True, on_delete=models.SET_NULL)
+    transportation_need = MySelectField(max_length=30, choices=TRANSPORTATION_CHOICES, default="Regular")
 
     def __str__(self):
         return str(self.user)
