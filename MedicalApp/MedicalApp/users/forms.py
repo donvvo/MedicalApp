@@ -124,7 +124,7 @@ class UserSettingsForm(forms.ModelForm):
 class PatientSettingsForm(forms.ModelForm):
     class Meta:
         model = Patient
-        fields = ("clinic", "transportation_need")
+        fields = ("clinic", "transportation_need", "past_medications", "current_medications")
         widgets = {
             'clinic': forms.Select(attrs={
                     'class': 'form-control'

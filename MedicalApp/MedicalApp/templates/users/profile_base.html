@@ -62,6 +62,25 @@
             <p>
             Email: {{object.email}}
             </p>
+
+            {% if patient %}
+            <h5 class="alternative-title">Medications</h5>
+            <p>
+              Past Medications: 
+              {% if not patient.past_medications %}N/A{% endif %}
+              {{patient.past_medications}}
+            </p>
+            <p>
+              Current Medications:
+              {% if not patient.current_medications %}N/A{% endif %}
+              {{patient.past_medications}}
+            </p>
+
+            <h5 class="alternative-title">Transportation Need</h5>
+            <p>
+              {{patient.transportation_need}}
+            </p>
+            {% endif %}
         </div>
     </div>
 </div>

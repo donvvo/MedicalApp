@@ -71,6 +71,8 @@ class Patient(models.Model):
     user = models.OneToOneField(users_model.User, primary_key=True)
     clinic = models.ForeignKey(Clinic, blank=True, null=True, on_delete=models.SET_NULL)
     transportation_need = MySelectField(max_length=30, choices=TRANSPORTATION_CHOICES, default="Regular")
+    past_medications = MyCharField(max_length=200, placeholder="Please type-in any past medications")
+    current_medications = MyCharField(max_length=200, placeholder="Please type-in any current medications")
 
     def __str__(self):
         return str(self.user)

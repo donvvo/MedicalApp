@@ -145,6 +145,8 @@ class PatientProfileView(LoginRequiredMixin, FormView):
 
         context['new_forms'] = NewForms.objects.filter(patient=patient).all()
 
+        context['patient'] = patient
+
         return context
 
     def get_success_url(self):
