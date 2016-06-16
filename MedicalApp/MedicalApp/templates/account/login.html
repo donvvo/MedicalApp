@@ -18,7 +18,7 @@
       <div class="col-md-6 col-md-offset-3">
         <div class="ct-form clearfix">
           <h6>Welcome back</h6>
-          <p>Pellentesque consequat consequat eros non tincidunt pellentesque vitae tempor massa morbi volutpat lorem non mattis morbi felis mauris, eu congue arcu molestie malesua </p>
+          <p>Please enter your email and password to sign-in. </p>
           <form id="request" action="{% url 'users:account_login' %}" method="post" accept-charset="utf-8">
             {% csrf_token %}
             <div class="row">
@@ -41,6 +41,11 @@
                   <label for="password" class="sr-only">Password</label>
                   {{form.password}}
                 </div>
+                <div class="row">
+                  <div class="col-sm-12">
+                    <p>Forgot your password?  Reset your password <a href="{% url 'users:account_signup' %}">here</a>.</p>
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -50,21 +55,18 @@
                   {% for error in form.non_field_errors %}
                         <span class="errorlist">{{error}}</span>
                   {% endfor %}
-                  <div class="input-group appointment">
-                  <span class="input-group-addon">
-                    <input type="checkbox" aria-label="...">
-                  </span>
-                  <p>Remember Password</p>
-                </div>
                 </div>
                 
               
             </div>
-            <input type="submit" class="btn btn-default btn-color-border-solid" value="Login">
+            <input type="submit" class="btn btn-default btn-color-border-solid" value="Sign In">
             
-            <div class="col-sm-12">
-	            <p>Don't have an account?  Sign up <a href="{% url 'users:account_signup' %}">here</a>.</p>
+            <div class="row">
+              <div class="col-sm-12">
+                <p>Don't have an account?  Sign up <a href="{% url 'users:account_signup' %}">here</a>.</p>
+              </div>
             </div>
+
             
           </form>
         </div>
