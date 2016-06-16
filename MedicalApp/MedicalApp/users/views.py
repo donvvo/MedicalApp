@@ -154,6 +154,7 @@ class PatientProfileView(LoginRequiredMixin, FormView):
 class PatientProfileEditView(LoginRequiredMixin, MultipleFormsView):
     form_classes = {
         'user_settings': UserSettingsForm,
+        'patient_settings': PatientSettingsForm
     }
     template_name = 'users/user_profile_edit.html'
 
@@ -161,6 +162,7 @@ class PatientProfileEditView(LoginRequiredMixin, MultipleFormsView):
         self.user_id = self.kwargs['user_id']
         self.form_initial = {
             'user_settings': get_object_or_404(User, pk=self.user_id),
+            'patient_settings': get_object_or_404(Patient, pk=self.user_id)
         }
 
     def get_context_data(self, **kwargs):
@@ -178,11 +180,29 @@ class UserProfileEditView(LoginRequiredMixin, MultipleFormsView):
     }
     template_name = 'users/user_profile_edit.html'
 
+    def get_form_classes(self):
+        # Has UserSettingsForm as base. Additional forms are added depending on user group
+        form_classes = super(UserProfileEditView, self).get_form_classes()
+        
+        self.user_id = self.kwargs['user_id']
+        self.user = get_object_or_404(User, pk=self.user_id)
+
+        # Additional forms depending on user group
+        if self.user.groups.filter(name="Patients").exists():
+            form_classes['patient_settings'] = PatientSettingsForm
+
+        return form_classes
+
+
     def get_form_initial(self):
         self.user_id = self.kwargs['user_id']
         self.form_initial = {
             'user_settings': get_object_or_404(User, pk=self.user_id),
         }
+
+        # user group specific initial form values 
+        if self.user.groups.filter(name="Patients").exists():
+            self.form_initial['patient_settings'] = get_object_or_404(Patient, pk=self.user_id)
 
     def get_context_data(self, **kwargs):
         context = super(UserProfileEditView, self).get_context_data(**kwargs)
