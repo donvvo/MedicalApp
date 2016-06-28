@@ -16942,3 +16942,72 @@ label.error,
 .fa.fa-calendar-o label.error {
   font-family: 'PT Sans';
 }
+
+.body-diagram {
+  width: 160px !important;
+  height: 366px !important;
+  background-image: url("../img/human-body-diagram.png");
+}
+#head {
+  width: 100% !important;
+  height: 47px !important;
+}
+#upper-extremities-1 {
+  width: 40px !important;
+  height: 161px !important;
+  float: left;
+}
+#upper-extremities-2 {
+  width: 43px !important;
+  height: 161px !important;
+  float: left;
+}
+#mid-section {
+  float: left;
+}
+#neck {
+  width: 77px !important;
+  height: 33px !important;
+}
+#chest-abs {
+  width: 77px !important;
+  height: 71px !important;
+}
+#lower-back {
+  width: 77px !important;
+  height: 57px !important;
+}
+#lower-extremities {
+  width: 100% !important;
+  height: 158px !important;
+  float: left;
+}
+#head:hover, #upper-extremities-1:hover, #upper-extremities-2:hover, 
+#neck:hover, #chest-abs:hover, #lower-back:hover, #lower-extremities:hover,
+.checkbox-wrap:hover {
+  cursor: pointer;
+}
+.body-diagram .chosen {
+  background: rgba(0, 0, 0, 0.2) !important;
+}
+.checkbox-wrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  width: 100%;
+  height: 100%;
+}
+.checkbox-list {
+  padding: 9px;
+  border-bottom: 1px solid #efefef;
+  min-height: 1em;
+}
+.checkbox-list label.title {
+  margin-bottom: 0;
+  font-weight: normal;
+  cursor: pointer;
+}
+.pain-detail-row {
+  margin-top: 10px;
+}

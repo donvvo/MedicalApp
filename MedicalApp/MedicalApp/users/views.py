@@ -191,6 +191,8 @@ class UserProfileEditView(LoginRequiredMixin, MultipleFormsView):
 
         # Additional forms depending on user group
         if self.user.groups.filter(name="Patients").exists():
+            # TODO: Patient form showing up.
+            print 'Patients'
             form_classes['patient_settings'] = PatientSettingsForm
 
         return form_classes

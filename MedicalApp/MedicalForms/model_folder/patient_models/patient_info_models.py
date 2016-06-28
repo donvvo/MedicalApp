@@ -29,6 +29,20 @@ MARITAL_STATUS_CHOICES = (
     ('Divorced', 'Divorced'),
     ('Common Law', 'Common Law')
 )
+PAIN_TYPES = (
+    ('Numbness', 'Numbness'),
+    ('Pins and Needles', 'Pins and Needles'),
+    ('Aching', 'Aching'),
+    ('Burning', 'Burning'),
+    ('Stabbing', 'Stabbing')
+)
+
+@python_2_unicode_compatible
+class PainChoices(models.Model):
+    choice = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.choice
 
 
 # Patient information form
@@ -56,6 +70,16 @@ class PatientInformation(models.Model):
     emergency_contact_name = MyCharField(max_length=100, placeholder='Emergency Contact Name')
     emergency_contact_phone = MyCharField(max_length=20, placeholder='Emergency Contact Phone')
     emergency_contact_relationship = MyCharField(max_length=20, placeholder='Emergency Contact Relationship')
+
+    # Human body diagram
+    pain = models.ManyToManyField(PainChoices, blank=True)
+
+    head_pain_type = MySelectField(max_length=30, choices=PAIN_TYPES)
+    upper_extremities_pain_type = MySelectField(max_length=30, choices=PAIN_TYPES)
+    neck_pain_type = MySelectField(max_length=30, choices=PAIN_TYPES)
+    chest_abs_pain_type = MySelectField(max_length=30, choices=PAIN_TYPES)
+    lower_back_pain_type = MySelectField(max_length=30, choices=PAIN_TYPES)
+    lower_extremities_pain_type = MySelectField(max_length=30, choices=PAIN_TYPES)
 
     # Current symptoms
     current_complaint_1 = MyCharField(max_length=100)

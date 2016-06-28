@@ -7,6 +7,9 @@ class PatientInformationForm(forms.ModelForm):
     class Meta:
         model = PatientInformation
         exclude = ('patient', 'last_modified')
+        widgets = {
+            'pain': forms.CheckboxSelectMultiple()
+        }
 
 
 class HealthHistoryForm(forms.ModelForm):

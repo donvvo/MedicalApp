@@ -176,6 +176,200 @@ In case of emergency, whom may we contact?
 
 <br>
 <h5>Current Symptoms</h5>
+
+<div class="row">
+  <div class="col-sm-12">
+    <label class="control-label">Human Body Diagram</label><br>
+    <p>Hover over the diagram to get the corresponding name of the region to be high-lighted in the checkbox list.
+    Click on the corresponding region to mark.</p>
+  </div>
+
+  <div class="col-sm-4">
+    <div class="body-diagram">
+      <div id="head">
+      </div>
+      <div id="upper-extremities-1"></div>
+      <div id="mid-section">
+        <div id="neck"></div>
+        <div id="chest-abs"></div>
+        <div id="lower-back"></div>
+      </div>
+      <div id="upper-extremities-2"></div>
+      <div id="lower-extremities"></div>
+    </div>
+  </div>
+
+  <div class="col-sm-8">
+    <div class="row">
+      <div class="col-sm-12">
+        <div id="head-checkbox" class="checkbox-list">
+          <label class="title">
+            {{form.pain.0.tag}}
+            {{form.pain.0.choice_label}}
+          </label>
+          <div class="row pain-detail-row">
+            <div class="col-sm-6">
+              <div class="form-group">
+                {{form.head_pain_type.error}}
+                <label class="control-label">Type of Pain</label>
+                {{form.head_pain_type}}
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label class="control-label">Intensity</label>
+                <input class="form-control not-required" type="number" min="0" max="10">
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-12">
+        <div id="head-checkbox" class="checkbox-list">
+          <label class="title">
+            {{form.pain.1.tag}}
+            {{form.pain.1.choice_label}}
+          </label>
+          <div class="row pain-detail-row">
+            <div class="col-sm-6">
+              <div class="form-group">
+                {{form.neck_pain_type.error}}
+                <label class="control-label">Type of Pain</label>
+                {{form.neck_pain_type}}
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label class="control-label">Intensity</label>
+                <input class="form-control not-required" type="number" min="0" max="10">
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row checkbox">
+        <div class="col-sm-12 form-inline">
+          <div class="form-group">
+            {{form.head_pain_type.error}}
+            <label class="control-label">Type of Pain</label>
+            {{form.head_pain_type}}
+          </div>
+          <div class="form-group">
+            <label class="control-label">Intensity</label>
+            <input class="form-control not-required" type="number" min="0" max="10">
+          </div>
+        </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          {{form.head_pain_type.error}}
+          <label class="control-label">Type of Pain</label>
+          {{form.head_pain_type}}
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label class="control-label">Intensity</label>
+          <input class="form-control not-required" type="number" min="0" max="10">
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          {{form.head_pain_type.error}}
+          <label class="control-label">Type of Pain</label>
+          {{form.head_pain_type}}
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label class="control-label">Intensity</label>
+          <input class="form-control not-required" type="number" min="0" max="10">
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-12">
+        <div id="head-checkbox" class="checkbox">
+          <label>
+            <input type="checkbox" value="1">
+            Head
+          </label>
+          <div class="checkbox-wrap"></div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <div id="neck-upperback-checkbox" class="checkbox">
+          <label>
+            <input type="checkbox" value="1">
+            Neck/upper back
+          </label>
+          <div class="checkbox-wrap"></div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <div id="chest-abs-checkbox" class="checkbox">
+          <label>
+            <input type="checkbox" value="1">
+            Chest/abdomen
+          </label>
+          <div class="checkbox-wrap"></div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <div id="lower-back-checkbox" class="checkbox">
+          <label>
+            <input type="checkbox" value="1">
+            Lower back
+          </label>
+          <div class="checkbox-wrap"></div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <div id="upper-extremities-checkbox" class="checkbox">
+          <label>
+            <input type="checkbox" value="1">
+            Upper extremities
+          </label>
+          <div class="checkbox-wrap"></div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <div id="lower-extremities-checkbox" class="checkbox">
+          <label>
+            <input type="checkbox" value="1">
+            Lower extremities
+          </label>
+          <div class="checkbox-wrap"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <br>
 Current complaint(s) and when they started - in order of importance
 <br>
@@ -314,3 +508,97 @@ Current complaint(s) and when they started - in order of importance
 </div>
 
 {% endblock form_content %}
+
+{% block javascript %}
+{{block.super}}
+<script>
+  $(function() {
+    $('#head, #head-checkbox .checkbox-wrap').hover(function() {
+      $('#head').css('background', 'rgba(0, 0, 0, 0.2)');
+      $('#head-checkbox').css('background', 'rgba(0, 0, 0, 0.1)');
+    }, function() {
+      $('#head').css('background', 'none');
+      $('#head-checkbox').css('background', 'none');
+    });
+
+    $('#neck, #neck-upperback-checkbox .checkbox-wrap').hover(function() {
+      $('#neck').css('background', 'rgba(0, 0, 0, 0.2)');
+      $('#neck-upperback-checkbox').css('background', 'rgba(0, 0, 0, 0.1)');
+    }, function() {
+      $('#neck').css('background', 'none');
+      $('#neck-upperback-checkbox').css('background', 'none');
+    });
+
+    $('#upper-extremities-1, #upper-extremities-2, #upper-extremities-checkbox .checkbox-wrap').hover(function() {
+      $('#upper-extremities-1, #upper-extremities-2').css('background', 'rgba(0, 0, 0, 0.2)');
+      $('#upper-extremities-checkbox').css('background', 'rgba(0, 0, 0, 0.1)');
+    }, function() {
+      $('#upper-extremities-1, #upper-extremities-2').css('background', 'none');
+      $('#upper-extremities-checkbox').css('background', 'none');
+    });
+
+    $('#lower-back, #lower-back-checkbox .checkbox-wrap').hover(function() {
+      $('#lower-back').css('background', 'rgba(0, 0, 0, 0.2)');
+      $('#lower-back-checkbox').css('background', 'rgba(0, 0, 0, 0.1)');
+    }, function() {
+      $('#lower-back').css('background', 'none');
+      $('#lower-back-checkbox').css('background', 'none');
+    });
+
+    $('#lower-extremities, #lower-extremities-checkbox .checkbox-wrap').hover(function() {
+      $('#lower-extremities').css('background', 'rgba(0, 0, 0, 0.2)');
+      $('#lower-extremities-checkbox').css('background', 'rgba(0, 0, 0, 0.1)');
+    }, function() {
+      $('#lower-extremities').css('background', 'none');
+      $('#lower-extremities-checkbox').css('background', 'none');
+    });
+
+    $('#chest-abs, #chest-abs-checkbox .checkbox-wrap').hover(function() {
+      $('#chest-abs').css('background', 'rgba(0, 0, 0, 0.2)');
+      $('#chest-abs-checkbox').css('background', 'rgba(0, 0, 0, 0.1)');
+    }, function() {
+      $('#chest-abs').css('background', 'none');
+      $('#chest-abs-checkbox').css('background', 'none');
+    });
+
+    $('#head, #head-checkbox .checkbox-wrap').click(function() {
+      $('#head').toggleClass('chosen');
+      $('#head-checkbox input').click();
+    });
+
+    $('#neck, #neck-upperback-checkbox .checkbox-wrap').click(function() {
+      $('#neck').toggleClass('chosen');
+      $('#neck-upperback-checkbox input').click();
+    });
+
+    $('#upper-extremities-1, #upper-extremities-2, #upper-extremities-checkbox .checkbox-wrap').click(function() {
+      $('#upper-extremities-1, #upper-extremities-2').toggleClass('chosen');
+      $('#upper-extremities-checkbox input').click();
+    });
+
+    $('#lower-back, #lower-back-checkbox .checkbox-wrap').click(function() {
+      $('#lower-back').toggleClass('chosen');
+      $('#lower-back-checkbox input').click();
+    });
+
+    $('#lower-extremities, #lower-extremities-checkbox .checkbox-wrap').click(function() {
+      $('#lower-extremities').toggleClass('chosen');
+      $('#lower-extremities-checkbox input').click();
+    });
+
+    $('#chest-abs, #chest-abs-checkbox .checkbox-wrap').click(function() {
+      $('#chest-abs').toggleClass('chosen');
+      $('#chest-abs-checkbox input').click();
+    });
+
+    // Pain detail initially hidden or not
+    $('.checkbox-list input:checkbox:not(:checked)').parent().siblings('.pain-detail-row').css('display', 'none');
+
+    // Toggle .pain-detail-row
+    $('#head, #head-checkbox input').click(function() {
+      $('#head').toggleClass('chosen');
+      $('#head-checkbox .pain-detail-row').slideToggle();
+    });
+  });
+</script>
+{% endblock javascript %}
