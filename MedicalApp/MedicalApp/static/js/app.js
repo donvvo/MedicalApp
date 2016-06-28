@@ -53,6 +53,6 @@ $(function() {
 
     $(".datepicker").datepicker();
 
-    $('.validator-form .form-group input:not(.not-required),select').attr('required', 'true')
+    $('.validator-form div.form-group:not(.not-required) input:not(.not-required),select').attr('required', 'true')
     $('.validator-form').validate();
 });

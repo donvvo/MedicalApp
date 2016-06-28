@@ -74,11 +74,14 @@ class PatientFormBaseView(LoginRequiredMixin, UpdateView):
         action_type = 'Save patient form'
 
         patient_user = get_object_or_404(User, pk=self.user_id)
-        clinic_user = patient_user.patient.clinic.user
+        clinic_user = None
+        if patient_user.patient.clinic:
+            clinic_user = patient_user.patient.clinic.user
         bookings = Booking.objects.filter(patient_id=patient_user.pk).all()
         doctor_users = [booking.doctor.user for booking in bookings]
 
-        doctor_users.append(clinic_user)
+        if clinic_user:
+            doctor_users.append(clinic_user)
         targets = doctor_users or [clinic_user, ]
         print targets
 

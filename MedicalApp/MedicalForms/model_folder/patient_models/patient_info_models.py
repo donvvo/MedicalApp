@@ -81,6 +81,13 @@ class PatientInformation(models.Model):
     lower_back_pain_type = MySelectField(max_length=30, choices=PAIN_TYPES)
     lower_extremities_pain_type = MySelectField(max_length=30, choices=PAIN_TYPES)
 
+    head_pain_level = IntegerRangeField(min_value=0, max_value=10, placeholder="Intensity")
+    upper_extremities_pain_level = IntegerRangeField(min_value=0, max_value=10, placeholder="Intensity")
+    neck_pain_level =  IntegerRangeField(min_value=0, max_value=10, placeholder="Intensity")
+    chest_abs_pain_level =  IntegerRangeField(min_value=0, max_value=10, placeholder="Intensity")
+    lower_back_pain_level =  IntegerRangeField(min_value=0, max_value=10, placeholder="Intensity")
+    lower_extremities_pain_level =  IntegerRangeField(min_value=0, max_value=10, placeholder="Intensity")
+
     # Current symptoms
     current_complaint_1 = MyCharField(max_length=100)
     current_complaint_2 = MyCharField(max_length=100)

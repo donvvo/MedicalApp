@@ -186,16 +186,16 @@ In case of emergency, whom may we contact?
 
   <div class="col-sm-4">
     <div class="body-diagram">
-      <div id="head">
+      <div id="head" {% if 1 in form.initial.pain %}class="chosen"{% endif %}>
       </div>
-      <div id="upper-extremities-1"></div>
+      <div id="upper-extremities-1" {% if 5 in form.initial.pain %}class="chosen"{% endif %}></div>
       <div id="mid-section">
-        <div id="neck"></div>
-        <div id="chest-abs"></div>
-        <div id="lower-back"></div>
+        <div id="neck" {% if 2 in form.initial.pain %}class="chosen"{% endif %}></div>
+        <div id="chest-abs" {% if 3 in form.initial.pain %}class="chosen"{% endif %}></div>
+        <div id="lower-back" {% if 4 in form.initial.pain %}class="chosen"{% endif %}></div>
       </div>
-      <div id="upper-extremities-2"></div>
-      <div id="lower-extremities"></div>
+      <div id="upper-extremities-2" {% if 5 in form.initial.pain %}class="chosen"{% endif %}></div>
+      <div id="lower-extremities" {% if 6 in form.initial.pain %}class="chosen"{% endif %}></div>
     </div>
   </div>
 
@@ -216,20 +216,19 @@ In case of emergency, whom may we contact?
               </div>
             </div>
             <div class="col-sm-6">
-              <div class="form-group">
+              <div class="form-group not-required">
                 <label class="control-label">Intensity</label>
-                <input class="form-control not-required" type="number" min="0" max="10">
+                {{form.head_pain_level}}
               </div>
             </div>
           </div>
-
         </div>
       </div>
     </div>
 
     <div class="row">
       <div class="col-sm-12">
-        <div id="head-checkbox" class="checkbox-list">
+        <div id="neck-upperback-checkbox" class="checkbox-list">
           <label class="title">
             {{form.pain.1.tag}}
             {{form.pain.1.choice_label}}
@@ -243,127 +242,116 @@ In case of emergency, whom may we contact?
               </div>
             </div>
             <div class="col-sm-6">
-              <div class="form-group">
+              <div class="form-group not-required">
                 <label class="control-label">Intensity</label>
-                <input class="form-control not-required" type="number" min="0" max="10">
+                {{form.neck_pain_level}}
               </div>
             </div>
           </div>
-
         </div>
       </div>
     </div>
 
-
-    <div class="row checkbox">
-        <div class="col-sm-12 form-inline">
-          <div class="form-group">
-            {{form.head_pain_type.error}}
-            <label class="control-label">Type of Pain</label>
-            {{form.head_pain_type}}
+    <div class="row">
+      <div class="col-sm-12">
+        <div id="chest-abs-checkbox" class="checkbox-list">
+          <label class="title">
+            {{form.pain.2.tag}}
+            {{form.pain.2.choice_label}}
+          </label>
+          <div class="row pain-detail-row">
+            <div class="col-sm-6">
+              <div class="form-group">
+                {{form.chest_abs_pain_type.error}}
+                <label class="control-label">Type of Pain</label>
+                {{form.chest_abs_pain_type}}
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group not-required">
+                <label class="control-label">Intensity</label>
+                {{form.chest_abs_pain_level}}
+              </div>
+            </div>
           </div>
-          <div class="form-group">
-            <label class="control-label">Intensity</label>
-            <input class="form-control not-required" type="number" min="0" max="10">
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-12">
+        <div id="lower-back-checkbox" class="checkbox-list">
+          <label class="title">
+            {{form.pain.3.tag}}
+            {{form.pain.3.choice_label}}
+          </label>
+          <div class="row pain-detail-row">
+            <div class="col-sm-6">
+              <div class="form-group">
+                {{form.lower_back_pain_type.error}}
+                <label class="control-label">Type of Pain</label>
+                {{form.lower_back_pain_type}}
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group not-required">
+                <label class="control-label">Intensity</label>
+                {{form.lower_back_pain_level}}
+              </div>
+            </div>
           </div>
         </div>
-    </div>
-
-    <div class="row">
-      <div class="col-sm-6">
-        <div class="form-group">
-          {{form.head_pain_type.error}}
-          <label class="control-label">Type of Pain</label>
-          {{form.head_pain_type}}
-        </div>
-      </div>
-      <div class="col-sm-6">
-        <div class="form-group">
-          <label class="control-label">Intensity</label>
-          <input class="form-control not-required" type="number" min="0" max="10">
-        </div>
       </div>
     </div>
 
     <div class="row">
-      <div class="col-sm-6">
-        <div class="form-group">
-          {{form.head_pain_type.error}}
-          <label class="control-label">Type of Pain</label>
-          {{form.head_pain_type}}
-        </div>
-      </div>
-      <div class="col-sm-6">
-        <div class="form-group">
-          <label class="control-label">Intensity</label>
-          <input class="form-control not-required" type="number" min="0" max="10">
+      <div class="col-sm-12">
+        <div id="upper-extremities-checkbox" class="checkbox-list">
+          <label class="title">
+            {{form.pain.4.tag}}
+            {{form.pain.4.choice_label}}
+          </label>
+          <div class="row pain-detail-row">
+            <div class="col-sm-6">
+              <div class="form-group">
+                {{form.upper_extremities_pain_type.error}}
+                <label class="control-label">Type of Pain</label>
+                {{form.upper_extremities_pain_type}}
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group not-required">
+                <label class="control-label">Intensity</label>
+                {{form.upper_extremities_pain_level}}
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
 
     <div class="row">
       <div class="col-sm-12">
-        <div id="head-checkbox" class="checkbox">
-          <label>
-            <input type="checkbox" value="1">
-            Head
+        <div id="lower-extremities-checkbox" class="checkbox-list">
+          <label class="title">
+            {{form.pain.5.tag}}
+            {{form.pain.5.choice_label}}
           </label>
-          <div class="checkbox-wrap"></div>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-12">
-        <div id="neck-upperback-checkbox" class="checkbox">
-          <label>
-            <input type="checkbox" value="1">
-            Neck/upper back
-          </label>
-          <div class="checkbox-wrap"></div>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-12">
-        <div id="chest-abs-checkbox" class="checkbox">
-          <label>
-            <input type="checkbox" value="1">
-            Chest/abdomen
-          </label>
-          <div class="checkbox-wrap"></div>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-12">
-        <div id="lower-back-checkbox" class="checkbox">
-          <label>
-            <input type="checkbox" value="1">
-            Lower back
-          </label>
-          <div class="checkbox-wrap"></div>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-12">
-        <div id="upper-extremities-checkbox" class="checkbox">
-          <label>
-            <input type="checkbox" value="1">
-            Upper extremities
-          </label>
-          <div class="checkbox-wrap"></div>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-12">
-        <div id="lower-extremities-checkbox" class="checkbox">
-          <label>
-            <input type="checkbox" value="1">
-            Lower extremities
-          </label>
-          <div class="checkbox-wrap"></div>
+          <div class="row pain-detail-row">
+            <div class="col-sm-6">
+              <div class="form-group">
+                {{form.lower_extremities_pain_type.error}}
+                <label class="control-label">Type of Pain</label>
+                {{form.lower_extremities_pain_type}}
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group not-required">
+                <label class="control-label">Intensity</label>
+                {{form.lower_extremities_pain_level}}
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -513,92 +501,114 @@ Current complaint(s) and when they started - in order of importance
 {{block.super}}
 <script>
   $(function() {
-    $('#head, #head-checkbox .checkbox-wrap').hover(function() {
+    // Checkbox or diagram hover
+    $('#head, #head-checkbox').hover(function() {
       $('#head').css('background', 'rgba(0, 0, 0, 0.2)');
-      $('#head-checkbox').css('background', 'rgba(0, 0, 0, 0.1)');
+      $('#head-checkbox').css('background', 'rgba(0, 0, 0, 0.03)');
     }, function() {
       $('#head').css('background', 'none');
       $('#head-checkbox').css('background', 'none');
     });
 
-    $('#neck, #neck-upperback-checkbox .checkbox-wrap').hover(function() {
+    $('#neck, #neck-upperback-checkbox').hover(function() {
       $('#neck').css('background', 'rgba(0, 0, 0, 0.2)');
-      $('#neck-upperback-checkbox').css('background', 'rgba(0, 0, 0, 0.1)');
+      $('#neck-upperback-checkbox').css('background', 'rgba(0, 0, 0, 0.03)');
     }, function() {
       $('#neck').css('background', 'none');
       $('#neck-upperback-checkbox').css('background', 'none');
     });
 
-    $('#upper-extremities-1, #upper-extremities-2, #upper-extremities-checkbox .checkbox-wrap').hover(function() {
+    $('#upper-extremities-1, #upper-extremities-2, #upper-extremities-checkbox').hover(function() {
       $('#upper-extremities-1, #upper-extremities-2').css('background', 'rgba(0, 0, 0, 0.2)');
-      $('#upper-extremities-checkbox').css('background', 'rgba(0, 0, 0, 0.1)');
+      $('#upper-extremities-checkbox').css('background', 'rgba(0, 0, 0, 0.03)');
     }, function() {
       $('#upper-extremities-1, #upper-extremities-2').css('background', 'none');
       $('#upper-extremities-checkbox').css('background', 'none');
     });
 
-    $('#lower-back, #lower-back-checkbox .checkbox-wrap').hover(function() {
+    $('#lower-back, #lower-back-checkbox').hover(function() {
       $('#lower-back').css('background', 'rgba(0, 0, 0, 0.2)');
-      $('#lower-back-checkbox').css('background', 'rgba(0, 0, 0, 0.1)');
+      $('#lower-back-checkbox').css('background', 'rgba(0, 0, 0, 0.03)');
     }, function() {
       $('#lower-back').css('background', 'none');
       $('#lower-back-checkbox').css('background', 'none');
     });
 
-    $('#lower-extremities, #lower-extremities-checkbox .checkbox-wrap').hover(function() {
+    $('#lower-extremities, #lower-extremities-checkbox').hover(function() {
       $('#lower-extremities').css('background', 'rgba(0, 0, 0, 0.2)');
-      $('#lower-extremities-checkbox').css('background', 'rgba(0, 0, 0, 0.1)');
+      $('#lower-extremities-checkbox').css('background', 'rgba(0, 0, 0, 0.03)');
     }, function() {
       $('#lower-extremities').css('background', 'none');
       $('#lower-extremities-checkbox').css('background', 'none');
     });
 
-    $('#chest-abs, #chest-abs-checkbox .checkbox-wrap').hover(function() {
+    $('#chest-abs, #chest-abs-checkbox').hover(function() {
       $('#chest-abs').css('background', 'rgba(0, 0, 0, 0.2)');
-      $('#chest-abs-checkbox').css('background', 'rgba(0, 0, 0, 0.1)');
+      $('#chest-abs-checkbox').css('background', 'rgba(0, 0, 0, 0.03)');
     }, function() {
       $('#chest-abs').css('background', 'none');
       $('#chest-abs-checkbox').css('background', 'none');
     });
 
-    $('#head, #head-checkbox .checkbox-wrap').click(function() {
-      $('#head').toggleClass('chosen');
-      $('#head-checkbox input').click();
-    });
-
-    $('#neck, #neck-upperback-checkbox .checkbox-wrap').click(function() {
-      $('#neck').toggleClass('chosen');
-      $('#neck-upperback-checkbox input').click();
-    });
-
-    $('#upper-extremities-1, #upper-extremities-2, #upper-extremities-checkbox .checkbox-wrap').click(function() {
-      $('#upper-extremities-1, #upper-extremities-2').toggleClass('chosen');
-      $('#upper-extremities-checkbox input').click();
-    });
-
-    $('#lower-back, #lower-back-checkbox .checkbox-wrap').click(function() {
-      $('#lower-back').toggleClass('chosen');
-      $('#lower-back-checkbox input').click();
-    });
-
-    $('#lower-extremities, #lower-extremities-checkbox .checkbox-wrap').click(function() {
-      $('#lower-extremities').toggleClass('chosen');
-      $('#lower-extremities-checkbox input').click();
-    });
-
-    $('#chest-abs, #chest-abs-checkbox .checkbox-wrap').click(function() {
-      $('#chest-abs').toggleClass('chosen');
-      $('#chest-abs-checkbox input').click();
-    });
-
     // Pain detail initially hidden or not
     $('.checkbox-list input:checkbox:not(:checked)').parent().siblings('.pain-detail-row').css('display', 'none');
 
+    // Clicking diagram
+    $('#head').click(function() {
+      $('#head-checkbox input:checkbox').click();
+    });
+
+    $('#neck').click(function() {
+      $('#neck-upperback-checkbox input:checkbox').click();
+    });
+
+    $('#upper-extremities-1, #upper-extremities-2').click(function() {
+      $('#upper-extremities-checkbox input:checkbox').click();
+    });
+
+    $('#lower-back').click(function() {
+      $('#lower-back-checkbox input:checkbox').click();
+    });
+
+    $('#lower-extremities').click(function() {
+      $('#lower-extremities-checkbox input:checkbox').click();
+    });
+
+    $('#chest-abs').click(function() {
+      $('#chest-abs-checkbox input:checkbox').click();
+    });
+
     // Toggle .pain-detail-row
-    $('#head, #head-checkbox input').click(function() {
+    $('#head-checkbox input:checkbox').click(function() {
       $('#head').toggleClass('chosen');
       $('#head-checkbox .pain-detail-row').slideToggle();
     });
+
+    $('#neck-upperback-checkbox input:checkbox').click(function() {
+      $('#neck').toggleClass('chosen');
+      $('#neck-upperback-checkbox .pain-detail-row').slideToggle();
+    });
+
+    $('#upper-extremities-checkbox input:checkbox').click(function() {
+      $('#upper-extremities-1, #upper-extremities-2').toggleClass('chosen');
+      $('#upper-extremities-checkbox .pain-detail-row').slideToggle();
+    });
+
+    $('#lower-back-checkbox input:checkbox').click(function() {
+      $('#lower-back').toggleClass('chosen');
+      $('#lower-back-checkbox .pain-detail-row').slideToggle();
+    });
+
+    $('#lower-extremities-checkbox input:checkbox').click(function() {
+      $('#lower-extremities').toggleClass('chosen');
+      $('#lower-extremities-checkbox .pain-detail-row').slideToggle();
+    });
+
+    $('#chest-abs-checkbox input:checkbox').click(function() {
+      $('#chest-abs').toggleClass('chosen');
+      $('#chest-abs-checkbox .pain-detail-row').slideToggle();
+    });
+
   });
 </script>
 {% endblock javascript %}
