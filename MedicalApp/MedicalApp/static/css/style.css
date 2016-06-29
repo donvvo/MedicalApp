@@ -16988,7 +16988,7 @@ label.error,
   cursor: pointer;
 }
 .body-diagram .chosen {
-  background: rgba(0, 0, 0, 0.2) !important;
+  background: rgba(220, 20, 60, 0.3) !important;
 }
 .checkbox-wrap {
   position: absolute;
