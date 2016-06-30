@@ -73,6 +73,11 @@ class Patient(models.Model):
     transportation_need = MySelectField(max_length=30, choices=TRANSPORTATION_CHOICES, default="Regular")
     past_medications = MyCharField(max_length=200, placeholder="Please type-in any past medications")
     current_medications = MyCharField(max_length=200, placeholder="Please type-in any current medications")
+    height = MyCharField(max_length=30, placeholder="Height")
+    weight = MyCharField(max_length=30, placeholder="Weight")
+    smoking = MyNullBooleanField()
+    alcohol = MyNullBooleanField()
+    marijuana = MyNullBooleanField()
 
     def __str__(self):
         return str(self.user)

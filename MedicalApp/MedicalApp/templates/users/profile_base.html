@@ -64,6 +64,44 @@
             </p>
 
             {% if patient %}
+            <h5 class="alternative-title">Personal Info</h5>
+            <div class="row">
+              <div class="col-sm-6">
+                <p>
+                  Height: 
+                  {% if not patient.height %}N/A{% endif %}
+                  {{patient.height}}
+                </p>
+              </div>
+              <div class="col-sm-6">
+                <p>
+                  Weight: 
+                  {% if not patient.weight %}N/A{% endif %}
+                  {{patient.weight}}
+                </p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6">
+                <p>
+                  Smoking: 
+                  {% if patient.smoking == None %}N/A
+                  {% else %}
+                  {{patient.smoking}}
+                  {% endif %}
+                </p>
+              </div>
+              <div class="col-sm-6">
+                <p>
+                  Alcohol: 
+                  {% if patient.alcohol == None %}N/A
+                  {% else %}
+                  {{patient.alcohol}}
+                  {% endif %}
+                </p>
+              </div>
+            </div>
+
             <h5 class="alternative-title">Medications</h5>
             <p>
               Past Medications: 
@@ -74,6 +112,13 @@
               Current Medications:
               {% if not patient.current_medications %}N/A{% endif %}
               {{patient.past_medications}}
+            </p>
+            <p>
+              Marijuana:
+              {% if patient.marijuana == None %}N/A
+              {% else %}
+              {{patient.marijuana}}
+              {% endif %}
             </p>
 
             <h5 class="alternative-title">Transportation Need</h5>
