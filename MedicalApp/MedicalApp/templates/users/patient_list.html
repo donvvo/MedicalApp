@@ -32,31 +32,50 @@
             </div>
             <br>
             <div class="row">
-                <div class="col-md-12 text-center">
-                    <ul id="patient-list-container" class="boxes-content">
-                        {% for patient in object_list %}
-                        <li class="patient-list" data-name="{{patient}}" data-email="{{patient.user.email}}" data-phone="{{patient.phone}}"><a href="{% url 'users:patient_profile' patient.user.pk %}">
-                            <div class="name">
-                                <h6>{{patient}}</h6>
-                                <figure>{% if patient.user.image %}
-                                    <img src="{{patient.user.image.url}}" alt="doctor profile picture">
-                                {% else %}
-                                    <img src="{% static 'img/profile-img.png' %}" alt="//">
-                                {% endif %}</figure>
-                            </div>
-                            <div class="list-info">
-                                <div class="list-info-row">
-                                    <h6>Phone</h6>
-                                    <p>{{patient.user.contact}}</p>
-                                </div>
-                                <div class="list-info-row">
-                                    <h6>Clinic</h6>
-                                    <p>{{patient.clinic}}</p>
-                                </div>
-                            </div></a>
-                        </li>
-                        {% endfor %}
-                    </ul>
+                <div class="col-sm-8 col-sm-offset-2">
+                  <ul id="patient-list-container" class="media-list">
+                    {% if object_list %}
+                    {% for patient in object_list %}
+                    <li class="media list-group-item patient-list" data-name="{{patient}}" data-email="{{patient.user.email}}" data-phone="{{patient.user.contact}}">
+                      <a href="{% url 'users:patient_profile' patient.user.pk %}">
+                        <div class="col-xs-3">
+                          <figure>
+                            {% if patient.user.image %}
+                            <img class="media-object img-circle" src="{{patient.user.image.url}}" alt="//">
+                            {% else %}
+                            <img class="media-object img-circle" src="{% static 'img/profile-img.png' %}" alt="//">
+                            {% endif %}
+                          </figure>
+                        </div>
+                        <div class="col-xs-9">
+                          <div class="col-sm-4">
+                            <h6>Name</h6>
+                            <p>{{patient}}</p>
+                          </div>
+                          <div class="col-sm-4">
+                            <h6>Phone</h6>
+                            <p>{% if patient.user.contact %}
+                              {{patient.user.contact}}
+                              {% else %}
+                              N/A
+                              {% endif %}</p>
+                          </div>
+                          <div class="col-sm-4">
+                            <h6>Clinic</h6>
+                            <p>{% if patient.clinic %}
+                              {{patient.clinic}}
+                              {% else %}
+                              N/A
+                              {% endif %}</p>
+                          </div>
+                        </div>
+                      </a>
+                    </li>
+                    {% endfor %}
+                    {% else %}
+                    <p>Currently there is no patient</p>
+                    {% endif %}
+                  </ul>
                     <br>
                     <a href="{% url 'users:manage_main' %}" class="btn btn-default btn-color-border-solid">Back</a>
                 </div>
@@ -110,7 +129,7 @@ $(function() {
                 patient.style.display = "none";
             }
             else {
-                patient.style.display = "inline-block";
+                patient.style.display = "block";
             }
         });
     });
