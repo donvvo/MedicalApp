@@ -151,9 +151,7 @@ class PeripheralJointQuestions4(PeripheralJointBaseQuestions):
 
 
 @python_2_unicode_compatible
-class OtherSubjectiveEvaluationQuestions(models.Model):
-    patient = models.OneToOneField(Patient)
-    last_modified = models.DateTimeField(auto_now=True)
+class OtherSubjectiveEvaluationQuestions(BaseQuestions):
     conditions = models.ManyToManyField(OtherConditions, blank=True)
 
     def __str__(self):

@@ -9,7 +9,7 @@ import MedicalForms.utils
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('MedicalAppointments', '0004_doctor_hcai'),
+        ('MedicalAppointments', '0014_auto_20160629_1449'),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
     ]
 
@@ -615,13 +615,29 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='OtherSubjectiveEvaluationQuestions',
             fields=[
-                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('patient', models.OneToOneField(primary_key=True, serialize=False, to='MedicalAppointments.Patient')),
                 ('last_modified', models.DateTimeField(auto_now=True)),
+                ('intensity', MedicalForms.utils.IntegerRangeField(null=True, blank=True)),
+                ('duration', MedicalForms.utils.MyCharField(max_length=20, blank=True)),
+                ('numbness', MedicalForms.utils.MyNullBooleanField()),
+                ('paraesthesia', MedicalForms.utils.MyNullBooleanField()),
+                ('aggravated_by_movements', MedicalForms.utils.MyCharField(max_length=100, blank=True)),
+                ('relieved_by', MedicalForms.utils.MyNullBooleanField()),
                 ('conditions', models.ManyToManyField(to='MedicalForms.OtherConditions', blank=True)),
             ],
+            options={
+                'abstract': False,
+            },
         ),
         migrations.CreateModel(
             name='Pain',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('choice', models.CharField(max_length=50)),
+            ],
+        ),
+        migrations.CreateModel(
+            name='PainChoices',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('choice', models.CharField(max_length=50)),
@@ -676,6 +692,18 @@ class Migration(migrations.Migration):
                 ('emergency_contact_name', MedicalForms.utils.MyCharField(max_length=100, blank=True)),
                 ('emergency_contact_phone', MedicalForms.utils.MyCharField(max_length=20, blank=True)),
                 ('emergency_contact_relationship', MedicalForms.utils.MyCharField(max_length=20, blank=True)),
+                ('head_pain_type', MedicalForms.utils.MySelectField(max_length=30, blank=True)),
+                ('upper_extremities_pain_type', MedicalForms.utils.MySelectField(max_length=30, blank=True)),
+                ('neck_pain_type', MedicalForms.utils.MySelectField(max_length=30, blank=True)),
+                ('chest_abs_pain_type', MedicalForms.utils.MySelectField(max_length=30, blank=True)),
+                ('lower_back_pain_type', MedicalForms.utils.MySelectField(max_length=30, blank=True)),
+                ('lower_extremities_pain_type', MedicalForms.utils.MySelectField(max_length=30, blank=True)),
+                ('head_pain_level', MedicalForms.utils.IntegerRangeField(null=True, blank=True)),
+                ('upper_extremities_pain_level', MedicalForms.utils.IntegerRangeField(null=True, blank=True)),
+                ('neck_pain_level', MedicalForms.utils.IntegerRangeField(null=True, blank=True)),
+                ('chest_abs_pain_level', MedicalForms.utils.IntegerRangeField(null=True, blank=True)),
+                ('lower_back_pain_level', MedicalForms.utils.IntegerRangeField(null=True, blank=True)),
+                ('lower_extremities_pain_level', MedicalForms.utils.IntegerRangeField(null=True, blank=True)),
                 ('current_complaint_1', MedicalForms.utils.MyCharField(max_length=100, blank=True)),
                 ('current_complaint_2', MedicalForms.utils.MyCharField(max_length=100, blank=True)),
                 ('current_complaint_3', MedicalForms.utils.MyCharField(max_length=100, blank=True)),
@@ -692,6 +720,7 @@ class Migration(migrations.Migration):
                 ('hospitalized_detail', MedicalForms.utils.MyCharField(max_length=100, blank=True)),
                 ('previous_test', MedicalForms.utils.MyNullBooleanField()),
                 ('previous_test_detail', MedicalForms.utils.MyCharField(max_length=100, blank=True)),
+                ('pain', models.ManyToManyField(to='MedicalForms.PainChoices', blank=True)),
             ],
         ),
         migrations.CreateModel(
@@ -1198,8 +1227,8 @@ class Migration(migrations.Migration):
         ),
         migrations.AddField(
             model_name='othersubjectiveevaluationquestions',
-            name='patient',
-            field=models.OneToOneField(to='MedicalAppointments.Patient'),
+            name='present_pain',
+            field=models.ManyToManyField(to='MedicalForms.PresentPain', blank=True),
         ),
         migrations.AddField(
             model_name='lumbarspinequestions',
