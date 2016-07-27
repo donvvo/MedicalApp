@@ -71,6 +71,12 @@
             <li><a href="{% url 'home' %}">Home</a></li>
 
             {% if request.user.is_authenticated %}
+
+            {% if request.user|has_group:"Clinics" %}
+            <li><a href="{% url 'users:doctors_list' %}">Doctors</a></li>
+            <li><a href="{% url 'users:patient_list' %}">Patients</a></li>
+            {% endif %}
+
             <li>
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{request.user.first_name}} {{request.user.last_name}}<span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">

@@ -17,53 +17,84 @@
 
 <!-- Admin main -->
 <section class="generic">
-    <div class="container">
-        <div class="row {% if not request.user.is_staff %}panel-row{% endif %}">
-            <div class="col-sm-4 panel-col-center">
-                <a href="{% url 'users:doctors_list' %}" class="featured-item ct-icon">
-                    <figure>
-                        <img class="img-responsive" src="{% static 'img/doctor.jpg' %}" alt="//">
-                        <div class="icon-image"><span class="glyphicon glyphicon-picture" aria-hidden = "true"></span></div>
-                    </figure>
-                    <div class="content text-center">
-                        <h4>Manage Doctors</h4>
+  <div class="container">
+    {% if request.user.is_staff %}
+    <div class="row">
+      <div class="col-sm-4 panel-col-center">
+        <a href="{% url 'users:doctors_list' %}" class="featured-item ct-icon">
+          <figure>
+            <img class="img-responsive" src="{% static 'img/doctor.jpg' %}" alt="//">
+            <div class="icon-image"><span class="glyphicon glyphicon-picture" aria-hidden = "true"></span></div>
+          </figure>
+          <div class="content text-center">
+            <h4>Manage Doctors</h4>
 
-                    </div>
-
-                </a>
-            </div>
-            {% if request.user.is_staff %}
-            <div class="col-sm-4 panel-col-center">
-                <a href="{% url 'medical_appointments:clinic_list' %}" class="featured-item ct-icon">
-                    <figure>
-                        <img class="img-responsive" src="{% static 'img/clinic.jpg' %}" alt="//">
-                        <div class="icon-image"><span class="glyphicon glyphicon-picture"></span></div>
-                    </figure>
-                    <div class="content text-center">
-                        <h4>Manage Clinics</h4>
-
-                    </div>
-
-                </a>
-            </div>
-            {% endif %}
+          </div>
+        </a>
+      </div>
+      {% if request.user.is_staff %}
+      <div class="col-sm-4 panel-col-center">
+        <a href="{% url 'medical_appointments:clinic_list' %}" class="featured-item ct-icon">
+          <figure>
+            <img class="img-responsive" src="{% static 'img/clinic.jpg' %}" alt="//">
+            <div class="icon-image"><span class="glyphicon glyphicon-picture"></span></div>
+          </figure>
+          <div class="content text-center">
+            <h4>Manage Clinics</h4>
+          </div>
+        </a>
+      </div>
+      {% endif %}
 
 
-           <div class="col-sm-4 panel-col-center">
-                <a href="{% url 'users:patient_list' %}" class="featured-item ct-icon">
-                    <figure>
-                        <img class="img-responsive" src="{% static 'img/patient.jpg' %}" alt="//">
-                        <div class="icon-image"><span class="glyphicon glyphicon-picture"></span></div>
-                    </figure>
-                    <div class="content text-center">
-                        <h4>Manage Patients</h4>
-
-                    </div>
-
-                </a>
-            </div>
-        </div>
+      <div class="col-sm-4 panel-col-center">
+        <a href="{% url 'users:patient_list' %}" class="featured-item ct-icon">
+          <figure>
+            <img class="img-responsive" src="{% static 'img/patient.jpg' %}" alt="//">
+            <div class="icon-image"><span class="glyphicon glyphicon-picture"></span></div>
+          </figure>
+          <div class="content text-center">
+            <h4>Manage Patients</h4>
+          </div>
+        </a>
+      </div>
     </div>
+    {% else %}
+
+    <div class="row">
+      <div id="schedule" class="col-sm-12 timetable">
+        <div class="timetable-responsive">
+          <table>
+            <thead>
+              <tr>
+                <th class="blue-extralight">Time</th>
+                {% for day in table.0 %}
+                <th class="green-light">{{day.0|date:"M j"}}<br>{{day.0|date:"D"}}</th>
+                {% endfor %}
+              </tr>
+            </thead>
+
+            {% for row in table %}
+            <tr>
+              <th>{{row.0.0|time:"h:i A"}}</th>
+              {% for element in row %}
+              {% if element.1 == -1 %}
+              <td><a class="green-light timeslot-closed" href="#" title="Clinic is closed at this time."></a></td>
+              {% elif element.1 %}
+              <td><span style="color: #91979f; font-size: 0.875em;">{{element.1|join:", "}}</span></td>
+              {% else %}
+              <td><a class="ct-orange timeslot-closed" href="#" title="You're off duty during this time."></a></td>
+              {% endif %}
+              {% endfor %}
+            </tr>
+            {% endfor %}
+          </table>
+        </div>
+      </div>
+    </div>
+
+    {% endif %}
+  </div>
 </section>
 <!-- End admin main -->
 {% endblock content %}

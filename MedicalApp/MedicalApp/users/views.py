@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 from __future__ import absolute_import, unicode_literals
 
+import datetime
+
 from django.contrib import messages
 from django.core.urlresolvers import reverse, reverse_lazy
 from django.views.generic import DetailView, ListView, RedirectView, UpdateView, TemplateView
@@ -15,7 +17,7 @@ from allauth.account import app_settings
 
 from .models import User
 from MedicalAppointments.models import Patient, Doctor, Clinic, Booking, NewForms
-from MedicalAppointments.utils import get_time_table
+from MedicalAppointments.utils import get_time_table, get_clinic_time_table
 from .forms import UserSettingsForm, EmailDoctorForm, DoctorSettingsForm,\
     DoctorSignupForm, PatientSignupForm, PatientSettingsForm
 from MedicalApp.utils import MultipleFormsView
@@ -311,10 +313,25 @@ class PatientsListView(LoginRequiredMixin, GroupRequiredMixin, ListView):
     raise_exception = True
 
 
-class ManageMainView(LoginRequiredMixin, GroupRequiredMixin, TemplateView):
+class ManageMainView(LoginRequiredMixin, GroupRequiredMixin, ListView):
     template_name = "users/manage_main.html"
     group_required = "Clinics"
     raise_exception = True
+    model = Booking
+
+    def get_queryset(self):
+        # Limit number of queries by getting only bookings that is in the future
+        yesterday = datetime.datetime.now() - datetime.timedelta(days=1)
+
+        bookings = self.model.objects.filter(clinic=self.request.user.clinic_set.get()).filter(time__gte=yesterday).all()
+        return bookings
+
+    def get_context_data(self, **kwargs):
+        context = super(ManageMainView, self).get_context_data(**kwargs)
+        context['table'] = get_clinic_time_table(
+            context['object_list'], clinic=self.request.user.clinic_set.get(), table_interval=30)
+
+        return context
 
 
 class DoctorsListView(LoginRequiredMixin, GroupRequiredMixin, ListView):
