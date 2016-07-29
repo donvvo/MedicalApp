@@ -185,21 +185,35 @@ In case of emergency, whom may we contact?
   </div>
 
   <div class="col-sm-4">
-    <div class="body-diagram">
-      <div id="head" {% if 1 in form.initial.pain %}class="chosen"{% endif %}>
+    <div class="body-diagram body-diagram-1">
+      <div class="head{% if 1 in form.initial.pain %} chosen{% endif %}">
       </div>
       <div id="upper-extremities-1" {% if 5 in form.initial.pain %}class="chosen"{% endif %}></div>
       <div id="mid-section">
-        <div id="neck" {% if 2 in form.initial.pain %}class="chosen"{% endif %}></div>
-        <div id="chest-abs" {% if 3 in form.initial.pain %}class="chosen"{% endif %}></div>
-        <div id="lower-back" {% if 4 in form.initial.pain %}class="chosen"{% endif %}></div>
+        <div class="neck neck-front{% if 2 in form.initial.pain %} chosen{% endif %}"></div>
+        <div class="chest-abs{% if 3 in form.initial.pain %} chosen{% endif %}"></div>
+        <div class="mid-space-front"></div>
+        <div class="lower-extremities{% if 6 in form.initial.pain %} chosen{% endif %}"></div>
       </div>
       <div id="upper-extremities-2" {% if 5 in form.initial.pain %}class="chosen"{% endif %}></div>
-      <div id="lower-extremities" {% if 6 in form.initial.pain %}class="chosen"{% endif %}></div>
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="body-diagram body-diagram-2">
+      <div class="head{% if 1 in form.initial.pain %} chosen{% endif %}">
+      </div>
+      <div id="upper-extremities-1" {% if 5 in form.initial.pain %}class="chosen"{% endif %}></div>
+      <div id="mid-section">
+        <div class="neck neck-back{% if 2 in form.initial.pain %} chosen{% endif %}"></div>
+        <div class="lower-back{% if 4 in form.initial.pain %} chosen{% endif %}"></div>
+        <div class="mid-space-back"></div>
+        <div class="lower-extremities{% if 6 in form.initial.pain %} chosen{% endif %}"></div>
+      </div>
+      <div id="upper-extremities-2" {% if 5 in form.initial.pain %}class="chosen"{% endif %}></div>
     </div>
   </div>
 
-  <div class="col-sm-8">
+  <div class="col-sm-4">
     <div class="row">
       <div class="col-sm-12">
         <div id="head-checkbox" class="checkbox-list">
@@ -502,19 +516,19 @@ Current complaint(s) and when they started - in order of importance
 <script>
   $(function() {
     // Checkbox or diagram hover
-    $('#head, #head-checkbox').hover(function() {
-      $('#head').css('background', 'rgba(0, 0, 0, 0.2)');
+    $('.head, #head-checkbox').hover(function() {
+      $('.head').css('background', 'rgba(0, 0, 0, 0.2)');
       $('#head-checkbox').css('background', 'rgba(0, 0, 0, 0.03)');
     }, function() {
-      $('#head').css('background', 'none');
+      $('.head').css('background', 'none');
       $('#head-checkbox').css('background', 'none');
     });
 
-    $('#neck, #neck-upperback-checkbox').hover(function() {
-      $('#neck').css('background', 'rgba(0, 0, 0, 0.2)');
+    $('.neck, #neck-upperback-checkbox').hover(function() {
+      $('.neck').css('background', 'rgba(0, 0, 0, 0.2)');
       $('#neck-upperback-checkbox').css('background', 'rgba(0, 0, 0, 0.03)');
     }, function() {
-      $('#neck').css('background', 'none');
+      $('.neck').css('background', 'none');
       $('#neck-upperback-checkbox').css('background', 'none');
     });
 
@@ -526,27 +540,27 @@ Current complaint(s) and when they started - in order of importance
       $('#upper-extremities-checkbox').css('background', 'none');
     });
 
-    $('#lower-back, #lower-back-checkbox').hover(function() {
-      $('#lower-back').css('background', 'rgba(0, 0, 0, 0.2)');
+    $('.lower-back, #lower-back-checkbox').hover(function() {
+      $('.lower-back').css('background', 'rgba(0, 0, 0, 0.2)');
       $('#lower-back-checkbox').css('background', 'rgba(0, 0, 0, 0.03)');
     }, function() {
-      $('#lower-back').css('background', 'none');
+      $('.lower-back').css('background', 'none');
       $('#lower-back-checkbox').css('background', 'none');
     });
 
-    $('#lower-extremities, #lower-extremities-checkbox').hover(function() {
-      $('#lower-extremities').css('background', 'rgba(0, 0, 0, 0.2)');
+    $('.lower-extremities, #lower-extremities-checkbox').hover(function() {
+      $('.lower-extremities').css('background', 'rgba(0, 0, 0, 0.2)');
       $('#lower-extremities-checkbox').css('background', 'rgba(0, 0, 0, 0.03)');
     }, function() {
-      $('#lower-extremities').css('background', 'none');
+      $('.lower-extremities').css('background', 'none');
       $('#lower-extremities-checkbox').css('background', 'none');
     });
 
-    $('#chest-abs, #chest-abs-checkbox').hover(function() {
-      $('#chest-abs').css('background', 'rgba(0, 0, 0, 0.2)');
+    $('.chest-abs, #chest-abs-checkbox').hover(function() {
+      $('.chest-abs').css('background', 'rgba(0, 0, 0, 0.2)');
       $('#chest-abs-checkbox').css('background', 'rgba(0, 0, 0, 0.03)');
     }, function() {
-      $('#chest-abs').css('background', 'none');
+      $('.chest-abs').css('background', 'none');
       $('#chest-abs-checkbox').css('background', 'none');
     });
 
@@ -554,11 +568,11 @@ Current complaint(s) and when they started - in order of importance
     $('.checkbox-list input:checkbox:not(:checked)').parent().siblings('.pain-detail-row').css('display', 'none');
 
     // Clicking diagram
-    $('#head').click(function() {
+    $('.head').click(function() {
       $('#head-checkbox input:checkbox').click();
     });
 
-    $('#neck').click(function() {
+    $('.neck').click(function() {
       $('#neck-upperback-checkbox input:checkbox').click();
     });
 
@@ -566,26 +580,26 @@ Current complaint(s) and when they started - in order of importance
       $('#upper-extremities-checkbox input:checkbox').click();
     });
 
-    $('#lower-back').click(function() {
+    $('.lower-back').click(function() {
       $('#lower-back-checkbox input:checkbox').click();
     });
 
-    $('#lower-extremities').click(function() {
+    $('.lower-extremities').click(function() {
       $('#lower-extremities-checkbox input:checkbox').click();
     });
 
-    $('#chest-abs').click(function() {
+    $('.chest-abs').click(function() {
       $('#chest-abs-checkbox input:checkbox').click();
     });
 
     // Toggle .pain-detail-row
     $('#head-checkbox input:checkbox').click(function() {
-      $('#head').toggleClass('chosen');
+      $('.head').toggleClass('chosen');
       $('#head-checkbox .pain-detail-row').slideToggle();
     });
 
     $('#neck-upperback-checkbox input:checkbox').click(function() {
-      $('#neck').toggleClass('chosen');
+      $('.neck').toggleClass('chosen');
       $('#neck-upperback-checkbox .pain-detail-row').slideToggle();
     });
 
@@ -595,17 +609,17 @@ Current complaint(s) and when they started - in order of importance
     });
 
     $('#lower-back-checkbox input:checkbox').click(function() {
-      $('#lower-back').toggleClass('chosen');
+      $('.lower-back').toggleClass('chosen');
       $('#lower-back-checkbox .pain-detail-row').slideToggle();
     });
 
     $('#lower-extremities-checkbox input:checkbox').click(function() {
-      $('#lower-extremities').toggleClass('chosen');
+      $('.lower-extremities').toggleClass('chosen');
       $('#lower-extremities-checkbox .pain-detail-row').slideToggle();
     });
 
     $('#chest-abs-checkbox input:checkbox').click(function() {
-      $('#chest-abs').toggleClass('chosen');
+      $('.chest-abs').toggleClass('chosen');
       $('#chest-abs-checkbox .pain-detail-row').slideToggle();
     });
 

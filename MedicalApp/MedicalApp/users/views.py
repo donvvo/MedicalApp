@@ -320,16 +320,22 @@ class ManageMainView(LoginRequiredMixin, GroupRequiredMixin, ListView):
     model = Booking
 
     def get_queryset(self):
-        # Limit number of queries by getting only bookings that is in the future
-        yesterday = datetime.datetime.now() - datetime.timedelta(days=1)
+        bookings = []
 
-        bookings = self.model.objects.filter(clinic=self.request.user.clinic_set.get()).filter(time__gte=yesterday).all()
+        if self.request.user.groups.filter(name="Clinics").exists():
+            # Limit number of queries by getting only bookings that is in the future
+            yesterday = datetime.datetime.now() - datetime.timedelta(days=1)
+
+            bookings = self.model.objects.filter(clinic=self.request.user.clinic_set.get()).filter(time__gte=yesterday).all()
+
         return bookings
 
     def get_context_data(self, **kwargs):
         context = super(ManageMainView, self).get_context_data(**kwargs)
-        context['table'] = get_clinic_time_table(
-            context['object_list'], clinic=self.request.user.clinic_set.get(), table_interval=30)
+
+        if self.request.user.groups.filter(name="Clinics").exists():
+            context['table'] = get_clinic_time_table(
+                context['object_list'], clinic=self.request.user.clinic_set.get(), table_interval=30)
 
         return context
 

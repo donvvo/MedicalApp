@@ -16944,16 +16944,21 @@ label.error,
 }
 
 .body-diagram {
-  width: 160px !important;
-  height: 366px !important;
-  background-image: url("../img/human-body-diagram.png");
+  width: 180px !important;
+  height: 350px !important;
 }
-#head {
+.body-diagram-1 {
+  background-image: url("../img/human-body-diagram-1.png");
+}
+.body-diagram-2 {
+  background-image: url("../img/human-body-diagram-2.png");
+}
+.head {
   width: 100% !important;
-  height: 47px !important;
+  height: 52px !important;
 }
 #upper-extremities-1 {
-  width: 40px !important;
+  width: 54px !important;
   height: 161px !important;
   float: left;
 }
@@ -16965,22 +16970,34 @@ label.error,
 #mid-section {
   float: left;
 }
-#neck {
-  width: 77px !important;
-  height: 33px !important;
+.neck-front {
+  width: 72px !important;
+  height: 25px !important;
 }
-#chest-abs {
-  width: 77px !important;
+.neck-back {
+  width: 72px !important;
+  height: 65px !important;
+}
+.chest-abs {
+  width: 72px !important;
   height: 71px !important;
 }
-#lower-back {
-  width: 77px !important;
-  height: 57px !important;
+.lower-back {
+  width: 72px !important;
+  height: 35px !important;
 }
-#lower-extremities {
-  width: 100% !important;
-  height: 158px !important;
+.lower-extremities {
+  width: 72px !important;
+  height: 157px !important;
   float: left;
+}
+.mid-space-front {
+  height: 45px !important;
+  width: 72px !important;
+}
+.mid-space-back {
+  height: 41px !important;
+  width: 72px !important;
 }
 #head:hover, #upper-extremities-1:hover, #upper-extremities-2:hover, 
 #neck:hover, #chest-abs:hover, #lower-back:hover, #lower-extremities:hover,
