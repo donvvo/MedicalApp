@@ -11,7 +11,7 @@ from django.shortcuts import redirect, get_object_or_404
 from django.utils import timezone
 
 from braces.views import LoginRequiredMixin, StaffuserRequiredMixin, GroupRequiredMixin
-from allauth.account.views import LoginView, SignupView, PasswordChangeView
+from allauth.account.views import LoginView, SignupView, PasswordChangeView, PasswordResetView
 from allauth.account.utils import complete_signup
 from allauth.account import app_settings
 
@@ -19,7 +19,7 @@ from .models import User
 from MedicalAppointments.models import Patient, Doctor, Clinic, Booking, NewForms
 from MedicalAppointments.utils import get_time_table, get_clinic_time_table
 from .forms import UserSettingsForm, EmailDoctorForm, DoctorSettingsForm,\
-    DoctorSignupForm, PatientSignupForm, PatientSettingsForm
+    DoctorSignupForm, PatientSignupForm, PatientSettingsForm, UserResetPasswordForm
 from MedicalApp.utils import MultipleFormsView
 from MedicalAppointments.forms import ClinicSettingsForm, NewFormsForm
 
@@ -108,6 +108,11 @@ class DoctorSignupView(SignupView):
         context = super(DoctorSignupView, self).get_context_data(**kwargs)
         context['doctors'] = True
         return context
+
+
+class UserPasswordResetView(PasswordResetView):
+    template_name = "users/forgot_password.html"
+    form_class = UserResetPasswordForm
 
 
 class PatientProfileView(LoginRequiredMixin, FormView):

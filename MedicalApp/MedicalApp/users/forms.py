@@ -4,7 +4,7 @@ from django import forms
 from django.conf import settings
 from django.core.mail import EmailMessage
 
-from allauth.account.forms import LoginForm, SignupForm
+from allauth.account.forms import LoginForm, SignupForm, ResetPasswordForm
 
 from .models import User
 from MedicalAppointments.models import Doctor, Clinic, Patient
@@ -87,6 +87,15 @@ class DoctorSignupForm(UserSignupForm):
                                         attrs={'type': 'text',
                                                'class': 'form-control',
                                                'placeholder': 'HCAI code'}))
+
+class UserResetPasswordForm(ResetPasswordForm):
+    def __init__(self, *args, **kwargs):
+        super(UserResetPasswordForm, self).__init__(*args, **kwargs)
+        self.fields['email'].widget = forms.TextInput(attrs={
+                                                  'type': 'email',
+                                                  'class': 'form-control',
+                                                  'placeholder': 'Email'})
+
 
 
 class UserSettingsForm(forms.ModelForm):
