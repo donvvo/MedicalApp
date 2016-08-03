@@ -37,6 +37,12 @@ urlpatterns = [
         name='account_reset_password'
     ),
 
+    url(
+        regex=r'^forgot-password/done$',
+        view=views.PasswordResetDoneView.as_view(),
+        name='account_reset_password_done'
+    ),
+
     url(r"^logout/$", logout, name="account_logout"),
 
     url(

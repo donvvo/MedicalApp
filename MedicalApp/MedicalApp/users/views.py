@@ -113,6 +113,11 @@ class DoctorSignupView(SignupView):
 class UserPasswordResetView(PasswordResetView):
     template_name = "users/forgot_password.html"
     form_class = UserResetPasswordForm
+    success_url = reverse_lazy("account_reset_password_done")
+
+
+class PasswordResetDoneView(TemplateView):
+    template_name = "account/password_reset_done.html"
 
 
 class PatientProfileView(LoginRequiredMixin, FormView):
