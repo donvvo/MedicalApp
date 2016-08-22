@@ -174,7 +174,7 @@ Accident History
             <span class="errorlist">{{error}}</span>
             {% endfor %}
         </div>
-        <div class="form-group">
+        <div class="form-group not-required">
         <label class="control-label">If yes, details: </label>
         {{form.impact_with_objects_detail}}
         </div>
@@ -248,7 +248,7 @@ Accident History
             <span class="errorlist">{{error}}</span>
             {% endfor %}
         </div>
-        <div class="form-group">
+        <div class="form-group not-required">
         <label class="control-label">Passengers? </label><br>
         {% for checkbox in form.passengers %}
             <label class="radio-inline">
@@ -279,7 +279,7 @@ Accident History
             <span class="errorlist">{{error}}</span>
             {% endfor %}
         </div>
-        <div class="form-group">
+        <div class="form-group not-required">
         <label class="control-label">Did any part of your body collide with any objects? (check all that apply): </label>
         {% for checkbox in form.body_part_collision %}
             <div class="col-sm-6">
@@ -363,7 +363,7 @@ Accident History
         </div>
     </div>
     <div class="col-sm-6">
-        <div class="form-group">
+        <div class="form-group not-required">
         {{form.shoulders_which.errors}}
         <label class="control-label">Which side of shoulders? </label><br>
         {% for checkbox in form.shoulders_which %}
@@ -384,7 +384,7 @@ Accident History
         </div>
     </div>
     <div class="col-sm-6">
-        <div class="form-group">
+        <div class="form-group not-required">
         {{form.legs_which.errors}}
         <label class="control-label">Which side of legs? </label><br>
         {% for checkbox in form.legs_which %}
@@ -405,7 +405,7 @@ Accident History
         </div>
     </div>
     <div class="col-sm-6">
-        <div class="form-group">
+        <div class="form-group not-required">
         {{form.arms_which.errors}}
         <label class="control-label">Which side of arms? </label><br>
         {% for checkbox in form.arms_which %}
@@ -419,7 +419,7 @@ Accident History
 </div>
 <div class="row">
     <div class="col-sm-12">
-        <div class="form-group">
+        <div class="form-group not-required">
         {{form.other.errors}}
         <label class="control-label">Other: </label>
         {{form.other}}
@@ -428,7 +428,7 @@ Accident History
 </div>
 <div class="row">
     <div class="col-sm-12">
-        <div class="form-group">
+        <div class="form-group not-required">
         {{form.emergency_personnel.errors}}
         <label class="control-label">Emergency Personnel on Scene (check all that apply) </label><br>
         {% for checkbox in form.emergency_personnel %}
@@ -449,7 +449,7 @@ Accident History
         </div>
     </div>
     <div class="col-sm-6">
-        <div class="form-group">
+        <div class="form-group not-required">
         {{form.hospitalized_detail.errors}}
         <label class="control-label">If yes, detail? </label>
         {{form.hospitalized_detail}}
@@ -476,7 +476,7 @@ Accident History
 </div>
 <div class="row">
     <div class="col-sm-6">
-        <div class="form-group">
+        <div class="form-group not-required">
         {{form.examination_type.errors}}
         <label class="control-label">Examinations </label><br>
         {% for checkbox in form.examination_type %}
@@ -488,7 +488,7 @@ Accident History
         </div>
     </div>
     <div class="col-sm-6">
-        <div class="form-group">
+        <div class="form-group not-required">
         {{form.examination_other.errors}}
         <label class="control-label">Other: </label>
         {{form.examination_other}}
@@ -513,14 +513,14 @@ Accident History
         </div>
     </div>
     <div class="col-sm-3">
-        <div class="form-group">
+        <div class="form-group not-required">
         {{form.doctor_name.errors}}
         <label class="control-label">Who: </label>
         {{form.doctor_name}}
         </div>
     </div>
     <div class="col-sm-3">
-        <div class="form-group">
+        <div class="form-group not-required">
         {{form.doctor_date.errors}}
         <label class="control-label">Date: </label>
         <i class="fa fa-calendar-o">{{form.doctor_date}}</i>
