@@ -43,6 +43,11 @@ urlpatterns = [
         name='account_reset_password_done'
     ),
 
+    url(
+        regex=r"^password/reset/key/(?P<uidb36>[0-9A-Za-z]+)-(?P<key>.+)/$",
+        view=views.UserPasswordResetFromKeyView.as_view(),
+        name="account_reset_password_from_key"),
+
     url(r"^logout/$", logout, name="account_logout"),
 
     url(
