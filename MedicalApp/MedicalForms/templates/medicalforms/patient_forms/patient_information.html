@@ -55,13 +55,20 @@ Patient Information
     </div>
 </div>
 <div class="row">
-    <div class="col-sm-6">
+    <div class="col-sm-4">
         <div class="form-group">
         <label class="control-label">Email: </label><br>
         {{object.patient.user.email}}
         </div>
     </div>
-    <div class="col-sm-6">
+    <div class="col-sm-4">
+        <div class="form-group">
+        {{form.translator_need.error}}
+        <label class="control-label">Translator Needed: </label>
+        {{form.translator_need}}
+        </div>
+    </div>
+    <div class="col-sm-4">
         <div class="form-group">
         {{form.first_language.error}}
         <label class="control-label">1st Language: </label>

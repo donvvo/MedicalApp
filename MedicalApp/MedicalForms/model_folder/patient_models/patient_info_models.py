@@ -57,6 +57,7 @@ class PatientInformation(models.Model):
     city = MyCharField(max_length=100, placeholder='City')
     postal_code = MyCharField(max_length=10, placeholder='Postal Code')
     first_language = MyCharField(max_length=100, placeholder='First Language')
+    translator_need = MyNullBooleanField()
     home_phone = MyCharField(max_length=20, placeholder='Home Phone')
     mobile_phone = MyCharField(max_length=20, placeholder='Mobile Phone')
     work_phone = MyCharField(max_length=20, placeholder='Work Phone')
