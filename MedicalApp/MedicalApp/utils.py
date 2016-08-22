@@ -55,6 +55,10 @@ class MultipleFormsMixin(FormMixin):
         return dict([(key, klass(form_initial.get(key))) \
             for key, klass in form_classes.items()])
 
+    def get_form(self, form_class=None):
+       return None
+
+
     def get_forms_with_request(self, post_request, file_request, form_classes):
         return dict([(key, klass(post_request, file_request)) \
             for key, klass in form_classes.items()])
