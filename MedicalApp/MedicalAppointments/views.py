@@ -120,7 +120,7 @@ class PatientTimetableView(LoginRequiredMixin, ListView):
             minute = int(request.POST.get('minute'))
 
             clinic_name = str(request.POST.get('clinic'))
-            specialty = str(request.POST.get('specialty'))
+            specialty = str(request.POST.get('specialty')).replace('+', ' ')
 
             local_tz = timezone.get_default_timezone()
             TZ_UTC = pytz.utc

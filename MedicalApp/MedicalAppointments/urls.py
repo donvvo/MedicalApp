@@ -9,7 +9,7 @@ from . import views
 urlpatterns = [
     url(r'^$', views.AppointmentView.as_view(), name="appointments"),
     url(r'^timetable/$', views.DoctorTimetableView.as_view(), name="timetable_doctor"),
-    url(r'^new/timetable/(?P<clinic>[\w+]+)/(?P<specialty>\w+)/(?P<user_id>[\w.@+-]+)/$', views.PatientTimetableView.as_view(), name="timetable_patient"),
+    url(r'^new/timetable/(?P<clinic>[\w+]+)/(?P<specialty>[\w+]+)/(?P<user_id>[\w.@+-]+)/$', views.PatientTimetableView.as_view(), name="timetable_patient"),
     url(r'^new/(?P<user_id>[\w.@+-]+)/$', views.NewAppointmentView.as_view(), name="new_appointments"),
     url(r'^clinics/.json$', views.get_clinics, name="get_clinics"),
     url(r'^clinics/list/$', views.ClinicListView.as_view(), name='clinic_list'),
