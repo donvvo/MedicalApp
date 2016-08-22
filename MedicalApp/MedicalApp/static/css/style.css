@@ -4976,6 +4976,9 @@ a.label:focus {
   background-color: #777777;
   border-radius: 10px;
 }
+.badge.badge-red {
+  background-color: #FC0F1C;
+}
 .badge:empty {
   display: none;
 }
