@@ -12545,12 +12545,20 @@ blockquote h4 {
 }
 .copy {
   background-color: #359960;
-  line-height: 20px;
-  padding: 15px 0;
 }
-.copy p.down {
+.copy p {
   color: white;
-  padding-top: 20px;
+  padding-top: 15px;
+  margin-bottom: 15px;
+  font-size: 13px;
+}
+.copy p a {
+  color: #e9e9e9;
+  font-size: 13px;
+}
+.copy p a:hover {
+  color: #ffffff;
+  text-decoration: underline;
 }
 @media handheld, only screen and (max-width: 767px) {
   .copy p.down {
