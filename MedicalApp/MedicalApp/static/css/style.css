@@ -17034,3 +17034,11 @@ label.error,
 .pain-detail-row {
   margin-top: 10px;
 }
+
+/* Navbar mobile border top */
+@media handhel, only screen and (max-width: 767px) {
+  .navbar-collapse > .nav > li {
+    border-top: 1px solid rgba(21, 34, 84, 0.7);
+  }
+}
+
