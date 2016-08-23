@@ -191,6 +191,7 @@ Lower Extremity Functional Scale (LEFS)
     </tr>
 </table>
 
+<p style="text-align: right;"><b>TOTAL SCORE: <span id="total-score"></span> / 80</b></p>
 
 {% endblock form_content%}
 
@@ -210,6 +211,7 @@ $(function() {
         $('#total-2').text(score2);
         $('#total-3').text(score3);
         $('#total-4').text(score4);
+        $('#total-score').text(score0 + score1  + score2 + score3 + score4);
     }
     $('input:radio').change(calcScore);
     calcScore();
