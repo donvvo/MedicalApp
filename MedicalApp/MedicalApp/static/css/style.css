@@ -1141,7 +1141,6 @@ a {
 }
 a:hover,
 a:focus {
-  color: #27419e;
   text-decoration: underline;
 }
 a:focus {
@@ -4966,18 +4965,15 @@ a.label:focus {
   display: inline-block;
   min-width: 10px;
   padding: 3px 7px;
-  font-size: 1em;
+  font-size: 0.8em;
   font-weight: bold;
   color: #ffffff;
   line-height: 1;
   vertical-align: middle;
   white-space: nowrap;
   text-align: center;
-  background-color: #777777;
-  border-radius: 10px;
-}
-.badge.badge-red {
   background-color: #FC0F1C;
+  border-radius: 10px;
 }
 .badge:empty {
   display: none;
@@ -11329,6 +11325,7 @@ embed {
   outline: 0;
 }
 section {
+  min-height: 95vh;
   overflow: hidden;
   padding: 0 0 50px 0;
 }
@@ -11423,10 +11420,6 @@ a {
   font-family: 'PT Sans', Helvetica, Arial, sans-serif;
   outline: 0;
   transition: all 0.2s ease-in-out;
-}
-a:hover {
-  color: #27419e;
-  text-decoration: none;
 }
 .aligncenter {
   text-align: center;
