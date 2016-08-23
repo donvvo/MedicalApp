@@ -15019,7 +15019,6 @@ ul.date-box {
 }
 .navbar-nav > li > a {
   color: #596371;
-  display: inline-block;
   font-size: 15px;
   line-height: 18px;
   padding: 35px 15px;
@@ -17036,9 +17035,16 @@ label.error,
 }
 
 /* Navbar mobile border top */
-@media handhel, only screen and (max-width: 767px) {
+@media handhel, only screen and (max-width: 768px) {
   .navbar-collapse > .nav > li {
     border-top: 1px solid rgba(21, 34, 84, 0.7);
+  }
+  .navbar-nav > li:not(.open) > a:hover {
+    background-color: #359960;
+    color: #ffffff;
+  }
+  .navbar .navbar-nav {
+    margin-bottom: 0;
   }
 }
 
