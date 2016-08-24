@@ -14,29 +14,36 @@
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-sm-12 text-center">
-                <a href="{% url 'medical_appointments:clinic_profile_create' %}" class="btn btn-default btn-hover-bg"><span>Add Clinic</span></a>
+        <div class="row" style="margin-bottom: 30px;">
+          <div class="col-sm-6 text-left">
+            <a href="{% url 'medical_appointments:clinic_profile_create' %}" class="btn btn-default btn-hover-bg" style="margin: 0;"><span>Add Clinic</span></a>
+          </div>
+          <div class="col-sm-6 text-right">
+            <div class="form-inline">
+              <input id="search-txt" type="text" placeholder="By name, city, or contact">
+              <button id="search-btn">Search</button>
             </div>
+          </div>
         </div>
         <div class="row">
             <div class="col-sm-12">
                 <div id="clinics" class="gallery-grid">
                 {% for clinic in object_list %}
-                    <div class="gallery-grid-item plan1">
-                        <figure class="effect-chico">
-                            {% if clinic.imgage %}
-                                <img src="{{clinic.imgage.url}}" alt="">
-                            {% else %}
-                                <img src="{% static 'img/clinic.png' %}" alt="">
-                            {% endif %}
-                            <figcaption>
-                                <h4>{{clinic.name}}</h4>
-                                <p>Health Care</p>
-                                <a href="{% url 'medical_appointments:clinic_profile' clinic.user_id %}"></a>
-                            </figcaption>
-                        </figure>
-                    </div>
+                <div class="gallery-grid-item plan1 clinic-list" data-name="{{clinic}}" data-city="{{city}}" 
+                  data-email="{{clinic.user.email}}" data-phone="{{clinic.phone}}">
+                  <figure class="effect-chico">
+                    {% if clinic.imgage %}
+                    <img src="{{clinic.imgage.url}}" alt="">
+                    {% else %}
+                    <img src="{% static 'img/clinic.png' %}" alt="">
+                    {% endif %}
+                    <figcaption>
+                      <h4>{{clinic.name}}</h4>
+                      <p>Health Care</p>
+                      <a href="{% url 'medical_appointments:clinic_profile' clinic.user_id %}"></a>
+                    </figcaption>
+                  </figure>
+                </div>
                 {% endfor %}
                 </div>
             </div>
@@ -47,3 +54,71 @@
 <!-- End Gallery -->
 
 {% endblock content %}
+
+{% block javascript %}
+
+{{block.super}}
+
+<script>
+$(function() {
+    var $clinicList = $('.clinic-list');
+    var $clinicContainer = $('#clinics');
+
+    $('#search-txt').keypress(function (e) {
+        if (e.which == 13) {
+            $('#search-btn').click();
+            return false;    //<---- Add this line
+        }
+    });
+
+    var filter = function() {
+        var searchTxt = $('#search-txt').val();
+
+        var clinic = $(this);
+
+        console.log(clinic)
+
+        var name = clinic.data('name'),
+          city = clinic.data('city'),
+          email = clinic.data('email'),
+          phone = clinic.data('phone');
+
+        if (name.search(searchTxt) === -1 && email.search(searchTxt) === -1 &&
+            phone.search(searchTxt) === -1 && city.search(searchTxt) === -1) {
+          return false
+        }
+        else {
+          return true
+        }
+
+    }
+
+
+    $('#search-btn').click(function() {
+      $clinicContainer.isotope({
+        filter: filter
+      })
+    });
+
+    /* $('#search-btn').click(function() {
+        var searchTxt = $('#search-txt').val();
+
+        var name;
+        $clinicList.toArray().forEach(function(clinic) {
+            name = clinic.getAttribute('data-name');
+            city = clinic.getAttribute('data-city');
+            email = clinic.getAttribute('data-email');
+            phone = clinic.getAttribute('data-phone');
+            if (name.search(searchTxt) === -1 && email.search(searchTxt) === -1 &&
+                phone.search(searchTxt) === -1 && city.search(searchTxt) === -1) {
+                clinic.style.display = "none";
+            }
+            else {
+                clinic.style.display = "block";
+            }
+        });
+    }); */
+});
+</script>
+
+{% endblock javascript %}
