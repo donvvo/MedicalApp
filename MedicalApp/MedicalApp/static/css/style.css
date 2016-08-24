@@ -17052,4 +17052,7 @@ label.error,
   .center-for-mobile {
     text-align: center;
   }
+  .center-for-mobile a.btn {
+    margin: 1em auto;
+  }
 }
