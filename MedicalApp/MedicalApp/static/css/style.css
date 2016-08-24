@@ -17053,6 +17053,6 @@ label.error,
     text-align: center;
   }
   .center-for-mobile a.btn {
-    margin: 1em auto;
+    margin: 1em auto !important;
   }
 }
