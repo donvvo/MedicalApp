@@ -17048,3 +17048,8 @@ label.error,
   }
 }
 
+@media (max-width: 767px) {
+  .center-for-mobile {
+    text-align: center;
+  }
+}
