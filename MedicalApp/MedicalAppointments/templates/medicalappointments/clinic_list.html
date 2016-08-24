@@ -20,7 +20,7 @@
           </div>
           <div class="col-sm-6 text-right center-for-mobile">
             <div class="form-inline">
-              <input id="search-txt" type="text" placeholder="By name, city, or contact">
+              <input id="search-txt" type="text" placeholder="By name, city, or email">
               <button id="search-btn">Search</button>
             </div>
           </div>
@@ -76,15 +76,13 @@ $(function() {
 
         var clinic = $(this);
 
-        console.log(clinic)
+        var name = clinic.data('name');
+        var city = clinic.data('city');
+        var email = clinic.data('email');
 
-        var name = clinic.data('name'),
-          city = clinic.data('city'),
-          email = clinic.data('email'),
-          phone = clinic.data('phone');
 
         if (name.search(searchTxt) === -1 && email.search(searchTxt) === -1 &&
-            phone.search(searchTxt) === -1 && city.search(searchTxt) === -1) {
+            city.search(searchTxt) === -1) {
           return false
         }
         else {
