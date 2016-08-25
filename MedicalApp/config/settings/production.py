@@ -140,12 +140,11 @@ DATABASES['default'] = env.db("DATABASE_URL")
         }
     }
 }'''
-'''CACHES = {
+CACHES = {
     'default': {
-        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
-        'LOCATION': ''
+        'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
     }
-}'''
+}
 
 
 '''# Sentry Configuration
