@@ -103,37 +103,38 @@ $(function() {
         }
     });
 
-    var filterHTML = '<li><a href="#" class="btn btn-color-border-solid-3 added-filter" data-filter=""></a></li>';
-    var addFilterItem = function(city) {
-        var $filterItem = $(filterHTML);
-        var $filterLink = $filterItem.find('a');
-        $filterLink.attr('data-filter', '.' + city);
-        $filterLink.text(city);
-        $('#city_filter').append($filterItem);
+    function addFilterItem(city) {
+      var filterHTML = '<li><a href="#" class="btn btn-color-border-solid-3 added-filter" data-filter=""></a></li>';
+      var $filterItem = $(filterHTML);
+      var $filterLink = $filterItem.find('a');
+      $filterLink.attr('data-filter', '.' + city);
+      $filterLink.text(city);
+      $('#city_filter').append($filterItem);
     };
 
-    var img = "{% static 'img/clinic.png' %}";
-    var clinicHTML = '<div class="gallery-grid-item">' +
-                        '<figure class="effect-chico">' +
-                            '<img src="'+ img + '" alt="">' +
-                            '<figcaption>' +
-                            '<h4></h4>' +
-                            '<p>Health Care</p>' +
-                            '<a href="#"></a>' +
-                            '</figcaption>' +
-                        '</figure>' +
-                    '</div>';
-    var addClinic = function(clinic, specialty) {
-        var $clinicItem = $(clinicHTML);
-        $clinicItem.attr('class', $clinicItem.attr('class') + ' ' + clinic.fields.city);
-        $clinicItem.find('h4').text(clinic.pk);
-        var url = Urls['medical_appointments:timetable_patient'](encodeURIComponent(clinic.pk).replace(/%20/g, '+'));
-        url = url + '/' + encodeURIComponent(specialty).replace(/%20/g, '+') + '/';
-        url = url + '{{user_id}}'
-        var $a = $clinicItem.find('a');
-        $a.attr('href', url);
-        $('#clinics').isotope('insert', $clinicItem);
-    };
+    function addClinic(clinic, specialty) {
+      var img = "{% static 'img/clinic.png' %}";
+      var clinicHTML = '<div class="gallery-grid-item">' +
+        '<figure class="effect-chico">' +
+        '<img src="'+ img + '" alt="">' +
+        '<figcaption>' +
+        '<h4></h4>' +
+        '<p>Health Care</p>' +
+        '<a href="#"></a>' +
+        '</figcaption>' +
+        '</figure>' +
+        '</div>';
+
+      var $clinicItem = $(clinicHTML);
+      $clinicItem.attr('class', $clinicItem.attr('class') + ' ' + clinic.fields.city);
+      $clinicItem.find('h4').text(clinic.pk);
+      var url = Urls['medical_appointments:timetable_patient'](encodeURIComponent(clinic.pk).replace(/%20/g, '+'));
+      url = url + '/' + encodeURIComponent(specialty).replace(/%20/g, '+') + '/';
+      url = url + '{{user_id}}'
+      var $a = $clinicItem.find('a');
+      $a.attr('href', url);
+      $('#clinics').isotope('insert', $clinicItem);
+    }
 
     var $container = $('.gallery-grid');
 
@@ -146,49 +147,79 @@ $(function() {
                 specialty: specialty
             },
             success: function(data){
+              if (data.length > 0) {
                 var cities = [];
                 data.forEach(function(clinic) {
-                    addClinic(clinic, specialty);
-                    var city = clinic.fields.city;
-                    if ($.inArray(city, cities) === -1) {
-                        cities.push(city);
-                    }
+                  addClinic(clinic, specialty);
+                  var city = clinic.fields.city;
+                  if ($.inArray(city, cities) === -1) {
+                    cities.push(city);
+                  }
                 });
                 cities.forEach(function(city) {
-                    addFilterItem(city);
+                  addFilterItem(city);
                 });
 
                 // cache container
                 $container.isotope({ });
-                // filter items when filter link is clicked
-                $('.filters a').click(function(){
-                    $('.filters a').removeClass('active');
-                    $(this).addClass('active');
 
-                    var selector = $(this).attr('data-filter');
-                    $container.isotope({ filter: selector });
-                    return false;
-                });
+                handleFilterClick();
 
-                $('#specialty-section').hide();
+                showLocationSection()
 
-                $('#location-section').show();
+                cleanupLocationSection();
+              }
+              else {
+                handleNoClinic();
 
-                $('#show_all').click();
-
-                $('.gallery-grid.isotope').css('height', '297px');
+                showLocationSection()
+              }
             }
         });
     });
 
     $('.back-btn').click(function() {
-        $('#clinics').empty();
-        $container.isotope('destroy');
-        $('.added-filter').remove();
-
-        $('#specialty-section').show();
-        $('#location-section').hide();
+      resetLocationSection();
+      showSpecialtySection();  
     });
+
+    function handleFilterClick() {
+      $('.filters a').click(function(){
+        $('.filters a').removeClass('active');
+        $(this).addClass('active');
+
+        var selector = $(this).attr('data-filter');
+        $container.isotope({ filter: selector });
+        return false;
+      });
+    }
+
+    function handleNoClinic() {
+      $container.append('<p class="text-center">There is no clinic with that specialty at this moment.');
+      $('#city_filter').hide();
+    }
+
+    function showSpecialtySection() {
+      $('#specialty-section').show();
+      $('#location-section').hide();
+    }
+
+    function showLocationSection() {
+      $('#specialty-section').hide();
+      $('#location-section').show();
+    }
+
+    function cleanupLocationSection() {
+      $('#show_all').click();
+      $('.gallery-grid.isotope').css('height', '297px');
+    }
+
+    function resetLocationSection() {
+      $('#clinics').empty();
+      $container.isotope('destroy');
+      $('.added-filter').remove();
+      $('#city_filter').show();
+    }
 });
 </script>
 

@@ -68,7 +68,8 @@ def get_clinics(request):
     if request.method == 'GET':
         specialty = request.GET.get('specialty')
         clinics = get_clinics_by_specialty(specialty)
-        return HttpResponse(serializers.serialize("json", clinics), content_type="application/json")
+        clinics_json = serializers.serialize("json", clinics) or '[]'
+        return HttpResponse(clinics_json, content_type="application/json")
     return HttpResponseBadRequest()
 
 
