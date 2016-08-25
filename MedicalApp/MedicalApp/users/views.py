@@ -201,6 +201,8 @@ class UserProfileEditView(LoginRequiredMixin, MultipleFormsView):
     template_name = 'users/user_profile_edit.html'
 
     def get_form_classes(self):
+        form_classes = self.form_classes
+
         # Has UserSettingsForm as base. Additional forms are added depending on user group
         self.user_id = self.kwargs['user_id']
         self.user = get_object_or_404(User, pk=self.user_id)
