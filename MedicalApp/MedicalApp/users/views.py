@@ -202,15 +202,11 @@ class UserProfileEditView(LoginRequiredMixin, MultipleFormsView):
 
     def get_form_classes(self):
         # Has UserSettingsForm as base. Additional forms are added depending on user group
-        form_classes = super(UserProfileEditView, self).get_form_classes()
-        
         self.user_id = self.kwargs['user_id']
         self.user = get_object_or_404(User, pk=self.user_id)
 
         # Additional forms depending on user group
         if self.user.groups.filter(name="Patients").exists():
-            # TODO: Patient form showing up.
-            print 'Patients'
             form_classes['patient_settings'] = PatientSettingsForm
 
         return form_classes
