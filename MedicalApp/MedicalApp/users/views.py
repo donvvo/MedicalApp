@@ -242,6 +242,8 @@ class UserProfileEditView(LoginRequiredMixin, MultipleFormsView):
         if self.user.groups.filter(name="Patients").exists():
             form_classes['patient_settings'] = PatientSettingsForm
 
+        self.form_classes = form_classes
+
         self.get_initial()
         forms = self.get_forms_with_request(request.POST, request.FILES, form_classes)
         if all([form.is_valid() for form in forms.values()]):

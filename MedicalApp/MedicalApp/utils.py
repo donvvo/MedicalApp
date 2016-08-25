@@ -65,7 +65,6 @@ class MultipleFormsMixin(FormMixin):
 
     def forms_valid(self, forms):
         for key, klass in self.form_classes.items():
-            print self.request.POST
             obj = klass(self.request.POST, self.request.FILES, instance=self.form_initial.get(key))
             obj.save()
         return super(MultipleFormsMixin, self).form_valid(forms)
