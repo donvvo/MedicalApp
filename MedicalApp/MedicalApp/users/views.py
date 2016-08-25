@@ -200,6 +200,7 @@ class UserProfileEditView(LoginRequiredMixin, MultipleFormsView):
     }
     template_name = 'users/user_profile_edit.html'
 
+    
     def get_form_classes(self):
         form_classes = self.form_classes
 
@@ -212,7 +213,6 @@ class UserProfileEditView(LoginRequiredMixin, MultipleFormsView):
             form_classes['patient_settings'] = PatientSettingsForm
 
         return form_classes
-
 
     def get_form_initial(self):
         self.user_id = self.kwargs['user_id']
@@ -229,6 +229,26 @@ class UserProfileEditView(LoginRequiredMixin, MultipleFormsView):
         self.user = get_object_or_404(User, pk=self.user_id)
         context['user'] = self.user
         return context
+
+    def post(self, request, *args, **kwargs):
+        form_classes = {
+            'user_settings': UserSettingsForm,
+        }
+
+        self.user_id = self.kwargs['user_id']
+        self.user = get_object_or_404(User, pk=self.user_id)
+
+        # Additional forms depending on user group
+        if self.user.groups.filter(name="Patients").exists():
+            form_classes['patient_settings'] = PatientSettingsForm
+
+        self.get_initial()
+        forms = self.get_forms_with_request(request.POST, request.FILES, form_classes)
+        if all([form.is_valid() for form in forms.values()]):
+            return self.forms_valid(forms)
+        else:
+            return self.forms_invalid(forms)
+
 
     def get_success_url(self):
         self.user_id = self.kwargs['user_id']
