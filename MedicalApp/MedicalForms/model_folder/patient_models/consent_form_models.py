@@ -59,6 +59,8 @@ class MedicalAuthorization(models.Model):
 class ExchangeInformation(models.Model):
     patient = models.OneToOneField(Patient, primary_key=True)
     last_modified = models.DateTimeField(auto_now=True)
+    submitted = HiddenBooleanField(default=False)
+
     physician_name = MyCharField(max_length=50)
     physician_address = MyCharField(max_length=50)
     physician_phone = MyCharField(max_length=50)
@@ -91,6 +93,8 @@ class ExchangeInformation(models.Model):
 class AuthorizationAndDirection(models.Model):
     patient = models.OneToOneField(Patient, primary_key=True)
     last_modified = models.DateTimeField(auto_now=True)
+    submitted = HiddenBooleanField(default=False)
+
     TO = MyCharField(max_length=100)
     FROM = MyCharField(max_length=100)
     patient_name = MyCharField(max_length=100)
@@ -115,6 +119,8 @@ class AuthorizationAndDirection(models.Model):
 class Section47(models.Model):
     patient = models.OneToOneField(Patient, primary_key=True)
     last_modified = models.DateTimeField(auto_now=True)
+    submitted = HiddenBooleanField(default=False)
+
     date = MyDateTimeField()
     patient_name = MyCharField(max_length=100)
     patient_signature = MyCharField(max_length=100)
@@ -129,6 +135,8 @@ class Section47(models.Model):
 class StatutoryAccidentsBenefits(models.Model):
     patient = models.OneToOneField(Patient, primary_key=True)
     last_modified = models.DateTimeField(auto_now=True)
+    submitted = HiddenBooleanField(default=False)
+
     date = MyDateTimeField()
     patient_name = MyCharField(max_length=100)
     patient_signature = MyCharField(max_length=100)

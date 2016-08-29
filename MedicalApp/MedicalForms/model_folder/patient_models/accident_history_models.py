@@ -96,6 +96,8 @@ class Examinations(models.Model):
 class AccidentHistory(models.Model):
     patient = models.OneToOneField(Patient, primary_key=True)
     last_modified = models.DateTimeField(auto_now=True)
+    submitted = HiddenBooleanField(default=False)
+
     description_and_location = MyTextField()
     road_condition = MySelectField(max_length=10,
                                       choices=ROAD_CONDITION_CHOICES)

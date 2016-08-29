@@ -1,4 +1,6 @@
 {% extends "base.html" %}
+{% load has_group %}
+
 {% block content %}
 
 <section class="profile-doctor generic animated fadeInUp">
@@ -19,10 +21,13 @@
                     <div class="col-sm-6 col-sm-offset-6 text-right">
                         Last Modified: {{object.last_modified}}
                     </div>
+                    {{object.submitted}}
                 </div>
                 <br>
                 <form class="validator-form" action="{{request.path}}" method="post" accept-charset="utf-8">
                     {% csrf_token %}
+
+                    {{form.submitted}}
 
                     {% block form_content %}
                     {% endblock form_content %}
@@ -30,12 +35,26 @@
                     <br>
                     <div class="pull-right">
                         <a href="{% url 'users:patient_profile' object.patient.user.pk %}" class="btn btn-default btn-color-border-solid">Back</a>
+                        {% if not object.submitted or not user|has_group:"Patients" %}
                         <input type="submit" class="btn btn-default btn-color-border-solid" value="Submit">
+                        {% endif %}
                     </div>
                 </form>
             </div>
         </div>
     </div>
 </section>
+
+{% endblock %}
+
+{% block javascript %}
+
+{{block.super}}
+
+<script>
+{% if object.submitted and user|has_group:"Patients" %}
+$('.validator-form :input').prop("disabled", true);
+{% endif %}
+</script>
 
 {% endblock %}

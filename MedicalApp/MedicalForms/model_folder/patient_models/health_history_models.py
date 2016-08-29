@@ -90,6 +90,8 @@ class PreviousConditions(models.Model):
 class HealthHistory(models.Model):
     patient = models.OneToOneField(Patient, primary_key=True)
     last_modified = models.DateTimeField(auto_now=True)
+    submitted = HiddenBooleanField(default=False)
+
     general = models.ManyToManyField(General, blank=True)
     muscle_joint = models.ManyToManyField(MuscleJoint, blank=True)
     skin = models.ManyToManyField(Skin, blank=True)

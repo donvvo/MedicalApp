@@ -55,6 +55,7 @@ class UpperExtremityManager(models.Manager):
 class UpperExtremity(models.Model):
     patient = models.OneToOneField(Patient, primary_key=True)
     last_modified = models.DateTimeField(auto_now=True)
+    submitted = HiddenBooleanField(default=False)
 
     question_1 = MyRadioField(max_length=2, choices=SCALE_CHOICES)
     question_2 = MyRadioField(max_length=2, choices=SCALE_CHOICES)

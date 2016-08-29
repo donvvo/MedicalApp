@@ -89,6 +89,19 @@ class MyNullBooleanField(models.NullBooleanField):
         return super(MyNullBooleanField, self).formfield(**defaults)
 
 
+class HiddenBooleanField(models.BooleanField):
+    def formfield(self, **kwargs):
+        defaults = {'widget': forms.CheckboxInput(
+                attrs={
+                    'class': 'form-control',
+                    'style': 'display: none;'
+                }
+            )}
+        defaults.update(kwargs)
+
+        return super(HiddenBooleanField, self).formfield(**defaults)
+
+
 class MyIntegerField(models.IntegerField):
     def __init__(self, placeholder='', min_value=None, max_value=None, **kwargs):
         kwargs['null'] = True

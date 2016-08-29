@@ -56,6 +56,8 @@ class Symptom(models.Model):
 class TMJScreening(models.Model):
     patient = models.OneToOneField(Patient, primary_key=True)
     last_modified = models.DateTimeField(auto_now=True)
+    submitted = HiddenBooleanField(default=False)
+
     doi = MyDateTimeField()
     pain = models.ManyToManyField(Pain, blank=True)
     symptom = models.ManyToManyField(Symptom, blank=True)

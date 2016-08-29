@@ -50,6 +50,8 @@ class PainChoices(models.Model):
 class PatientInformation(models.Model):
     patient = models.OneToOneField(Patient, primary_key=True)
     last_modified = models.DateTimeField(auto_now=True)
+    submitted = HiddenBooleanField(default=False)
+
     accident_date = MyDateTimeField()
     date_of_birth = MyDateTimeField()
     gender = MySelectField(GENDER_CHOICES, max_length=10)

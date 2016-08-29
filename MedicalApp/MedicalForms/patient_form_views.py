@@ -2,6 +2,7 @@ from django.core.exceptions import PermissionDenied
 from django.core.urlresolvers import reverse, reverse_lazy
 from django.shortcuts import get_object_or_404, redirect
 from django.views.generic import UpdateView
+from django.http import HttpResponseRedirect
 from django.utils.decorators import method_decorator
 
 from braces.views import LoginRequiredMixin
@@ -54,6 +55,10 @@ class PatientFormBaseView(LoginRequiredMixin, UpdateView):
             else:
                 raise PermissionDenied
 
+    def post(self, request, *args, **kwargs):
+        self.request = request
+        return super(PatientFormBaseView, self).post(request, *args, **kwargs)
+
     def get_object(self):
         objects = self.model.objects.filter(pk=self.user_id)
         if objects.exists():
@@ -67,9 +72,17 @@ class PatientFormBaseView(LoginRequiredMixin, UpdateView):
     def get_success_url(self):
         return reverse_lazy('users:patient_profile', kwargs={'user_id': self.object.patient.user.pk})
 
-    def form_valid(self, form):
-        response = super(PatientFormBaseView, self).form_valid(form)
+    def save_form(self, form):
+        self.object = form.save(commit=False)
 
+        if self.request.user.groups.filter(name="Patients").exists():
+            self.object.submitted = True
+        
+        self.object.save()
+
+    def form_valid(self, form):
+        self.save_form(form)
+        
         # Send notification to doctors and clinics
         action_type = 'Save patient form'
 
@@ -83,7 +96,6 @@ class PatientFormBaseView(LoginRequiredMixin, UpdateView):
         if clinic_user:
             doctor_users.append(clinic_user)
         targets = doctor_users or [clinic_user, ]
-        print targets
 
         if targets:
             for target in targets:
@@ -98,7 +110,7 @@ class PatientFormBaseView(LoginRequiredMixin, UpdateView):
                     )
                     notification.save()
 
-        return response
+        return HttpResponseRedirect(self.get_success_url())
 
 
 # Patient forms
