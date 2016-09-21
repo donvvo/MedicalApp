@@ -52,7 +52,7 @@ class MultipleFormsMixin(FormMixin):
 
     def get_forms(self, form_classes):
         form_initial = self.get_initial()
-        return dict([(key, klass(form_initial.get(key))) \
+        return dict([(key, klass(initial=form_initial.get(key))) \
             for key, klass in form_classes.items()])
 
     def get_form(self, form_class=None):

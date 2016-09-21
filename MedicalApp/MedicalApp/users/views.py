@@ -19,7 +19,7 @@ from allauth.account import app_settings
 from .models import User
 from MedicalAppointments.models import Patient, Doctor, Clinic, Booking, NewForms
 from MedicalAppointments.utils import get_time_table, get_clinic_time_table
-from .forms import UserSettingsForm, EmailDoctorForm, DoctorSettingsForm,\
+from .forms import UserSettingsForm, EmailDoctorForm, DoctorSettingsForm, ClinicProfileForm, \
     DoctorSignupForm, PatientSignupForm, PatientSettingsForm, UserResetPasswordForm, UserResetPasswordKeyForm
 from MedicalApp.utils import MultipleFormsView
 from MedicalAppointments.forms import ClinicSettingsForm, NewFormsForm
@@ -211,6 +211,8 @@ class UserProfileEditView(LoginRequiredMixin, MultipleFormsView):
         # Additional forms depending on user group
         if self.user.groups.filter(name="Patients").exists():
             form_classes['patient_settings'] = PatientSettingsForm
+        elif self.user.groups.filter(name="Clinics").exists():
+            form_classes['clinic_settings'] = ClinicProfileForm
 
         return form_classes
 
@@ -223,6 +225,9 @@ class UserProfileEditView(LoginRequiredMixin, MultipleFormsView):
         # user group specific initial form values 
         if self.user.groups.filter(name="Patients").exists():
             self.form_initial['patient_settings'] = get_object_or_404(Patient, pk=self.user_id)
+        elif self.user.groups.filter(name="Clinics").exists():
+            self.form_initial['clinic_settings'] = get_object_or_404(Clinic, pk=self.user_id)
+
 
     def get_context_data(self, **kwargs):
         context = super(UserProfileEditView, self).get_context_data(**kwargs)
@@ -241,6 +246,9 @@ class UserProfileEditView(LoginRequiredMixin, MultipleFormsView):
         # Additional forms depending on user group
         if self.user.groups.filter(name="Patients").exists():
             form_classes['patient_settings'] = PatientSettingsForm
+        elif self.user.groups.filter(name="Clinics").exists():
+            form_classes['clinic_settings'] = ClinicProfileForm
+
 
         self.form_classes = form_classes
 
@@ -362,7 +370,7 @@ class ManageMainView(LoginRequiredMixin, GroupRequiredMixin, ListView):
             # Limit number of queries by getting only bookings that is in the future
             yesterday = datetime.datetime.now() - datetime.timedelta(days=1)
 
-            bookings = self.model.objects.filter(clinic=self.request.user.clinic_set.get()).filter(time__gte=yesterday).all()
+            bookings = self.model.objects.filter(clinic=self.request.user.clinic).filter(time__gte=yesterday).all()
 
         return bookings
 
@@ -371,7 +379,7 @@ class ManageMainView(LoginRequiredMixin, GroupRequiredMixin, ListView):
 
         if self.request.user.groups.filter(name="Clinics").exists():
             context['table'] = get_clinic_time_table(
-                context['object_list'], clinic=self.request.user.clinic_set.get(), table_interval=30)
+                context['object_list'], clinic=self.request.user.clinic, table_interval=30)
 
         return context
 
@@ -419,7 +427,7 @@ class SettingsView(LoginRequiredMixin, UpdateView):
             self.form_class = ClinicSettingsForm
             self.success_url = reverse("medical_appointments:clinic_profile",
                 kwargs={'user_id': self.kwargs['user_id']})
-            return user.clinic_set.get()
+            return user.clinic
         else:
             self.form_class = UserSettingsForm
             return user

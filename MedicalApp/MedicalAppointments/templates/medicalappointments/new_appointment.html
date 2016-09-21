@@ -127,8 +127,8 @@ $(function() {
 
       var $clinicItem = $(clinicHTML);
       $clinicItem.attr('class', $clinicItem.attr('class') + ' ' + clinic.fields.city);
-      $clinicItem.find('h4').text(clinic.pk);
-      var url = Urls['medical_appointments:timetable_patient'](encodeURIComponent(clinic.pk).replace(/%20/g, '+'));
+      $clinicItem.find('h4').text(clinic.fields.name);
+      var url = Urls['medical_appointments:timetable_patient'](encodeURIComponent(clinic.fields.name).replace(/%20/g, '+'));
       url = url + '/' + encodeURIComponent(specialty).replace(/%20/g, '+') + '/';
       url = url + '{{user_id}}'
       var $a = $clinicItem.find('a');

@@ -21,7 +21,11 @@
     <div class="col-sm-9">
         <div class="row">
             <div class="col-xs-12 col-sm-8 tag-text add-margin-bottom">
+                {% if object|has_group:"Clinics" %}
+                <h4 style="display: inline-block; margin-right: 5px">{{clinic.name}}</h4>
+                {% else %}
                 <h4 style="display: inline-block; margin-right: 5px">{{object.first_name}} {{object.last_name}}</h4>
+                {% endif %}
                 {% if authorized %}
                 <span class="edit-icon">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><i class="glyphicon glyphicon-pencil"></i></a>

@@ -41,6 +41,21 @@
                             </div>
                         </div>
                         <div class="col-sm-9">
+                            {% if user|has_group:"Clinics" and forms.clinic_settings %}
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <div class="col-sm-12">
+                                            {% for error in forms.clinic_settings.name.errors %}
+                                              <span class="errorlist">{{error}}</span>
+                                            {% endfor %}
+                                        </div>
+                                        <label>Clinic Name</label>
+                                        {{forms.clinic_settings.name}}
+                                    </div>
+                                </div>
+                            </div>
+                            {% else %}
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="form-group">
@@ -65,6 +80,7 @@
                                     </div>
                                 </div>
                             </div>
+                            {% endif %}
                             <div class="row">
                                 <div class="col-sm-12">
                                     <div class="form-group">

@@ -11,7 +11,7 @@ local_tz = timezone.get_default_timezone()
 def get_clinics_by_specialty(specialty):
     doctors = Doctor.objects.filter(specialty__specialty=specialty)
     # Return a unique list by converting list to set and converting back
-    return list(set([d.clinic for d in doctors]))
+    return list(set([d.clinic for d in doctors if d.clinic is not None]))
 
 
 def get_dates_from_now():

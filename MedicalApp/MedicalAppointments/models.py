@@ -14,8 +14,8 @@ TRANSPORTATION_CHOICES = (
 
 @python_2_unicode_compatible
 class Clinic(models.Model):
-    name = MyCharField(max_length=100, primary_key=True, placeholder='Clinic Name')
-    user = models.ForeignKey(users_model.User)
+    name = MyCharField(max_length=100, unique=True, placeholder='Clinic Name')
+    user = models.OneToOneField(users_model.User, primary_key=True)
     phone = MyCharField(max_length=20, placeholder='Phone Number')
     description = MyTextField(placeholder='Description')
     city = MyCharField(max_length=20, placeholder='City')

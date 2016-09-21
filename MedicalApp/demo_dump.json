@@ -2160,454 +2160,6 @@
 },
 {
   "fields": {
-    "check_in": false,
-    "patient": 4,
-    "doctor": 22,
-    "reasons": "",
-    "symptoms": "",
-    "clinic": "Clinic111",
-    "time": "2015-12-25T15:30:00Z",
-    "doctors_note": ""
-  },
-  "model": "MedicalAppointments.booking",
-  "pk": 3
-},
-{
-  "fields": {
-    "check_in": false,
-    "patient": 4,
-    "doctor": 12,
-    "reasons": "",
-    "symptoms": "",
-    "clinic": "Clinic111",
-    "time": "2016-01-07T15:00:00Z",
-    "doctors_note": ""
-  },
-  "model": "MedicalAppointments.booking",
-  "pk": 4
-},
-{
-  "fields": {
-    "check_in": false,
-    "patient": 4,
-    "doctor": 12,
-    "reasons": "",
-    "symptoms": "",
-    "clinic": "Clinic111",
-    "time": "2016-01-07T19:00:00Z",
-    "doctors_note": ""
-  },
-  "model": "MedicalAppointments.booking",
-  "pk": 5
-},
-{
-  "fields": {
-    "check_in": false,
-    "patient": 4,
-    "doctor": 21,
-    "reasons": "",
-    "symptoms": "",
-    "clinic": "Clinic333",
-    "time": "2016-01-09T13:30:00Z",
-    "doctors_note": ""
-  },
-  "model": "MedicalAppointments.booking",
-  "pk": 6
-},
-{
-  "fields": {
-    "check_in": false,
-    "patient": 4,
-    "doctor": 22,
-    "reasons": "asdfasdfasfs",
-    "symptoms": "asdfasdfdasf",
-    "clinic": "Clinic111",
-    "time": "2016-01-12T17:30:00Z",
-    "doctors_note": "asdfasdfadfs"
-  },
-  "model": "MedicalAppointments.booking",
-  "pk": 7
-},
-{
-  "fields": {
-    "check_in": false,
-    "patient": 8,
-    "doctor": 13,
-    "reasons": "",
-    "symptoms": "",
-    "clinic": "Clinic111",
-    "time": "2016-01-12T16:00:00Z",
-    "doctors_note": ""
-  },
-  "model": "MedicalAppointments.booking",
-  "pk": 8
-},
-{
-  "fields": {
-    "check_in": false,
-    "patient": 6,
-    "doctor": 20,
-    "reasons": "",
-    "symptoms": "",
-    "clinic": "Clinic111",
-    "time": "2016-01-12T18:00:00Z",
-    "doctors_note": ""
-  },
-  "model": "MedicalAppointments.booking",
-  "pk": 9
-},
-{
-  "fields": {
-    "check_in": false,
-    "patient": 33,
-    "doctor": 12,
-    "reasons": "",
-    "symptoms": "",
-    "clinic": "Clinic111",
-    "time": "2016-01-12T17:00:00Z",
-    "doctors_note": ""
-  },
-  "model": "MedicalAppointments.booking",
-  "pk": 10
-},
-{
-  "fields": {
-    "check_in": false,
-    "patient": 6,
-    "doctor": 22,
-    "reasons": "",
-    "symptoms": "",
-    "clinic": "Clinic111",
-    "time": "2016-01-14T18:00:00Z",
-    "doctors_note": ""
-  },
-  "model": "MedicalAppointments.booking",
-  "pk": 11
-},
-{
-  "fields": {
-    "check_in": false,
-    "patient": 6,
-    "doctor": 22,
-    "reasons": "",
-    "symptoms": "",
-    "clinic": "Clinic111",
-    "time": "2016-01-12T19:00:00Z",
-    "doctors_note": ""
-  },
-  "model": "MedicalAppointments.booking",
-  "pk": 12
-},
-{
-  "fields": {
-    "check_in": false,
-    "patient": 6,
-    "doctor": 19,
-    "reasons": "",
-    "symptoms": "",
-    "clinic": "Clinic111",
-    "time": "2016-01-12T19:00:00Z",
-    "doctors_note": ""
-  },
-  "model": "MedicalAppointments.booking",
-  "pk": 13
-},
-{
-  "fields": {
-    "check_in": false,
-    "patient": 6,
-    "doctor": 13,
-    "reasons": "",
-    "symptoms": "",
-    "clinic": "Clinic111",
-    "time": "2016-01-12T19:30:00Z",
-    "doctors_note": ""
-  },
-  "model": "MedicalAppointments.booking",
-  "pk": 14
-},
-{
-  "fields": {
-    "check_in": false,
-    "patient": 8,
-    "doctor": 22,
-    "reasons": "",
-    "symptoms": "",
-    "clinic": "Clinic111",
-    "time": "2016-01-14T16:30:00Z",
-    "doctors_note": ""
-  },
-  "model": "MedicalAppointments.booking",
-  "pk": 15
-},
-{
-  "fields": {
-    "check_in": false,
-    "patient": 8,
-    "doctor": 22,
-    "reasons": "",
-    "symptoms": "",
-    "clinic": "Clinic111",
-    "time": "2016-01-14T17:30:00Z",
-    "doctors_note": ""
-  },
-  "model": "MedicalAppointments.booking",
-  "pk": 16
-},
-{
-  "fields": {
-    "check_in": false,
-    "patient": 4,
-    "doctor": 22,
-    "reasons": "",
-    "symptoms": "",
-    "clinic": "Clinic111",
-    "time": "2016-01-11T16:30:00Z",
-    "doctors_note": ""
-  },
-  "model": "MedicalAppointments.booking",
-  "pk": 17
-},
-{
-  "fields": {
-    "check_in": false,
-    "patient": 4,
-    "doctor": 22,
-    "reasons": "",
-    "symptoms": "",
-    "clinic": "Clinic111",
-    "time": "2016-01-12T16:30:00Z",
-    "doctors_note": ""
-  },
-  "model": "MedicalAppointments.booking",
-  "pk": 18
-},
-{
-  "fields": {
-    "check_in": false,
-    "patient": 4,
-    "doctor": 22,
-    "reasons": "",
-    "symptoms": "",
-    "clinic": "Clinic111",
-    "time": "2016-01-14T20:30:00Z",
-    "doctors_note": ""
-  },
-  "model": "MedicalAppointments.booking",
-  "pk": 22
-},
-{
-  "fields": {
-    "check_in": false,
-    "patient": 4,
-    "doctor": 20,
-    "reasons": "",
-    "symptoms": "",
-    "clinic": "Clinic111",
-    "time": "2016-01-14T19:30:00Z",
-    "doctors_note": ""
-  },
-  "model": "MedicalAppointments.booking",
-  "pk": 23
-},
-{
-  "fields": {
-    "check_in": false,
-    "patient": 4,
-    "doctor": 19,
-    "reasons": "",
-    "symptoms": "",
-    "clinic": "Clinic111",
-    "time": "2016-01-14T15:30:00Z",
-    "doctors_note": ""
-  },
-  "model": "MedicalAppointments.booking",
-  "pk": 24
-},
-{
-  "fields": {
-    "check_in": false,
-    "patient": 4,
-    "doctor": 13,
-    "reasons": "",
-    "symptoms": "",
-    "clinic": "Clinic111",
-    "time": "2016-01-14T21:00:00Z",
-    "doctors_note": ""
-  },
-  "model": "MedicalAppointments.booking",
-  "pk": 25
-},
-{
-  "fields": {
-    "check_in": false,
-    "patient": 4,
-    "doctor": 20,
-    "reasons": "",
-    "symptoms": "",
-    "clinic": "Clinic111",
-    "time": "2016-01-14T17:00:00Z",
-    "doctors_note": ""
-  },
-  "model": "MedicalAppointments.booking",
-  "pk": 26
-},
-{
-  "fields": {
-    "check_in": false,
-    "patient": 4,
-    "doctor": 19,
-    "reasons": "",
-    "symptoms": "",
-    "clinic": "Clinic111",
-    "time": "2016-01-14T17:30:00Z",
-    "doctors_note": ""
-  },
-  "model": "MedicalAppointments.booking",
-  "pk": 27
-},
-{
-  "fields": {
-    "check_in": false,
-    "patient": 4,
-    "doctor": 18,
-    "reasons": "",
-    "symptoms": "",
-    "clinic": "Clinic111",
-    "time": "2016-01-14T16:00:00Z",
-    "doctors_note": ""
-  },
-  "model": "MedicalAppointments.booking",
-  "pk": 28
-},
-{
-  "fields": {
-    "check_in": false,
-    "patient": 4,
-    "doctor": 19,
-    "reasons": "",
-    "symptoms": "",
-    "clinic": "Clinic111",
-    "time": "2016-01-14T20:00:00Z",
-    "doctors_note": ""
-  },
-  "model": "MedicalAppointments.booking",
-  "pk": 29
-},
-{
-  "fields": {
-    "check_in": false,
-    "patient": 4,
-    "doctor": 20,
-    "reasons": "",
-    "symptoms": "",
-    "clinic": "Clinic111",
-    "time": "2016-01-14T20:00:00Z",
-    "doctors_note": ""
-  },
-  "model": "MedicalAppointments.booking",
-  "pk": 30
-},
-{
-  "fields": {
-    "check_in": false,
-    "patient": 4,
-    "doctor": 10,
-    "reasons": "",
-    "symptoms": "",
-    "clinic": "Clinic111",
-    "time": "2016-01-14T20:30:00Z",
-    "doctors_note": ""
-  },
-  "model": "MedicalAppointments.booking",
-  "pk": 31
-},
-{
-  "fields": {
-    "check_in": false,
-    "patient": 4,
-    "doctor": 10,
-    "reasons": "",
-    "symptoms": "",
-    "clinic": "Clinic111",
-    "time": "2016-01-14T19:00:00Z",
-    "doctors_note": ""
-  },
-  "model": "MedicalAppointments.booking",
-  "pk": 32
-},
-{
-  "fields": {
-    "check_in": false,
-    "patient": 33,
-    "doctor": 13,
-    "reasons": "",
-    "symptoms": "",
-    "clinic": "Clinic111",
-    "time": "2016-01-14T20:30:00Z",
-    "doctors_note": ""
-  },
-  "model": "MedicalAppointments.booking",
-  "pk": 33
-},
-{
-  "fields": {
-    "check_in": true,
-    "patient": 7,
-    "doctor": 18,
-    "reasons": "asfasdfasfa",
-    "symptoms": "asdfasdfasd",
-    "clinic": "Clinic111",
-    "time": "2016-01-11T17:30:00Z",
-    "doctors_note": "asdfasdf"
-  },
-  "model": "MedicalAppointments.booking",
-  "pk": 34
-},
-{
-  "fields": {
-    "check_in": true,
-    "patient": 7,
-    "doctor": 19,
-    "reasons": "",
-    "symptoms": "",
-    "clinic": "Clinic111",
-    "time": "2016-01-11T19:00:00Z",
-    "doctors_note": ""
-  },
-  "model": "MedicalAppointments.booking",
-  "pk": 35
-},
-{
-  "fields": {
-    "check_in": true,
-    "patient": 7,
-    "doctor": 20,
-    "reasons": "asfasdf",
-    "symptoms": "asdfasdf",
-    "clinic": "Clinic111",
-    "time": "2016-01-11T14:30:00Z",
-    "doctors_note": "asdfasdf"
-  },
-  "model": "MedicalAppointments.booking",
-  "pk": 36
-},
-{
-  "fields": {
-    "check_in": false,
-    "patient": 5,
-    "doctor": 18,
-    "reasons": "",
-    "symptoms": "",
-    "clinic": "Clinic111",
-    "time": "2016-02-04T14:00:00Z",
-    "doctors_note": ""
-  },
-  "model": "MedicalAppointments.booking",
-  "pk": 37
-},
-{
-  "fields": {
     "date_added": "2016-02-01T02:52:45.830Z",
     "new_form": "forms/doctors_8V4DV83.png",
     "patient": 5
@@ -6501,7 +6053,7 @@
     "phone": "222-234-2342",
     "end_time_mon": "17:00:00",
     "postal_code": "N6G 1G4",
-    "user": 24,
+    "name": "Clinic111",
     "start_time_sun": null,
     "address": "960 Western Rd",
     "end_time_sat": null,
@@ -6512,7 +6064,7 @@
     "end_time_thurs": "17:00:00"
   },
   "model": "MedicalAppointments.clinic",
-  "pk": "Clinic111"
+  "pk": "24"
 },
 {
   "fields": {
@@ -6527,7 +6079,7 @@
     "phone": "222-345-3453",
     "end_time_mon": "20:00:00",
     "postal_code": "M2G 3Y5",
-    "user": 25,
+    "name": "Clinic222",
     "start_time_sun": null,
     "address": "89 Toledo Rd",
     "end_time_sat": null,
@@ -6538,7 +6090,7 @@
     "end_time_thurs": "19:30:00"
   },
   "model": "MedicalAppointments.clinic",
-  "pk": "Clinic222"
+  "pk": 25
 },
 {
   "fields": {
@@ -6553,7 +6105,7 @@
     "phone": "333-456-3434",
     "end_time_mon": "17:00:00",
     "postal_code": "M3J 2H4",
-    "user": 26,
+    "name": "Clinic333",
     "start_time_sun": null,
     "address": "1234 Bloor St.",
     "end_time_sat": "17:00:00",
@@ -6564,7 +6116,7 @@
     "end_time_thurs": "17:00:00"
   },
   "model": "MedicalAppointments.clinic",
-  "pk": "Clinic333"
+  "pk": 26
 },
 {
   "fields": {
@@ -6579,7 +6131,7 @@
     "phone": "",
     "end_time_mon": null,
     "postal_code": "",
-    "user": 27,
+    "name": "Clinic444",
     "start_time_sun": null,
     "address": "",
     "end_time_sat": null,
@@ -6590,7 +6142,7 @@
     "end_time_thurs": null
   },
   "model": "MedicalAppointments.clinic",
-  "pk": "Clinic444"
+  "pk": 27
 },
 {
   "fields": {
@@ -6605,7 +6157,7 @@
     "phone": "",
     "end_time_mon": null,
     "postal_code": "",
-    "user": 28,
+    "name": "Clinic555",
     "start_time_sun": null,
     "address": "",
     "end_time_sat": null,
@@ -6616,11 +6168,11 @@
     "end_time_thurs": null
   },
   "model": "MedicalAppointments.clinic",
-  "pk": "Clinic555"
+  "pk": 28
 },
 {
   "fields": {
-    "clinic": "Clinic111",
+    "clinic": null,
     "specialty": "Chiropractor",
     "HCAI": "123412341234"
   },
@@ -6629,7 +6181,7 @@
 },
 {
   "fields": {
-    "clinic": "Clinic333",
+    "clinic": null,
     "specialty": "Massage Therapist",
     "HCAI": "123412341234"
   },
@@ -6638,7 +6190,7 @@
 },
 {
   "fields": {
-    "clinic": "Clinic222",
+    "clinic": null,
     "specialty": "Nutritionist",
     "HCAI": "123412341234"
   },
@@ -6647,7 +6199,7 @@
 },
 {
   "fields": {
-    "clinic": "Clinic222",
+    "clinic": null,
     "specialty": "Physiotherapist",
     "HCAI": "123412341234"
   },
@@ -6656,7 +6208,7 @@
 },
 {
   "fields": {
-    "clinic": "Clinic111",
+    "clinic": null,
     "specialty": "Chiropodist",
     "HCAI": ""
   },
@@ -6665,7 +6217,7 @@
 },
 {
   "fields": {
-    "clinic": "Clinic111",
+    "clinic": null,
     "specialty": "Chiropractor",
     "HCAI": ""
   },
@@ -6674,7 +6226,7 @@
 },
 {
   "fields": {
-    "clinic": "Clinic111",
+    "clinic": null,
     "specialty": "Massage Therapist",
     "HCAI": ""
   },
@@ -6683,7 +6235,7 @@
 },
 {
   "fields": {
-    "clinic": "Clinic333",
+    "clinic": null,
     "specialty": "Nutritionist",
     "HCAI": ""
   },
@@ -6692,7 +6244,7 @@
 },
 {
   "fields": {
-    "clinic": "Clinic111",
+    "clinic": null,
     "specialty": "Chiropodist",
     "HCAI": "123412341234"
   },
@@ -6701,7 +6253,7 @@
 },
 {
   "fields": {
-    "clinic": "Clinic111",
+    "clinic": null,
     "specialty": "Chiropractor",
     "HCAI": "123412341234"
   },
@@ -6710,7 +6262,7 @@
 },
 {
   "fields": {
-    "clinic": "Clinic111",
+    "clinic": null,
     "specialty": "Chiropractor",
     "HCAI": "123412341234"
   },
@@ -6719,7 +6271,7 @@
 },
 {
   "fields": {
-    "clinic": "Clinic111",
+    "clinic": null,
     "specialty": "Physiotherapist",
     "HCAI": "123412341234"
   },
@@ -6728,7 +6280,7 @@
 },
 {
   "fields": {
-    "clinic": "Clinic222"
+    "clinic": null
   },
   "model": "MedicalAppointments.patient",
   "pk": 4
@@ -6742,28 +6294,28 @@
 },
 {
   "fields": {
-    "clinic": "Clinic111"
+    "clinic": null
   },
   "model": "MedicalAppointments.patient",
   "pk": 6
 },
 {
   "fields": {
-    "clinic": "Clinic444"
+    "clinic": null
   },
   "model": "MedicalAppointments.patient",
   "pk": 7
 },
 {
   "fields": {
-    "clinic": "Clinic111"
+    "clinic": null
   },
   "model": "MedicalAppointments.patient",
   "pk": 8
 },
 {
   "fields": {
-    "clinic": "Clinic444"
+    "clinic": null
   },
   "model": "MedicalAppointments.patient",
   "pk": 33

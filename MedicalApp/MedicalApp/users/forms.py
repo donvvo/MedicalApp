@@ -193,6 +193,11 @@ class UserSettingsForm(forms.ModelForm):
                                     }),
         }
 
+class ClinicProfileForm(forms.ModelForm):
+    class Meta:
+        model = Clinic
+        fields = ("name", )
+
 
 class PatientSettingsForm(forms.ModelForm):
     class Meta:

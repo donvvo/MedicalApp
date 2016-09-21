@@ -68,7 +68,7 @@ def get_clinics(request):
     if request.method == 'GET':
         specialty = request.GET.get('specialty')
         clinics = get_clinics_by_specialty(specialty)
-        clinics_json = serializers.serialize("json", clinics) or '[]'
+        clinics_json = serializers.serialize("json", clinics) if clinics else '[]'
         return HttpResponse(clinics_json, content_type="application/json")
     return HttpResponseBadRequest()
 
@@ -93,11 +93,11 @@ class PatientTimetableView(LoginRequiredMixin, ListView):
             return redirect(redirect_url)
 
     def get_queryset(self):
-        bookings = self.model.objects.filter(clinic=self.clinic_name).all()
+        bookings = self.model.objects.filter(clinic__name=self.clinic_name).all()
 
         specialty = self.kwargs.get('specialty').replace('+', ' ')
 
-        self.doctors = Doctor.objects.filter(clinic=self.clinic_name, specialty=specialty).all()
+        self.doctors = Doctor.objects.filter(clinic__name=self.clinic_name, specialty=specialty).all()
 
         return bookings
 
@@ -129,7 +129,7 @@ class PatientTimetableView(LoginRequiredMixin, ListView):
             booking_time = datetime.datetime(year=year, month=month, day=date,
                 hour=hour, minute=minute, tzinfo=local_tz).astimezone(TZ_UTC)
 
-            clinic = Clinic(pk=clinic_name)
+            clinic = get_object_or_404(Clinic, name=self.clinic_name)
 
             free_doctors = []
             for doctor in clinic.doctor_set.filter(specialty_id=specialty):
@@ -296,7 +296,7 @@ class AddDoctorView(LoginRequiredMixin, GroupRequiredMixin, TemplateView):
     def get_context_data(self, **kwargs):
         context = super(AddDoctorView, self).get_context_data()
         clinic_user = get_object_or_404(User, id=kwargs['user_id'])
-        clinic = clinic_user.clinic_set.get()
+        clinic = clinic_user.clinic
         context['clinic_name'] = clinic.name
         context['user_id'] = kwargs['user_id']
         doctors = Doctor.objects.exclude(clinic=clinic)
@@ -307,7 +307,7 @@ class AddDoctorView(LoginRequiredMixin, GroupRequiredMixin, TemplateView):
     def post(self, request, *args, **kwargs):
         doctor = get_object_or_404(Doctor, user=request.POST.get('doctor'))
         clinic_user = get_object_or_404(User, id=kwargs['user_id'])
-        clinic = clinic_user.clinic_set.get()
+        clinic = clinic_user.clinic
         doctor.clinic = clinic
         doctor.save()
 
