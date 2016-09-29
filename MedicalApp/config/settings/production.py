@@ -190,11 +190,6 @@ LOGGING = {
             'handlers': ['console'],
             'propagate': False,
         },
-        'django.security.DisallowedHost': {
-            'level': 'ERROR',
-            'handlers': ['console', 'sentry'],
-            'propagate': False,
-        },
     },
 }
 SENTRY_CELERY_LOGLEVEL = env.int('DJANGO_SENTRY_LOG_LEVEL', logging.INFO)
