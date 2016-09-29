@@ -27,6 +27,9 @@ urlpatterns = [
         name="upper-extremity"),
     url(r'^neck-disability/(?P<user_id>[\d]+)/$', views.NeckDisabilityView.as_view(),
         name="neck-disability"),
+    url(r'^patient-satisfaction-survey/(?P<user_id>[\d]+)/$', views.PatientSatisfactionSurveyView.as_view(),
+        name="patient-satisfaction-survey"),
+
 
     # Patient Consent forms
     url(r'^chiropractic-treatment/(?P<user_id>[\d]+)/$', views.ChiropracticTreatmentView.as_view(),

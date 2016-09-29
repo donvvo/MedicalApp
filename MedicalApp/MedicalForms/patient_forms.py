@@ -76,3 +76,8 @@ class NeckDisabilityForm(forms.ModelForm):
         model = NeckDisability
         exclude = ('patient', 'last_modified')
 
+
+class PatientSatisfactionSurveyForm(forms.ModelForm):
+    class Meta:
+        model = PatientSatisfactionSurvey
+        exclude = ('patient', 'last_modified')

@@ -10,6 +10,7 @@ from .model_folder.patient_models.tmj_screening_models import *
 from .model_folder.patient_models.lower_extremity_models import *
 from .model_folder.patient_models.upper_extremity_models import *
 from .model_folder.patient_models.neck_disability_models import *
+from .model_folder.patient_models.patient_satisfaction_survey import *
 from .model_folder.patient_models.consent_form_models import *
 
 from .model_folder.doctor_models.plan_of_management_models import *

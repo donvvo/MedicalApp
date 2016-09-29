@@ -1,0 +1,246 @@
+{% extends "medicalforms/form_base.html" %}
+
+{% block title %}
+Patient Satisfaction Survey
+{% endblock title %}
+
+{% block form_content %}
+
+<div class="row">
+  <div class="col-sm-12">
+    <div class="form-group">
+      <label class="control-label">Patient Type</label><br>
+      <label class="radio-inline">
+        {{form.patient_type.0.tag}} Private (Including EHC)
+      </label>
+      <label class="radio-inline">
+        {{form.patient_type.1.tag}} WSIB
+      </label>
+      <label class="radio-inline">
+        {{form.patient_type.2.tag}} MVA
+      </label>
+      <label class="radio-inline">
+        {{form.patient_type.3.tag}} Other
+      </label>
+    </div>
+  </div>
+  <div class="col-sm-12">
+    <div class="form-group not-required">
+      <label class="control-label">If other, please specify:</label><br>
+      {{form.patient_type_other}}
+    </div>
+  </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12">
+        <label class="control-label">1. How satisfied are you with the courtesy of the reception staff?</label><br>
+        <div class="checkbox">
+            <label>
+              {{form.question_1.0.tag}} a. Very Satisfied
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+              {{form.question_1.1.tag}} b. Somewhat Satisfied
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{form.question_1.2.tag}} c. Somewhat Dissatisfied
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{form.question_1.3.tag}} d. Very Dissatisfied
+            </label>
+        </div>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-sm-12">
+        <label class="control-label">2. How long you had to wait to be seen by a therapist?</label><br>
+        <div class="checkbox">
+            <label>
+            {{form.question_2.0.tag}} a. Under 5 minutes
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{form.question_2.1.tag}} b. From 5 to 10 minutes 
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{form.question_2.2.tag}} c. From 10 to 20 minutes
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{form.question_2.3.tag}} d. 20 minutes and over
+            </label>
+        </div>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-sm-12">
+        <label class="control-label">3. Did you get answers to all your questions from the therapist regarding your condition and/or treatment?</label><br>
+        <div class="checkbox">
+            <label>
+            {{form.question_3.0.tag}} a. I received answers to all my questions
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{form.question_3.1.tag}} b. I received answers to most of my questions
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{form.question_3.2.tag}} c. I received answers to some of my questions
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{form.question_3.3.tag}} d. I did not get answers to my questions
+            </label>
+        </div>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-sm-12">
+        <label class="control-label">4. Overall, how satisfied are you with your treatment?</label><br>
+        <div class="checkbox">
+            <label>
+            {{form.question_4.0.tag}} a. Very satisfied, my expectations were exceeded
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{form.question_4.1.tag}} b. Somewhat satisfied, my expectations were met
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{form.question_4.2.tag}} c. Somewhat dissatisfied, I expected more
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{form.question_4.3.tag}} d. Very dissatisfied, disappointed
+            </label>
+        </div>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-sm-12">
+        <label class="control-label">5. Did you get enough information from the therapist on how to prevent the reoccurrence of the condition and possible complications?</label><br>
+        <div class="checkbox">
+            <label>
+            {{form.question_5.0.tag}} a. Yes, I received thorough information about my condition
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{form.question_5.1.tag}} b. Yes, I received basic information about my condition
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{form.question_5.2.tag}} c. Somewhat, I received some information
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{form.question_5.3.tag}} d. No, I received no information on my condition
+            </label>
+        </div>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-sm-12">
+        <label class="control-label">6. Were you able to schedule your next appointment at a convenient time?</label><br>
+        <div class="checkbox">
+            <label>
+            {{form.question_6.0.tag}} a. Yes, my appointment was scheduled exactly when I wanted
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{form.question_6.1.tag}} b. Yes, but my first option was not available
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{form.question_6.2.tag}} c. Somewhat, I had to pick from not-so-convenient hours available
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{form.question_6.3.tag}} d. I was unable to schedule an appointment to make my visit possible
+            </label>
+        </div>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-sm-12">
+        <label class="control-label">7. Overall, how satisfied are you with experience at our clinic?</label><br>
+        <div class="checkbox">
+            <label>
+            {{form.question_7.0.tag}} a. Very satisfied
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{form.question_7.1.tag}} b. Somewhat satisfied
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{form.question_7.2.tag}} c. Somewhat dissatisfied
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+            {{form.question_7.3.tag}} d. Very Dissatisfied
+            </label>
+        </div>
+    </div>
+</div>
+<br>
+<div class="row">
+  <div class="col-sm-12">
+    <div class="form-group">
+      {{form.comments.error}}
+      <label class="control-label">Comments</label><br>
+      <p>In the space below and on the back of this sheet, share any comments, suggestions, complaints that would help us improve the quality of service at our centre.</p>
+      {{form.comments}}
+    </div>
+  </div>
+</div>
+
+{% endblock form_content %}
+
+{% block javascript %}
+
+{{block.super}}
+<script>
+function calcScore() {
+    var score1 = $('div.col-sm-12 div.checkbox:nth-of-type(2) input:checked').length * 1;
+    var score2 = $('div.col-sm-12 div.checkbox:nth-of-type(3) input:checked').length * 2;
+    var score3 = $('div.col-sm-12 div.checkbox:nth-of-type(4) input:checked').length * 3;
+    var score4 = $('div.col-sm-12 div.checkbox:nth-of-type(5) input:checked').length * 4;
+    var score5 = $('div.col-sm-12 div.checkbox:nth-of-type(6) input:checked').length * 5;
+    $('#total-score').text(score1 + score2 + score3 + score4 + score5);
+}
+$('input:radio').change(calcScore);
+calcScore();
+</script>
+
+{% endblock javascript %}

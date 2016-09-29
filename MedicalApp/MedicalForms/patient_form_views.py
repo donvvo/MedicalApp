@@ -156,6 +156,24 @@ class NeckDisabilityView(PatientFormBaseView):
     form_class = NeckDisabilityForm
 
 
+class PatientSatisfactionSurveyView(PatientFormBaseView):
+    template_name = 'medicalforms/patient_forms/patient_satisfaction_survey.html'
+    model = PatientSatisfactionSurvey
+    form_class = PatientSatisfactionSurveyForm
+
+
+    def get_object(self):
+        objects = self.model.objects.filter(pk=self.user_id)
+        if objects.exists():
+            self.assigned = True
+            return objects.get()
+        else:
+            self.assigned = True
+            self.initial_form = self.model(pk=self.user_id)
+            self.initial_form.save()
+            return self.initial_form
+
+
 # Consent form views.
 class ChiropracticTreatmentView(PatientFormBaseView):
     template_name = 'medicalforms/consent_forms/chiropractic_consent.html'
